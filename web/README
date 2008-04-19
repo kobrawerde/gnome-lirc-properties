@@ -1,0 +1,82 @@
+This folder contains a tiny service for sharing lirc configuration files.
+Nothing fancy yet, just upload and download from the application.
+No browsing, rating, moderation and such yet.
+
+== Installation ==
+
+For using the script a WSGI enabled[1][2] web server is needed. When using the
+Apache web server modwsgi[3][4] is the module of choice. It is easy to setup
+and offers the best performance.
+
+Alternatively the CGI wrapper or the standalone HTTP server of wsgiref[5]
+could be used. There also are several WSGI gateways for mod_python, its FAQ
+recommends ModPythonGateway[6][7].
+
+=== Apache and modwsgi ===
+
+ * copy "service.wsgi" to some folder of your choice, e.g. "/var/www/lircdb"
+ * create the file "/etc/apache2/conf.d/lircdb.conf" with this content:
+
+        WSGIScriptAlias /lircdb /var/www/lircdb/service.wsgi
+
+ * create the folder "/var/www/lircdb/archive/incoming"
+ * give the web server write access to the folders "/var/www/lircdb/archive"
+   and "/var/www/lircdb/archive/incoming":
+
+        # chown www-data:www-data /var/www/lircdb/{archive,archive/incoming}
+
+== Mode of Operation ==
+
+The script provides the following request handlers.
+
+=== Root Handler (GET /) ===
+
+This request hander delivers a static HTML form to allow manual uploads of
+configuration files.
+
+=== Download Handler (GET /remotes.tar.gz) ===
+
+This handlers provides a tarball with the latest remote configuration files for
+download. The tarball stored at "/var/www/lircdb/archive/remotes.tar.gz", and
+it is generated automatically by the request handler, if it doesn't exist yet.
+Advisory locking is used to avoid race conditions when generating that tarball.
+The tarball is deleted each time a new configuration file is uploaded.
+
+The request handler considers the "If-Modified-Since" header to reduce
+bandwidth usage.
+
+Also a custom "X-Checksum-Sha1" header containing the tarball's SHA1 hex digest
+is sent, to avoid race conditions caused by uploads happening during download
+of the tarball and download of a separate checksum file.
+
+=== Upload Handler (POST /upload/) ===
+
+This POST handler accepts data from multipart encoded HTML forms, and stores
+the uploaded file in the "incoming" folder. The configuration file's checksum
+is used as local filename: "archive/incoming/%(checksum)s.conf". The post
+handler expects the following request parameters:
+
+ * config: The contents of the configuration file.
+ * digest: The SHA1 hex digest of the configuration file.
+ * locale: Current locale of the uploading application.
+           This allows the script to provide localized status messages.
+
+The request handler implements the POST/REDIRECT/GET pattern to avoid
+duplicates. The HTTP client is redirected to "/upload/success" on
+successful uploads.
+
+=== Upload Success Handler (GET /upload/success) ===
+
+This request handler displays a static success message
+after successful uploads.
+
+== References ==
+
+1: http://www.wsgi.org/
+2: http://www.python.org/dev/peps/pep-0333/
+3: http://www.modwsgi.org/
+4: http://packages.ubuntu.com/hardy/libapache2-mod-wsgi
+5: http://docs.python.org/lib/module-wsgiref.handlers.html
+6: http://www.modpython.org/FAQ/faqw.py?req=show&file=faq03.029.htp
+7: http://projects.amor.org/misc/wiki/ModPythonGateway
+

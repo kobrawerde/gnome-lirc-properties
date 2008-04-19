@@ -1,0 +1,144 @@
+Hardware Modules
+================
+
+hw_accent
+hw_alsa_usb
+hw_audio_alsa
+hw_bte
+hw_creative
+hw_creative_infracd
+hw_default
+hw_devinput
+hw_dsp
+hw_ea65
+hw_hiddev
+hw_i2cuser
+hw_livedrive_common
+hw_livedrive_midi
+hw_livedrive_seq
+hw_logitech
+hw_mouseremote
+hw_mp3anywhere
+hw_pcmak
+hw_pinsys
+hw_pixelview
+hw_silitek
+hw_tira
+hw_udp
+hw_uirt2
+hw_uirt2_common
+hw_uirt2_raw
+hw_usbx
+receive
+serial
+transmit
+
+Kernel Drivers
+==============
+
+lirc_dev: LIRC base driver module
+
+  char-major-61-*
+
+lirc_atiusb: USB remote driver for LIRC
+
+  usb:v045Ep0284d*dc*dsc*dp*ic*isc*ip*
+  usb:v040Bp6521d*dc*dsc*dp*ic*isc*ip*
+  usb:v0471p0603d*dc*dsc*dp*ic*isc*ip*
+  usb:v0471p0602d*dc*dsc*dp*ic*isc*ip*
+  usb:v0BC7p000Fd*dc*dsc*dp*ic*isc*ip*
+  usb:v0BC7p000Ed*dc*dsc*dp*ic*isc*ip*
+  usb:v0BC7p000Dd*dc*dsc*dp*ic*isc*ip*
+  usb:v0BC7p000Cd*dc*dsc*dp*ic*isc*ip*
+  usb:v0BC7p000Bd*dc*dsc*dp*ic*isc*ip*
+  usb:v0BC7p000Ad*dc*dsc*dp*ic*isc*ip*
+  usb:v0BC7p0009d*dc*dsc*dp*ic*isc*ip*
+  usb:v0BC7p0008d*dc*dsc*dp*ic*isc*ip*
+  usb:v0BC7p0007d*dc*dsc*dp*ic*isc*ip*
+  usb:v0BC7p0006d*dc*dsc*dp*ic*isc*ip*
+  usb:v0BC7p0005d*dc*dsc*dp*ic*isc*ip*
+  usb:v0BC7p0004d*dc*dsc*dp*ic*isc*ip*
+  usb:v0BC7p0003d*dc*dsc*dp*ic*isc*ip*
+  usb:v0BC7p0002d*dc*dsc*dp*ic*isc*ip*
+
+lirc_bt829: IR remote driver for bt829 based TV cards
+
+  no module aliases
+
+lirc_cmdir: InnovationOne driver for CommandIR USB infrared transceiver
+
+  no module aliases
+
+lirc_gpio: Driver module for remote control (data from bt848 GPIO port)
+
+    Not available on Ubuntu Gutsy
+
+lirc_i2c: Infrared receiver driver for Hauppauge and Pixelview cards (i2c stack)
+
+  no module aliases
+
+lirc_igorplugusb: USB remote driver for LIRC
+
+  usb:v03EBp0002d*dc*dsc*dp*ic*isc*ip*
+
+lirc_imon: Driver for Soundgraph iMON MultiMedian IR/VFD
+
+  usb:v04E8pFF30d*dc*dsc*dp*ic*isc*ip*
+  usb:v15C2pFFDCd*dc*dsc*dp*ic*isc*ip*
+  usb:v15C2pFFDAd*dc*dsc*dp*ic*isc*ip*
+  usb:v0AA8p8001d*dc*dsc*dp*ic*isc*ip*
+  usb:v0AA8pFFDAd*dc*dsc*dp*ic*isc*ip*
+
+lirc_it87: LIRC driver for ITE IT8712/IT8705 CIR port
+
+  no module aliases
+
+lirc_mceusb: USB Microsoft IR Transceiver Driver
+
+  usb:v045Ep006Dd*dc*dsc*dp*ic*isc*ip*
+
+lirc_mceusb2: Philips eHome USB IR Transciever and Microsoft MCE 2005 Remote Control driver for LIRC
+
+  usb:v147ApE015d*dc*dsc*dp*ic*isc*ip*
+  usb:v045Ep00A0d*dc*dsc*dp*ic*isc*ip*
+  usb:v043Ep9803d*dc*dsc*dp*ic*isc*ip*
+  usb:v1509p9242d*dc*dsc*dp*ic*isc*ip*
+  usb:v195Dp7002d*dc*dsc*dp*ic*isc*ip*
+  usb:v179Dp0010d*dc*dsc*dp*ic*isc*ip*
+  usb:v1784p0008d*dc*dsc*dp*ic*isc*ip*
+  usb:v1784p0006d*dc*dsc*dp*ic*isc*ip*
+  usb:v1784p0001d*dc*dsc*dp*ic*isc*ip*
+  usb:v03EEp2501d*dc*dsc*dp*ic*isc*ip*
+  usb:v107Bp3009d*dc*dsc*dp*ic*isc*ip*
+  usb:v1308pC001d*dc*dsc*dp*ic*isc*ip*
+  usb:v1460p9150d*dc*dsc*dp*ic*isc*ip*
+  usb:v0609p0334d*dc*dsc*dp*ic*isc*ip*
+  usb:v0609p0322d*dc*dsc*dp*ic*isc*ip*
+  usb:v0609p031Dd*dc*dsc*dp*ic*isc*ip*
+  usb:v0471p060Cd*dc*dsc*dp*ic*isc*ip*
+  usb:v0471p0815d*dc*dsc*dp*ic*isc*ip*
+
+lirc_parallel:
+
+  no module aliases
+
+lirc_sasem: USB Driver for Sasem Remote Controller V1.1
+
+  no module aliases
+
+lirc_serial: Infra-red receiver driver for serial ports.
+
+  no module aliases
+
+lirc_sir: Infrared receiver driver for SIR type serial ports
+
+  no module aliases
+
+lirc_streamzap: Streamzap Remote Control driver
+
+  usb:v0E9Cp0000d*dc*dsc*dp*ic*isc*ip*
+
+lirc_ttusbir: TechnoTrend USB IR device driver for LIRC
+
+  usb:v0B48p2003d*dc*dsc*dp*ic*isc*ip*
+

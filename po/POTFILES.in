@@ -1,0 +1,11 @@
+data/gnome-lirc-properties.desktop.in
+data/gnome-lirc-properties.glade
+gnome_lirc_properties/__init__.py
+gnome_lirc_properties/backend.py
+gnome_lirc_properties/hardware.py
+gnome_lirc_properties/lirc.py
+gnome_lirc_properties/model.py
+gnome_lirc_properties/net/services.py
+gnome_lirc_properties/ui/CustomConfiguration.py
+gnome_lirc_properties/ui/ProgressWindow.py
+gnome_lirc_properties/ui/RemoteControlProperties.py

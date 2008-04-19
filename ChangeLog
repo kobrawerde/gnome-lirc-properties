@@ -1,0 +1,1647 @@
+0.2.6:
+
+2008-04-17  Mathias Hasselmann  <mathias@openismus.com>
+
+	Also restart the LIRC daemon after restoring configuration.
+
+	* gnome_lirc_properties/ui/RemoteControlProperties.py
+	 (RemoteControlProperties.__restore_hardware_settings()):
+	  Instruct the backend to restart the daemon after reconfiguration.
+
+2008-04-17  Murray Cumming  <murrayc@murrayc.com>
+
+	* gnome_lirc_properties/ui/RemoteControlProperties.py
+	  __confirm_rewrite_configuration(), __restore_hardware_settings(): 
+	Improve the text of the new sanity check messages.
+
+2008-04-17  Mathias Hasselmann  <mathias@openismus.com>
+
+	Add sanity checks to verify that lircd.conf and lircd.conf.gnome
+	match the settings in hardware.conf on startup.
+
+	* gnome_lirc_properties/config.py.in,
+	  gnome_lirc_properties/lirc.py (find_remote_config()),
+	  gnome_lirc_properties/backend.py (BackendService.__write_include_statement()):
+	  Add config.LIRC_REMOTE_CONF and config.LIRC_DAEMON_CONF constants.
+	* gnome_lirc_properties/lirc.py
+	 (RemotesDatabase.find(), check_hardware_settings()):
+	  New functions.
+	* gnome_lirc_properties/ui/RemoteControlProperties.py
+	 (RemoteControlProperties.__confirm_rewrite_configuration(),
+	  RemoteControlProperties.__restore_hardware_settings()):
+	  Apply sanity checks to lircd.conf and lircd.conf.gnome.
+	  Restore remote configuration when needed and permitted.
+
+2008-04-17  Mathias Hasselmann  <mathias@openismus.com>
+
+	Fix https://code.fluendo.com/remotecontrol/trac/ticket/1, and improve
+	some comments. Original patch: Murray Cumming <murrayc@murrayc.com>.
+
+	* gnome_lirc_properties/ui/RemoteControlProperties.py
+	 (RemoteControlProperties._end_update_configuration(),
+	  RemoteControlProperties.__init__()): Improve some comments.
+	* gnome_lirc_properties/ui/RemoteControlProperties.py
+	 (RemoteControlProperties.__set_selected_receiver()):
+	  Allow None as valid argument.
+	* gnome_lirc_properties/ui/RemoteControlProperties.py
+	 (_select_chosen_receiver(self)): Reset selected receiver and remote
+	  to force emission of change signals for the associated combo boxes.
+	  This ensures that the configuration file will be written again (It
+	  might have been broken in the meantime).
+
+2008-04-16  Bastien Nocera  <bnocera@redhat.com>
+
+	Add --disable-confdir-check to prevent checking for lircd.conf path.
+
+	* configure.ac: Add --disable-confdir-check.
+
+2008-04-16  Bastien Nocera  <bnocera@redhat.com>
+
+	Cleanup the .desktop file.
+
+	* data/gnome-lirc-properties.desktop.in.in: Remove some comments and
+	  Encoding directive. Add final semicolon to Categories directive.
+
+2008-04-01  Mathias Hasselmann  <mathias@openismus.com>
+
+	Update screenshots to match latest GNOME theme.
+
+	* help/C/figures/auto-detect.png,
+	  help/C/figures/custom-remote-basics.png,
+	  help/C/figures/custom-remote-keys.png,
+	  help/C/figures/custom-remote-model.png,
+	  help/C/figures/main-window.png:
+	  Update screenshots.
+
+2008-03-31  Mathias Hasselmann  <mathias@openismus.com>
+
+	* help/C/figures/custom-remote-keys.png,
+	  help/C/figures/auto-detect.png,
+	  help/C/figures/custom-remote-model.png,
+	  help/C/figures/custom-remote-basics.png,
+	  help/C/figures/main-window.png:
+	  Set svn:mime-type property.
+
+2008-03-25  Mathias Hasselmann  <mathias@openismus.com>
+
+	* bin/lirc-receiver-list, data/overrides.conf:
+	  Improve automatically generated receiver list.
+
+2008-03-22  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/backend.py:
+	  Properly handle empty values when writing /etc/lirc/hardware.conf.
+
+2008-03-20  Mathias Hasselmann  <mathias@openismus.com>
+
+	* debian/control: Architecture is "all", not "any".
+
+0.2.5:
+
+2008-03-20  Mathias Hasselmann  <mathias@openismus.com>
+
+	* configure.ac, debian/changelog: Bump version number.
+	* NEWS: Updated from ChangeLog.
+
+2008-03-20  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/backend.py:
+	  Properly interpret PolicyKit results.
+	* gnome_lirc_properties/lirc.py: Improve robustness of key-listener by
+	  buffering packets received from /dev/lircd, and by trying harder to
+	  disconnecting from that socket.
+
+2008-03-20  Mathias Hasselmann  <mathias@openismus.com>
+
+	* data/org.gnome.LircProperties.Mechanism.conf,
+	  data/org.gnome.LircProperties.Mechanism.service.in: Add some
+	  comments to avoid that administrators break them acciently.
+
+2008-03-19  Murray Cumming  <murrayc@murrayc.com>
+
+	* gnome_lirc_properties/ui/CustomConfiguration.py:
+	  Improved a human-visible string.
+
+2008-03-19  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/ui/CustomConfiguration.py,
+	  data/gnome-lirc-properties.glade: Hopefully improve feedback when
+	  learning key-codes.
+
+2008-03-19  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/hardware.py:
+	  Skip USB devices that do not get sufficient power.
+
+2008-03-19  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/ui/RemoteControlProperties.py: Don't crash
+	  when no receiver was dectect. Regression caused by injection of
+	  TreeModelFilter for vendor list.
+
+2008-03-19  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/hardware.py: Do not fall over missing driver
+	  root in sysfs when detecting a receiver's device node.
+
+2008-03-19  Mathias Hasselmann  <mathias@openismus.com>
+
+	* bin/gnome-lirc-properties.in: More reliably detect wether to run
+	  installed or uninstalled version of the program.
+
+2008-03-19  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/hardware.py:
+	  List compatible remotes for Linux Input Layer receivers.
+
+2008-03-18  Mathias Hasselmann  <mathias@openismus.com>
+
+	* data/gnome-lirc-properties.glade: Remove image_preview_status.
+	* data/receivers.conf: Remove Linux Input Layer entry.
+	* gnome_lirc_properties/lirc.py: Make Receiver objects subscriptable
+	  and add 'device' property.
+	* gnome_lirc_properties/hardware.py, gnome_lirc_properties/model.py,
+	  gnome_lirc_properties/ui/RemoteControlProperties.py: Support Linux
+	  Input Layer remotes as first class citizens - including hot-plug
+	  support.
+
+2008-03-18  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/policykit.py:
+	  Properly handle PolicyKit.IsProcessAuthorized() results.
+
+2008-03-18  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/policykit.py: Revert bogus pylint fix.
+
+2008-03-18  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/backend.py,
+	  gnome_lirc_properties/hardware.py,
+	  gnome_lirc_properties/lsb.py,
+	  gnome_lirc_properties/model.py,
+	  gnome_lirc_properties/net/services.py,
+	  gnome_lirc_properties/policykit.py,
+	  gnome_lirc_properties/ui/CustomConfiguration.py,
+	  gnome_lirc_properties/ui/RemoteControlProperties.py:
+	  Fix various issues reported by pylint.
+
+2008-03-17  Mathias Hasselmann  <mathias@openismus.com>
+
+	* data/gnome-lirc-properties.glade:
+	  Show product name for device nodes when available.
+	* data/receivers.conf: Replace specific Cinergy T^2
+	  entry by generic entry for Linux Input Layer.
+	* gnome_lirc_properties/hardware.py,
+	  gnome_lirc_properties/ui/ReceiverChooserDialog.py,
+	  gnome_lirc_properties/ui/RemoteControlProperties.py:
+	  Support generic Linux Input Layer receivers.
+
+2008-03-17  Murray Cumming  <murrayc@murrayc.com>
+
+	* README: Mention how to get terminal output from the D-Bus service,
+	  for debugging.
+	* gnome_lirc_properties/backend.py: Improve some dialog strings slightly.
+
+2008-03-17  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/ui/CustomConfiguration.py: Stop the lirc
+	  deamon, as some drivers (e.g. lirc_streamzap) do not support
+	  concurrent device access.
+
+2008-03-17  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/ui/RemoteControlProperties.py:
+	  Restore receiver device setting on Hardy.
+
+2008-03-17  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/ui/RemoteControlProperties.py: Guarantee
+	  that device_nodes always is a list in _on_product_list_changed().
+
+2008-03-17  Mathias Hasselmann  <mathias@openismus.com>
+
+	* data/gnome-lirc-properties-mechanism.policy.in:
+	  Provide icon and vendor information.
+	* gnome_lirc_properties/policykit.py: Do not cache DBus proxy objects:
+	  The PolicyKit service has a 30 seconds timeout and might have
+	  shutdown during invokations.
+
+2008-03-17  Mathias Hasselmann  <mathias@openismus.com>
+
+	* web/service.wsgi: Don't include remotes.tar.gz within itself.
+
+2008-03-14  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/backend.py, gnome_lirc_properties/hardware.py,
+	  gnome_lirc_properties/lirc.py, gnome_lirc_properties/ui/common.py,
+	  gnome_lirc_properties/ui/CustomConfiguration.py,
+	  gnome_lirc_properties/ui/RemoteControlProperties.py:
+	  Fix and explain pychecker warnings.
+
+2008-03-13  Mathias Hasselmann  <mathias@openismus.com>
+
+	* configure.ac: Update web service URI.
+	* gnome_lirc_properties/ui/CustomConfiguration.py,
+	  gnome_lirc_properties/net/services.py: Fix refactoring bugs.
+
+2008-03-13  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/model.py: Wrap remove_iter in KeyCodeModel
+	  to keep __key_codes dictionary in sync.
+	* gnome_lirc_properties/ui/CustomConfiguration.py: Let keys tree
+	  view regrab focus after editing keys for better user experience.
+
+2008-03-08  Mathias Hasselmann  <mathias@openismus.com>
+
+	* debian/changelog: Use official syntax for referencing bugs.
+	* debian/control: Add Homepage field.
+
+0.2.4:
+
+2008-03-08  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/ui/CustomConfiguration.py:
+	  Really show "Start" button in request_action() dialog.
+
+2008-03-07  Mathias Hasselmann  <mathias@openismus.com>
+
+	* configure.ac, debian/changelog: Bump version number.
+	* NEWS: Updated from ChangeLog.
+
+2008-03-07  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/backend.py:
+	  Improve error message when irrecord doesn't have the --resume.
+
+2008-03-06  Murray Cumming  <murrayc@murrayc.com>
+
+	* gnome_lirc_properties/ui/CustomConfiguration.py: request_action():
+	Use a [Start] button instead of an OK button for the dialog that tells
+	the user what to do during detection, so that they know that they do
+	not need to do it _before_ closing the dialog.
+	I was not able to test this here, so please check that it's not broken.
+
+	* gnome_lirc_properties/backend.py:
+	* gnome_lirc_properties/hardware.py:
+	* gnome_lirc_properties/lirc.py:
+	* gnome_lirc_properties/ui/RemoteControlProperties.py:
+	* gnome_lirc_properties/ui/common.py: Added some TODO comments for 
+	stuff that pychecker found. Some seems significant.
+
+2008-03-06  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/ui/CustomConfiguration.py,
+	  data/gnome-lirc-properties.glade: Turn key-code learning button into
+	  toggle button to allow cancelation. Disable other key-codes buttons
+	  when learning key codes.
+
+2008-03-06  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/ui/CustomConfiguration.py,
+	  data/gnome-lirc-properties.glade: Add button for learning keys.
+	  Activation of second or third column is too hard to find.
+
+2008-03-06  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/backend.py: Move detection of --resume switch
+	  from _on_run_external_tool to _spawn_external_tool so that failure
+	  reported is by the main process, not the forked child process.
+	* gnome_lirc_properties/ui/common.py: Export function wrapped by
+	  @thread_callback() decorate as '__direct__' attribute.
+	* gnome_lirc_properties/ui/CustomConfiguration.py: Make key-learning
+	  callback thread safe. Don't try to acquire GDK big lock, when
+	  reporting DBUS errors.
+
+2008-03-05  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/ui/CustomConfiguration.py:
+	  Also apply DBUS interface casts when driving irrecord.
+
+0.2.2:
+
+2008-03-05  Mathias Hasselmann  <mathias@openismus.com>
+
+	* debian/control: Adding lirc to Build-Depends.
+
+2008-03-05  Mathias Hasselmann  <mathias@openismus.com>
+
+	* configure.ac: Check for lircd.conf instead of hardware.conf.
+
+2008-03-05  Mathias Hasselmann  <mathias@openismus.com>
+
+	* configure.ac: Only warn, don't fail on irrecord with --resume.
+
+2008-03-05  Mathias Hasselmann  <mathias@openismus.com>
+
+	* debian/changelog: Enter Launchpad ID of freeze break request.
+
+2008-03-05  Mathias Hasselmann  <mathias@openismus.com>
+
+	* configure.ac, debian/changelog: Bumping version number.
+	* debian/prerm: Prevent error message on missing tarball.
+	* NEWS: Updated from ChangeLog.
+
+2008-03-05  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/backend.py: Add interface casts for Hardy.
+	* gnome_lirc_properties/ui/RemoteControlProperties.py: Do not try to
+	  obtain PolicyKit authorization if we have it already - the attempt
+	  would fail.
+
+2008-03-05  Mathias Hasselmann  <mathias@openismus.com>
+
+	* bin/lirc-receiver-list: Rewritten to extract USB kernel drivers
+	  from LIRC sources, without the need of any source code annotations.
+	* data/overrides.conf: Overrides for bin/lirc-receiver-list.
+	* Makefile.am: Rename bin/build-receiver-list to
+	  bin/lirc-receiver-list. Add data/overrides.conf.
+
+2008-03-05  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/lirc.py:
+	  Use proper release number for has_include_keyword() check.
+	* gnome_lirc_properties/policykit.py:
+	  Explicitly retrieve interface for PolicyKit service.
+	* Makefile.am: Also distribute patches. Enforce usage of
+	  the system's LIRC folders for distcheck.
+
+2008-03-04  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/backend.py, gnome_lirc_properties/lirc.py,
+	  gnome_lirc_properties/ui/CustomConfiguration.py: Support Hardy's
+	  include statements for lircd.conf files.
+	* gnome_lirc_properties/config.py.in:
+	  Add LSB_RELEASE, remove LIRC_CONF_FILEPATH.
+	* gnome_lirc_properties/lsb.py: Retrieve LSB information.
+	* gnome_lirc_properties/Makefile.am: Add lsb.py.
+
+2008-03-03  Mathias Hasselmann  <mathias@openismus.com>
+
+	* bin/gnome-lirc-properties.in, gnome_lirc_properties/__init__.py:
+	  Adjust logging level, when passing "-d" or "--debug".
+	* gnome_lirc_properties/policykit.py: Properly cast the result of
+	  PolicyKit's ObtainAuthorization() method, to avoid bogus error
+	  message.
+
+2008-03-03  Mathias Hasselmann  <mathias@openismus.com>
+
+	* debian/control: Remove autotools-dev from 'Build-Depends': Native
+	  packages do not tinker with autotool scripts. Add yelp to 'Depends'
+	  list, and require policykit-gnome >= 0.7.
+	* debian/pyversions: Require at least Python 2.4.
+	* gnome_lirc_properties/__init__.py: Just some new comments.
+	* gnome_lirc_properties/ui/RemoteControlProperties.py: Use subprocess
+	  module instead of fork()/exec() for launching yelp, since it has
+	  this nice close_fds feature, which is needed for closing the X
+	  Window System socket before executing yelp. Also show an error
+	  message, when yelp cannot be found.
+
+2008-02-29  Mathias Hasselmann  <mathias@openismus.com>
+
+	* configure.ac: Apply sanity checks to configured LIRC configuration
+	  folder and LIRC remotes database folder. Check that irrecord
+	  supports the --resume switch for repeative key learning.
+
+0.2.1:
+
+2008-02-28  Mathias Hasselmann  <mathias@openismus.com>
+
+	* configure.ac, debian/changelog: Bumping version.
+
+2008-02-28  Mathias Hasselmann  <mathias@openismus.com>
+
+	* configure.ac: Update default values of URI parameters.
+	* gnome_lirc_properties/net/services.py: Also handle URLErrors.
+	* gnome_lirc_properties/ui/CustomConfiguration.py,
+	  gnome_lirc_properties/ui/RemoteControlProperties.py:
+	  Improve error messages on network errors.
+
+2008-02-27  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/ui/RemoteControlProperties.py,
+	  data/gnome-lirc-properties.glade: Display key category in test area.
+	* TODO: Updated.
+
+2008-02-27  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/ui/CustomConfiguration.py: Also release
+	  detection driver. Enter GDK lock in lirc-driver signal handlers.
+
+2008-02-27  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/backend.py: Extend ManageLircDaemon()
+	  to control hardware.conf's START_LIRCD setting.
+	* gnome_lirc_properties/ui/RemoteControlProperties.py:
+	  Disable lircd, when no receiver is selected.
+	* gnome_lirc_properties/net/services.py: Make pylint happy.
+	* TODO: Updated.
+
+2008-02-27  Murray Cumming  <murrayc@murrayc.com>
+
+	* gnome_lirc_properties/backend.py:
+	* gnome_lirc_properties/ui/CustomConfiguration.py:
+	* gnome_lirc_properties/ui/RemoteControlProperties.py:
+	Minor corrections to translatable strings. I have now reviewed them all.
+
+2008-02-27  Mathias Hasselmann  <mathias@openismus.com>
+
+	* TODO: Updated with bin/todo-list
+	* gnome_lirc_properties/ui/RemoteControlProperties.py,
+	  data/gnome-lirc-properties.glade: Handle changes to device-combo.
+	* gnome_lirc_properties/backend.py: Remove obsolete TODO comment.
+	* gnome_lirc_properties/hardware.py: Catch exceptions when
+	  resolving device nodes.
+
+2008-02-27  Mathias Hasselmann  <mathias@openismus.com>
+
+	* web/README: List alternatives to modwsgi.
+	* web/service.wsgi: Filter out SCM folders when building tarball.
+	  Do not rely on ".conf" extension for remote configuration files,
+	  since Christoph Bartelmus doesn't enforce this policy for his
+	  "remotes" folder. Pass file object to addfile(), because tarfile
+	  doesn't produce proper tarballs without that argument - don't
+	  know why.
+
+2008-02-27  Mathias Hasselmann  <mathias@openismus.com>
+
+	* help/C/*: Updated figures and embed them into the document.
+
+2008-02-27  Mathias Hasselmann  <mathias@openismus.com>
+
+	* configure.ac: Remove 32 and 48 pixel icons.
+	* gnome_lirc_properties/net/Makefile.am:
+	  MultipartPostHandler.py, not HttpUploader.py.
+	* help/C/gnome-lirc-properties.xml:
+	  Fix DTD validation problems uncovered by distcheck.
+	* po/POTFILES.in: UpUpdated..
+
+2008-02-27  Mathias Hasselmann  <mathias@openismus.com>
+
+	* data/gnome-lirc-properties.glade: Improve some GUI labels.
+	* help/C/gnome-lirc-properties.xml: Replace template stubs to really
+	  match this program. TODO: Write the usage sub-sections.
+	* NEWS: Updated.
+
+2008-02-27  Mathias Hasselmann  <mathias@openismus.com>
+
+	* NEWS: Updating release history.
+
+2008-02-27  Mathias Hasselmann  <mathias@openismus.com>
+
+	* configure.ac, web/service.wsgi: Change append "upload/" suffix to
+	  upload URI. Also handle OSError exceptions in send_archive(). Rename
+	  web/service.py to the more common name web/service.wsgi.
+	* web/README: Document behavior of the web service.
+
+2008-02-27  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/backend.py: Check directory existance before
+	  trying to create PACKAGE_DIR. Update timestamps of remotes database
+	  to match timestamps of downloaded file.
+	* gnome_lirc_properties/ui/RemoteControlProperties.py,
+	  gnome_lirc_properties/net/services.py: Use "If-Modified-Since"
+	  headers to avoid redundant downloads.
+	* gnome_lirc_properties/ui/CustomConfiguration.py: Fixing a typo.
+	* web/service.py: Consider "If-Modified-Since" header and provide
+	  "Last-Modified" header.
+
+2008-02-26  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/backend.py:
+	  Create folder for remotes tarball, if it doesn't exist already.
+	* gnome_lirc_properties/net/services.py,
+	  gnome_lirc_properties/ui/RemoteControlProperties.py:
+	  Use only urllib2, since supports request headers.
+
+2008-02-26  Mathias Hasselmann  <mathias@openismus.com>
+
+	* bin/pylint: Run pylint with ${srcdir}/pylint in path.
+	* pylint/custom-checker.py: Pylint checker that injects the attributes
+	  generated by RemoteControlProperties' __lookup_widgets() method.
+	* gnome_lirc_properties/backend.py, gnome_lirc_properties/hardware.py,
+	  gnome_lirc_properties/lirc.py, gnome_lirc_properties/model.py,
+	  gnome_lirc_properties/ui/RemoteControlProperties.py
+	  gnome_lirc_properties/ui/CustomConfiguration.py:
+	  Resolve issues reported by pylint and mark false positives.
+	* gnome_lirc_properties/net/services.py: Refactor retrieve_tarball()
+	  to use a working thread class, instead of nested functions.
+	* pylintrc: Disable W0141 and R0923 globally: The builtin functions
+	  filter() and map() have valid use cases, and I have absolutely no
+	  idea, what R0923 is complaining about.
+
+2008-02-26  Mathias Hasselmann  <mathias@openismus.com>
+
+	* Makefile.am: Add web/README to EXTRA_DIST.
+
+2008-02-26  Mathias Hasselmann  <mathias@openismus.com>
+
+	* web/README: Write down short installations instructions.
+
+2008-02-26  Mathias Hasselmann  <mathias@openismus.com>
+
+	* data/icons/16x16/gnome-lirc-properties.png,
+	  data/icons/22x22/gnome-lirc-properties.png,
+	  data/icons/24x24/gnome-lirc-properties.png,
+	  data/icons/scalable/gnome-lirc-properties.svg:
+	  Replace the blurry icon with Andreas Nilsson's pretty draft.
+	* data/icons/Makefile.am: Comment out 32 and 48px variants of
+	  the icon for now.
+
+2008-02-26  Mathias Hasselmann  <mathias@openismus.com>
+
+	* configure.ac, gnome_lirc_properties/config.py.in:
+	  Rename "--with-update-uri" to "--with-download-uri".
+	  Drop "--with-upload-login-uri".
+	* data/gnome-lirc-properties.glade: Relabel "Share" button in custom
+	  configuration dialog to "Upload", and restore its "clicked" handler.
+	* gnome_lirc_properties/__init__.py: Set default icon name.
+	* gnome_lirc_properties/lirc.py: Add KeyCodeCategory class and use it.
+	* gnome_lirc_properties/model.py: Add count_keys() to KeyCodeModel.
+	* gnome_lirc_properties/net/HttpUploader.py,
+	  gnome_lirc_properties/net/updates.py,
+	  gnome_lirc_properties/net/Makefile.am: Merged into services.py.
+	* gnome_lirc_properties/net/services.py: Rearrange for web/service.py.
+	* gnome_lirc_properties/net/__init__.py: Import services module.
+	* gnome_lirc_properties/net/MultipartPostHandler.py:
+	  Various fixes to make it really work.
+	* gnome_lirc_properties/ui/CustomConfiguration.py: Implement upload
+	  via web/service.py, including error and problem handling.
+	* web/service.py: Add comments. Fix some minor HTML issues. Make the
+	  script compatible with Python 2.5. Send archive checksum as custom
+	  HTTP header in send_archive().
+
+2008-02-25  Mathias Hasselmann  <mathias@openismus.com>
+
+	* web/service.py: Fix process_upload URI.
+
+2008-02-25  Mathias Hasselmann  <mathias@openismus.com>
+
+	* web/service.py: Merge response code table from httplib,
+	  since it's only available since Python 2.5.
+
+2008-02-25  Mathias Hasselmann  <mathias@openismus.com>
+
+	* Makefile.am, web/service.py: Add WSGI script for hosting
+	  a database of infrared remote configuration files.
+
+2008-02-25  Mathias Hasselmann  <mathias@openismus.com>
+
+	* data/gnome-lirc-properties.desktop.in.in: Improve user visible
+	  strings. Add System to category list since we change global system
+	  settings. Remove the NoDisplay property, to make the icon visible.
+	* gnome_lirc_properties/net/Makefile.am: Also rename "upload" module
+	  to "net" in SUBDIRS variable. No idea how I missed that.
+	* configure.ac, data/Makefile.am, data/icons/Makefile.am,
+	  data/icons/*/Makefile.am, data/icons/*/gnome-lirc-properties.png,
+	  data/icons/scalable/gnome-lirc-properties.svg: Add a simple program
+	  icon, derived from Frédéric Bellaiche's Apple remote icon.
+
+0.2.0:
+
+2008-02-22  Mathias Hasselmann  <mathias@openismus.com>
+
+	* configure.ac: Bump version.
+	* Makefile.am, man/gnome-lirc-properties.1: Add minimalistic man-page
+	  to make the Debian folks happy.
+	* data/Makefile.am: Repair contents of EXTRA_DIST variable.
+	* gnome_lirc_properties/net/Makefile.am: Update module_PYTHON.
+	* gnome_lirc_properties/net/MultipartPostHandler.py:
+	  Remove shebang to make lintian happy.
+	* .gitignore: Add config.status.lineno.
+	* po/POTFILES.in: Updated.
+
+2008-02-22  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/ui/RemoteControlProperties.py: Select supplied
+	remote after auto-detection. Use selected_receiver and selected_remote
+	properties from __restore_hardware_settings.
+
+2008-02-22  Murray Cumming  <murrayc@murrayc.com>
+
+	Remove debian/ directory because building from a checkout seems to
+	cause various problems. When making a new package you will need to
+	get the old package and do uupdate.
+
+2008-02-22  Mathias Hasselmann  <mathias@openismus.com>
+
+	* data/receivers.conf: Update name of Firefly remote.
+
+2008-02-22  Mathias Hasselmann  <mathias@openismus.com>
+
+	* data/gnome-lirc-properties.glade: Really prevent destruction of
+	  ReceiverChooserDialog this time. Make ProgressWindow a popup.
+	* gnome_lirc_properties/lirc.py: Check that __socket is assigned,
+	  before reading from it.
+	* gnome_lirc_properties/ui/ReceiverChooserDialog.py: Add
+	  _on_delete_event() handler to prevent dialog destruction.
+	* gnome_lirc_properties/ui/RemoteControlProperties.py: Remove
+	  _on_close_keep_alive().
+
+2008-02-22  Mathias Hasselmann  <mathias@openismus.com>
+
+	* data/gnome-lirc-properties.glade: Cleanup names and hierarchy.
+	* gnome_lirc_properties/backend.py: Cleanup InstallRemoteDatabase().
+	* gnome_lirc_properties/config.py.in: Add LIRC_REMOTES_TARBALL.
+	* gnome_lirc_properties/lirc.py: Support reading from tarballs.
+	* gnome_lirc_properties/net/updates.py: Reduce artificial delay.
+	* gnome_lirc_properties/ui/RemoteControlProperties.py: Reorganize
+	widget lookup: Use setattr magic to ensure widget existance, and
+	to ensure consistency between widget and attribute names. Consider
+	LIRC_REMOTES_TARBALL. Replace select_remote() function with setter
+	function for selected_remote property. Add use_supplied_remote
+	property.
+
+2008-02-22  Mathias Hasselmann  <mathias@openismus.com>
+
+	* data/gnome-lirc-properties.glade,
+	  gnome_lirc_properties/ui/ProgressWindow.py: Add details label.
+	* gnome_lirc_properties/backend.py: Implement InstallRemoteDatabase().
+	* gnome_lirc_properties/config.py.in: Add PACKAGE_DIR.
+	* gnome_lirc_properties/net/updates.py: Provide download details.
+	* gnome_lirc_properties/ui/__init__.py,
+	  gnome_lirc_properties/ui/common.py,
+	  gnome_lirc_properties/ui/RemoteControlProperties.py: Add and use
+	  @thread_callback decorator for dealing with the GDK big-lock.
+	* Makefile.am: Temporarly remove "test" from SUBDIRS.
+
+2008-02-22  Mathias Hasselmann  <mathias@openismus.com>
+
+	* configure.ac, data/.gitignore, data/Makefile.am,
+	  data/gnome-lirc-properties-mechanism.policy.in,
+	  data/org.gnome.LircProperties.Mechanism.conf,
+	  data/org.gnome.LircProperties.Mechanism.service.in:
+	  Move backend service configuration to "data" folder. Use "python -m"
+	  to directly run the service, instead of installing a libexec script.
+	* test/test-backend-service.py, test/test-policykit-is-authorized.py:
+	  Move backend service tests to "test" folder.
+	* gnome_lirc_properties/backend.py: Move backend service code to
+	  backend from gnome_lirc_properties/policykit_mechanism to backend
+	  module.
+	* gnome_lirc_properties/Makefile.am,
+	  gnome_lirc_properties/policykit_mechanism/.gitignore,
+	  gnome_lirc_properties/policykit_mechanism/Makefile.am,
+	  gnome_lirc_properties/policykit_mechanism/README: Removed.
+	* test/test-run-backend-service.sh: Move service invokation test from
+	  gnome_lirc_properties/policykit_mechanism/Makefile.am into a
+	  separate shell script.
+	* Makefile.am, test/Makefile.am: Add test scripts to EXTRA_DIST.
+	* gnome_lirc_properties/ui/CustomConfiguration.py,
+	  gnome_lirc_properties/ui/RemoteControlProperties:
+	  Simplify backend.get_service() signature.
+
+2008-02-21  Mathias Hasselmann  <mathias@openismus.com>
+
+	* configure.ac: Also rename upload module here.
+	* gnome_lirc_properties/ui/RemoteControlProperties.py: Show message
+	dialog, when installation of the updated remote datebase fails.
+
+2008-02-21  Mathias Hasselmann  <mathias@openismus.com>
+
+	* bin/gnome-lirc-properties.in, gnome_lirc_properties/__init__.py:
+	  Move some runtime initialization code into gnome_lirc_properties.run().
+	* configure.ac, gnome_lirc_properties/config.py.in:
+	  Add --with-lirc-confdir, --with-remotes-database and
+	--with-update-uri. Drop LIRC_CONFDIR and LIRC_REMOTES_DATABASE.
+	* gnome_lirc_properties/Makefile.am,
+	* gnome_lirc_properties/net/__init__.py,
+	  gnome_lirc_properties/net/HttpUploader.py,
+	* gnome_lirc_properties/ui/CustomConfiguration.py:
+	  Add backend module. Rename upload module.
+	* gnome_lirc_properties/policykit_mechanism/
+	  gnome-lirc-properties-mechanism.py: Add UpdateReceiverDatabase stub.
+	* data/gnome-lirc-properties.glade,
+	  gnome_lirc_properties/ui/Makefile.am,
+	  gnome_lirc_properties/ui/__init__.py,
+	  gnome_lirc_properties/ui/ProgressWindow.py: Add ProgressWindow.
+	* gnome_lirc_properties/ui/RemoteControlProperties.py:
+	  Implement client side for downloading custom remote configurations.
+	* gnome_lirc_properties/backend.py: New module for backend services.
+	* po/POTFILES.in: Remove duplicates.
+
+2008-02-21  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/ui/CustomConfiguration.py,
+	  data/gnome-lirc-properties.glade: Move "Upload" button into action
+	  area and rename it to "Share". Remove spacing from "hbox_device" to
+	  avoid visual glitch in main window.
+
+2008-02-21  Mathias Hasselmann  <mathias@openismus.com>
+
+	* configure.ac, Makefile.am, help/Makefile.am, help/.gitignore,
+	  help/gnome-lirc-properties.omf.in: Setup help infrastructure.
+	* gnome_lirc_properties/ui/RemoteControlProperties.py: Call yelp.
+	* help/ChangeLog, po/ChangeLog: Redirect to top-level ChangeLog.
+	* help/C/gnome-lirc-properties.xml, help/C/legal.xml,
+	  help/C/figures/custom-remote-basics.png,
+	  help/C/figures/custom-remote-keys.png,
+	  help/C/figures/custom-remote-model.png,
+	  help/C/figures/main-window.png:
+	  Provide initial documentation stub.
+
+2008-02-21  Murray Cumming  <murrayc@murrayc.com>
+
+	* TODO:
+	* gnome_lirc_properties/ui/RemoteControlProperties.py:
+	* test/test-policykit.py: Took care of some TODO comments by filing
+	PolicyKit bugs.
+
+0.1.0:
+
+2008-02-20  Mathias Hasselmann  <mathias@openismus.com>
+
+	* configure.ac, debian/changelog: Bumping version.
+
+2008-02-20  Mathias Hasselmann  <mathias@openismus.com>
+
+	* bin/todo-list: Close current task when switching files.
+	* TODO: Updated.
+
+2008-02-20  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/hardware.py: Extend StreamZap comment.
+	* gnome_lirc_properties/ui/CustomConfiguration.py:
+	Disable some widgets when no receiver is selected.
+
+2008-02-20  Murray Cumming  <murrayc@murrayc.com>
+
+	* gnome_lirc_properties/hardware.py: search_receivers(): Do not
+	ignore HAL devices with product IDs of 0, because the StreamZap,
+	for instance, really has a product ID of 0000.
+
+2008-02-20  Mathias Hasselmann  <mathias@openismus.com>
+
+	* data/gnome-lirc-properties.glade: Update widget names.
+	* gnome_lirc_properties/lirc.py: Work arround missing name attribute
+	for StringIO based readers.
+	* gnome_lirc_properties/ui/CustomConfiguration.py: Make pylirc happy.
+	* gnome_lirc_properties/ui/ReceiverChooserDialog.py: Always highlight
+	the first remote during selection (again) for consistent experience.
+	* gnome_lirc_properties/ui/RemoteControlProperties.py: Activate
+	"radiobutton_other_remote" when restoring settings and selected remote
+	isn't the supplied remote.
+
+2008-02-20  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/hardware.py:
+	Properly find the device node for USB HID devices.
+	* gnome_lirc_properties/lirc.py: Support old Gutsy names
+	in HardwareConfParser. Use logging module instead of print.
+	* gnome_lirc_properties/ui/RemoteControlProperties.py:
+	Restore device node from configuration file, and store
+	device node after auto-detection.
+
+2008-02-20  Mathias Hasselmann  <mathias@openismus.com>
+
+	* configure.ac, Makefile.am,
+	gnome_lirc_properties/Makefile.am,
+	gnome_lirc_properties/ui/Makefile.am,
+	gnome_lirc_properties/upload/Makefile.am: Flood all the module folders
+	with Makefile.am files, since automake's Python support doesn't believe
+	in non-recursive make setups...
+
+2008-02-20  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/Makefile.am, po/POTFILES.in: Updated after
+	the big refactoring. "make distcheck" seems to work again.
+
+2008-02-20  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/ui/__init__.py,
+	gnome_lirc_properties/ui/common.py,
+	gnome_lirc_properties/ui/CustomConfiguration.py,
+	gnome_lirc_properties/ui/ReceiverChooserDialog.py,
+	gnome_lirc_properties/ui/RemoteControlProperties.py:
+	Splitting up gnome_lirc_properties/ui.py into several
+	separate files. Extracted ReceiverChooserDialog from
+	RemoteControlProperties. Resolved pylint issues.
+	* gnome_lirc_properties/upload/HttpUploader.py:
+	Renamed upload_file() to post_file().
+	* pylintrc, gnome_lirc_properties/model.py:
+	Sanitized some limits and good-names.
+
+2008-02-19  Mathias Hasselmann  <mathias@openismus.com>
+
+	* data/receivers.conf, gnome_lirc_properties/hardware.py:
+	Prefer "devinput" over "dev/input" for the Linux Input System
+	driver, as suggested by Christoph Bartelmus.
+
+2008-02-19  Mathias Hasselmann  <mathias@openismus.com>
+
+	* test/test-udp-receiver.py: Make repeat mode and
+	target host configurable via environment variables.
+
+2008-02-19  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/config.py.in: Make pylint happy.
+	* gnome_lirc_properties/ui.py, gnome_lirc_properties/policykit.py:
+	Renamed policykit_obtain_authorization.py to policykit.py. Renamed
+	PolicyKitObtainAuthorization class into PolicyKitAuthentication class.
+	Moved all PolicyKit related code to that file. Make pylint happy.
+	* gnome_lirc_properties/upload/__init__.py, test/test-uploader.py,
+	gnome_lirc_properties/upload/MultipartPostHandler.py,
+	gnome_lirc_properties/upload/HttpUploader.py: Make pylint happy.
+	Moving file-upload related code into separate "upload" module.
+
+2008-02-19  Mathias Hasselmann  <mathias@openismus.com>
+
+	* pylintrc, gnome_lirc_properties/test*:
+	Moving test code into separate folder.
+
+2008-02-19  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/ui.py:
+	Add retry-button to "No Receivers found" message dialog.
+
+2008-02-19  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/ui.py: Fix AttributeError,
+	when no receivers are found during auto-detection.
+
+2008-02-19  Mathias Hasselmann  <mathias@openismus.com>
+
+	* pylintrc: Tell pylint to behave.
+	* gnome_lirc_properties/__init__.py, gnome_lirc_properties/lirc.py,
+	gnome_lirc_properties/hardware.py, gnome_lirc_properties/model.py,
+	gnome_lirc_properties/ui.py, gnome_lirc_properties/uploader.py:
+	Cleanup code to make pylint happy.
+
+2008-02-18  Mathias Hasselmann  <mathias@openismus.com>
+
+	* bin/build-receiver-list: Print warnings when drivers were
+	identified, but no remote information could be extracted.
+
+2008-02-18  Mathias Hasselmann  <mathias@openismus.com>
+
+	* bin/build-receiver-list: Add tool for extracting receiver.conf
+	from LIRC source code (once it gets annotations).
+
+2008-02-18  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/hardware.py:
+	Also find the device node for USB HID receivers.
+	* gnome_lirc_properties/ui.py: Make sure the auto-detected
+	device node really is entered into the device combo box.
+
+2008-02-18  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/hardware.py:
+	Add parse_numeric_device_node() to HardwareManager class.
+	* gnome_lirc_properties/lirc.py:
+	Add find_supplied_remote() to Receiver class.
+	* gnome_lirc_properties/ui.py: Some code cleanup.
+
+2008-02-15  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/hardware.py: Do not recognize USB host
+	controllers as UDP receivers.
+
+2008-02-15  Mathias Hasselmann  <mathias@openismus.com>
+
+	* data/lirc-remotes.conf, data/receivers.conf, data/Makefile.am:
+	Renamed 'lirc-remotes.conf' to more correct 'receivers.conf'.
+	Added support for UDP driver.
+	* data/gnome-lirc-properties.glade, gnome_lirc_properties/ui.py:
+	Support numeric "device names", like for instance UDP ports.
+	* gnome_lirc_properties/hardware.py: Support numeric "device names".
+	Fix some pylint problems.
+	* gnome_lirc_properties/policykit_mechanism/
+	  gnome-lirc-properties-mechanism.py: Support key learning for "MODE2"
+	receivers. All RC5 and RC6 receivers seem to use that mode. The UDP
+	driver also does - used it for testing.
+	* gnome_lirc_properties/lirc.py: Add some missing default values.
+
+2008-02-15  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/ui.py: Rename lost instance of label_test_key.
+
+2008-02-15  Mathias Hasselmann  <mathias@openismus.com>
+
+	* data/gnome-lirc-properties.glade, gnome_lirc_properties/lirc.py,
+	gnome_lirc_properties/ui.py: Show key listener state in main dialog.
+
+0.0.4:
+
+2008-02-14  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/Makefile.am, po/POTFILES.in:
+	Remove gnome_lirc_properties/lirc_keys_listener.py.
+	* configure.ac, debian/changelog: Bump version.
+
+2008-02-14  Mathias Hasselmann  <mathias@openismus.com>
+
+	* Makefile.am: Adding bin/todo-list to EXTRA_DIST.
+
+2008-02-14  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/lirc_keys_listener.py: Removed.
+	* bin/todo-list: Simple tool for extracting TODO lists.
+	* TODO: Updated with bin/todo-list.
+
+2008-02-14  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/model.py, gnome_lirc_properties/ui.py:
+	Apply key name changes for the key codes view.
+
+2008-02-14  Mathias Hasselmann  <mathias@openismus.com>
+
+	* data/gnome-lirc-properties.glade, gnome_lirc_properties/lirc.py,
+	  gnome_lirc_properties/model.py, gnome_lirc_properties/ui.py:
+	Support editing of key codes.
+
+2008-02-14  Mathias Hasselmann  <mathias@openismus.com>
+
+	* data/gnome-lirc-properties.glade, gnome_lirc_properties/ui.py,
+	  gnome_lirc_properties/policykit_mechanism/
+	  gnome-lirc-properties-mechanism.py: Implement key-code learning.
+	* gnome_lirc_properties/lirc.py: Add categories to KeyCodes.
+	Turn key_codes property of Remote class into a dict(). Add
+	configuration property to Remote class.
+	* gnome_lirc_properties/model.py: Add KeyCodeModel class.
+	* patches/*: Add neccessary irrecord patches.
+
+2008-02-13  Mathias Hasselmann  <mathias@openismus.com>
+
+	* data/gnome-lirc-properties.glade: Set "can_default" property for
+	"button_ok" widget, to avoid some error message on startup. Well,
+	and to make the "has_default" property do its job.
+
+2008-02-13  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/policykit_mechanism/
+	  gnome-lirc-properties-mechanism.py:
+	Keep service alive, as long as additional objects are exported.
+	* gnome_lirc_properties/ui.py: Fix __get_backend() WTF.
+
+2008-02-13  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/lirc.py: Handle whitespace in hardware.conf.
+	* gnome_lirc_properties/policykit_mechanism/
+	  gnome-lirc-properties-mechanism.py: Show resonable error message,
+	when gap was not found during remote detection. Also store currently
+	selected remote in hardware.conf.
+	* gnome_lirc_properties/ui.py: Also restore choosen remote. Move
+	signal_autoconnect() to the begin of constructor again: Manually
+	calling the signal handlers causes too much trouble. Disabling
+	writing of configuration during UI setup is much more trivial.
+
+2008-02-13  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/lirc.py: Make API similar to dictionaries.
+	* gnome_lirc_properties/ui.py: Properly initialize UI, when no
+	currently selected receiver is stored in hardware.conf. Disable button
+	for dectecting basic remote properties, when no receiver is choosen.
+
+2008-02-12  Murray Cumming  <murrayc@murrayc.com>
+
+	* gnome_lirc_properties/ui.py: _get_selected_remote(): Cope with a
+	None combobox active_ite.
+	__apply_hardware(): Cope with a None remote object.
+	This fixes a crash when clicking on the Custom Configuration button
+	with no remote selected.
+
+0.0.3:
+
+2008-02-12  Mathias Hasselmann  <mathias@openismus.com>
+
+	* data/gnome-lirc-properties.glade: Hide progressbar_detect_basics.
+	Connect _on_lirc_properties_dialog_realize signal handler.
+	* gnome_lirc_properties/__init__.py,
+	gnome_lirc_properties/hardware.py: Reactivate main loop integration
+	for DBus, which is needed for receiving signals from the PolicyKit
+	mechanism. Drop all threading: Threads and DBus' Python bindings are
+	no friends (despite claimed support).
+	* gnome_lirc_properties/lirc.py: Support parsing of remote
+	configuration files from Python streams. Plug resource leaks in
+	LircKeysListener.
+	* gnome_lirc_properties/policykit_mechanism/
+	  gnome-lirc-properties-mechanism.py: Replace RestartLircd() by
+	ManageLircDaemon(). Polish DetectParametersDriver.
+	* gnome_lirc_properties/ui.py: Wire detection of basic remote
+	parameters. Only start the key listener, when the UI is realized.
+
+0.0.2:
+
+2008-02-12  Murray Cumming  <murrayc@murrayc.com>
+
+	* po/POTFILES.in:
+	Added policykit_mechanism/gnome-lirc-properties-mechanism.py
+	to fix distcheck.
+
+2008-02-12  Murray Cumming  <murrayc@murrayc.com>
+
+	* gnome_lirc_properties/config.py.in: Added LIRC_CONF_FILEPATH and
+	LIRC_HARDWARE_CONF to reduce some copy/pasting.
+
+	* gnome_lirc_properties/policykit_mechanism/gnome-lirc-properties-m
+	echanism.py: PolicyKitMechanism::WriteReceiverConfiguration():
+	Added vendor and model parameters and write them to
+	/etc/lirc/hardware.conf. Generally make sure that we write all the
+	known RECEIVER_ and REMOVE_ keys out even if they were not there when
+	we read the file.
+
+	* gnome_lirc_properties/lirc.py: Added HardwareConfParser for parsing
+	/etc/lirc/hardware.conf.
+	* gnome_lirc_properties/ui.py: Added get_existing_receiver(), which
+	looks in /etc/lirc/hardware.conf. __init__(): Show the previously-set
+	receiver if any.
+
+	__init__(): Autoconnect signals at the end, to avoid unwanted calls of
+	signal handlers.
+
+2008-02-12  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/policykit_mechanism/
+	  gnome-lirc-properties-mechanism.py: Move arround lots
+	of stuff to prepare wiring up with custom_configuration dialog.
+	* gnome_lirc_properties/policykit_mechanism/
+	  test_irrecord_drivers.py: Test the irrecord driver.
+	* gnome_lirc_properties/lirc.py: Use same code conventions for handing
+	I/O condition in __on_socket_changed, as in the PolicyKit mechanism.
+
+2008-02-12  Mathias Hasselmann  <mathias@openismus.com>
+
+	* data/gnome-lirc-properties.glade:
+	Set transient window for custom_configuration dialog.
+
+2008-02-12  Mathias Hasselmann  <mathias@openismus.com>
+
+	* data/gnome-lirc-properties.glade, gnome_lirc_properties/ui.py:
+	Populate custom_configuration dialog with meaningful information.
+	* gnome_lirc_properties/lirc.py: Move key command table from
+	KeyListener to separate KeyCodes class.
+	* gnome_lirc_properties/model.py: Allow custom GObject type for the
+	value column of DictionaryStores.
+
+2008-02-12  Murray Cumming  <murrayc@murrayc.com>
+
+	* gnome_lirc_properties/lirc.py: command_list: Added the standard
+	keys and some extra keys, and documented what they are and where they
+	come from.
+
+2008-02-12  Mathias Hasselmann  <mathias@openismus.com>
+
+	* data/gnome-lirc-properties.glade, gnome_lirc_properties/ui.py:
+	Keep dialogs alive when ESC is pressed. Add notebook to
+	custom_configuration dialog.
+
+2008-02-11  Mathias Hasselmann  <mathias@openismus.com>
+
+	* configure.ac, gnome_lirc_properties/config.py.in: Add LIRC_IRRECORD.
+	* gnome_lirc_properties/lirc.py: Preserve contributor information.
+	* gnome_lirc_properties/ui.py: Move key-listener initialization.
+	* gnome_lirc_properties/policykit_mechanism/
+	  gnome-lirc-properties-mechanism.py: An initial irrecord driver.
+
+2008-02-11  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/ui.py: _on_product_list_changed(): Also ommit
+	the _begin_update_configuration() call, if there is no receiver, since
+	_begin_update_configuration() and _end_update_configuration() must be
+	paired.
+
+2008-02-11  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/lirc.py, gnome_lirc_properties/ui.py:
+	Pythonized display name handling. Add get_key_display_name() method to
+	the KeyListener, instead of randomly passing a display name per signal.
+
+2008-02-11  Murray Cumming  <murrayc@murrayc.com>
+
+	* gnome_lirc_properties/ui.py: _on_product_list_changed():
+	Do not call _end_update_configuration() if the remote and device are
+	empty (as at startup) to avoid unnecessary attempts to use the
+	PolicyKit mechanism.
+
+2008-02-11  Murray Cumming  <murrayc@murrayc.com>
+
+	* gnome_lirc_properties/lirc.py: key-pressed signal: Pass an additional
+	display_command_name parameter, which is "" when we do not recognize the
+	key name.
+	* gnome_lirc_properties/ui.py: __on_lirc_key_pressed(): Display the
+	human-readable command name if it was recognized. Otherwise display the
+	key name as before.
+
+2008-02-11  Murray Cumming  <murrayc@murrayc.com>
+
+	* gnome_lirc_properties/policykit_mechanism/Makefile.am: Fix a typo
+	so that the .policy file is really installed again, making _unlock()
+	show a PolicyKit dialog again.
+
+2008-02-11  Murray Cumming  <murrayc@murrayc.com>
+
+	* gnome_lirc_properties/ui.py: _end_update_configuration(): Do not fail
+	if the mechanism says AccessDeniedException. That is just a prompt to
+	call ObtainAuthorization. Only if that fails should we say that the
+	mechanism cannot be used.
+	However, we should not try to use the mechanism at startup (_unlock()
+	fails because the dialog is not yet realized.) - it seems to be happening
+	now in response to treeview changes at startup.
+
+2008-02-11  Murray Cumming  <murrayc@murrayc.com>
+
+	* gnome_lirc_properties/ui.py: _unlock(): Do not try to unlock if
+	the dialog is not yet realized, because PolicyKit needs the xid.
+	_end_update_configuration(): Rename the object parameter to device,
+	because it shadows a built-in.
+
+2008-02-11  Murray Cumming  <murrayc@murrayc.com>
+
+	* configure.ac:
+	* gnome_lirc_properties/config.py.in:
+	Added  --with-upload-uri and --with-upload-login-uri
+	to specify the web server to accept uploads of custom configurations.
+	* gnome_lirc_properties/Makefile.am:
+	* gnome_lirc_properties/MultipartPostHandler.py:
+	* gnome_lirc_properties/test_uploader.py:
+	* gnome_lirc_properties/uploader.py: Added an HttpUploader helper class.
+	Realistically, when the URIs are known, we will need to adapt this to
+	use different parameters with the URI and do specific error checking.
+
+	* gnome_lirc_properties/ui.py: _on_upload_button_clicked(): Show how
+	to use the helper. This URIs are currently hard-coded to a
+	Mediawiki (glom.org) upload site.
+
+2008-02-11  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/lirc.py: Implement simple key listener that
+	directly listens to lircd's UNIX socket. It's more easy to react on
+	daemon restarts that way, and we can display any key available, not
+	just the keys we know in the test area.
+	* gnome_lirc_properties/ui.py: Update test area on button presses.
+
+2008-02-11  Mathias Hasselmann  <mathias@openismus.com>
+
+	* configure.ac: Add LIRC_CONFDIR.
+	* gnome_lirc_properties/config.py.in:
+	Add POLICY_KIT_ACTION and LIRC_CONFDIR. Remove SYSCONFDIR.
+	* gnome_lirc_properties/lirc.py: Implement update_configuration
+	protocol in Receiver and Remote class.
+	* gnome_lirc_properties/policykit_mechanism/.gitignore:
+	Add gnome-lirc-properties-mechanism.policy.
+	* gnome_lirc_properties/policykit_mechanism/
+	  gnome-lirc-properties-mechanism.policy.in:
+	Replace *.policy file to avoid copy-and-paste of the action id.
+	* gnome_lirc_properties/policykit_mechanism/
+	  gnome-lirc-properties-mechanism.py: Implement methods for writing
+	hardware.conf, lircd.conf, and for restarting lircd.
+	* gnome_lirc_properties/policykit_mechanism/Makefile.am:
+	Add gnome-lirc-properties-mechanism.policy.in.
+	* gnome_lirc_properties/policykit_obtain_authorization.py:
+	Use action id from config module.
+	* gnome_lirc_properties/ui.py: Update configuration files,
+	and restart lircd, when selecting receivers and remotes.
+	* data/gnome-lirc-properties.glade:
+	Add mnemonic for custom configuration button.
+
+2008-02-10  Mathias Hasselmann  <mathias@openismus.com>
+
+	* AUTHORS: Use Murray's email address at murrayc.com,
+	instead of the openismus address.
+	* debian/copyright: Use correct copyright notices.
+
+2008-02-10  Murray Cumming  <murrayc@murrayc.com>
+
+	* configure.ac:
+	* gnome_lirc_properties/policykit_mechanism/config.py.in:
+	* gnome_lirc_properties/policykit_mechanism/gnome-lirc-properties-m
+	echanism.py: Add a config module here too, so we can get the correct
+	sysconfdir.
+
+2008-02-10  Murray Cumming  <murrayc@murrayc.com>
+
+	* data/gnome-lirc-properties.glade:
+	* gnome_lirc_properties/ui.py: Added a text view for the "raw" basics
+	part of the custom configuration, and a Detect button. Hopefully we
+	can get away with driving the text-based UI of irrecord and redirecting
+	some of it to the TextView.
+	See http://www.murrayc.com/temp/irrecord_example.txt for an example.
+
+2008-02-10  Murray Cumming  <murrayc@murrayc.com>
+
+	* data/gnome-lirc-properties.glade:
+	main window: Added Custom Configuration button.
+	* gnome_lirc_properties/ui.py:
+	Added some code to show the custom configuration window.
+
+	* debian/changelog:
+	* debian/control: Added some dependencies to try to fix the build
+	problem in the Openimus PPA.
+
+2008-02-10  Murray Cumming  <murrayc@murrayc.com>
+
+	* data/gnome-lirc-properties.desktop.in.in: Remove duplicate Type
+	line.
+	* debian/README.Debian:
+	* debian/control:
+	* debian/copyright: Fixed some minor problems found by lintian.
+
+2008-02-10  Murray Cumming  <murrayc@murrayc.com>
+
+	* debian/: Initial Ubuntu packaging files, created with dh_make,
+	using the cdbs option, and no other changes. Seems to work,
+	surprisingly.
+
+2008-02-09  Mathias Hasselmann  <mathias@openismus.com>
+
+	* data/gnome-lirc-properties.glade: Set some more mnemonic widgets.
+	* data/linux-input-layer-lircd.conf: Change product name.
+	* data/lirc-remotes.conf: Fix compatible-remotes setting
+	for Streamzap and Firefly receiver.
+	* gnome_lirc_properties/lirc.py: Store remotes as dictionary in
+	RemotesDatabase, and warn about conflicting remote definitions.
+	* gnome_lirc_properties/model.py: Properly implement virtual
+	GenericTreeModel methods and add iter_for_key().
+	* gnome_lirc_properties/ui.py: Select supplied remote,
+	when changing the receiver.
+
+2008-02-08  Murray Cumming  <murrayc@murrayc.com>
+
+	* data/lirc-remotes.conf: Correct the brand for the Pinnacle Remote Kit.
+
+2008-02-08  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/ui.py: Reactivate PolicyKit override.
+
+2008-02-08  Mathias Hasselmann  <mathias@openismus.com>
+
+	* configure.ac: Add LIRC_REMOTES_DATABASE variable.
+	* data/gnome-lirc-properties.glade: Connect some signal handlers.
+	* data/lirc-remotes.conf: Add compatible-remotes entries.
+	* data/Makefile.am: Add linux-input-layer-lircd.conf. Change
+	file-lists to one entry per line to reduce merge conflicts.
+	* gnome_lirc_properties/config.py.in: Add LIRC_REMOTES_DATABASE.
+	* gnome_lirc_properties/hardware.py: Add HardwareDatabase from model
+	module. Code cleanups.
+	* gnome_lirc_properties/lircd_conf_parser.py: Renamed to lirc.py.
+	* gnome_lirc_properties/lirc.py: Update lirc.conf parser to handle
+	files with multiple entries, as found in the IR remote database.
+	Factor out Remote class, take over Receiver form model module.
+	* gnome_lirc_properties/Makefile.am: Add lirc.py. Change
+	file-lists to one entry per line to reduce merge conflicts.
+	* gnome_lirc_properties/model.py: Move HardwareDatabase class to
+	hardware module, and Receiver class to lirc module. Add
+	RemoteVendorList class.
+	* gnome_lirc_properties/ui.py: Integrate IR remote database.
+
+2008-02-08  Murray Cumming  <murrayc@murrayc.com>
+
+	* gnome_lirc_properties/Makefile.am: Remove mention of dropped
+	debian_lirc_hwdb_parser.py.
+	* gnome_lirc_properties/ui.py: Rename some iter variables to model_iter
+	and similar to avoid pychecker warnings about shadowing of built-ins.
+
+	Added _is_authorized(), which calls the PolicyKit IsProcessAuthorized ()
+	D-Bus method, because the PolicyKit.AuthenticationAgent
+	ObtainAuthorization() method returns 0 if you are already authorized.
+
+	Added _set_widgets_locked() and used these in __init__() so that the
+	UI is already unlocked at startup if the user is already authorized.
+
+	* gnome_lirc_properties/policykit_mechanism/gnome-lirc-properties-m
+	echanism.policy:
+	* gnome_lirc_properties/policykit_mechanism/gnome-lirc-properties-m
+	echanism.py:
+	* gnome_lirc_properties/policykit_mechanism/org.gnome.LircPropertie
+	s.Mechanism.conf:
+	* gnome_lirc_properties/policykit_obtain_authorization.py: Make the
+	mechanism method more specific - writing only to /etc/lirc/lircd.conf.
+
+	* gnome_lirc_properties/policykit_mechanism/test_mechanism.py:
+	Test calling of our dbus service methods directly.
+	* gnome_lirc_properties/policykit_mechanism/test_policy_kit_is_auth
+	orized.py: Test calling the PolicyKit DBus API.
+
+	The PolicyKit stuff all seems to work now. It even writes to the
+	/etc/lirc/lircd.conf file.
+
+2008-02-08  Mathias Hasselmann  <mathias@openismus.com>
+
+	* gnome_lirc_properties/hardware.py: Use model.Remote object,
+	instead of plain dictionary to describe remote controls. Use
+	model.HardwareDatabase instead of private SafeConfigParser.
+	Improve some symbol names.
+	* gnome_lirc_properties/model.py: Add HardwareDatabase class
+	to support reuse of the hardware database parser. Add some docs.
+	* gnome_lirc_properties/ui.py: Use HardwareDatabase. Use new
+	HardwareManager symbol names.
+	* gnome_lirc_properties/debian_lirc_hwdb_parser.py: Dropped.
+	The information listed in "lirc.hwdb" is not really useful for us.
+
+2008-02-08  Murray Cumming  <murrayc@murrayc.com>
+
+	* gnome_lirc_properties/test_policykit.py: Aargh, the Unlock button
+	has stopped showing the dialog. But the test shows that it does work
+	when getting authorization for the time/date mechanism.
+
+2008-02-08  Mathias Hasselmann  <mathias@openismus.com>
+
+	* configure.ac: Add option for disabling PolicyKit support.
+	* gnome_lirc_properties/config.py.in: Central place for storing
+	configure-script options like ENABLE_POLICY_KIT.
+	* gnome_lirc_properties/.gitignore: Add config.py.
+	* gnome_lirc_properties/ui.py: Hide Unlock button
+	when ENABLE_POLICY_KIT option is disabled.
+
+2008-02-07  Murray Cumming  <murrayc@murrayc.com>
+
+	* gnome_lirc_properties/policykit_obtain_authorization.py:
+	* gnome_lirc_properties/test_policykit.py: Use casts (and no extra
+	callback arguments) with ObtainAuthorization() to get a real result,
+	showing the dialog. Very strange.
+	* gnome_lirc_properties/ui.py: _on_button_unlock_clicked():
+	Really use the result and gray-out the unlock button after unlocking.
+
+2008-02-07  Mathias Hasselmann  <mathias@openismus.com>
+
+	* data/gnome-lirc-properties.glade: Fix mnemonic_widget widgets, label
+	packing. Rename some widgets and fix device-combo sensitivity. Make
+	unlock button initially selected button. Apply minimum dialog width.
+	* data/lirc-remotes.conf, gnome_lirc_properties/hardware.py: Add
+	initial support for serial port receivers. Fix some vendor names.
+	* gnome_lirc_properties/model.py: Add "None" entry for vendor and
+	product lists. Implement some RemoteControl properties.
+	* gnome_lirc_properties/ui.py: Show error message when not detecting
+	any receiver. Populate device combo on product selection. Move
+	keyboard focus to model list, when unlocking the UI.
+
+2008-02-07  Mathias Hasselmann  <mathias@openismus.com>
+
+	* Makefile.am, data/Makefile.am: Move @INTLTOOL_DESKTOP_RULE@
+	to proper location. Avoid gmake specific expressions.
+	* .gitignore, gnome_lirc_properties/policykit_mechanism/.gitignore:
+	Update them to current situation.
+
+2008-02-07  Mathias Hasselmann  <mathias@openismus.com>
+
+	* README: Update regarding PolicyKit requirements.
+
+0.0.1:
+
+2008-02-07  Murray Cumming  <murrayc@murrayc.com>
+
+	* gnome_lirc_properties/policykit_mechanism/gnome-lirc-properties-m
+	echanism.policy:
+	* gnome_lirc_properties/policykit_obtain_authorization.py:
+	Use - instead of _ in the PolicyKit action ID, to please
+	polkit-policy-file-validate, though this does not seem to have made
+	anything work.
+
+2008-02-07  Mathias Hasselmann  <mathias@openismus.com>
+
+	* bin/gnome-lirc-properties.in: Fix local invokation.
+
+2008-02-07  Murray Cumming  <murrayc@murrayc.com>
+
+	* gnome_lirc_properties/policykit_mechanism/Makefile.am:
+	Use libexec_scripts instead of _PYTHON, so that the file is installed as
+	executable. We are now back to make test just starting our server and
+	doing nothing interesting.
+
+2008-02-07  Murray Cumming  <murrayc@murrayc.com>
+
+	* README: Mention the ideal configure parameters on Ubuntu.
+	* gnome_lirc_properties/policykit_mechanism/Makefile.am: Use libexecdir
+	instead of libdir for the server executable. This is what others do.
+	* gnome_lirc_properties/policykit_mechanism/gnome-lirc-properties-m
+	echanism.py: Do not use object as a variable name because it is a
+	module name.
+
+	sudo make test now gives:
+	dbus-send --system --print-reply --dest=org.gnome.LircProperties.Mechanism / org.freedesktop.DBus.Introspectable.Introspect
+	Error org.freedesktop.DBus.Error.Spawn.ExecFailed: Cannot launch daemon, file not found or permissions invalid
+	make: *** [test] Error 1
+
+2008-02-07  Murray Cumming  <murrayc@murrayc.com>
+
+	* gnome_lirc_properties/policykit_obtain_authorization.py: Fixed some
+	typos.
+	* data/gnome-lirc-properties.glade:
+	* gnome_lirc_properties/ui.py: run(): Use show() so we can handle the
+	button clicks properly instead of only a gtk_dialog_run() response code.
+	Added an Unlock button, using our PolicyKit helper, though the result
+	is currently forced to True because that still does not work.
+
+2008-02-07  Murray Cumming  <murrayc@murrayc.com>
+
+	* gnome_lirc_properties/policykit_mechanism/org.gnome.LircPropertie
+	s.Mechanism.service.in:
+	* gnome_lirc_properties/policykit_mechanism/Makfile.am:
+	Do not hard code the path to the executable in the D-Bus .service file.
+	Not that you (and distros) probably want to use
+	--prefix=/usr --sysconfdir=/etc with configure.
+
+2008-02-07  Murray Cumming  <murrayc@murrayc.com>
+
+	* configure.ac:
+	* Makefile.am:
+	* data/Makefile.am:
+	* gnome_lirc_properties/Makefile.am: Fixed the install and distcheck,
+	using correct autoconf names for the PolicyKit mechanism install.
+
+2008-02-06  Murray Cumming  <murrayc@murrayc.com>
+
+	* data/lirc-remotes.conf: Added sections for the Streamzap and
+	Pinnacle remotes, though the detection does not work with the
+	Pinnacle because it is not supported by lirc yet.
+
+2008-02-06  Mathias Hasselmann  <mathias@openismus.com>
+
+	Implement detection of USB IR receivers.
+
+	* data/gnome-lirc-properties.glade: Add receiver_chooser_dialog and
+	improve padding in lirc_properties_dialog.
+	* data/lirc-remotes.conf: Update file-format to contain USB ids and
+	other useful information.
+	* gnome_lirc_properties/__init__.py: Drop the DBus-Server.
+	* gnome_lirc_properties/hardware.py: Implement detection of USB IR
+	receivers. Tested: Creative RC Upgrade, Firefly and CinergyT².
+	Drop the DBus-Server.
+	* gnome_lirc_properties/ui.py: Show results of USB auto-detection.
+
+2008-02-06  Murray Cumming  <murrayc@murrayc.com>
+
+	* gnome_lirc_properties/policykit_mechanism/gnome-lirc-properties-m
+	echanism.py: Actually instantiate the D-Bus server object. Duh.
+	Use dbus decorators, though I am not sure if they are necessary.
+	make test now reports no error, though it does not do anything.
+
+2008-02-06  Murray Cumming  <murrayc@murrayc.com>
+
+	* gnome_lirc_properties/policykit_mechanism/gnome-lirc-properties-m
+	echanism.py:
+	* gnome_lirc_properties/policykit_mechanism/org.gnome.LircPropertie
+	s.Mechanism.service:
+	* gnome_lirc_properties/policykit_obtain_authorization.py:
+	Corrected some IDs and executable names. Now make test says
+	Error org.freedesktop.DBus.Error.Spawn.ChildExited: Launch helper exited with unknown return code 1
+	which is progress.
+
+2008-02-06  Murray Cumming  <murrayc@murrayc.com>
+
+	* Makefile.am:
+	* configure.ac:
+	* gnome_lirc_properties/Makefile.am:
+	* gnome_lirc_properties/policykit_mechanism/README:
+	* gnome_lirc_properties/policykit_mechanism/gnome-lirc-properties-m
+	echanism.policy:
+	* gnome_lirc_properties/policykit_mechanism/gnome-lirc-properties-m
+	echanism.py:
+	* gnome_lirc_properties/policykit_mechanism/org.gnome.LircPropertie
+	s.Mechanism.conf:
+	* gnome_lirc_properties/policykit_mechanism/org.gnome.LircPropertie
+	s.Mechanism.service:
+	A first attempt at a PolicyKit D-Bus service mechanism, so we have
+	something that PolicyKit can control access to (and ask for
+	authentication to access). This is based on http://blog.fubar.dk/?p=94 .
+
+	But make test is currently showing this error:
+	"
+	Error org.freedesktop.DBus.Error.Spawn.ExecFailed: Cannot launch daemon, file not found or permissions invalid
+	"
+
+2008-02-06  Murray Cumming  <murrayc@murrayc.com>
+
+	* gnome_lirc_properties/policykit_obtain_authorization.py: The
+	beginnings of a helper object to get sudo/root access. This will need
+	us to define a D-Bus mechanism server.
+
+	* gnome_lirc_properties/test_policykit.py:
+	* gnome_lirc_properties/test_policykit_obtain_authorization.py:
+	Tests of policykit's ObtainAuthorization, not working yet.
+
+2008-02-05  Murray Cumming  <murrayc@murrayc.com>
+
+	* data/lirc-remotes.conf: Add a comment that this seems to be specific
+	to Debian/Ubuntu, and not based on data from upstream lirc.
+	* gnome_lirc_properties/debian_lirc_hwdb_parser.py:
+	* gnome_lirc_properties/test_lirc_hwdb_conf_parser.py: Added a simple
+	parser and test for /usr/share/lirc/lirc.hwdb.
+
+2008-02-05  Murray Cumming  <murrayc@murrayc.com>
+
+	* data/gnome-lirc-properties.glade: Separate the widgets into IR
+	receiver and IR remote so people can use an IR remote control that was
+	not supplied with their IR receiver.
+	* gnome_lirc_properties/ui.py: Added _on_radio_remote_toggled() to
+	gray-out the extra widgets when the appropriate radio button is clicked.
+	* gnome_lirc_properties/test_lirc_keys_listener.py: on_command_received():
+	This now receives two parameters, so fixed that.
+
+2008-02-04  Murray Cumming  <murrayc@murrayc.com>
+
+	* data/gnome-lirc-properties.glade: Split into receiver/remote parts,
+	with the remotes list grayed-out by default. This allows people to use,
+	for instance, the OneForAll non-PC remote control, which has no IR
+	Receiver, by using the IR Receiver from some other kit.
+
+2008-02-04  Murray Cumming  <murrayc@murrayc.com>
+
+	* gnome_lirc_properties/lircd_conf_parser.py: Make the code a little more
+	generic. Save all key/values. Add write_to_file() to write it back out
+	with changes.
+	* gnome_lirc_properties/test_lircd_conf_parser.py: Tested write_to_file().
+
+2008-02-02  Murray Cumming  <murrayc@murrayc.com>
+
+	* gnome_lirc_properties/lirc_keys_listener.py: Make LircKeyCommand an
+	inner class.
+	* gnome_lirc_properties/lircd_conf_parser.py:
+	* gnome_lirc_properties/test_lircd_conf_parser.py: Added a simple
+	lircd.conf parser, so we can read, modify, and rewrite it.
+
+2008-02-02  Murray Cumming  <murrayc@murrayc.com>
+
+	* gnome_lirc_properties/lirc_keys_listener.py: Mark strings for translation.
+	* po/POTFILES.in: Mention files to translate.
+
+2008-02-01  Murray Cumming  <murrayc@murrayc.com>
+
+	* gnome_lirc_properties/generic.lircrc: Remove this.
+	* gnome_lirc_properties/lirc_keys_listener.py: Generate a temporary
+	.lircrc file instead, seeing as we are already listing all the commands
+	so we can show human-readable names for them. And this saves us some
+	bother with locating the file.
+
+2008-02-01  Murray Cumming  <murrayc@murrayc.com>
+
+	* data/gnome-lirc-properties.glade: Remove the notebook parent container.
+	* gnome_lirc_properties/lirc_keys_listener.py: _on_idle(): Call the callback also with
+	a translated human-readable name for the key/command.
+	* gnome_lirc_properties/ui.py: Use the listener so that keys are shown in the UI when
+	pressed (when lirc is already configured).
+
+2008-02-01  Murray Cumming  <murrayc@murrayc.com>
+
+	* gnome_lirc_properties/tests/test_pylirc.py: Removed UTF-8 character (wrong anyway)
+	from a comment, because Python sometimes complains about it.
+
+2008-02-01  Murray Cumming  <murrayc@murrayc.com>
+
+	* gnome_lirc_properties/lirc_keys_listener.py:
+	* gnome_lirc_properties/test_lirc_keys_listener.py: A small class (and test)
+	to use pylirc to listen for commands (and send them via a callback) without too
+	much bother.
+	* gnome_lirc_properties/generic.lircrc: A file used by LircKeysListener.
+	This should be installed (and retrieved from) a proper location.
+
+2008-01-31  Murray Cumming  <murrayc@murrayc.com>
+
+	* bin/gnome-lirc-properties.in: Make it more obvious that we
+	are calling a method in gobject, by changing the import.
+	* gnome_lirc_properties/hardware.py: Add a comment where we require
+	python 2.5. We can probably avoid this.
+
+	* gnome_lirc_properties/tests/test_lirc_client.c:
+	* gnome_lirc_properties/tests/test_pylirc.py: Some test code for liblirc_client
+	and its python wrapper (pylirc) as a sanity check.
+	* gnome_lirc_properties/tests/example_lircrc: Based on a generated
+	elisa file in /tmp. This is an annoying extra file that lirc needs -
+	it gives us commands not keys, so we have to invent commands for each key,
+	usually with the same name as the key.
+
+2008-01-25  Mathias Hasselmann  <mathias@openismus.com>
+
+	* data/lirc-remotes.conf: Add rationale to header.
+
+2008-01-25  Mathias Hasselmann  <mathias@openismus.com>
+
+	Starting with hardware manager implementation.
+
+	* bin/gnome-lirc-properties.in: Don't initialize pygtk here.
+	* data/gnome-lirc-properties.glade: Allow ellipses for progress bar.
+	Assign name to property-table.
+	* gnome_lirc_properties/__init__.py: Move UI code to ui.py. Fork
+	hardware manager processs. Add copyright header.
+	* gnome_lirc_properties/hardware.py: Start hardware manager.
+	* gnome_lirc_properties/model.py: Add copyright header.
+	* gnome_lirc_properties/ui.py: Integrate with hardware manager.
+
+2008-01-25  Murray Cumming  <murrayc@openismus.com>
+
+	* data/lirc-remotes.conf: Added some comments.
+
+2008-01-24  Mathias Hasselmann  <mathias@openismus.com>
+
+	Writing some initial code.
+
+	* bin/gnome-lirc-properties.in: Initialize environoment and launch UI.
+	* data/gnome-lirc-properties.glade: Connecting first signals.
+	* data/lirc-remotes.conf: Add some initial knowledge base.
+	* doc/lirc.txt: Write down some knowledge base.
+	* gnome_lirc_properties/.gitignore: Add *.pyc.
+	* gnome_lirc_properties/__init__.py: Initial UI code.
+	* gnome_lirc_properties/model.py: Initial model code.
+
+2008-01-24  Mathias Hasselmann  <mathias@openismus.com>
+
+	Setting up automake infrastructure.
+
+	* AUTHORS, COPYING, NEWS, README, ChangeLog, INSTALL: Basic meta-data.
+	* autogen.sh, configure.ac, Makefile.am: Basic automake setup.
+	* bin/gnome-lirc-properties.in: Initial version of the executable.
+	* data/gnome-lirc-properties.desktop.in.in: Initial desktop entry.
+	* data/gnome-lirc-properties.glade: Add latest UI mockup.
+	* po/POTFILES.in, po/POTFILES.skip: Localization setup.
+	* .gitignore, */.gitignore: List generated files.
+

@@ -1,0 +1,10 @@
+#!/usr/bin/make -f
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/gnome.mk
+
+install/gnome-lirc-properties::
+	dh_pysupport
+
+binary-install/gnome-lirc-properties::
+	rmdir debian/gnome-lirc-properties/usr/share/locale

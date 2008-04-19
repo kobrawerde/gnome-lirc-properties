@@ -1,0 +1,24 @@
+#!/bin/sh
+# prerm script for gnome-lirc-properties
+#
+# see: dh_installdeb(1)
+
+set -e
+
+case "$1" in
+    remove|deconfigure)
+        rm -f /usr/share/gnome-lirc-properties/remotes.tar.gz
+    ;;
+
+    upgrade|failed-upgrade)
+    ;;
+
+    *)
+        echo "prerm called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+#DEBHELPER#
+
+exit 0

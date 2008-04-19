@@ -1,0 +1,134 @@
+
+begin
+    prog = openismus-lirc-test
+    button = POWER
+    config = close_key
+repeat = 1
+delay = 4
+end
+
+begin
+    prog = openismus-lirc-test
+    button = UP
+    config = move_up_key
+repeat = 1
+delay = 4
+end
+begin
+    prog = openismus-lirc-test
+    button = DOWN
+    config = move_down_key
+repeat = 1
+delay = 4
+end
+begin
+    prog = openismus-lirc-test
+    button = LEFT
+    config = move_left_key
+repeat = 1
+delay = 4
+end
+begin
+    prog = openismus-lirc-test
+    button = RIGHT
+    config = move_right_key
+repeat = 1
+delay = 4
+end
+
+begin
+    prog = openismus-lirc-test
+    button = OK
+    config = activate_key
+repeat = 1
+delay = 4
+end
+
+begin
+    prog = openismus-lirc-test
+    button = MENU
+    config = toggle_menu_key
+repeat = 1
+delay = 4
+end
+
+begin
+    prog = openismus-lirc-test
+    button = PLAY
+    config = toggle_play_pause_key
+repeat = 1
+delay = 4
+end
+begin
+    prog = openismus-lirc-test
+    button = PAUSE
+    config = pause_key
+repeat = 1
+delay = 4
+end
+begin
+    prog = openismus-lirc-test
+    button = STOP
+    config = stop_key
+repeat = 1
+delay = 4
+end
+begin
+    prog = openismus-lirc-test
+    button = >>
+    config = seek_forward_key
+repeat = 1
+delay = 4
+
+end
+begin
+    prog = openismus-lirc-test
+    button = <<
+    config = seek_backward_key
+repeat = 1
+delay = 4
+end
+begin
+    prog = openismus-lirc-test
+    button = >>|
+    config = next_key
+repeat = 1
+delay = 4
+end
+begin
+    prog = openismus-lirc-test
+    button = |<<
+    config = previous_key
+repeat = 1
+delay = 4
+end
+
+begin
+    prog = openismus-lirc-test
+    button = RED
+    config = toggle_fullscreen_key
+repeat = 1
+delay = 4
+end
+
+begin
+    prog = openismus-lirc-test
+    button = MUTE
+    config = toggle_mute_key
+repeat = 1
+delay = 4
+end
+begin
+    prog = openismus-lirc-test
+    button = VOL_UP
+    config = increment_volume_key
+repeat = 1
+delay = 4
+end
+begin
+    prog = openismus-lirc-test
+    button = VOL_DOWN
+    config = decrement_volume_key
+repeat = 1
+delay = 4
+end

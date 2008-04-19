@@ -1,0 +1,4 @@
+gnome-lirc-properties-mechanism.policy
+gnome-lirc-properties.desktop
+gnome-lirc-properties.desktop.in
+org.gnome.LircProperties.Mechanism.service

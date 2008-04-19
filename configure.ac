@@ -1,0 +1,156 @@
+AC_INIT([gnome-lirc-properties], [0.2.6],
+        [https://code.fluendo.com/remotecontrol/trac/])
+
+# tar-ustar asks it to use a sensible tar format that can handle long filenames
+AM_INIT_AUTOMAKE([1.9 tar-ustar])
+
+dnl check for programs ===
+
+AM_PATH_PYTHON(2.4)
+IT_PROG_INTLTOOL([0.35.0])
+
+dnl localization support ===
+
+GETTEXT_PACKAGE="$PACKAGE"
+AC_SUBST([GETTEXT_PACKAGE])
+AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE],
+                   ["$GETTEXT_PACKAGE"],
+                   [The gettext package])
+AM_GLIB_GNU_GETTEXT
+
+dnl initialize GNOME help ===
+
+GNOME_DOC_INIT()
+
+dnl check for PolicyKit ===
+
+AC_ARG_ENABLE([policy-kit],
+              [  --disable-policy-kit     don't use PolicyKit for gaining privileges])
+
+if test "$enable_policy_kit" != no
+then
+  PKG_CHECK_MODULES([POLICY_KIT], [polkit >= 0.7
+                                   polkit-gnome >= 0.7])
+  ENABLE_POLICY_KIT=True
+  enable_policy_kit=yes
+else
+  ENABLE_POLICY_KIT=False
+fi
+
+AC_SUBST([ENABLE_POLICY_KIT])
+
+POLICY_KIT_ACTION="org.gnome.lirc-properties.mechanism.configure"
+AC_SUBST([POLICY_KIT_ACTION])
+
+dnl support custom LIRC folders ===
+
+expand_vars() {
+  value=`test "$prefix" == NONE && prefix="$ac_default_prefix"; eval "echo \"$1\""`
+  test "$value" != "$1" && expand_vars "$value" || echo "$value"
+}
+
+AC_ARG_WITH([lirc_confdir],
+            AS_HELP_STRING([--with-lirc-confdir],
+                           [Configuration folder of LIRC, e.g. $sysconfdir/lirc]),
+            [], [with_lirc_confdir=`expand_vars "$sysconfdir/lirc"`])
+
+AC_ARG_WITH([remotes_database],
+            AS_HELP_STRING([--with-remotes-database],
+                           [Path of the system's LIRC remote database, e.g. $datadir/lirc/remotes]),
+            [], [with_remotes_database=`expand_vars "$datadir/lirc/remotes"`])
+
+AC_SUBST([with_lirc_confdir])
+AC_SUBST([with_remotes_database])
+
+AC_MSG_CHECKING([configured LIRC configuration folder])
+
+AC_ARG_ENABLE([confdir-check],
+              AS_HELP_STRING([--disable-confdir-check],
+                             [don't check for the lircd.conf path])])
+
+if test "x$enable_confdir_check" = xyes
+  then if test -f "$with_lirc_confdir/lircd.conf"
+    then
+      AC_MSG_RESULT([$with_lirc_confdir])
+    else
+      AC_MSG_RESULT([no])
+      AC_MSG_ERROR([Cannot find lircd.conf in $with_lirc_confdir.])
+    fi
+  else
+    AC_MSG_RESULT([$with_lirc_confdir])
+fi
+
+AC_MSG_CHECKING([configured LIRC remotes database])
+
+if test -d "$with_remotes_database"
+then
+  AC_MSG_RESULT([$with_remotes_database])
+else
+  AC_MSG_RESULT([no])
+  AC_MSG_ERROR([Configured remotes database does not exist: $with_remotes_database])
+fi
+
+dnl support custom upload and download locations ===
+
+AC_ARG_WITH([download_uri],
+            AS_HELP_STRING([--with-download-uri],
+                           [The URI for downloading user-submitted lircd.conf files.]),
+            [], [with_download_uri="http://lirc.fluendo.com/lircdb/remotes.tar.gz"])
+AC_ARG_WITH([upload_uri],
+            AS_HELP_STRING([--with-upload-uri],
+                           [The URI to use for user-submitted lircd.conf files.]),
+            [], [with_upload_uri="http://lirc.fluendo.com/lircdb/upload/"])
+
+AC_SUBST([with_download_uri])
+AC_SUBST([with_upload_uri])
+
+dnl find irrecord ===
+
+AC_PATH_PROG([LIRC_IRRECORD], [irrecord])
+AC_ARG_VAR([LIRC_IRRECORD], [path of the irrecord program])
+AC_SUBST([LIRC_IRRECORD])
+
+AC_MSG_CHECKING([if irrecord supports repeative key lerning])
+if "$LIRC_IRRECORD" --help | grep -wq  -- --resume
+then
+  AC_MSG_RESULT([yes])
+else
+  AC_MSG_RESULT([no])
+
+  patch=`ls "${srcdir}/patches/"*resume*irrecord*`
+  AC_MSG_WARN([$LIRC_IRRECORD doesn't support the --resume switch. Please grab its sources and apply $patch.])
+fi
+
+dnl generate files ===
+
+AC_CONFIG_FILES([Makefile
+                 data/Makefile
+                 data/gnome-lirc-properties.desktop.in
+                 data/gnome-lirc-properties-mechanism.policy
+                 data/org.gnome.LircProperties.Mechanism.service
+                 data/icons/Makefile
+                 data/icons/16x16/Makefile
+                 data/icons/22x22/Makefile
+                 data/icons/24x24/Makefile
+                 data/icons/scalable/Makefile
+                 gnome_lirc_properties/Makefile
+                 gnome_lirc_properties/config.py
+                 gnome_lirc_properties/net/Makefile
+                 gnome_lirc_properties/ui/Makefile
+                 help/Makefile
+                 po/Makefile.in])
+AC_CONFIG_FILES([bin/gnome-lirc-properties],
+                [chmod +x bin/gnome-lirc-properties])
+
+AC_OUTPUT()
+
+dnl print configuration status ===
+
+AC_MSG_NOTICE([=====================================================================])
+AC_MSG_NOTICE([  PolicyKit support: $enable_policy_kit])
+AC_MSG_NOTICE([  Remotes database: $with_remotes_database])
+AC_MSG_NOTICE([  IR record tool: $LIRC_IRRECORD])
+AC_MSG_NOTICE([  Download URI: $with_download_uri])
+AC_MSG_NOTICE([  Upload URI: $with_upload_uri])
+AC_MSG_NOTICE([=====================================================================])
+

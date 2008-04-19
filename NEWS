@@ -1,0 +1,89 @@
+0.2.6:
+
+* Check the lirc configuration files at startup and offer to fix them if 
+  necessary.
+  (Mathias Hasselmann)
+* Auto-detection: Write the configuration files even if the auto-detection 
+  result is the same as what was currently selected, in case the 
+  configuration files are incorrect.
+  (Mathias Hasselmann, Murray Cumming)
+* Handle some other small errors while parsing/writing configuration files.
+  (Mathias Hasselmann)
+* Build:
+  - Add -disable-confdir-check to prevent checking for lircd.conf.
+  - Cleaned up the .desktop file.
+  (Bastien Nocera)
+* Documentation:
+  - Updated the screenshots.
+ 
+0.2.5:
+
+* Generic support for Linux Input Layer remotes, including hot-plugging.
+* Update URL of the remotes database web service.
+* Better focus handling when learning key-codes.
+* Better feedback when learning key-codes.
+* Overall improved robustness of the code.
+
+0.2.4:
+
+* Add button for learning keys for better usability.
+* Fix some threading and DBUS issues.
+
+0.2.3:
+
+* There is no 0.2.3 release due some limitations of Launchpad's Personal
+  Package Archive service: You cannot replace release candidate tarballs.
+
+0.2.2:
+
+* Support Hardy Heron's include statements for lircd.conf files.
+* Probably handle the result of PolicyKit's ObtainAuthorization() method.
+* Better error handling when invoking help browser.
+* LIRC related sanity checks in configure script.
+
+0.2.1:
+
+* Finish remote configuration sharing.
+* Add server-side remote database script.
+* Add application icon drawn by Andreas Nilsson.
+* Update .desktop file to show up properly.
+* Fix problems caused by latest refactoring.
+* Improvements do the user manual.
+
+0.2.0:
+
+* Setup initial help infrastructure.
+* Implement download of custom remote configurations.
+* Major code cleanups and refactoring.
+* Bugfixes.
+
+0.1.0:
+
+* Support learning of "MODE2" receivers.
+* Support UDP receiver for testing.
+* Find device nodes for dev/input and USB/HID receivers.
+* Initial tool for extracting receivers.conf from lirc source code.
+* Allow retry of failed receiver detection.
+* Major code cleanups to make pylint happy.
+* Bugfixes.
+
+0.0.4:
+
+* Implement key-code learning.
+* Bugfixes.
+
+0.0.3:
+
+* Mostly bugfixes.
+
+0.0.2:
+
+* The PolicyKit stuff all seems to work now.
+* Added custom configuration dialog.
+* Initial Ubuntu packaging.
+* Drop pylirc dependency.
+* Bugfixes.
+
+0.0.1:
+
+* Mostly useless first release to get feedback about the use of PolicyKit.

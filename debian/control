@@ -1,0 +1,16 @@
+Source: gnome-lirc-properties
+Section: gnome
+Priority: optional
+Maintainer: Ubuntu MOTU Developers <ubuntu-motu@lists.ubuntu.com>
+XSBC-Original-Maintainer: Openismus Package Team <ubuntu-packages@lists.openismus.com>
+Build-Depends: cdbs, debhelper (>= 5), gnome-doc-utils, libpolkit-gnome-dev, lirc, pkg-config, python-support, scrollkeeper
+Standards-Version: 3.7.3
+Homepage: https://code.fluendo.com/remotecontrol/trac/
+
+Package: gnome-lirc-properties
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${python:Depends}, lirc, policykit-gnome (>= 0.7), python-gtk2, yelp
+Description: Control panel to configure remote controls
+ This control panel updates lirc's configuration files to match your choices.
+ It also allows editing, uploading and downloading of custom remote control
+ configuration files.

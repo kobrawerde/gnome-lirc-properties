@@ -1,0 +1,18 @@
+[MESSAGES CONTROL]
+disable-msg=I0011,W0141,W0142,W0511,R0902,R0903,R0923
+
+[REPORTS]
+include-ids=yes
+
+[FORMAT]
+max-line-length=100
+
+[BASIC]
+good-names=a,b,i,j,k,p,q,ex,fd
+
+[DESIGN]
+min-public-methods=0
+max-public-methods=100
+
+[MASTER]
+load-plugins=custom-checker

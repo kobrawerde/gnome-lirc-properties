@@ -1,0 +1,5 @@
+gnome-lirc-properties (0.2.5-0ubuntu1) hardy; urgency=low
+
+  * Initial upload to Ubuntu (LP: #192368).
+
+ -- Mathias Hasselmann <mathias.hasselmann@gmx.de>  Fri, 19 Mar 2008 21:20:19 +0100

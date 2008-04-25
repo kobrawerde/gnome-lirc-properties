@@ -1,5 +1,12 @@
 2008-04-25  Murray Cumming  <murrayc@murrayc.com>
 
+	* gnome_lirc_properties/lirc.py: check_hardware_settings():
+	Use is instead of == in my previous fix. == seemed to actually set it.
+	This made the remote control always be the first in the custom list 
+	instead of the supplied one.
+
+2008-04-25  Murray Cumming  <murrayc@murrayc.com>
+
 	* gnome_lirc_properties/lirc.py: check_hardware_settings(): 
 	Add a check for a None remote.
 	This should fix bug #529854.

@@ -1013,6 +1013,9 @@ def check_hardware_settings(selected_remote):
     parser.read(open(remote_config))
 
     for remote in parser.remotes:
+        if remote == None:
+            return False
+
         if (remote.vendor == selected_remote.vendor and
             remote.product == selected_remote.product):
             return True

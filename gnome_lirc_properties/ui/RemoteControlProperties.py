@@ -240,7 +240,8 @@ class RemoteControlProperties(object):
             remote.vendor, remote.product), buttons=responses))
 
     def __restore_hardware_settings(self):
-        '''Restore hardware settings from configuration files.'''
+        '''Restore hardware settings from configuration files.
+	'''
 
         # We really do not want to rewrite any configuration files
         # at that stage, so __configuration_level should be non-zero.
@@ -259,6 +260,18 @@ class RemoteControlProperties(object):
 
         if (not lirc.check_hardware_settings(remote) and
             self.__confirm_rewrite_configuration(remote)):
+
+            # We must create a dialog (the main dialog has not yet been realized) 
+            # because PolicyKit needs a window ID:
+            progress_dialog = gtk.MessageDialog(parent=self.__dialog, flags=gtk.DIALOG_MODAL, type=gtk.MESSAGE_INFO, message_format = _("Restoring Configuration"))
+            progress_dialog.show()
+
+            granted = self._unlock(progress_dialog) # This requires sudo access, so ask for it if necessary.
+            progress_dialog.destroy()
+
+            if not granted:
+                return;
+
             try:
                 service = backend.get_service()
 
@@ -794,7 +807,7 @@ class RemoteControlProperties(object):
         if granted:
             self.__combo_receiver_vendor_list.grab_focus()
 
-    def _unlock(self):
+    def _unlock(self, parent_dialog):
         '''
         Ask PolicyKit to allow the user to use our D-BUS driven backend.
         We must ask PolicyKit again later before actually using the backend,
@@ -805,12 +818,15 @@ class RemoteControlProperties(object):
         See http://bugs.freedesktop.org/show_bug.cgi?id=14600
         '''
 
-        if self.__dialog == None:
+        if(parent_dialog is None):
+          parent_dialog = self.__dialog;
+
+        if parent_dialog == None:
             logging.warning('_unlock() called before the dialog ' +
                             'was instantiated, but we need an xid')
             return False
 
-        if not self.__dialog.window:
+        if not parent_dialog.window:
             logging.warning('_unlock() called before the dialog ' +
                             'was realized, but we need an xid')
             return False
@@ -819,7 +835,7 @@ class RemoteControlProperties(object):
             logging.info('Authorized already. No need to obtain authorization.')
             return True
 
-        granted = self.__auth.obtain_authorization(self.__dialog)
+        granted = self.__auth.obtain_authorization(parent_dialog)
 
         # Warn the user (because PolicyKit does not seem to)
         # Note that PolicyKit can fail silently (just returning 0) when
@@ -830,7 +846,7 @@ class RemoteControlProperties(object):
             # (PolicyKit should maybe show this instead of failing silently,
             # or at least something should be recommended by PolicyKit.):
             # See http://bugs.freedesktop.org/show_bug.cgi?id=14599
-            show_message(self.__dialog,
+            show_message(parent_dialog,
                          _('Could Not Unlock.'),
                          _('The system will not allow you to access ' +
                            'these features. Please contact your system ' +

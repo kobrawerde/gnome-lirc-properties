@@ -1,5 +1,15 @@
 2008-04-25  Murray Cumming  <murrayc@murrayc.com>
 
+	* gnome_lirc_properties/ui/RemoteControlProperties.py
+	RemoteControlProperties._unlock(): Take an optional parent_window 
+	parameter, instead of always using self.__dialog. PolicyKit needs one.
+	RemoteControlProperties.__restore_hardware_settings(): Call unlock() 
+	before trying to change the configuration, to avoid an error when 
+	doing it. Show a temporary dialog because unlock() needs a parent 
+	window and the main dialog has not yet been realized.
+
+2008-04-25  Murray Cumming  <murrayc@murrayc.com>
+
 	* data/receivers.conf: Add Snapstream Firefly to the list of supported 
 	receivers, as well as the Snapstream_Firefly_R1000 name which appeared 
 	in previous versions of lirc (The change is probably due to Debian or 

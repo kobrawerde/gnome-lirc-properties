@@ -318,7 +318,8 @@ class RemoteControlProperties(object):
         else:
             self.__label_preview_result.hide()
             self.__label_preview_status.set_markup(_('<b>Warning:</b> Remote control daemon ' +
-                                                     'not running. Cannot test buttons.'))
+                                                     'not running. Cannot test buttons.\n' + 
+                                                     'This could be due to a configuration error. Try changing the configuration.'))
 
     # pylint: disable-msg=W0613,R0913
     def __on_lirc_key_pressed(self, listener, remote, repeat, name, code):

@@ -1,6 +1,13 @@
 2008-04-25  Murray Cumming  <murrayc@murrayc.com>
 
 	* gnome_lirc_properties/ui/RemoteControlProperties.py
+	RemoteControlProperties.__on_lirc_changed(): When warning that lircd is 
+	not running, mention that it is maybe because of a wrong configuration.
+	Hopefully this explains all the times that I see this.
+
+2008-04-25  Murray Cumming  <murrayc@murrayc.com>
+
+	* gnome_lirc_properties/ui/RemoteControlProperties.py
 	RemoteControlProperties._unlock(): Take an optional parent_window 
 	parameter, instead of always using self.__dialog. PolicyKit needs one.
 	RemoteControlProperties.__restore_hardware_settings(): Call unlock() 

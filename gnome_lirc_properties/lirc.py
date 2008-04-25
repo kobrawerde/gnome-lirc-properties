@@ -49,8 +49,7 @@ class Receiver(object):
         self.__properties = dict(properties)
 
         self.__compatible_remotes = properties.get('compatible-remotes')
-        print("Receiver: compatible-remotes=%s\n" % self.__compatible_remotes)
-
+        
         if self.__compatible_remotes:
             self.__compatible_remotes = [
                 name.strip() for name in

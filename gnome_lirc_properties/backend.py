@@ -680,7 +680,7 @@ class BackendService(PolicyKitService):
 
         if remote:
             values = {
-                'VENDOR': remote.vendor or _('Unknown'),
+                'VENDOR': remote.vendor or 'Unknown', # Note; We do not translate Unknown here, though we do in the UI.
                 'MODEL': remote.product or remote.name
             }
 

@@ -49,6 +49,7 @@ class Receiver(object):
         self.__properties = dict(properties)
 
         self.__compatible_remotes = properties.get('compatible-remotes')
+        print("Receiver: compatible-remotes=%s\n" % self.__compatible_remotes)
 
         if self.__compatible_remotes:
             self.__compatible_remotes = [
@@ -340,9 +341,26 @@ class RemotesDatabase(object):
     def find(self, vendor, product, default=None):
         '''Tries to find the specified remote control.'''
 
+        # Cope with Unknown vendors:
+        # We store 'Unknown' (not translated) in the configuration file in backend.WriteRemoteConfiguration() if vendor is None:
+        vendor_name = vendor;
+        if(vendor_name == 'Unknown'):
+          vendor_name = None
+
+        # Try looking at the remote.product
+        # (the combo lists product.name if remote.product is None):
         for remote in self:
-            if (remote.vendor == vendor and
+            #print ("RemotesDatabase.find(): remote.vendor=%s, remote_product=%s\n" % (remote.vendor, remote.product))
+            if (remote.vendor == vendor_name and
                 remote.product == product):
+                return remote
+
+        # Try looking at the remote.name
+        # (the combo lists product.name if remote.product is None):
+        for remote in self:
+            #print ("RemotesDatabase.find(): remote.vendor=%s, remote_product=%s\n" % (remote.vendor, remote.product))
+            if (remote.vendor == vendor_name and
+                remote.name == product):
                 return remote
 
         return default
@@ -1015,6 +1033,9 @@ def check_hardware_settings(selected_remote):
     for remote in parser.remotes:
         if remote is None:
             return False
+
+        if selected_remote is None:
+            return False;
 
         if (remote.vendor == selected_remote.vendor and
             remote.product == selected_remote.product):

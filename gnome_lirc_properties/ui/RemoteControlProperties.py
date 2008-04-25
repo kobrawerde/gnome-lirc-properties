@@ -250,8 +250,12 @@ class RemoteControlProperties(object):
         settings = lirc.HardwareConfParser(config.LIRC_HARDWARE_CONF)
 
         # Practice some sanity checks on that file:
-        remote = self.__remotes_db.find(settings.get('REMOTE_VENDOR'),
-                                        settings.get('REMOTE_MODEL'))
+        remote_vendor = settings.get('REMOTE_VENDOR')
+        remote_model = settings.get('REMOTE_MODEL')
+        remote = self.__remotes_db.find(remote_vendor, remote_model)
+
+        if(remote is None):
+          print("__restore_hardware_settings(): No remote found in the db for remote_vendor=%s, remote_model=%s\n" % (remote_vendor, remote_model))
 
         if (not lirc.check_hardware_settings(remote) and
             self.__confirm_rewrite_configuration(remote)):

@@ -1,5 +1,27 @@
 2008-04-25  Murray Cumming  <murrayc@murrayc.com>
 
+	* data/receivers.conf: Add Snapstream Firefly to the list of supported 
+	receivers, as well as the Snapstream_Firefly_R1000 name which appeared 
+	in previous versions of lirc (The change is probably due to Debian or 
+	Ubuntu).
+	Note that this is in /usr/share/lirc/remotes/atiusb/atilircd.conf.ati*.
+
+	* gnome_lirc_properties/backend.py
+	BackendService.WriteRemoteConfiguration(): When writing Unknown as 
+	the vendor, do not translate it, because strings should not be 
+	translated in configuration files.
+	* gnome_lirc_properties/lirc.py (Receiver.__init__,
+	RemotesDatabase.find(): Handle Unknown specially for the vendor name, 
+	because the database stores them as None. This fixes the problem that 
+	the chosen remote control was not shown when the vendor was unknown.
+	RemotesDatabase.check_hardware_settings(): Cope with a None 
+	selected_remote instead of crashing.
+	* gnome_lirc_properties/ui/RemoteControlProperties.py
+	RemoteControlProperties.__restore_hardware_settings(): Print a 
+	clue when the remote control could not be found in our database.
+
+2008-04-25  Murray Cumming  <murrayc@murrayc.com>
+
 	* gnome_lirc_properties/lirc.py: check_hardware_settings():
 	Use is instead of == in my previous fix. == seemed to actually set it.
 	This made the remote control always be the first in the custom list 

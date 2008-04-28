@@ -1,1 +1,4 @@
-Just update the top-level ChangeLog file please.
+2008-04-26  Wouter Bolsterlee  <wbolster@svn.gnome.org>
+
+	* LINGUAS: Added.
+	* nl.po: Dutch translation by Wouter Bolsterlee.

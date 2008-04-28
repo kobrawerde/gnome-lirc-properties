@@ -8,3 +8,7 @@ Exec=@prefix@/bin/gnome-lirc-properties
 Icon=gnome-lirc-properties
 StartupNotify=true
 Categories=GNOME;GTK;Settings;HardwareSettings;System;
+X-GNOME-Bugzilla-Bugzilla=GNOME
+X-GNOME-Bugzilla-Product=gnome-lirc-properties
+X-GNOME-Bugzilla-Component=general
+X-GNOME-Bugzilla-Version=@VERSION@

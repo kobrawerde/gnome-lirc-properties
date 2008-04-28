@@ -1,3 +1,8 @@
+2008-04-28  Bastien Nocera  <hadess@hadess.net>
+
+	* data/gnome-lirc-properties.desktop.in.in: Add details for bug-buddy
+	to allow bug automatic bug filing (Closes: #530360)
+
 2008-04-28  Mathias Hasselmann  <mathias@openismus.com>
 
 	Try to restart key-listener when the lircd socket is closed.

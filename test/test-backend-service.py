@@ -1,5 +1,10 @@
 #!/usr/bin/python
 
+#TODO: How can this test be run, avoiding this error:
+# exception:  org.freedesktop.DBus.Error.AccessDenied: 
+# A security policy in place prevents this sender from sending this message to this recipient, see message bus configuration file 
+# (rejected message had interface "(unset)" member "WriteLircdConfFile" error name "(unset)" destination ":1.132")
+
 import dbus
 
 bus = dbus.SystemBus()

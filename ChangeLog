@@ -1,5 +1,10 @@
 2008-04-28  Murray Cumming  <murrayc@murrayc.com>
 
+	* test/test-uploader.py: Removed this because the class that it tests 
+	no longer exists. Made sure all the tests are svn:executable.
+
+2008-04-28  Murray Cumming  <murrayc@murrayc.com>
+
 	* data/gnome-lirc-properties.glade:
 	* gnome_lirc_properties/ui/RemoteControlProperties.py:
 	Change some signal handler names to have a _on_receiver prefix, to 

@@ -369,7 +369,7 @@ class CustomConfiguration(object):
         def configuration_problem(message):
             '''
             Informs the user about configuration file problems,
-            and ask the user for accption or rejection.
+            and ask the user for acceptance or rejection.
             '''
 
             response_buttons = (
@@ -384,7 +384,7 @@ class CustomConfiguration(object):
                     message, buttons=response_buttons))
 
         def on_upload_finished(message):
-            '''Informs the user about succeeding uploads.'''
+            '''Informs the user about successful uploads.'''
 
             show_message(self.__dialog, _('Upload Succeeded'),
                          message, message_type=gtk.MESSAGE_INFO)

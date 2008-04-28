@@ -818,6 +818,7 @@ class KeyListener(gobject.GObject):
         # pylint: disable-msg=E1002
         super(KeyListener, self).__init__()
 
+        self.__running = False
         self.__socket_name = socket_name
         self.__reconnect_source = 0
         self.__socket_source = 0
@@ -825,17 +826,73 @@ class KeyListener(gobject.GObject):
         self.__buffer = ''
 
     def start(self):
-        '''
-        Starts listening.
-        '''
+        '''Starts listening.'''
+
+        self.__running = True
 
         if not self.__connect():
             self.__reconnect()
 
+    def stop(self):
+        '''Stops listening.'''
+
+        self.__running = False
+        self.__disconnect()
+
+    def __on_io_event(self, fd, condition):
+        '''Handle I/O events on the lircd socket.'''
+
+        logging.info('I/O event on lirc socket %d: %d', fd, condition)
+
+        if condition & gobject.IO_IN:
+            logging.info('reading from lirc socket %d...', fd)
+            packet = self.__socket and self.__socket.recv(128)
+
+            logging.info('...%d bytes received.', len(packet))
+            self.__buffer += packet
+
+            while True:
+                eol = self.__buffer.find('\n')
+
+                if eol < 0:
+                    break
+
+                packet = self.__buffer[:eol]
+                self.__buffer = self.__buffer[eol + 1:]
+
+                logging.info('processing packet: %r', packet)
+
+                try:
+                    code, repeat, name, remote = packet.split()
+                    repeat = int(repeat, 16)
+                    code = long(code, 16)
+
+                    # pylint: disable-msg=E1101
+                    self.emit('key-pressed', remote, repeat, name, code)
+
+                # pylint: disable-msg=W0704
+                except ValueError:
+                    pass
+
+        if condition & gobject.IO_HUP:
+            if self.__running:
+                def restart():
+                    if self.__running:
+                        self.start()
+
+                    return False
+
+                gobject.timeout_add(1000, restart)
+
+            else:
+                self.__disconnect()
+
+            return False
+
+        return True
+
     def __connect(self):
-        '''
-        Connects to the lircd socket.
-        '''
+        '''Connects to the lircd socket.'''
 
         self.__disconnect()
 
@@ -845,54 +902,12 @@ class KeyListener(gobject.GObject):
         self.__buffer = ''
 
         try:
-            # pylint: disable-msg=W0613
-            def on_io(fd, condition):
-                '''
-                Handle I/O events on the lircd socket.
-                '''
-
-                logging.info('I/O event on lirc socket %d: %d', fd, condition)
-
-                if condition & gobject.IO_IN:
-                    logging.info('reading from lirc socket %d...', fd)
-                    packet = self.__socket and self.__socket.recv(128)
-
-                    logging.info('...%d bytes received.', len(packet))
-                    self.__buffer += packet
-
-                    while True:
-                        eol = self.__buffer.find('\n')
-
-                        if eol < 0:
-                            break
-
-                        packet = self.__buffer[:eol]
-                        self.__buffer = self.__buffer[eol + 1:]
-
-                        logging.info('processing packet: %r', packet)
-
-                        try:
-                            code, repeat, name, remote = packet.split()
-                            repeat = int(repeat, 16)
-                            code = long(code, 16)
-
-                            # pylint: disable-msg=E1101
-                            self.emit('key-pressed', remote, repeat, name, code)
-
-                        # pylint: disable-msg=W0704
-                        except ValueError:
-                            pass
-
-                if condition & gobject.IO_HUP:
-                    self.__disconnect()
-                    return False
-
-                return True
-
             self.__socket = socket(AF_UNIX)
-            self.__socket_source = gobject.io_add_watch(self.__socket.fileno(),
-                                                        gobject.IO_IN | gobject.IO_HUP,
-                                                        on_io)
+
+            self.__socket_source = (
+                gobject.io_add_watch(self.__socket.fileno(),
+                                     gobject.IO_IN | gobject.IO_HUP,
+                                     self.__on_io_event))
 
             self.__socket.connect(self.__socket_name)
 
@@ -914,9 +929,7 @@ class KeyListener(gobject.GObject):
             return False
 
     def __disconnect(self):
-        '''
-        Disconnects from the lircd socket.
-        '''
+        '''Disconnects from the lircd socket.'''
 
         self.__buffer = ''
 
@@ -934,17 +947,13 @@ class KeyListener(gobject.GObject):
         self.emit('changed')
 
     def __reconnect(self):
-        '''
-        Tries to reconnects to the lircd socket.
-        '''
+        '''Tries to reconnects to the lircd socket.'''
 
         if not self.__reconnect_source:
             self.__reconnect_source = gobject.timeout_add(5000, self._on_reconnect)
 
     def _on_reconnect(self):
-        '''
-        Called regularly when the key listener tries to reconnect.
-        '''
+        '''Called regularly when the key listener tries to reconnect.'''
 
         if self.__connect():
             self.__reconnect_source = 0

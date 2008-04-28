@@ -1,3 +1,17 @@
+2008-04-28  Mathias Hasselmann  <mathias@openismus.com>
+
+	Try to restart key-listener when the lircd socket is closed.
+	Should fix bug #529909.
+
+	* gnome_lirc_properties/lirc.py (KeyListener.__init__(),
+	  KeyListener.start(), KeyListener.stop(),
+	  KeyListener.__on_io_event()): Add internal __running flag to monitor
+	  listener state. This flag is changed by the start() and stop()
+	  methods. The I/O handler considers this flag to decide wheither to
+	  restart or to disconnect on socket shutdown. Also turned the nested
+	  on_io() function of KeyListener.__connect() into a regular class
+	  member (__on_io_event()).
+
 2008-04-28  Murray Cumming  <murrayc@murrayc.com>
 
 	* test/test-uploader.py: Removed this because the class that it tests 

@@ -60,7 +60,7 @@ class NetworkError(Exception):
             if isinstance(ex.reason, gaierror):
                 return ex.reason[1]
 
-            return _('Cannot resolve host name')
+            return _('Cannot resolve host name.')
 
         return getattr(ex, 'message', None)
 
@@ -112,7 +112,10 @@ def post_file(target_uri, filename,
             finished_callback(extract_html_message(response) or
                               (_('Upload of %s succeeded.') % context))
 
-    except (urllib2.HTTPError, urllib2.URLError), ex:
+    except (urllib2.HTTPError, urllib2.URLError, httplib.HTTPException), ex:
+        # Note: When this catches an httplib.BadStatusLine, the ex.message is empty:
+        print("debug: post_file() exception: %s\n" % ex.message)
+
         if failure_callback:
             error = NetworkError(_('Upload of %s failed') % context, ex)
             failure_callback(error.message)
@@ -183,10 +186,10 @@ class RetrieveTarballThread(Thread):
             content, headers = self._retrieve(self.__checksum_uri)
 
         except (urllib2.HTTPError, urllib2.URLError), ex:
-            raise NetworkError(_('Cannot retrieve checksum list'), ex)
+            raise NetworkError(_('Cannot retrieve checksum list.'), ex)
 
         if 'text/plain' != headers['content-type']:
-            raise NetworkError(_('Cannot retrieve checksum list'),
+            raise NetworkError(_('Cannot retrieve checksum list.'),
                                _('Unexpected content type.'))
 
         checksums = dict([
@@ -218,7 +221,7 @@ class RetrieveTarballThread(Thread):
                 report(self.on_success, ex, ex.info())
 
         except urllib2.URLError, ex:
-            raise NetworkError(_('Cannot retrieve file archive'), ex)
+            raise NetworkError(_('Cannot retrieve file archive.'), ex)
 
         return None, None
 
@@ -244,6 +247,9 @@ class RetrieveTarballThread(Thread):
 
         except NetworkError, ex:
             report(self.on_failure, ex.message)
+            if ex.cause:
+                print("debug: NetworkError: %s\n", ex.cause.message)
+
             return False
 
     def _verify_checksum(self, content, headers):

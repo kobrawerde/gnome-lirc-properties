@@ -246,7 +246,7 @@
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">True</property>
                                 <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                                <property name="label" translatable="yes">gtk-cancel</property>
+                                <property name="label" translatable="no">gtk-cancel</property>
                                 <property name="use_stock">True</property>
                                 <property name="response_id">0</property>
                                 <signal name="clicked" handler="_on_auto_detect_stop_button_clicked"/>
@@ -673,7 +673,7 @@ Please choose the IR receiver that you wish to use.</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                <property name="label" translatable="yes">gtk-cancel</property>
+                <property name="label" translatable="no">gtk-cancel</property>
                 <property name="use_stock">True</property>
                 <property name="response_id">-6</property>
               </widget>
@@ -687,7 +687,7 @@ Please choose the IR receiver that you wish to use.</property>
                 <property name="has_default">True</property>
                 <property name="receives_default">True</property>
                 <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                <property name="label" translatable="yes">gtk-apply</property>
+                <property name="label" translatable="no">gtk-apply</property>
                 <property name="use_stock">True</property>
                 <property name="response_id">-3</property>
               </widget>
@@ -1062,7 +1062,7 @@ Try to use key names from the default namespace only for best interoperability.<
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
                         <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                        <property name="label" translatable="yes">gtk-add</property>
+                        <property name="label" translatable="no">gtk-add</property>
                         <property name="use_stock">True</property>
                         <property name="focus_on_click">False</property>
                         <property name="response_id">0</property>
@@ -1075,7 +1075,7 @@ Try to use key names from the default namespace only for best interoperability.<
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
                         <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                        <property name="label" translatable="yes">gtk-remove</property>
+                        <property name="label" translatable="no">gtk-remove</property>
                         <property name="use_stock">True</property>
                         <property name="focus_on_click">False</property>
                         <property name="response_id">0</property>
@@ -1091,7 +1091,7 @@ Try to use key names from the default namespace only for best interoperability.<
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
                         <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                        <property name="label" translatable="yes">gtk-clear</property>
+                        <property name="label" translatable="no">gtk-clear</property>
                         <property name="use_stock">True</property>
                         <property name="focus_on_click">False</property>
                         <property name="response_id">0</property>
@@ -1159,7 +1159,7 @@ Try to use key names from the default namespace only for best interoperability.<
                 <property name="has_default">True</property>
                 <property name="receives_default">True</property>
                 <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                <property name="label" translatable="yes">gtk-ok</property>
+                <property name="label" translatable="no">gtk-ok</property>
                 <property name="use_stock">True</property>
                 <property name="response_id">-5</property>
               </widget>
@@ -1176,7 +1176,7 @@ Try to use key names from the default namespace only for best interoperability.<
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                <property name="label" translatable="yes">gtk-cancel</property>
+                <property name="label" translatable="no">gtk-cancel</property>
                 <property name="use_stock">True</property>
                 <property name="response_id">-6</property>
               </widget>
@@ -1238,7 +1238,7 @@ Try to use key names from the default namespace only for best interoperability.<
               <widget class="GtkLabel" id="label_progress_title">
                 <property name="visible">True</property>
                 <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                <property name="label" translatable="yes">&lt;big&gt;&lt;b&gt;Some Action&lt;/b&gt;&lt;/big&gt;</property>
+                <property name="label" translatable="no"></property>
                 <property name="use_markup">True</property>
               </widget>
               <packing>
@@ -1261,7 +1261,7 @@ Try to use key names from the default namespace only for best interoperability.<
               <widget class="GtkLabel" id="label_progress_detail">
                 <property name="visible">True</property>
                 <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                <property name="label" translatable="yes">Some Detail...</property>
+                <property name="label" translatable="no"></property>
                 <property name="use_markup">True</property>
               </widget>
               <packing>

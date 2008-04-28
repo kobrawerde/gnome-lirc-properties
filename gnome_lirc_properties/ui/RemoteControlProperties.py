@@ -849,9 +849,7 @@ class RemoteControlProperties(object):
             # See http://bugs.freedesktop.org/show_bug.cgi?id=14599
             show_message(parent_dialog,
                          _('Could Not Unlock.'),
-                         _('The system will not allow you to access ' +
-                           'these features. Please contact your system ' +
-                           'administrator for assistance.'))
+                         _('The system will not allow you to access these features. Please contact your system administrator for assistance.'))
 
         self._set_widgets_locked(not granted)
 

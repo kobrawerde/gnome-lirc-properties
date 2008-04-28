@@ -256,7 +256,7 @@ class RemoteControlProperties(object):
         remote = self.__remotes_db.find(remote_vendor, remote_model)
 
         if(remote is None):
-          print("__restore_hardware_settings(): No remote found in the db for remote_vendor=%s, remote_model=%s\n" % (remote_vendor, remote_model))
+            print("__restore_hardware_settings(): No remote found in the db for remote_vendor=%s, remote_model=%s\n" % (remote_vendor, remote_model))
 
         if (not lirc.check_hardware_settings(remote) and
             self.__confirm_rewrite_configuration(remote)):
@@ -270,7 +270,7 @@ class RemoteControlProperties(object):
             progress_dialog.destroy()
 
             if not granted:
-                return;
+                return
 
             try:
                 service = backend.get_service()
@@ -443,7 +443,7 @@ class RemoteControlProperties(object):
         xpad = widget.get_child().allocation.x - widget.allocation.x
         self.__alignment_remote_selection.set_padding(0, 0, xpad, 0)
 
-    def _on_vendor_list_changed(self, vendor_list):
+    def _on_receiver_vendor_list_changed(self, vendor_list):
         '''
         Change the combobox to show the list of models for the selected 
         manufacturer:
@@ -529,8 +529,8 @@ class RemoteControlProperties(object):
 
         self._on_spinbutton_device_value_changed()
 
-    def _on_combo_device_changed(self, combo=None):
-        '''Handle changes to device combo-box.'''
+    def _on_receiver_combo_device_changed(self, combo=None):
+        '''Handle changes to receiver device combo-box.'''
 
         receiver = self.selected_receiver
         device = self.selected_device
@@ -553,7 +553,7 @@ class RemoteControlProperties(object):
 
         self.selected_device = ('%d' % self.__spinbutton_device.get_value())
 
-    def _on_product_list_changed(self, product_list):
+    def _on_receiver_product_list_changed(self, product_list):
         '''Handle selection changes to receiver product list.'''
 
         # lookup selection:
@@ -820,7 +820,7 @@ class RemoteControlProperties(object):
         '''
 
         if(parent_dialog is None):
-          parent_dialog = self.__dialog;
+            parent_dialog = self.__dialog
 
         if parent_dialog == None:
             logging.warning('_unlock() called before the dialog ' +

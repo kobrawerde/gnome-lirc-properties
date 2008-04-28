@@ -1,5 +1,12 @@
 2008-04-28  Murray Cumming  <murrayc@murrayc.com>
 
+	* data/gnome-lirc-properties.glade:
+	* gnome_lirc_properties/ui/RemoteControlProperties.py:
+	Change some signal handler names to have a _on_receiver prefix, to 
+	make things a bit clearer.
+
+2008-04-28  Murray Cumming  <murrayc@murrayc.com>
+
 	* gnome_lirc_properties/net/services.py: post_file(): 
 	catch httplib.HTTPException as well as the existing urllib2 errors, 
 	because multipart_opener.open() raises this exception. This fixes the 

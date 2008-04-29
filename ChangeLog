@@ -1,5 +1,20 @@
 2008-04-29  Murray Cumming  <murrayc@murrayc.com>
 
+	* gnome_lirc_properties/net/services.py (post_file,
+	RetrieveTarballThread._retrieve(): Document some exceptions that this 
+	can throw.
+	RetrieveTarballThread._retrieve_checksum(): Catch exceptions 
+	separately so we can log more details.
+	RetrieveTarballThread._retrieve_archive(): Catch HTTPException 
+	as well as the existing exceptions, so we can catch BadStatusLine.
+	Add some logging.
+
+	This fixes the crash and hang in bug #529853, though it does not explain 
+	why we have an error. (The .tar.gz file exists, but is of 0 size, which 
+	should probably be OK.)
+
+2008-04-29  Murray Cumming  <murrayc@murrayc.com>
+
 	* data/gnome-lirc-properties.glade: Removed the <small></small> 
 	device name label, because it is confusing to translators.
 	This fixes bug #530348 (Wouter Bolsterlee).

@@ -112,10 +112,15 @@ def post_file(target_uri, filename,
             finished_callback(extract_html_message(response) or
                               (_('Upload of %s succeeded.') % context))
 
-    except (urllib2.HTTPError, urllib2.URLError, httplib.HTTPException), ex:
+    except urllib2.HTTPError, ex:
+        logging.error("post_file(): HTTPError exception: code=%d, message=%s\n" % (ex.code, ex.message))
+        if failure_callback:
+            error = NetworkError(_('Upload of %s failed') % context, ex)
+            failure_callback(error.message)
+  
+    except (urllib2.URLError, httplib.HTTPException), ex:
         # Note: When this catches an httplib.BadStatusLine, the ex.message is empty:
-        print("debug: post_file() exception: %s\n" % ex.message)
-
+        logging.error("urlopen() exception: type=%s, message=%s\n" % (type(ex), ex.message))
         if failure_callback:
             error = NetworkError(_('Upload of %s failed') % context, ex)
             failure_callback(error.message)
@@ -145,7 +150,9 @@ class RetrieveTarballThread(Thread):
         self.reference_time = None
 
     def _retrieve(self, request, target=None):
-        '''Reads from a file-like object, and reports progress to the main thread.'''
+        '''Reads from a file-like object, and reports progress to the main thread.
+           This can throw: urllib2.HTTPError, urllib2.URLError, httplib.HTTPException
+        '''
 
         response = urllib2.urlopen(request)
         headers = response.info()
@@ -185,12 +192,25 @@ class RetrieveTarballThread(Thread):
             self.__action_label = _('Downloading checksum list...')
             content, headers = self._retrieve(self.__checksum_uri)
 
-        except (urllib2.HTTPError, urllib2.URLError), ex:
+        except urllib2.HTTPError, ex:
+            logging.error("RetrieveTarballThread._retrieve_checksum(): _retrieve() threw HTTPError exception: code=%d, message=%s\n" % (ex.code, ex.message))
             raise NetworkError(_('Cannot retrieve checksum list.'), ex)
+        except (urllib2.URLError, httplib.HTTPException), ex:
+            # Note: When this catches an httplib.BadStatusLine, the ex.message is empty:
+            logging.error("RetrieveTarballThread._retrieve_checksum(): _retrieve() threw exception: type=%s, message=%s\n" % (type(ex), ex.message))
+            raise NetworkError(_('Cannot retrieve checksum list.'), ex)
+
+        if headers is None:
+            raise NetworkError(_('Cannot retrieve checksum list.'),
+                               _('Empty headers.'))
 
         if 'text/plain' != headers['content-type']:
             raise NetworkError(_('Cannot retrieve checksum list.'),
                                _('Unexpected content type.'))
+
+        if content is None:
+            raise NetworkError(_('Cannot retrieve checksum list.'),
+                               _('Empty content.'))
 
         checksums = dict([
             reversed(line.rstrip().split('  '))
@@ -204,23 +224,33 @@ class RetrieveTarballThread(Thread):
         try:
             self.__action_label = _('Downloading file archive...')
 
+            logging.info("RetrieveTarballThread._retrieve_archive(): calling urllib2.Request() with __tarball_uri=%s\n" % self.__tarball_uri)
             request = urllib2.Request(self.__tarball_uri)
+            logging.info("RetrieveTarballThread._retrieve_archive(): __tarball_uri=%s, urllib2.Request() was successful.\n" % self.__tarball_uri)
 
             if self.reference_time is not None:
                 timestamp = time.ctime(self.reference_time)
                 request.add_header('If-Modified-Since', timestamp)
 
             self.__tempfile = NamedTemporaryFile(prefix='remote-updates-', suffix='.tar.gz')
+            logging.info("RetrieveTarballThread._retrieve_archive(): calling retrieve() with tempfile.\n")
             return self._retrieve(request, target=self.__tempfile)
 
         except urllib2.HTTPError, ex:
             if httplib.NOT_MODIFIED != ex.code:
+                logging.error("RetrieveTarballThread._retrieve_archive(): __tarball_uri=%s, exception: type=%s, message=%s\n" % (self.__tarball_uri, type(ex), ex.message))
                 raise NetworkError(_('Cannot retrieve file archive'), ex)
 
             elif self.on_success:
                 report(self.on_success, ex, ex.info())
 
         except urllib2.URLError, ex:
+            logging.error("RetrieveTarballThread._retrieve_archive(): __tarball_uri=%s, exception: type=%s, message=%s\n" % (self.__tarball_uri, type(ex), ex.message))    
+            raise NetworkError(_('Cannot retrieve file archive.'), ex)
+
+        except httplib.HTTPException, ex:
+            # Note: When this catches an httplib.BadStatusLine, the ex.message is empty:
+            logging.error("RetrieveTarballThread._retrieve_archive(): __tarball_uri=%s, exception: type=%s, message=%s\n" % (self.__tarball_uri, type(ex), ex.message))
             raise NetworkError(_('Cannot retrieve file archive.'), ex)
 
         return None, None
@@ -235,6 +265,9 @@ class RetrieveTarballThread(Thread):
             if content is None:
                 return True
 
+            if headers is None:
+                return False
+
             # Update last-modified timestamp from response header:
             timestamp = headers.get('last-modified')
 
@@ -248,7 +281,7 @@ class RetrieveTarballThread(Thread):
         except NetworkError, ex:
             report(self.on_failure, ex.message)
             if ex.cause:
-                print("debug: NetworkError: %s\n", ex.cause.message)
+                logging.error("NetworkError: %s\n", ex.cause.message)
 
             return False
 

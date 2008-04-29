@@ -1,3 +1,9 @@
+2008-04-29  Murray Cumming  <murrayc@murrayc.com>
+
+	* data/gnome-lirc-properties.glade: Removed the <small></small> 
+	device name label, because it is confusing to translators.
+	This fixes bug #530348 (Wouter Bolsterlee).
+
 2008-04-28  Murray Cumming  <murrayc@murrayc.com>
 
 	* data/gnome-lirc-properties.glade: Marked gtk-* icon names as not 

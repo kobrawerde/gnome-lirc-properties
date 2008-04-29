@@ -1,5 +1,10 @@
 2008-04-29  Murray Cumming  <murrayc@murrayc.com>
 
+	* data/gnome-lirc-properties.glade: Improve some mnemonics, fixing 
+	bug #530349 (Wouter Bolsterlee).
+
+2008-04-29  Murray Cumming  <murrayc@murrayc.com>
+
 	* gnome_lirc_properties/net/services.py (post_file): Improve the logging, 
 	so we see what URL is having a problem.
 

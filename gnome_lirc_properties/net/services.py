@@ -113,14 +113,14 @@ def post_file(target_uri, filename,
                               (_('Upload of %s succeeded.') % context))
 
     except urllib2.HTTPError, ex:
-        logging.error("post_file(): HTTPError exception: code=%d, message=%s\n" % (ex.code, ex.message))
+        logging.error("post_file(): target_uri=%s, HTTPError exception: code=%d, message=%s\n" % (target_uri, ex.code, ex.message))
         if failure_callback:
             error = NetworkError(_('Upload of %s failed') % context, ex)
             failure_callback(error.message)
   
     except (urllib2.URLError, httplib.HTTPException), ex:
         # Note: When this catches an httplib.BadStatusLine, the ex.message is empty:
-        logging.error("urlopen() exception: type=%s, message=%s\n" % (type(ex), ex.message))
+        logging.error("post_file(): target_uri=%s, exception: type=%s, message=%s\n" % (target_uri, type(ex), ex.message))
         if failure_callback:
             error = NetworkError(_('Upload of %s failed') % context, ex)
             failure_callback(error.message)

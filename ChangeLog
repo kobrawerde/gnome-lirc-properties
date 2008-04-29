@@ -1,5 +1,12 @@
 2008-04-29  Murray Cumming  <murrayc@murrayc.com>
 
+	* gnome_lirc_properties/net/services.py post_file(),
+	RetrieveTarballThread._retrieve(),
+	RetrieveTarballThread._retrieve_archive(): Added more logging and 
+	TODOS because upload/download hang when the URIs are totally bogus.
+
+2008-04-29  Murray Cumming  <murrayc@murrayc.com>
+
 	* data/gnome-lirc-properties.glade: Improve some mnemonics, fixing 
 	bug #530349 (Wouter Bolsterlee).
 

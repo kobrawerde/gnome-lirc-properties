@@ -106,7 +106,10 @@ def post_file(target_uri, filename,
     # Passing a request body makes this a POST instead of a GET request:
 
     try:
+        logging.info("post_file(): Calling multipart_opener.open(): target_uri=%s\n" % target_uri)
+        # TODO: This hangs (or has a very long timeout) if the URI does not even exist:
         response = multipart_opener.open(target_uri, params)
+        logging.info("post_file(): After calling multipart_opener.open(): target_uri=%s\n" % target_uri)
 
         if finished_callback:
             finished_callback(extract_html_message(response) or
@@ -154,7 +157,10 @@ class RetrieveTarballThread(Thread):
            This can throw: urllib2.HTTPError, urllib2.URLError, httplib.HTTPException
         '''
 
+        logging.info("RetrieveTarballThread._retrieve(): Calling urllib2.urlopen()\n")
+        #TODO: This hangs (or has a very long timeout) if the URI does not even exist:
         response = urllib2.urlopen(request)
+        logging.info("RetrieveTarballThread._retrieve(): After calling urllib2.urlopen()\n")
         headers = response.info()
 
         if target is None:
@@ -226,7 +232,7 @@ class RetrieveTarballThread(Thread):
 
             logging.info("RetrieveTarballThread._retrieve_archive(): calling urllib2.Request() with __tarball_uri=%s\n" % self.__tarball_uri)
             request = urllib2.Request(self.__tarball_uri)
-            logging.info("RetrieveTarballThread._retrieve_archive(): __tarball_uri=%s, urllib2.Request() was successful.\n" % self.__tarball_uri)
+            logging.info("RetrieveTarballThread._retrieve_archive(): __tarball_uri=%s, urllib2.Request() was successful. request=%s.\n" % (self.__tarball_uri, request))
 
             if self.reference_time is not None:
                 timestamp = time.ctime(self.reference_time)

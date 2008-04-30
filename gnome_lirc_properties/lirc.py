@@ -197,14 +197,35 @@ class Remote(object):
 
         mechanism.WriteRemoteConfiguration(self.configuration)
 
+    def __set_contributor(self, value):
+        '''
+        Updates the contributor property of this remote.
+        '''
+        
+        self.__contributor = value
+
+    def __set_vendor(self, value):
+        '''
+        Updates the vendor property of this remote.
+        '''
+        
+        self.__vendor = value
+
+    def __set_product(self, value):
+        '''
+        Updates the product property of this remote.
+        '''
+        
+        self.__product = value
+
     def __repr__(self):
         return '<Remote: %s>' % self.__name
 
     # pylint: disable-msg=W0212
     name = property(lambda self: self.__name)
-    product = property(lambda self: self.__product)
-    vendor = property(lambda self: self.__vendor)
-    contributor = property(lambda self: self.__contributor)
+    product = property(lambda self: self.__product, __set_product)
+    vendor = property(lambda self: self.__vendor, __set_vendor)
+    contributor = property(lambda self: self.__contributor, __set_contributor)
 
     configuration = property(__get_configuration)
 

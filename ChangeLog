@@ -1,3 +1,14 @@
+2008-04-30  Murray Cumming  <murrayc@murrayc.com>
+
+	* gnome_lirc_properties/lirc.pyL RemoteL Added __set_contributor(),
+	  __set_vendor(), and __set_product(). __repr__(): Used them to make 
+	these properties writeable.
+	* gnome_lirc_properties/ui/CustomConfiguration.py;
+	  CustomConfiguration._on_response(): Set these properties so that  
+	they are written to the custom lird.conf.gnome file, so they are shown 
+	again when reopening the custom configuration.
+	This fixes bug #530504.
+
 2008-04-29  Murray Cumming  <murrayc@murrayc.com>
 
 	* gnome_lirc_properties/net/services.py post_file(),

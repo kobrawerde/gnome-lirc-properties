@@ -269,7 +269,7 @@ def show_upload_success(context):
 
     return html_page(context, httplib.OK, _('Upload Succeeded'),
                      _('Upload of your configuration file succeeded. '
-                       'Thanks alot for contributing.'))
+                       'Thanks for contributing.'))
 
 def send_archive(context, filename, must_exist=False):
     '''Sends the specified tarball.'''

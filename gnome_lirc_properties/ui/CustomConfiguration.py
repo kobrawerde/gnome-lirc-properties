@@ -386,6 +386,8 @@ class CustomConfiguration(object):
         def on_upload_finished(message):
             '''Informs the user about successful uploads.'''
 
+            # The message is usually some "thanks" text from the server side:
+            # TODO: Is this wise? It will not be translated?
             show_message(self.__dialog, _('Upload Succeeded'),
                          message, message_type=gtk.MESSAGE_INFO)
             self.__dialog.set_sensitive(True)
@@ -692,6 +694,13 @@ class CustomConfiguration(object):
         if gtk.RESPONSE_OK == response:
             try:
                 service = backend.get_service()
+
+                # Get the entered basic information, 
+                # so it will be written to the configuration file: 
+                self.__remote.contributor = self.contributor_name
+                self.__remote.vendor = self.vendor_name
+                self.__remote.product = self.product_name
+
                 self.__remote.update_configuration(service)
                 service.ManageLircDaemon('restart')
 

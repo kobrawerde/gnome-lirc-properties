@@ -117,7 +117,7 @@
 
       <itemizedlist>
         <listitem><para>Sharing your newly created and corrected remote configuration files.</para></listitem>
-        <listitem><para>Reporting receivers supported by LIRC, but ignored by this control panel.</para></listitem>
+        <listitem><para>Reporting receivers supported by LIRC but ignored by this control panel.</para></listitem>
         <listitem><para>Reporting other issues.</para></listitem>
         <listitem><para>Translating the program and its manual to your native language.</para></listitem>
       </itemizedlist>
@@ -185,13 +185,13 @@
           <term>Receiver Selection.</term>
           <listitem>
             <para>
-              The drop-down lists in this area allow your to select brand
+              The drop-down lists in this area allow you to select the brand
               and model of your infrared receiver.
             </para>
 
             <para>
-              For few devices you'll have to select which physical device to use.
-              In that case the <guilabel>Device</guilabel> entry is sensitiv.
+              For a few devices you'll have to select which physical device to use.
+              In that case the <guilabel>Device</guilabel> entry is sensitive.
             </para>
           </listitem>
         </varlistentry>
@@ -200,9 +200,9 @@
           <term>Remote Selection.</term>
           <listitem>
             <para>
-              The widgets in this area allow you to select brand in model of
-              your infrared remote. In many cases it is sufficient to just
-              use the supplied remote control.
+              The widgets in this area allow you to select the brand and model of
+              your infrared remote control. In many cases it is sufficient to just
+              use remote control supplied with your receiver.
             </para>
           </listitem>
         </varlistentry>
@@ -291,7 +291,7 @@
     <title>Preferences</title>
 
     <para>
-      To customize your remote's configuration, activate
+      To customize your remote control's configuration, activate
       <guilabel>Use different remote control</guilabel> and press the
       <guibutton>Custom Configuration</guibutton> button. The <guilabel>Custom
       Configuration</guilabel> dialog contains the following tabbed sections:
@@ -316,7 +316,7 @@
         <screenshot>
           <mediaobject>
             <imageobject><imagedata fileref="figures/custom-remote-model.png" format="PNG"/></imageobject>
-            <textobject><phrase>Shows the <guilabel>Remote Model</guilabel> section of the <guilabel>Customization Configuration</guilabel> dialog. Contains text entries for the remote's manufacturer, model and the configuration's contributor.</phrase></textobject>
+            <textobject><phrase>Shows the <guilabel>Remote Model</guilabel> section of the <guilabel>Customization Configuration</guilabel> dialog. Contains text entries for the remote control's manufacturer, model and the configuration's contributor.</phrase></textobject>
           </mediaobject>
         </screenshot>
       </figure>
@@ -324,12 +324,12 @@
       <variablelist>
         <varlistentry>
           <term><guilabel>Manufacturer</guilabel></term>
-          <listitem><para>Put the official name of your remote's manufacturer here.</para></listitem>
+          <listitem><para>Put the official name of your remote control's manufacturer here.</para></listitem>
         </varlistentry>
 
         <varlistentry>
           <term><guilabel>Model</guilabel></term>
-          <listitem><para>Put the official model name of your remote's here.</para></listitem>
+          <listitem><para>Put the official model name of your remote control here.</para></listitem>
         </varlistentry>
 
         <varlistentry>
@@ -346,7 +346,7 @@
       <title>Basic Configuration</title>
       <para>
         This section shows the basic configuration properties of your IR remote.
-        Your remote cannot be used, unless this parameters are recognized.
+        Your remote cannot be used unless these parameters are recognized.
         Press the <guibutton>Detect</guibutton> button to start guided
         detection of those properties.
       </para>
@@ -365,8 +365,8 @@
     <sect2 id="gnome-lirc-properties-prefs-keys">
       <title>Key Codes</title>
       <para>
-        This section allows assignment of key-codes to well-known name.
-        Double-click a key-codes row to start learning mode. Use names
+        This section allows assignment of key-codes to well-known names.
+        Double-click a key-code row to start the learning mode. Use names
         from the default namespace whenever possible, for maximum
         interoperability.
       </para>
@@ -426,7 +426,7 @@
     <para>
      &app; was written by Mathias Hasselmann (<email>mathias@openismus.com</email>) and Murray
      Cumming (<email>murrayc@murrayc.com</email>. To find more information about &app;, please
-     visit the <ulink url="https://code.fluendo.com/remotecontrol/trac/" type="http">project
+     visit the <ulink url="http://live.gnome.org/gnome-lirc-properties" type="http">project
      page</ulink>.
     </para>
 

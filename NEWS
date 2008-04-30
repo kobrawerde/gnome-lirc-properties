@@ -1,3 +1,28 @@
+0.2.7:
+
+* Try to restart the key listener when it fails. This seems to happen sometimes, 
+  and the restart is usually successful.
+  (Mathias Hasselmann) Bug #529909
+* Ask for PolicyKit authorization before rewriting a broken configurations at 
+  startup.
+* Support the Snapstream Firefly even when it is called "Snapstream Firefly" 
+  instead of "Snapstream_Firefly_R1000" in the configuration files, because 
+  this seems to have changed in debian/ubuntu's lirc package.
+* Fix a crash at startup when the configured remote control's name is no longer 
+  in the lirc configuration files in the lirc package.
+  (Murray Cumming) Bug #529854.
+* Do not lose vendor, model and contributor names when re-opening custom 
+  configuration.
+  (Murray Cumming) Bug #530504.
+* Improve error handling with upload and update.
+  (Murray Cumming) Bug #529853 and Bug #529903
+* Use bug-buddy.
+  (Bastien Nocera) Bug #530360
+* Improve keyboard mnemonics
+  (Murray Cumming) Bug #530349 (Wouter Bolsterlee).
+* Improved strings for translators.
+  (Murray CumminG) Bug #530348 (Wouter Bolsterlee).
+
 0.2.6:
 
 * Check the lirc configuration files at startup and offer to fix them if 

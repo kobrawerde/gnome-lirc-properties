@@ -1,3 +1,9 @@
+2008-04-30  Claude Paroz  <claude@2xlibre.net>
+
+	* POTFILES.in:
+	* POTFILES.skip: Inverted desktop.in.in vs desktop.in reference in
+	POTFILES.in/skip
+
 2008-04-26  Wouter Bolsterlee  <wbolster@svn.gnome.org>
 
 	* LINGUAS: Added.

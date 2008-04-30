@@ -1,4 +1,4 @@
-data/gnome-lirc-properties.desktop.in
+data/gnome-lirc-properties.desktop.in.in
 data/gnome-lirc-properties.glade
 gnome_lirc_properties/__init__.py
 gnome_lirc_properties/backend.py

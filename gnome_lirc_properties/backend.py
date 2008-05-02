@@ -100,6 +100,7 @@ class ExternalToolDriver(PolicyKitService):
         self.__line_buffer = ''
         self.__pid = -1
         self.__fd = -1
+        self._hup_expected = False
 
     def _spawn_external_tool(self):
         '''Launches the external tool backing this service.'''
@@ -162,6 +163,7 @@ class ExternalToolDriver(PolicyKitService):
         self.__pid, self.__fd = self._spawn_external_tool()
 
         if -1 != self.__fd:
+            self._hup_expected = False
             gobject.io_add_watch(self.__fd,
                                  gobject.IO_IN | gobject.IO_HUP,
                                  self.__io_handler)
@@ -246,6 +248,7 @@ class IrRecordDriver(ExternalToolDriver):
     _token_next_key         = 'Please enter the name for the next button'
     _token_wait_toggle_mask = 'If you can\'t see any dots appear'
     _token_finished         = 'Successfully written config file.'
+    _token_almost_finished  = 'Creating config file in raw mode.' # Shown when _token_finished should not be expected.
 
     # Last instance index for automatic object path creation:
     __last_instance = 0
@@ -269,6 +272,7 @@ class IrRecordDriver(ExternalToolDriver):
             self._cmdargs.append(filename)
 
         super(IrRecordDriver, self).__init__(connection, path)
+        logging.info("__init__.IrRecordDriver(): irrecord cmdargs=%s", self._cmdargs)
 
     def _on_run_external_tool(self):
         '''Enters to the working directory and executes irrecord.'''
@@ -296,7 +300,15 @@ class IrRecordDriver(ExternalToolDriver):
     def _on_hangup(self):
         '''Shutdown the driver, when irrecord terminates unexpectedly.'''
 
-        if list(self.locations):
+        if(self._hup_expected):
+            # This was expected. It's a success:
+            filename = os.path.join(self._workdir, self._filename)
+            configuration = open(filename).read()
+            self.ReportSuccess(configuration)
+            self.Release()
+
+        if list(self.locations): #self.locations is in the dbus base class. This check prevents a shutdown when the dbus service should be kept alive.
+            # irrecord stopped when we were expecting more interaction:
             self.ReportFailure(_('Custom remote control configuration aborted unexpectedly.'))
             self.Release()
 
@@ -321,6 +333,7 @@ class DetectParametersDriver(IrRecordDriver):
     def __init__(self, connection, driver, device):
         super(DetectParametersDriver, self).__init__(connection, driver, device)
         self.__report_progress = False
+        self._hup_expected = False
 
     def _prepare_workdir(self):
         '''Removes the configuration file from working directory when needed.'''
@@ -382,6 +395,15 @@ class DetectParametersDriver(IrRecordDriver):
             configuration = open(filename).read()
             self.ReportSuccess(configuration)
             self.Release()
+            return
+
+        if line.startswith(self._token_almost_finished):
+            # For some remotes (such as the XBox replacement remote, 
+            # with the StreamZap receiver, there is no additional output after 
+            # pressing Enter to stop the key-code learning, 
+            # so _token_finished is never seen,
+            # but in that case we see this message instead beforehand.
+            self._hup_expected = True
             return
 
     def _on_next_chunk(self, chunk):

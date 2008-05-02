@@ -1,5 +1,20 @@
 2008-05-02  Murray Cumming  <murrayc@murrayc.com>
 
+	* gnome_lirc_properties/backend.py:
+	ExternalToolDriver.__init__: Add a _hup_expected member variable, 
+	initializing it to False.
+	ExternalToolDriver.Execute: Initialize it to False here too.
+	DetectParametersDriver._on_next_line): Detect an extra line from 
+	irrecord that suggests that it will finish later without the success 
+	text.
+	IrRecordDriver._on_hangup(): Finish sucessfully if _hup_expected 
+	instead of aborting.
+
+	This fixes basic learning with the XBox remote, though irrecord is 
+	not capable of then learning key codes for it.
+
+2008-05-02  Murray Cumming  <murrayc@murrayc.com>
+
 	* Makefile.am: dist autogen.sh because it is useful sometimes.
 
 0.2.7:

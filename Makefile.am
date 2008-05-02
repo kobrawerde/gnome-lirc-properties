@@ -3,6 +3,7 @@ bin_SCRIPTS = bin/gnome-lirc-properties
 man1_MANS = man/gnome-lirc-properties.1
 
 EXTRA_DIST = \
+        autogen.sh \
 	bin/lirc-receiver-list \
 	bin/todo-list \
 	data/overrides.conf \

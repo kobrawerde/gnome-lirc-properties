@@ -363,7 +363,7 @@ class RemotesDatabase(object):
 
         # Cope with Unknown vendors:
         # We store 'Unknown' (not translated) in the configuration file in backend.WriteRemoteConfiguration() if vendor is None:
-        vendor_name = vendor;
+        vendor_name = vendor
         if(vendor_name == 'Unknown'):
           vendor_name = None
 
@@ -867,7 +867,13 @@ class KeyListener(gobject.GObject):
 
         if condition & gobject.IO_IN:
             logging.info('reading from lirc socket %d...', fd)
-            packet = self.__socket and self.__socket.recv(128)
+
+            try:
+              # TODO: What is this 128? No magic numbers in code, please.
+              packet = self.__socket and self.__socket.recv(128)
+            except SocketError, ex:
+              logging.error('__on_io_event(): socket.recv() threw exception reading from lirc socket: %s', ex.message)
+              packet = ''
 
             logging.info('...%d bytes received.', len(packet))
             self.__buffer += packet
@@ -1064,7 +1070,7 @@ def check_hardware_settings(selected_remote):
             return False
 
         if selected_remote is None:
-            return False;
+            return False
 
         if (remote.vendor == selected_remote.vendor and
             remote.product == selected_remote.product):

@@ -1,3 +1,11 @@
+2008-05-15  Murray Cumming  <murrayc@murrayc.com>
+
+	* gnome_lirc_properties/lirc.py: KeyListener.__on_io_event():
+	Catch a SocketError when doing socket.recv(), to avoid a possible crash.
+	Ubuntu bug 
+	http://bugs.launchpad.net/ubuntu/+source/gnome-lirc-properties/+bug/224954
+	(not filed upstream).
+
 2008-05-02  Murray Cumming  <murrayc@murrayc.com>
 
 	* gnome_lirc_properties/backend.py:

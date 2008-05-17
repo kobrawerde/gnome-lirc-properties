@@ -43,6 +43,8 @@ class HalDevice(object):
         self.__bus = bus
         self.__udi = udi
 
+        self.__capabilities = None
+
     def __getitem__(self, key):
         try:
             return self.__obj.GetProperty(key)
@@ -141,13 +143,30 @@ class HalDevice(object):
 
         return None
 
+    def __get_capabilities(self):
+        '''Query device capabilities as published in sysfs.'''
+
+        if self.__capabilities is None:
+            sysfs_path = self['linux.sysfs_path']
+            caps_path = os.path.join(sysfs_path, '..', 'capabilities')
+            self.__capabilities = dict()
+
+            if os.path.isdir(caps_path):
+                for name in os.listdir(caps_path):
+                    caps = open(os.path.join(caps_path, name)).read()
+                    caps = [int(value, 16) for value in caps.split()]
+                    self.__capabilities[name] = tuple(caps)
+
+        return self.__capabilities
+
     def __str__(self):
         return self.__udi
     def __repr__(self):
         return '<HalDevice: %s>' % self.__udi
 
     # pylint: disable-msg=W0212
-    udi = property(lambda self: self.__udi)
+    udi = property(fget=lambda self: self.__udi)
+    capabilities = property(fget=__get_capabilities)
 
 class HardwareDatabase(SafeConfigParser):
     '''Information about supported hardware.'''
@@ -409,8 +428,14 @@ class HardwareManager(gobject.GObject):
             if product_name is None or device_node is None:
                 continue
 
-            # skip input devices that have the word "keyboard" in their product name:
-            if product_name.lower().find('keyboard') >= 0:
+            # Skip input devices that seem to be keyboards. Currently keyboards
+            # are detected by counting the number of supported keys. The original
+            # PC keyboard had 85 keys, so maybe this is a reasonable boundary.
+            # Maybe it would make more sense to look for typical key-codes
+            # like SHIFT, CTRL, CAPSLOCK or NUMLOCK?
+            keys = device.capabilities.get('key')
+
+            if keys and len(decode_bitmap(keys)) >= 85:
                 continue
 
             # report findings:
@@ -482,3 +507,14 @@ class HardwareManager(gobject.GObject):
         self.__search_canceled = True
 
     devinput_receivers = property(__get_devinput_receivers)
+
+def decode_bitmap(bits):
+    '''Decodes a bitmap as published in sysfs.'''
+
+    values, offset = list(), 0
+
+    for b in reversed(bits):
+        values += [offset + i for i in range(32) if b & (1 << i)]
+        offset += 32
+
+    return tuple(values)

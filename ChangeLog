@@ -1,5 +1,18 @@
 2008-05-17  Mathias Hasselmann  <mathias@openismus.com>
 
+	Use better method for filtering out keyboards during auto-detection.
+	Currently just the device name is checked to contain the sub-string
+	"keyboard". Now each input device with at least 85 keys is considered
+	a keyboard. Should fix LP#221177.
+
+	* gnome_lirc_properties/hardware.py
+	 (HalDevice.__init__(), HalDevice.__get_capabilities(),
+	  HardwareManager.__find_input_layer_receivers()): Detect input device
+	  capabilities and use this information to determinate the number of
+	  keys an input device has. Instead of simply skipping
+
+2008-05-17  Mathias Hasselmann  <mathias@openismus.com>
+
 	Recover .gitignore file.
 
 	* .gitignore: Restore this file.

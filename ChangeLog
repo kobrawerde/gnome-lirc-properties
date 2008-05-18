@@ -1,3 +1,16 @@
+2008-05-18  Mathias Hasselmann  <mathias@openismus.com>
+
+	Use configure script to detect the Linux Input Device driver name.
+
+	* gnome_lirc_properties/config.py.in:
+	* configure.ac: Retrieve input driver name from lircd,
+	  and store that information in config.LIRC_INPUT_DRIVER.
+	* gnome_lirc_properties/hardware.py
+	 (HardwareManager._on_device_added()): Use config.LIRC_INPUT_DRIVER
+	  instead of hard-coded string to configure hot-plugged input devices.
+
+	* po/.gitignore: Updated to include *.gmo files.
+
 2008-05-17  Mathias Hasselmann  <mathias@openismus.com>
 
 	Use better method for filtering out keyboards during auto-detection.

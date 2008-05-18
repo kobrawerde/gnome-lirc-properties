@@ -27,7 +27,7 @@ import os, os.path
 
 from ConfigParser          import SafeConfigParser
 from gettext               import gettext as _
-from gnome_lirc_properties import lirc
+from gnome_lirc_properties import config, lirc
 
 HAL_SERVICE = 'org.freedesktop.Hal'
 HAL_MANAGER_PATH = '/org/freedesktop/Hal/Manager'
@@ -255,7 +255,7 @@ class HardwareManager(gobject.GObject):
 
             properties = {
                 'compatible-remotes': 'linux-input-layer',
-                'lirc-driver': 'devinput',
+                'lirc-driver': config.LIRC_INPUT_DRIVER,
                 'device': device_node,
                 'udi': udi,
             }

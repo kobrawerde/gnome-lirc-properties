@@ -121,6 +121,15 @@ else
   AC_MSG_WARN([$LIRC_IRRECORD doesn't support the --resume switch. Please grab its sources and apply $patch.])
 fi
 
+dnl find name of input device layer driver
+
+AC_ARG_WITH([devinput_driver],
+            AS_HELP_STRING([--with-devinput-driver],
+                           [The name of the Linux Input Device driver.]),
+            [], [devinput_driver="`lircd --driver=help 2>&1 | sed -ne 's:^\s*\(dev/\?input\)\s*$:\1:p'`"])
+
+AC_SUBST([devinput_driver])
+
 dnl generate files ===
 
 AC_CONFIG_FILES([Makefile

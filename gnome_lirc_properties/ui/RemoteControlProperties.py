@@ -65,15 +65,24 @@ class RemoteControlProperties(object):
     def __setup_models(self):
         '''Initialize model objects of the dialog.'''
 
+        def refilter_vendor_list(*args):
+            '''Refilter the vendor list model when receivers where added/removed.'''
+
+            gobject.idle_add(lambda:
+                self.__combo_receiver_vendor_list.get_model().refilter() and
+                False)
+
         # pylint: disable-msg=W0201,E1101
 
         receivers_db = hardware.HardwareDatabase(self.__ui.relative_file('receivers.conf'))
         self.__remotes_db = lirc.RemotesDatabase()
 
         self.__hardware_manager = hardware.HardwareManager(receivers_db)
-        self.__hardware_manager.connect('search-progress', self._on_search_progress)
-        self.__hardware_manager.connect('search-finished', self._on_search_finished)
-        self.__hardware_manager.connect('receiver-found',  self._on_receiver_found)
+        self.__hardware_manager.connect('search-progress',  self._on_search_progress)
+        self.__hardware_manager.connect('search-finished',  self._on_search_finished)
+        self.__hardware_manager.connect('receiver-found',   self._on_receiver_found)
+        self.__hardware_manager.connect('receiver-added',   refilter_vendor_list)
+        self.__hardware_manager.connect('receiver-removed', refilter_vendor_list)
 
         self.__receiver_vendors = model.ReceiverVendorList(self.__hardware_manager)
         self.__receiver_vendors.load(receivers_db)
@@ -240,8 +249,7 @@ class RemoteControlProperties(object):
             remote.vendor, remote.product), buttons=responses))
 
     def __restore_hardware_settings(self):
-        '''Restore hardware settings from configuration files.
-	'''
+        '''Restore hardware settings from configuration files.'''
 
         # We really do not want to rewrite any configuration files
         # at that stage, so __configuration_level should be non-zero.
@@ -560,7 +568,15 @@ class RemoteControlProperties(object):
         tree_iter = product_list.get_active_iter()
 
         if tree_iter is None:
-            product_list.set_active(0)
+            # Select first receiver model for current vendor when none is
+            # selected yet, but we have to consider the model list to be empty
+            # when doing this to prevent endless loops. Model lists become
+            # empty for instance when unplugging the last Linux Input device.
+            tree_iter = product_list.get_model().get_iter_first()
+
+            if tree_iter is not None:
+                product_list.set_active_iter(tree_iter)
+
             return
 
         receiver, = product_list.get_model().get(tree_iter, 1)
@@ -952,18 +968,25 @@ class RemoteControlProperties(object):
 
         try:
             # highlight the selected receiver's vendor name:
+            visible_vendors = self.__combo_receiver_vendor_list.get_model()
             tree_iter = self.__receiver_vendors.find_iter(vendor_name)
-
-            if(tree_iter == None):
-                tree_iter = self.__receiver_vendors.get_iter_first()
-
             products = None
 
+            if tree_iter is not None:
+                try:
+                    tree_iter = visible_vendors.convert_child_iter_to_iter(tree_iter)
+
+                except RuntimeError:
+                    # WTF? Invisible columns definitly are an error and therefore
+                    # convert_child_iter_to_iter() should return None - as in GTK+.
+                    tree_iter = None
+
+            if tree_iter is None:
+                tree_iter = visible_vendors.get_iter_first()
+
             if tree_iter:
-                filter = self.__combo_receiver_vendor_list.get_model()
-                filter_iter = filter.convert_child_iter_to_iter(tree_iter)
-                self.__combo_receiver_vendor_list.set_active_iter(filter_iter)
-                products, = self.__receiver_vendors.get(tree_iter, 1)
+                self.__combo_receiver_vendor_list.set_active_iter(tree_iter)
+                products, = visible_vendors.get(tree_iter, 1)
 
             # highlight the selected receiver's product name:
             tree_iter = products and products.find_iter(product_name)

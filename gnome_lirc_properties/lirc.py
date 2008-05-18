@@ -1003,7 +1003,7 @@ class HardwareConfParser(object):
         self.__values = dict()
 
         for line in open(filename, 'r'):
-            tokens = [t.strip() for t in line.split('=', 2)]
+            tokens = [t.strip() for t in line.split('=', 1)]
 
             if len(tokens) < 2:
                 continue

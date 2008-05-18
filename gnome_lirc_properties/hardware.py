@@ -43,8 +43,6 @@ class HalDevice(object):
         self.__bus = bus
         self.__udi = udi
 
-        self.__capabilities = None
-
     def __getitem__(self, key):
         try:
             return self.__obj.GetProperty(key)
@@ -125,9 +123,18 @@ class HalDevice(object):
 
     def find_input_device(self):
         '''Find the Linux Input System device node associated with this device.'''
-        for device in self.find_children():
-            if device.get('info.category') == 'input':
-                return device['input.device']
+
+        if self.get('info.category') == 'input':
+            name = self.read_sysfs_file('..', 'name')
+
+            if name is not None:
+                return 'name=' + name.replace(' ', '?')
+
+            return self['input.device']
+
+        for child in self.find_children():
+            if child.get('info.category') == 'input':
+                return child.find_input_device()
 
         return None
 
@@ -143,21 +150,46 @@ class HalDevice(object):
 
         return None
 
-    def __get_capabilities(self):
-        '''Query device capabilities as published in sysfs.'''
+    def has_capability(self, capability):
+        '''Checks if the device has a certain capability...'''
+        return (capability in self.get('info.capabilities', []))
 
-        if self.__capabilities is None:
-            sysfs_path = self['linux.sysfs_path']
-            caps_path = os.path.join(sysfs_path, '..', 'capabilities')
-            self.__capabilities = dict()
+    def get_sysfs_path(self, *path):
+        '''Returns the path for an associated sysfs entry.'''
+        return os.path.join(self['linux.sysfs_path'], *path)
 
-            if os.path.isdir(caps_path):
-                for name in os.listdir(caps_path):
-                    caps = open(os.path.join(caps_path, name)).read()
-                    caps = [int(value, 16) for value in caps.split()]
-                    self.__capabilities[name] = tuple(caps)
+    def read_sysfs_file(self, *path):
+        '''Returns the content of an associated sysfs file.'''
+        sysfs_path = self.get_sysfs_path(*path)
 
-        return self.__capabilities
+        if os.path.isfile(sysfs_path):
+            return open(sysfs_path).read().rstrip()
+
+        return None
+
+    def is_real_keyboard(self):
+        '''
+        Try figure out if this device is a keyboard. Keyboards are detected by
+        counting the number of supported keys. The original PC keyboard had 85
+        keys, so maybe this is a reasonable boundary. Maybe it would make more
+        sense to look for typical key-codes like SHIFT, CTRL, CAPSLOCK or
+        NUMLOCK?
+        '''
+
+        # check if HAL considers this device a keyboard:
+        if self.has_capability('input.keyboard'):
+            # read and parse key-code map from sysfs:
+            keys = self.read_sysfs_file('..', 'capabilities', 'key')
+
+            if keys is not None:
+                keys = [int(value, 16) for value in keys.split()]
+                keys = decode_bitmap(keys)
+
+                # check that at least 85 key-codes are supported:
+                if len(keys) >= 85:
+                    return True
+
+        return False
 
     def __str__(self):
         return self.__udi
@@ -166,7 +198,6 @@ class HalDevice(object):
 
     # pylint: disable-msg=W0212
     udi = property(fget=lambda self: self.__udi)
-    capabilities = property(fget=__get_capabilities)
 
 class HardwareDatabase(SafeConfigParser):
     '''Information about supported hardware.'''
@@ -249,7 +280,9 @@ class HardwareManager(gobject.GObject):
 
         device = self.lookup_device(udi)
 
-        if 'input.keyboard' in device.get('info.capabilities', []):
+        if (device.has_capability('input.keyboard') and
+            not device.is_real_keyboard()):
+
             product_name = str(device['info.product'])
             device_node = str(device['input.device'])
 
@@ -419,7 +452,7 @@ class HardwareManager(gobject.GObject):
             # lookup the current device:
             device = self.lookup_device(device)
             product_name = device.get('info.product')
-            device_node = device.get('input.device')
+            device_node = device.find_input_device()
 
             # report search progress:
             self.__report_search_progress(product_name)
@@ -428,14 +461,8 @@ class HardwareManager(gobject.GObject):
             if product_name is None or device_node is None:
                 continue
 
-            # Skip input devices that seem to be keyboards. Currently keyboards
-            # are detected by counting the number of supported keys. The original
-            # PC keyboard had 85 keys, so maybe this is a reasonable boundary.
-            # Maybe it would make more sense to look for typical key-codes
-            # like SHIFT, CTRL, CAPSLOCK or NUMLOCK?
-            keys = device.capabilities.get('key')
-
-            if keys and len(decode_bitmap(keys)) >= 85:
+            # skip input devices that seem to be keyboards:
+            if device.is_real_keyboard():
                 continue
 
             # report findings:

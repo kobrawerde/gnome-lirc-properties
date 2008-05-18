@@ -1,5 +1,35 @@
 2008-05-18  Mathias Hasselmann  <mathias@openismus.com>
 
+	Don't add pure keyboards to the main window's receiver list, and use
+	the input device's human readable name instead of its device node to
+	configure input devices.
+
+	* gnome_lirc_properties/hardware.py
+	 (HalDevice.find_input_device(), HalDevice.has_capability(),
+	  HalDevice.read_sysfs_file(), HalDevice.get_sysfs_path(),
+	  HalDevice.is_real_keyboard(), HardwareManager._on_device_added(),
+	  HardwareManager.__find_input_layer_receivers()): Use human readable
+	  name instead of its device node to configure input devices. Add
+	  HalDevice.has_capability() to conveniently check if a HAL device has
+	  a certain HAL capability. Add functions to conveniently access sysfs
+	  files associated with a HAL device. Move keyboard detection code
+	  into a separate method. Don't emit 'receiver-added' signals for real
+	  keyboards.
+
+	* gnome_lirc_properties/ui/RemoteControlProperties.py
+	 (RemoteControlProperties._on_receiver_product_list_changed(),
+	  RemoteControlProperties.__set_selected_receiver(),
+	  RemoteControlProperties.__setup_models()): Refilter the remote
+	  vendor list when pluggable receivers are added or removed. Handle
+	  RuntimeErrors and prevent endless loop when the current receiver
+	  vendor has no models, which happens when unplugging the last Linux
+	  Input device.
+
+	* gnome_lirc_properties/lirc.py (HardwareConfParser.__init__()):
+	  Properly handle lines with more than one equal sign.
+
+2008-05-18  Mathias Hasselmann  <mathias@openismus.com>
+
 	Use configure script to detect the Linux Input Device driver name.
 
 	* gnome_lirc_properties/config.py.in:

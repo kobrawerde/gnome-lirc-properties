@@ -1,3 +1,11 @@
+2008-06-30  Mathias Hasselmann  <mathias@openismus.com>
+
+	Avoid TypeError with no receivers plugged in (#540900).
+
+	* gnome_lirc_properties/ui/RemoteControlProperties.py
+	 (RemoteControlProperties._unlock()):
+	  Provide default value for parent_dialog argument.
+
 2008-05-18  Mathias Hasselmann  <mathias@openismus.com>
 
 	Don't add pure keyboards to the main window's receiver list, and use

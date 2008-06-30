@@ -824,7 +824,7 @@ class RemoteControlProperties(object):
         if granted:
             self.__combo_receiver_vendor_list.grab_focus()
 
-    def _unlock(self, parent_dialog):
+    def _unlock(self, parent_dialog=None):
         '''
         Ask PolicyKit to allow the user to use our D-BUS driven backend.
         We must ask PolicyKit again later before actually using the backend,
@@ -835,7 +835,7 @@ class RemoteControlProperties(object):
         See http://bugs.freedesktop.org/show_bug.cgi?id=14600
         '''
 
-        if(parent_dialog is None):
+        if parent_dialog is None:
             parent_dialog = self.__dialog
 
         if parent_dialog == None:

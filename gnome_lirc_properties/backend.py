@@ -476,20 +476,7 @@ class LearnKeyCodeDriver(IrRecordDriver):
         return None
 
     def _spawn_external_tool(self):
-        '''Runs irrecord with --resume switch when supported.'''
-        irrecord = os.popen('%s --help' % config.LIRC_IRRECORD)
-
-        if -1 == irrecord.read().find('--resume'):
-            logging.warning('irrecord doesn\'t have --resume switch')
-
-            self.ReportFailure(_(
-                'The installed lirc does not support key code learning ' +
-                'because its irrecord command does not have the --resume ' +
-                'option. Please file a bug against your Linux distribution.'))
-
-            return 0, -1
-
-        self._cmdargs.insert(1, '--resume')
+        '''Runs irrecord.'''
         return super(LearnKeyCodeDriver, self)._spawn_external_tool()
 
 class BackendService(PolicyKitService):

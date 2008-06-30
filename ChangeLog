@@ -1,5 +1,12 @@
 2008-06-30  Bastien Nocera  <hadess@hadess.net>
 
+	* configure.ac: Remove "--resume" check
+	* gnome_lirc_properties/backend.py: Remove use of the "--resume"
+	flag for irrecord flags, as irrecord correctly resumes sessions
+	from lirc 0.8.4 onwards (Closes: #536811)
+
+2008-06-30  Bastien Nocera  <hadess@hadess.net>
+
 	* configure.ac: Check for lirc 0.8.4 and require it
 	* gnome_lirc_properties/backend.py: Fix include statement's
 	syntax, it's enclosed in "<>" now

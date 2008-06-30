@@ -142,17 +142,6 @@ AC_PATH_PROG([LIRC_IRRECORD], [irrecord])
 AC_ARG_VAR([LIRC_IRRECORD], [path of the irrecord program])
 AC_SUBST([LIRC_IRRECORD])
 
-AC_MSG_CHECKING([if irrecord supports repeative key lerning])
-if "$LIRC_IRRECORD" --help | grep -wq  -- --resume
-then
-  AC_MSG_RESULT([yes])
-else
-  AC_MSG_RESULT([no])
-
-  patch=`ls "${srcdir}/patches/"*resume*irrecord*`
-  AC_MSG_WARN([$LIRC_IRRECORD doesn't support the --resume switch. Please grab its sources and apply $patch.])
-fi
-
 dnl find name of input device layer driver
 
 AC_ARG_WITH([devinput_driver],

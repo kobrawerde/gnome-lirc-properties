@@ -42,6 +42,38 @@ AC_SUBST([ENABLE_POLICY_KIT])
 POLICY_KIT_ACTION="org.gnome.lirc-properties.mechanism.configure"
 AC_SUBST([POLICY_KIT_ACTION])
 
+dnl check for new enough lirc ===
+
+AC_PATH_PROG([LIRCD], [lircd])
+
+HAVE_LIRCD="yes"
+if test -z $LIRCD ; then
+  HAVE_LIRCD="no"
+else
+  LIRCD_VERSION=`lircd --version|head -n 1|sed 's/^lircd //'|sed 's/ (.*)//'`
+  LIRCD_MAJOR=`echo $LIRCD_VERSION | cut -d. -f1 | sed 's/[[a-zA-Z\-]].*//g'`
+  LIRCD_MINOR=`echo $LIRCD_VERSION | cut -d. -f2 | sed 's/[[a-zA-Z\-]].*//g'`
+  LIRCD_MICRO=`echo $LIRCD_VERSION | cut -d. -f3 | sed 's/[[a-zA-Z\-]].*//g'`
+  if [[ "$LIRCD_MAJOR" -eq "0" ]] && \
+	  [[ "$LIRCD_MINOR" -lt "8" ]]; then
+	  AC_MSG_WARN([lircd >= 0.8.4 is required, you have $LIRCD_VERSION])
+	  HAVE_LIRCD="no"
+  elif [[ "$LIRCD_MAJOR" -eq "0" ]] && \
+	  [[ "$LIRCD_MINOR" -eq "8" ]] && \
+	  [[ "$LIRCD_MICRO" -lt "4" ]]; then
+	  AC_MSG_WARN([lircd >= 0.8.4 is required, you have $LIRCD_VERSION])
+	  HAVE_LIRCD="no"
+  fi
+fi
+
+AC_MSG_CHECKING([new enough lircd daemon])
+if test x"$HAVE_LIRCD" != xyes ;
+then
+  AC_MSG_ERROR([no])
+else
+  AC_MSG_RESULT([yes])
+fi
+
 dnl support custom LIRC folders ===
 
 expand_vars() {

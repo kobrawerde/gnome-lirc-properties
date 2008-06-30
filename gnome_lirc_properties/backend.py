@@ -740,7 +740,7 @@ class BackendService(PolicyKitService):
             contents = ''
 
         # find existing include statement:
-        include_statement = 'include %s\n' % redirect
+        include_statement = 'include <%s>\n' % redirect
         pattern = r'^\s*(#.*)?include\s+%s\s*$' % re.escape(redirect)
         pattern = re.compile(pattern, re.MULTILINE)
         match   = pattern.search(contents)
@@ -754,7 +754,7 @@ class BackendService(PolicyKitService):
                 contents += '#\n'
                 contents += '# Feel free to add any custom remotes to the configuration\n'
                 contents += '# via additional include directives or below the existing\n'
-                contents += '# Ubuntu include directives from your selected remote and/or\n'
+                contents += '# include directives from your selected remote and/or\n'
                 contents += '# transmitter.\n'
                 contents += '#\n'
 

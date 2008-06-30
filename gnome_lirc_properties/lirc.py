@@ -1038,26 +1038,17 @@ class HardwareConfParser(object):
         except KeyError:
             return default
 
-def has_include_keyword():
-    '''Checks if include statements are supported in lircd.conf.'''
-
-    return (config.LSB_RELEASE.check(name='Ubuntu', codename='hardy') or
-            config.LSB_RELEASE.check(name='Ubuntu', release='8.04'))
-
 def find_remote_config():
     '''Finds the location our customized lircd.conf file.'''
 
-    if has_include_keyword():
-        return config.LIRC_REMOTE_CONF, True
-
-    return config.LIRC_DAEMON_CONF, False
+    return config.LIRC_REMOTE_CONF
 
 def check_hardware_settings(selected_remote):
     '''Check if the hardware settings are sane.'''
 
-    remote_config, can_include = find_remote_config()
+    remote_config = find_remote_config()
 
-    if can_include and not re.search(
+    if not re.search(
         r'^\s*include\s+%s\s*$' % re.escape(config.LIRC_REMOTE_CONF),
         open(config.LIRC_DAEMON_CONF).read(), re.MULTILINE):
         return False

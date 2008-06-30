@@ -1,3 +1,18 @@
+2008-06-30  Bastien Nocera  <hadess@hadess.net>
+
+	* configure.ac: Check for lirc 0.8.4 and require it
+	* gnome_lirc_properties/backend.py: Fix include statement's
+	syntax, it's enclosed in "<>" now
+	* gnome_lirc_properties/lirc.py: Remove can_include check,
+	all the lircs past 0.8.4 can support it
+
+	* gnome_lirc_properties/Makefile.am:
+	* gnome_lirc_properties/config.py.in:
+	* gnome_lirc_properties/lsb.py: Remove use of lsb version checks,
+	as we now require include support with a new enough lirc
+
+	(Closes: #532606)
+
 2008-06-30  Mathias Hasselmann  <mathias@openismus.com>
 
 	Avoid TypeError with no receivers plugged in (#540900).

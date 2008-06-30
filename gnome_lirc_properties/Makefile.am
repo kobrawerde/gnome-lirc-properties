@@ -8,7 +8,6 @@ module_PYTHON = \
 	config.py \
 	hardware.py \
 	lirc.py \
-	lsb.py \
 	model.py \
 	policykit.py
 

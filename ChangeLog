@@ -1,5 +1,12 @@
 2008-06-30  Bastien Nocera  <hadess@hadess.net>
 
+	* gnome_lirc_properties/backend.py:
+	* gnome_lirc_properties/ui/CustomConfiguration.py: Fix a few
+	calls to lirc.find_remote_config(), which only returns the
+	location of the config file now
+
+2008-06-30  Bastien Nocera  <hadess@hadess.net>
+
 	* configure.ac: Remove "--resume" check
 	* gnome_lirc_properties/backend.py: Remove use of the "--resume"
 	flag for irrecord flags, as irrecord correctly resumes sessions

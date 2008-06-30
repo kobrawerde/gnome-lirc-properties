@@ -696,10 +696,9 @@ class BackendService(PolicyKitService):
             self._write_hardware_configuration(remote_values=values)
 
         # Write remote configuration:
-        filename, include_needed = lirc.find_remote_config()
+        filename = lirc.find_remote_config()
 
-        if include_needed:
-            self.__write_include_statement(filename)
+        self.__write_include_statement(filename)
 
         print contents
 

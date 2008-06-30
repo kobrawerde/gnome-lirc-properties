@@ -415,7 +415,7 @@ class CustomConfiguration(object):
         self.__dialog.set_sensitive(False)
 
         net.post_file(target_uri=config.URI_UPLOADS,
-                      filename=lirc.find_remote_config()[0],
+                      filename=lirc.find_remote_config(),
                       content=self.__remote.configuration,
                       context=_('customized configuration file'),
                       finished_callback=on_upload_finished,

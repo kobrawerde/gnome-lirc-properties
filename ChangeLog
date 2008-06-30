@@ -1,5 +1,11 @@
 2008-06-30  Bastien Nocera  <hadess@hadess.net>
 
+	* gnome_lirc_properties/lirc.py: Handle the lircd.conf
+	file being missing (it's not broken if it's not there!)
+	(Closes: #540898)
+
+2008-06-30  Bastien Nocera  <hadess@hadess.net>
+
 	* gnome_lirc_properties/backend.py:
 	* gnome_lirc_properties/ui/CustomConfiguration.py: Fix a few
 	calls to lirc.find_remote_config(), which only returns the

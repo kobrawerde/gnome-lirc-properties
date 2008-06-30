@@ -1048,6 +1048,9 @@ def check_hardware_settings(selected_remote):
 
     remote_config = find_remote_config()
 
+    if not os.path.exists(remote_config):
+        return True
+
     if not re.search(
         r'^\s*include\s+%s\s*$' % re.escape(config.LIRC_REMOTE_CONF),
         open(config.LIRC_DAEMON_CONF).read(), re.MULTILINE):

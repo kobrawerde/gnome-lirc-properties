@@ -1,9 +1,11 @@
+0.2.8:
+
 2008-07-01  Bastien Nocera  <hadess@hadess.net>
 
 	* gnome_lirc_properties/backend.py:
 	* gnome_lirc_properties/lirc.py: Fix the regexps looking
-	for include statements in /etc/lircd.conf, the include syntax
-	changed
+	for include statements in /etc/lircd.conf - the include syntax
+	changed.
 
 2008-07-01  Bastien Nocera  <hadess@hadess.net>
 
@@ -11,27 +13,27 @@
 	by PID (IsProcessAuthorized) because we were checking the
 	backend's PID, which is surely not authorized, and we have
 	no way to get to the front-end's PID. Just check with the
-	sender's D-Bus name instead (Closes: #540912)
+	sender's D-Bus name instead (Closes: #540912).
 
 2008-06-30  Bastien Nocera  <hadess@hadess.net>
 
 	* gnome_lirc_properties/lirc.py: Handle the lircd.conf
 	file being missing (it's not broken if it's not there!)
-	(Closes: #540898)
+	(Closes: #540898).
 
 2008-06-30  Bastien Nocera  <hadess@hadess.net>
 
 	* gnome_lirc_properties/backend.py:
 	* gnome_lirc_properties/ui/CustomConfiguration.py: Fix a few
 	calls to lirc.find_remote_config(), which only returns the
-	location of the config file now
+	location of the config file now.
 
 2008-06-30  Bastien Nocera  <hadess@hadess.net>
 
 	* configure.ac: Remove "--resume" check
 	* gnome_lirc_properties/backend.py: Remove use of the "--resume"
 	flag for irrecord flags, as irrecord correctly resumes sessions
-	from lirc 0.8.4 onwards (Closes: #536811)
+	from lirc 0.8.4 onwards (Closes: #536811).
 
 2008-06-30  Bastien Nocera  <hadess@hadess.net>
 
@@ -39,12 +41,12 @@
 	* gnome_lirc_properties/backend.py: Fix include statement's
 	syntax, it's enclosed in "<>" now
 	* gnome_lirc_properties/lirc.py: Remove can_include check,
-	all the lircs past 0.8.4 can support it
+	all the lircs past 0.8.4 can support it.
 
 	* gnome_lirc_properties/Makefile.am:
 	* gnome_lirc_properties/config.py.in:
 	* gnome_lirc_properties/lsb.py: Remove use of lsb version checks,
-	as we now require include support with a new enough lirc
+	as we now require include support with a new enough lirc.
 
 	(Closes: #532606)
 

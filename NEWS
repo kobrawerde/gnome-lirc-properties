@@ -1,3 +1,34 @@
+0.2.8:
+
+* Require lirc 0.8.4.
+  (Bastien Nocera)
+* Adapt to the latest lirc, without our custom lirc include patch.
+  (Bastien Nocera)
+* Do not use the lirc --resume option (in our custom lirc patch), 
+  because lirc now does the right thing automatically.
+  (Bastien Nocera) Bug #536811.
+* Do not do lsb version checks, because it's enough now to check for 
+  a new enough lirc.
+  (Bastien Nocera) Bug #532606.
+* Correct the PolicyKit authorization checks.
+  (And update your PolicyKit to 0.9 because it has many bug fixes.)
+  (Bastien Nocera) Bug #540912.
+* Allow lircd.conf to be missing.
+  (Bastien Nocera) Bug #540898.
+* Fix some crashes while finding configuration files.
+  (Bastien Nocera)
+* Avoid a crash when no receivers are plugged in.
+  (Mathias Hasselmann) Bug #540900.
+* Avodi showing full keyboards in the receiver list.
+  (Mathias Hasselmann)
+* Detect the Linux Input Device driver name during configure.
+  (Mathias Hasselmann)
+* Avoid an occasional crash during Key Listening.
+  Ubuntu Bug: http://bugs.launchpad.net/ubuntu/+source/gnome-lirc-properties/+bug/224954
+  (Murray Cumming)
+* Custom Configuration: Adapt to some extra irrecord behaviour, instead of 
+  aborting, for instance with the XBox remote control.
+
 0.2.7:
 
 * Try to restart the key listener when it fails. This seems to happen sometimes, 

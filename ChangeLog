@@ -1,3 +1,11 @@
+2008-07-01  Bastien Nocera  <hadess@hadess.net>
+
+	* gnome_lirc_properties/backend.py: Remove authorization check
+	by PID (IsProcessAuthorized) because we were checking the
+	backend's PID, which is surely not authorized, and we have
+	no way to get to the front-end's PID. Just check with the
+	sender's D-Bus name instead (Closes: #540912)
+
 2008-06-30  Bastien Nocera  <hadess@hadess.net>
 
 	* gnome_lirc_properties/lirc.py: Handle the lircd.conf

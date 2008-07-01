@@ -64,18 +64,15 @@ class PolicyKitService(dbus.service.Object):
             if sender:
                 kit = dbus.SystemBus().get_object('org.freedesktop.PolicyKit', '/')
                 kit = dbus.Interface(kit, 'org.freedesktop.PolicyKit')
-                pid = dbus.UInt32(os.getpid())
 
-                granted = kit.IsProcessAuthorized(action, pid, False)
-                logging.info('process authorization: %r', granted)
-
-                if 'no' == granted:
-                    raise AccessDeniedException('Process not authorized by PolicyKit')
-
+                # Note that we don't use IsProcessAuthorized because we have
+                # no ways to get the PID of the front-end, so we're left
+                # with checking that its bus name is authorised instead
+		# See http://bugzilla.gnome.org/show_bug.cgi?id=540912
                 granted = kit.IsSystemBusNameAuthorized(action, sender, False)
-                logging.info('authorizatoin of system bus name: %r', granted)
+                logging.info('authorization of system bus name \'%s\': %r', sender, granted)
 
-                if 'no' == granted:
+                if 'yes' != granted:
                     raise AccessDeniedException('Session not authorized by PolicyKit')
 
         except AccessDeniedException:

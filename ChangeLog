@@ -1,5 +1,12 @@
 2008-07-01  Bastien Nocera  <hadess@hadess.net>
 
+	* gnome_lirc_properties/backend.py:
+	* gnome_lirc_properties/lirc.py: Fix the regexps looking
+	for include statements in /etc/lircd.conf, the include syntax
+	changed
+
+2008-07-01  Bastien Nocera  <hadess@hadess.net>
+
 	* gnome_lirc_properties/backend.py: Remove authorization check
 	by PID (IsProcessAuthorized) because we were checking the
 	backend's PID, which is surely not authorized, and we have

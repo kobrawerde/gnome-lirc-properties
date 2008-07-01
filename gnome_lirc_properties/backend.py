@@ -724,7 +724,7 @@ class BackendService(PolicyKitService):
 
         # find existing include statement:
         include_statement = 'include <%s>\n' % redirect
-        pattern = r'^\s*(#.*)?include\s+%s\s*$' % re.escape(redirect)
+        pattern = r'^\s*(#.*)?include\s+<%s>\s*$' % re.escape(redirect)
         pattern = re.compile(pattern, re.MULTILINE)
         match   = pattern.search(contents)
 

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-lirc-properties\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-06-23 16:06+0200\n"
-"PO-Revision-Date: 2008-06-23 18:33+0100\n"
+"POT-Creation-Date: 2008-07-25 18:36+0200\n"
+"PO-Revision-Date: 2008-07-25 18:52+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -71,6 +71,8 @@ msgid ""
 "Choose a button to redefine and press \"Learn\", or add another button.\n"
 "Try to use key names from the default namespace only for best interoperability."
 msgstr ""
+"Välj en knapp att definiera om och tryck på \"Lär\", eller lägg till en annan knapp.\n"
+"Prova att endast använda knappnamn från standardnamnrymden för enkel användning."
 
 #: ../data/gnome-lirc-properties.glade.h:17
 msgid "Co_ntributor:"
@@ -89,6 +91,8 @@ msgid ""
 "Key codes cannot be received\n"
 "until these basic parameters are identified."
 msgstr ""
+"Knappkoder kan inte tas emot tills dessa\n"
+"grundläggande parametrar har identifierats."
 
 #: ../data/gnome-lirc-properties.glade.h:22
 msgid "M_odel"
@@ -108,7 +112,7 @@ msgstr "Mod_ell:"
 
 #: ../data/gnome-lirc-properties.glade.h:26
 msgid "Please enter the manufacturer and model name."
-msgstr ""
+msgstr "Ange tillverkare och modellnamn."
 
 #: ../data/gnome-lirc-properties.glade.h:27
 #: ../gnome_lirc_properties/ui/RemoteControlProperties.py:324
@@ -125,27 +129,27 @@ msgstr "Söker efter IR-mottagare"
 
 #: ../data/gnome-lirc-properties.glade.h:30
 msgid "Upload to Online Database"
-msgstr ""
+msgstr "Skicka upp till databas"
 
 #: ../data/gnome-lirc-properties.glade.h:31
 msgid "Use _supplied remote control"
-msgstr ""
+msgstr "Använd _medföljande fjärrkontroll"
 
 #: ../data/gnome-lirc-properties.glade.h:32
 msgid "Use a remote control that was not supplied with the infra-red receiver, such as a generic replacement remote control not specifically designed for use with a computer."
-msgstr ""
+msgstr "Använd en fjärrkontroll som inte skickades med den infraröda mottagaren, såsom en allmän ersättningsfjärrkontroll som inte direkt är designad för att användas med en dator."
 
 #: ../data/gnome-lirc-properties.glade.h:33
 msgid "Use di_fferent remote control"
-msgstr ""
+msgstr "Använd a_nnan fjärrkontroll"
 
 #: ../data/gnome-lirc-properties.glade.h:34
 msgid "Use the remote control that was supplied with the infra-red receiver, if any."
-msgstr ""
+msgstr "Använd fjärrkontrollen som följde med den infraröda mottagaren, om det finns någon."
 
 #: ../data/gnome-lirc-properties.glade.h:35
 msgid "_Auto-detect"
-msgstr ""
+msgstr "Detektera _automatiskt"
 
 #: ../data/gnome-lirc-properties.glade.h:36
 msgid "_Basic Configuration"
@@ -163,7 +167,7 @@ msgstr "_Enhet:"
 
 #: ../data/gnome-lirc-properties.glade.h:39
 msgid "_Key Codes"
-msgstr ""
+msgstr "_Knappkoder"
 
 #: ../data/gnome-lirc-properties.glade.h:40
 msgid "_Learn"
@@ -175,7 +179,7 @@ msgstr "_Tillverkare:"
 
 #: ../data/gnome-lirc-properties.glade.h:42
 msgid "_Remote Model"
-msgstr ""
+msgstr "Fjä_rrkontrollsmodell"
 
 #: ../data/gnome-lirc-properties.glade.h:43
 msgid "_Update"
@@ -189,56 +193,53 @@ msgstr "Skicka _upp"
 msgid "Infrared Remote Control Properties"
 msgstr "Egenskaper för infraröd fjärrkontroll"
 
-#: ../gnome_lirc_properties/backend.py:237
+#: ../gnome_lirc_properties/backend.py:234
 msgid "Could not initialize hardware."
 msgstr "Kunde inte initiera hårdvaran."
 
-#: ../gnome_lirc_properties/backend.py:238
+# FIXME: Kolla denna
+#: ../gnome_lirc_properties/backend.py:235
 msgid "No key presses recognized. Gap not found."
-msgstr ""
+msgstr "Inga knapptryckningar kändes igen. Mellanrum hittades inte."
 
-#: ../gnome_lirc_properties/backend.py:239
+#: ../gnome_lirc_properties/backend.py:236
 msgid "No key presses recognized. Aborting."
-msgstr ""
+msgstr "Inga knapptryckningar kändes igen. Avbryter."
 
 #. self.locations is in the dbus base class. This check prevents a shutdown when the dbus service should be kept alive.
 #. irrecord stopped when we were expecting more interaction:
-#: ../gnome_lirc_properties/backend.py:312
+#: ../gnome_lirc_properties/backend.py:309
 msgid "Custom remote control configuration aborted unexpectedly."
-msgstr ""
+msgstr "Anpassad konfiguration för fjärrkontroll avbröts oväntat."
 
-#: ../gnome_lirc_properties/backend.py:363
+#: ../gnome_lirc_properties/backend.py:360
 msgid "Hold down any remote control button."
 msgstr "Håll nere valfri knapp på fjärrkontrollen."
 
-#: ../gnome_lirc_properties/backend.py:371
+#: ../gnome_lirc_properties/backend.py:368
 msgid "Press random buttons on your remote control."
 msgstr "Tryck på slumpmässiga knappar på din fjärrkontroll."
 
-#: ../gnome_lirc_properties/backend.py:372
+#: ../gnome_lirc_properties/backend.py:369
 msgid "When you press the Start button, it is very important that you press many different buttons and hold them down "
-msgstr ""
+msgstr "När du trycker på knappen Starta så är det mycket viktigt att du trycker på många olika knappar och håller dem nere "
 
-#: ../gnome_lirc_properties/backend.py:386
+#: ../gnome_lirc_properties/backend.py:383
 msgid "Press a button repeatedly as fast as possible."
-msgstr ""
+msgstr "Tryck upprepade gånger på en knapp så snabbt som möjligt. "
 
-#: ../gnome_lirc_properties/backend.py:387
+#: ../gnome_lirc_properties/backend.py:384
 msgid "Make sure you keep pressing the <b>same</b> button and that you "
-msgstr ""
+msgstr "Försäkra dig om att du fortsätter trycka på <b>samma</b> knapp och att du "
 
-#: ../gnome_lirc_properties/backend.py:462
+#: ../gnome_lirc_properties/backend.py:459
 msgid "Cannot find recorded key codes"
-msgstr ""
-
-#: ../gnome_lirc_properties/backend.py:486
-msgid "The installed lirc does not support key code learning "
-msgstr ""
+msgstr "Kan inte hitta inspelade knappkoder"
 
 #: ../gnome_lirc_properties/hardware.py:296
 #: ../gnome_lirc_properties/model.py:223
 msgid "Linux Input Device"
-msgstr ""
+msgstr "Linux-inmatningsenhet"
 
 #: ../gnome_lirc_properties/lirc.py:36
 msgid "Malformed configuration file"
@@ -246,12 +247,12 @@ msgstr "Trasig konfigurationsfil"
 
 #: ../gnome_lirc_properties/lirc.py:570
 msgid "Default Namespace"
-msgstr ""
+msgstr "Standardnamnrymd"
 
 #: ../gnome_lirc_properties/lirc.py:571
 #: ../gnome_lirc_properties/lirc.py:820
 msgid "Custom Key Code"
-msgstr "Anpassad tangentkod"
+msgstr "Anpassad knappkod"
 
 #: ../gnome_lirc_properties/lirc.py:572
 msgid "Elisa Compatible"
@@ -322,7 +323,7 @@ msgstr "Ljud"
 
 #: ../gnome_lirc_properties/lirc.py:603
 msgid "Auxiliary"
-msgstr ""
+msgstr "Extra"
 
 #: ../gnome_lirc_properties/lirc.py:604
 msgid "B"
@@ -331,7 +332,7 @@ msgstr "B"
 #: ../gnome_lirc_properties/lirc.py:605
 #: ../gnome_lirc_properties/lirc.py:740
 msgid "Back"
-msgstr ""
+msgstr "Bakåt"
 
 #: ../gnome_lirc_properties/lirc.py:606
 msgid "Backspace"
@@ -390,7 +391,7 @@ msgstr "D"
 
 #: ../gnome_lirc_properties/lirc.py:619
 msgid "Delete"
-msgstr ""
+msgstr "Ta bort"
 
 #: ../gnome_lirc_properties/lirc.py:620
 msgid "Directory"
@@ -531,7 +532,7 @@ msgstr "E-post"
 
 #: ../gnome_lirc_properties/lirc.py:653
 msgid "Maximum"
-msgstr ""
+msgstr "Maximal"
 
 #: ../gnome_lirc_properties/lirc.py:654
 msgid "Media"
@@ -602,7 +603,7 @@ msgstr "Spela upp"
 
 #: ../gnome_lirc_properties/lirc.py:671
 msgid "Power"
-msgstr ""
+msgstr "På/av"
 
 #: ../gnome_lirc_properties/lirc.py:672
 #: ../gnome_lirc_properties/lirc.py:723
@@ -867,6 +868,8 @@ msgid ""
 "<b>Learning new key code.</b>\n"
 "Press the button on your remote control which should emit this key-code."
 msgstr ""
+"<b>Lär ny knappkod.</b>\n"
+"Tryck på knappen på din fjärrkontroll som ska skicka ut denna knappkod."
 
 #: ../gnome_lirc_properties/ui/CustomConfiguration.py:170
 msgid "Name"
@@ -882,11 +885,11 @@ msgstr "Tillstånd"
 
 #: ../gnome_lirc_properties/ui/CustomConfiguration.py:252
 msgid "Learning"
-msgstr ""
+msgstr "Inlärning"
 
 #: ../gnome_lirc_properties/ui/CustomConfiguration.py:299
 msgid "Learning of Key Code Failed"
-msgstr ""
+msgstr "Inlärning av knappkod misslyckades"
 
 #: ../gnome_lirc_properties/ui/CustomConfiguration.py:376
 msgid "_Upload Configuration"
@@ -912,11 +915,11 @@ msgstr "Sändning misslyckades"
 
 #: ../gnome_lirc_properties/ui/CustomConfiguration.py:404
 msgid "This configuration has no keys for the default "
-msgstr ""
+msgstr "Denna konfiguration har inga knappar för standardvärdet "
 
 #: ../gnome_lirc_properties/ui/CustomConfiguration.py:410
 msgid "Some keys in this configuration have names "
-msgstr "Några tangenter i denna konfiguration har namn "
+msgstr "Några knappar i denna konfiguration har namn "
 
 #: ../gnome_lirc_properties/ui/CustomConfiguration.py:420
 msgid "customized configuration file"
@@ -924,7 +927,7 @@ msgstr "anpassad konfigurationsfil"
 
 #: ../gnome_lirc_properties/ui/CustomConfiguration.py:443
 msgid "Remote Configuration Failed"
-msgstr ""
+msgstr "Konfiguration av fjärrkontroll misslyckades"
 
 #: ../gnome_lirc_properties/ui/CustomConfiguration.py:482
 msgid "_Start"
@@ -932,7 +935,7 @@ msgstr "_Starta"
 
 #: ../gnome_lirc_properties/ui/CustomConfiguration.py:709
 msgid "Cannot Save Custom Configuration"
-msgstr ""
+msgstr "Kan inte spara anpassad konfiguration"
 
 #: ../gnome_lirc_properties/ui/ProgressWindow.py:43
 msgid "Preparing..."
@@ -941,7 +944,7 @@ msgstr "Förbereder..."
 #: ../gnome_lirc_properties/ui/RemoteControlProperties.py:232
 #: ../gnome_lirc_properties/ui/RemoteControlProperties.py:245
 msgid "Invalid IR Configuration"
-msgstr ""
+msgstr "Ogiltig IR-konfiguration"
 
 #: ../gnome_lirc_properties/ui/RemoteControlProperties.py:233
 msgid "Your configuration files seems to be incorrect."
@@ -967,16 +970,16 @@ msgstr "Återskapar konfiguration"
 
 #: ../gnome_lirc_properties/ui/RemoteControlProperties.py:293
 msgid "Cannot restore IR configuration"
-msgstr ""
+msgstr "Kan inte återställa IR-konfiguration"
 
 #: ../gnome_lirc_properties/ui/RemoteControlProperties.py:294
 #, python-format
 msgid "Backend failed: %s"
-msgstr ""
+msgstr "Bakände misslyckades: %s"
 
 #: ../gnome_lirc_properties/ui/RemoteControlProperties.py:328
 msgid "<b>Warning:</b> Remote control daemon "
-msgstr ""
+msgstr "<b>Varning:</b> Fjärrkontrollsdemon "
 
 #: ../gnome_lirc_properties/ui/RemoteControlProperties.py:383
 #, python-format
@@ -990,15 +993,15 @@ msgstr "%s KiB hämtat..."
 
 #: ../gnome_lirc_properties/ui/RemoteControlProperties.py:406
 msgid "No updates available. Your remote control configuration "
-msgstr ""
+msgstr "Inga uppdateringar tillgängliga. Din fjärrkontrollskonfiguration "
 
 #: ../gnome_lirc_properties/ui/RemoteControlProperties.py:412
 msgid "Download of updated remote control configurations failed."
-msgstr ""
+msgstr "Hämtning av uppdaterade fjärrkontrollskonfigurationer misslyckades."
 
 #: ../gnome_lirc_properties/ui/RemoteControlProperties.py:425
 msgid "Updating Remote Configuration Files"
-msgstr ""
+msgstr "Uppdaterar konfigurationsfiler för fjärrkontroller"
 
 #: ../gnome_lirc_properties/ui/RemoteControlProperties.py:664
 msgid "_Search Again"
@@ -1006,13 +1009,15 @@ msgstr "_Sök igen"
 
 #: ../gnome_lirc_properties/ui/RemoteControlProperties.py:669
 msgid "No IR Receivers Found"
-msgstr ""
+msgstr "Inga IR-mottagare hittades"
 
 #: ../gnome_lirc_properties/ui/RemoteControlProperties.py:670
 msgid ""
 "Could not find any IR receiver. Is your device attached?\n"
 "\n"
 msgstr ""
+"Kunde inte hitta någon IR-mottagare. Är din enhet ansluten?\n"
+"\n"
 
 #: ../gnome_lirc_properties/ui/RemoteControlProperties.py:758
 #: ../gnome_lirc_properties/ui/RemoteControlProperties.py:766
@@ -1026,7 +1031,7 @@ msgstr "Systemet har nekat åtkomsten till denna funktion."
 #: ../gnome_lirc_properties/ui/RemoteControlProperties.py:767
 #, python-format
 msgid "Configuration backend reported %s."
-msgstr ""
+msgstr "Konfigurationsbakänden rapporterade %s."
 
 #. bring user interface to initial state:
 #: ../gnome_lirc_properties/ui/RemoteControlProperties.py:789
@@ -1039,16 +1044,16 @@ msgstr "Kunde inte låsa upp."
 
 #: ../gnome_lirc_properties/ui/RemoteControlProperties.py:868
 msgid "The system will not allow you to access these features. Please contact your system administrator for assistance."
-msgstr ""
+msgstr "Systemet kommer inte att ge dig åtkomst till dessa funktioner. Kontakta din systemadministratör för hjälp."
 
 #: ../gnome_lirc_properties/ui/RemoteControlProperties.py:895
 msgid "Cannot display help since the GNOME Help "
-msgstr ""
+msgstr "Kan inte visa hjälp eftersom GNOME-hjälpen "
 
 #: ../gnome_lirc_properties/ui/RemoteControlProperties.py:899
 #, python-format
 msgid "Cannot display help for unexpected reason: %s"
-msgstr ""
+msgstr "Kan inte visa hjälp på grund av oväntad anledning: %s"
 
 #: ../gnome_lirc_properties/ui/RemoteControlProperties.py:901
 msgid "Cannot Display Help"

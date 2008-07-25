@@ -1,3 +1,8 @@
+2008-07-25  Daniel Nylander <po@danielnylander.se>
+
+	* help/sv/sv.po: Added Swedish translation.
+	* help/Makefile.am: Added sv to DOC_LINGUAS.
+
 0.2.8:
 
 2008-07-01  Bastien Nocera  <hadess@hadess.net>

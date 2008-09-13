@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Jorge González <jorgegonz@svn.gnome.org>, 2008.
+# Marlon Cisternas Milla <marlitoo@gmail.com>, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-lirc-properties.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-05-04 21:08+0000\n"
-"PO-Revision-Date: 2008-05-25 20:26+0200\n"
-"Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
+"POT-Creation-Date: 2008-06-30 14:17+0000\n"
+"PO-Revision-Date: 2008-09-13 00:52-0400\n"
+"Last-Translator: Marlon Cisternas Milla <marlitoo@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -64,7 +65,7 @@ msgstr ""
 "Elija el receptor IR que quiere usar."
 
 #: ../data/gnome-lirc-properties.glade.h:14
-#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:315
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:323
 msgid "<none>"
 msgstr "<ninguno>"
 
@@ -116,7 +117,7 @@ msgid "Please enter the manufacturer and model name."
 msgstr "Introduzca el nombre del fabricante y del modelo."
 
 #: ../data/gnome-lirc-properties.glade.h:27
-#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:316
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:324
 msgid "Press remote control buttons to test:"
 msgstr "Pulse los botones del control remoto para probarlos:"
 
@@ -148,8 +149,11 @@ msgid "Use di_fferent remote control"
 msgstr "Usar un control remoto di_ferente"
 
 #: ../data/gnome-lirc-properties.glade.h:34
-msgid "Use the remote control that was supplied with the infra-red receiver, if any."
-msgstr "Usar el control remoto proporcionado con el receptor infrarrojo, si hay alguno."
+msgid ""
+"Use the remote control that was supplied with the infra-red receiver, if any."
+msgstr ""
+"Usar el control remoto proporcionado con el receptor infrarrojo, si hay "
+"alguno."
 
 #: ../data/gnome-lirc-properties.glade.h:35
 msgid "_Auto-detect"
@@ -164,8 +168,8 @@ msgid "_Detect"
 msgstr "_Detectar"
 
 #: ../data/gnome-lirc-properties.glade.h:38
-#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:469
-#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:519
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:477
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:527
 msgid "_Device:"
 msgstr "_Dispositivo:"
 
@@ -213,7 +217,8 @@ msgstr "No se reconoció ninguna pulsación de tecla. Abortando."
 #. irrecord stopped when we were expecting more interaction:
 #: ../gnome_lirc_properties/backend.py:312
 msgid "Custom remote control configuration aborted unexpectedly."
-msgstr "La configuración personalizada del control remoto se abortó inesperadamente."
+msgstr ""
+"La configuración personalizada del control remoto se abortó inesperadamente."
 
 #: ../gnome_lirc_properties/backend.py:363
 msgid "Hold down any remote control button."
@@ -241,11 +246,7 @@ msgstr "Asegúrese de estar pulsando el <b>mismo</b> botón y de que "
 msgid "Cannot find recorded key codes"
 msgstr "No se pueden encontrar los códigos de claves grabados"
 
-#: ../gnome_lirc_properties/backend.py:486
-msgid "The installed lirc does not support key code learning "
-msgstr "El lirc instalado no soporta aprendizaje de códigos de claves "
-
-#: ../gnome_lirc_properties/hardware.py:244
+#: ../gnome_lirc_properties/hardware.py:296
 #: ../gnome_lirc_properties/model.py:223
 msgid "Linux Input Device"
 msgstr ""
@@ -743,11 +744,11 @@ msgstr "Reducir velocidad"
 
 #: ../gnome_lirc_properties/lirc.py:720
 msgid "Seek Forward"
-msgstr ""
+msgstr "Buscar adelante"
 
 #: ../gnome_lirc_properties/lirc.py:721
 msgid "Seek Backward"
-msgstr ""
+msgstr "Buscar hacia atrás"
 
 #: ../gnome_lirc_properties/lirc.py:724
 msgid "Full Screen"
@@ -766,7 +767,7 @@ msgid "None"
 msgstr "Ninguno"
 
 #: ../gnome_lirc_properties/model.py:282
-#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:1017
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:1040
 msgid "Unknown"
 msgstr "Desconocido"
 
@@ -876,11 +877,11 @@ msgstr "Falló el aprendizaje del código de claves"
 
 #: ../gnome_lirc_properties/ui/CustomConfiguration.py:376
 msgid "_Upload Configuration"
-msgstr ""
+msgstr "_Configuración de la carga"
 
 #: ../gnome_lirc_properties/ui/CustomConfiguration.py:380
 msgid "Do you really want to upload this configuration?"
-msgstr ""
+msgstr "¿Realmente quiere cargar esta configuración?"
 
 #: ../gnome_lirc_properties/ui/CustomConfiguration.py:383
 msgid "Configuration Problems"
@@ -890,23 +891,23 @@ msgstr "Problemas de configuración"
 #. TODO: Is this wise? It will not be translated?
 #: ../gnome_lirc_properties/ui/CustomConfiguration.py:391
 msgid "Upload Succeeded"
-msgstr ""
+msgstr "Carga satisfactoria"
 
 #: ../gnome_lirc_properties/ui/CustomConfiguration.py:398
 msgid "Upload Failed"
-msgstr ""
+msgstr "Falló la carga"
 
 #: ../gnome_lirc_properties/ui/CustomConfiguration.py:404
 msgid "This configuration has no keys for the default "
-msgstr ""
+msgstr "Esta configuración no tiene claves predeterminadas "
 
 #: ../gnome_lirc_properties/ui/CustomConfiguration.py:410
 msgid "Some keys in this configuration have names "
-msgstr ""
+msgstr "Algunas claves en esta configuración tienen nombres "
 
 #: ../gnome_lirc_properties/ui/CustomConfiguration.py:420
 msgid "customized configuration file"
-msgstr ""
+msgstr "archivo de configuración personalizada"
 
 #: ../gnome_lirc_properties/ui/CustomConfiguration.py:443
 msgid "Remote Configuration Failed"
@@ -924,77 +925,77 @@ msgstr "No se puede guardar la configuración personalizada"
 msgid "Preparing..."
 msgstr "Preparándose…"
 
-#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:223
-#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:236
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:232
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:245
 msgid "Invalid IR Configuration"
 msgstr "Configuración IR no válida"
 
-#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:224
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:233
 msgid "Your configuration files seems to be incorrect."
 msgstr "Sus archivos de configuración parecen ser incorrectos."
 
-#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:230
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:239
 msgid "_Keep Configuration"
 msgstr "_Mantener la configuración"
 
-#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:231
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:240
 msgid "_Restore Configuration"
 msgstr "_Restaurar la configuración"
 
-#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:237
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:246
 msgid "Your configuration files seems to be incorrect. "
-msgstr ""
+msgstr "Sus archivos de configuración parecen incorrectos. "
 
 #. We must create a dialog (the main dialog has not yet been realized)
 #. because PolicyKit needs a window ID:
-#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:266
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:274
 msgid "Restoring Configuration"
-msgstr ""
+msgstr "Restaurando la configuración"
 
-#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:285
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:293
 msgid "Cannot restore IR configuration"
 msgstr "No se puede restaurar la configuración IR"
 
-#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:286
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:294
 #, python-format
 msgid "Backend failed: %s"
 msgstr "Falló el «backend»: %s"
 
-#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:320
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:328
 msgid "<b>Warning:</b> Remote control daemon "
-msgstr ""
+msgstr "<b>Advertencia:</b> El demonio de control remoto "
 
-#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:375
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:383
 #, python-format
 msgid "%s of %s KiB retrieved..."
 msgstr "%s de %s KiB obtenidos…"
 
-#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:376
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:384
 #, python-format
 msgid "%s KiB retrieved..."
 msgstr "%s KiB obtenidos…"
 
-#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:398
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:406
 msgid "No updates available. Your remote control configuration "
-msgstr ""
+msgstr "No hay actualizaciones disponibles. Su control remoto de configuración "
 
-#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:404
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:412
 msgid "Download of updated remote control configurations failed."
 msgstr ""
 
-#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:417
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:425
 msgid "Updating Remote Configuration Files"
-msgstr ""
+msgstr "Cargando archivos de configuración remota "
 
-#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:648
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:664
 msgid "_Search Again"
 msgstr "_Buscar de nuevo"
 
-#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:653
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:669
 msgid "No IR Receivers Found"
 msgstr "No se encontró ningún receptor IR"
 
-#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:654
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:670
 msgid ""
 "Could not find any IR receiver. Is your device attached?\n"
 "\n"
@@ -1002,49 +1003,50 @@ msgstr ""
 "No se pudo encontrar ningún receptor IR. ¿Está conectado su dispositivo?\n"
 "\n"
 
-#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:742
-#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:750
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:758
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:766
 msgid "Cannot Update Configuration"
 msgstr "No se puede actualizar la configuración"
 
-#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:743
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:759
 msgid "The System has refused access to this feature."
-msgstr ""
+msgstr "El sistema le ha negado el acceso a esta característica."
 
-#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:751
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:767
 #, python-format
 msgid "Configuration backend reported %s."
-msgstr ""
+msgstr "La configuración del «backend» informó %s."
 
 #. bring user interface to initial state:
-#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:773
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:789
 msgid "Searching for remote controls..."
 msgstr "Buscando controles remotos…"
 
-#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:851
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:867
 msgid "Could Not Unlock."
 msgstr "No se pudo desbloquear."
 
-#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:852
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:868
 msgid ""
 "The system will not allow you to access these features. Please contact your "
 "system administrator for assistance."
-msgstr ""
+msgstr "El sistema no le permitirá el acceso a estas características.Póngase en "
+"contacto con el administrador de su sistema para obtener ayuda."
 
-#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:879
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:895
 msgid "Cannot display help since the GNOME Help "
-msgstr ""
+msgstr "No se puede visualizar la ayuda desde la Ayuda de GNOME "
 
-#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:883
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:899
 #, python-format
 msgid "Cannot display help for unexpected reason: %s"
 msgstr "No se puede mostrar la ayuda por una razón inesperada: %s"
 
-#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:885
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:901
 msgid "Cannot Display Help"
 msgstr "No se puede mostrar la ayuda"
 
-#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:1069
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:1092
 msgid "<b>Warning:</b> Cannot find such receiver."
 msgstr "<b>Advertencia:</b> No se puede encontrar tal receptor."
 

@@ -4,13 +4,14 @@
 #
 # Jorge González <jorgegonz@svn.gnome.org>, 2008.
 # Marlon Cisternas Milla <marlitoo@gmail.com>, 2008.
+# Jorge González <jorgegonz@svn.gnome.org>, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-lirc-properties.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-13 09:16+0000\n"
-"PO-Revision-Date: 2008-09-15 02:50-0400\n"
-"Last-Translator: Marlon Cisternas Milla <marlitoo@gmail.com>\n"
+"POT-Creation-Date: 2008-09-18 11:06+0000\n"
+"PO-Revision-Date: 2008-09-18 20:53+0200\n"
+"Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,7 +25,7 @@ msgstr "Configure su control remoto"
 
 #: ../data/gnome-lirc-properties.desktop.in.in.h:2
 msgid "Infrared Remote Control"
-msgstr "Control remoto por infrarojos"
+msgstr "Control remoto por infrarrojos"
 
 #: ../data/gnome-lirc-properties.glade.h:1
 msgid ""
@@ -75,9 +76,9 @@ msgid ""
 "Try to use key names from the default namespace only for best "
 "interoperability."
 msgstr ""
-"Elija un botón para redefinir y pulse «Aprender» o añada otro botón."
-"\n"
-"Intente usar nombres clave por el espacio de nombre predeterminado, sólo para mayor interoperabilidad. "
+"Elija un botón para redefinir y pulse «Aprender» o añada otro botón.\n"
+"Intente usar nombres clave por el espacio de nombre predeterminado, sólo "
+"para mayor interoperabilidad. "
 
 #: ../data/gnome-lirc-properties.glade.h:17
 msgid "Co_ntributor:"
@@ -146,9 +147,9 @@ msgid ""
 "as a generic replacement remote control not specifically designed for use "
 "with a computer."
 msgstr ""
-"Usar un control remoto que no ha sido suministrado con el receptor infrarrojo receptor, "
-"tal como un reemplazo genérico del control remoto no específicamente diseñado "
-"para su uso con un equipo."
+"Usar un control remoto que no ha sido suministrado con el receptor "
+"infrarrojo receptor, tal como un reemplazo genérico del control remoto no "
+"específicamente diseñado para su uso con un equipo."
 
 #: ../data/gnome-lirc-properties.glade.h:33
 msgid "Use di_fferent remote control"
@@ -201,7 +202,7 @@ msgstr "_Actualizar"
 
 #: ../data/gnome-lirc-properties.glade.h:44
 msgid "_Upload"
-msgstr "_Cargar"
+msgstr "_Subir"
 
 #: ../gnome_lirc_properties/__init__.py:49
 msgid "Infrared Remote Control Properties"
@@ -213,7 +214,8 @@ msgstr "No se pudo inicializar el hardware"
 
 #: ../gnome_lirc_properties/backend.py:235
 msgid "No key presses recognized. Gap not found."
-msgstr "No se reconoció ninguna pulsación de tecla. Interrupción no encontrada. "
+msgstr ""
+"No se reconoció ninguna pulsación de tecla. Interrupción no encontrada. "
 
 #: ../gnome_lirc_properties/backend.py:236
 msgid "No key presses recognized. Aborting."
@@ -223,7 +225,8 @@ msgstr "No se reconoció ninguna pulsación de tecla. Abortando."
 #. irrecord stopped when we were expecting more interaction:
 #: ../gnome_lirc_properties/backend.py:309
 msgid "Custom remote control configuration aborted unexpectedly."
-msgstr "La configuración personalizada del control remoto abortó inesperadamente."
+msgstr ""
+"La configuración personalizada del control remoto abortó inesperadamente."
 
 #: ../gnome_lirc_properties/backend.py:360
 msgid "Hold down any remote control button."
@@ -793,13 +796,13 @@ msgstr "No se puede resolver el nombre del equipo."
 #: ../gnome_lirc_properties/net/services.py:116
 #, python-format
 msgid "Upload of %s succeeded."
-msgstr "Carga de %s completada."
+msgstr "Subida de %s completada."
 
 #: ../gnome_lirc_properties/net/services.py:121
 #: ../gnome_lirc_properties/net/services.py:128
 #, python-format
 msgid "Upload of %s failed"
-msgstr "Falló la carga de %s"
+msgstr "Falló la subida de %s"
 
 #: ../gnome_lirc_properties/net/services.py:198
 msgid "Downloading checksum list..."
@@ -886,11 +889,11 @@ msgstr "Falló el aprendizaje del código de claves"
 
 #: ../gnome_lirc_properties/ui/CustomConfiguration.py:376
 msgid "_Upload Configuration"
-msgstr "_Configuración de la carga"
+msgstr "_Subir configuración"
 
 #: ../gnome_lirc_properties/ui/CustomConfiguration.py:380
 msgid "Do you really want to upload this configuration?"
-msgstr "¿Realmente quiere cargar esta configuración?"
+msgstr "¿Realmente quiere subir esta configuración?"
 
 #: ../gnome_lirc_properties/ui/CustomConfiguration.py:383
 msgid "Configuration Problems"
@@ -900,11 +903,11 @@ msgstr "Problemas de configuración"
 #. TODO: Is this wise? It will not be translated?
 #: ../gnome_lirc_properties/ui/CustomConfiguration.py:391
 msgid "Upload Succeeded"
-msgstr "Carga satisfactoria"
+msgstr "Subida satisfactoria"
 
 #: ../gnome_lirc_properties/ui/CustomConfiguration.py:398
 msgid "Upload Failed"
-msgstr "Falló la carga"
+msgstr "Falló la subida"
 
 #: ../gnome_lirc_properties/ui/CustomConfiguration.py:404
 msgid "This configuration has no keys for the default "
@@ -991,7 +994,8 @@ msgstr ""
 
 #: ../gnome_lirc_properties/ui/RemoteControlProperties.py:412
 msgid "Download of updated remote control configurations failed."
-msgstr "La descarga de la configuración actualizada del control remoto ha fallado."
+msgstr ""
+"La descarga de la configuración actualizada del control remoto ha fallado."
 
 #: ../gnome_lirc_properties/ui/RemoteControlProperties.py:425
 msgid "Updating Remote Configuration Files"

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-lirc-properties.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-06-30 14:17+0000\n"
-"PO-Revision-Date: 2008-09-13 00:52-0400\n"
+"POT-Creation-Date: 2008-09-13 09:16+0000\n"
+"PO-Revision-Date: 2008-09-15 02:50-0400\n"
 "Last-Translator: Marlon Cisternas Milla <marlitoo@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -75,6 +75,9 @@ msgid ""
 "Try to use key names from the default namespace only for best "
 "interoperability."
 msgstr ""
+"Elija un botón para redefinir y pulse «Aprender» o añada otro botón."
+"\n"
+"Intente usar nombres clave por el espacio de nombre predeterminado, sólo para mayor interoperabilidad. "
 
 #: ../data/gnome-lirc-properties.glade.h:17
 msgid "Co_ntributor:"
@@ -143,6 +146,9 @@ msgid ""
 "as a generic replacement remote control not specifically designed for use "
 "with a computer."
 msgstr ""
+"Usar un control remoto que no ha sido suministrado con el receptor infrarrojo receptor, "
+"tal como un reemplazo genérico del control remoto no específicamente diseñado "
+"para su uso con un equipo."
 
 #: ../data/gnome-lirc-properties.glade.h:33
 msgid "Use di_fferent remote control"
@@ -201,55 +207,56 @@ msgstr "_Cargar"
 msgid "Infrared Remote Control Properties"
 msgstr "Propiedades del control remoto infrarrojo"
 
-#: ../gnome_lirc_properties/backend.py:237
+#: ../gnome_lirc_properties/backend.py:234
 msgid "Could not initialize hardware."
 msgstr "No se pudo inicializar el hardware"
 
-#: ../gnome_lirc_properties/backend.py:238
+#: ../gnome_lirc_properties/backend.py:235
 msgid "No key presses recognized. Gap not found."
-msgstr ""
+msgstr "No se reconoció ninguna pulsación de tecla. Interrupción no encontrada. "
 
-#: ../gnome_lirc_properties/backend.py:239
+#: ../gnome_lirc_properties/backend.py:236
 msgid "No key presses recognized. Aborting."
 msgstr "No se reconoció ninguna pulsación de tecla. Abortando."
 
 #. self.locations is in the dbus base class. This check prevents a shutdown when the dbus service should be kept alive.
 #. irrecord stopped when we were expecting more interaction:
-#: ../gnome_lirc_properties/backend.py:312
+#: ../gnome_lirc_properties/backend.py:309
 msgid "Custom remote control configuration aborted unexpectedly."
-msgstr ""
-"La configuración personalizada del control remoto se abortó inesperadamente."
+msgstr "La configuración personalizada del control remoto abortó inesperadamente."
 
-#: ../gnome_lirc_properties/backend.py:363
+#: ../gnome_lirc_properties/backend.py:360
 msgid "Hold down any remote control button."
 msgstr "Mantenga pulsado cualquier botón del control remoto."
 
-#: ../gnome_lirc_properties/backend.py:371
+#: ../gnome_lirc_properties/backend.py:368
 msgid "Press random buttons on your remote control."
 msgstr "Pulse botones aleatorios de su control remoto."
 
-#: ../gnome_lirc_properties/backend.py:372
+#: ../gnome_lirc_properties/backend.py:369
 msgid ""
 "When you press the Start button, it is very important that you press many "
 "different buttons and hold them down "
 msgstr ""
+"Cuando pulse el botón Iniciar es muy importante que pulse muchos botones "
+"diferentes y los mantenga pulsados "
 
-#: ../gnome_lirc_properties/backend.py:386
+#: ../gnome_lirc_properties/backend.py:383
 msgid "Press a button repeatedly as fast as possible."
 msgstr "Pulse un botón repetidamente tan rápido como le sea posible."
 
-#: ../gnome_lirc_properties/backend.py:387
+#: ../gnome_lirc_properties/backend.py:384
 msgid "Make sure you keep pressing the <b>same</b> button and that you "
 msgstr "Asegúrese de estar pulsando el <b>mismo</b> botón y de que "
 
-#: ../gnome_lirc_properties/backend.py:462
+#: ../gnome_lirc_properties/backend.py:459
 msgid "Cannot find recorded key codes"
 msgstr "No se pueden encontrar los códigos de claves grabados"
 
 #: ../gnome_lirc_properties/hardware.py:296
 #: ../gnome_lirc_properties/model.py:223
 msgid "Linux Input Device"
-msgstr ""
+msgstr "Dispositivo de entrada para Linux"
 
 #: ../gnome_lirc_properties/lirc.py:36
 msgid "Malformed configuration file"
@@ -854,6 +861,8 @@ msgid ""
 "<b>Learning new key code.</b>\n"
 "Press the button on your remote control which should emit this key-code."
 msgstr ""
+"<b>Aprendiendo nuevo código de la clave.</b>\n"
+"Pulse el botón en su control remoto que debe emitir este código clave."
 
 #: ../gnome_lirc_properties/ui/CustomConfiguration.py:170
 msgid "Name"
@@ -977,11 +986,12 @@ msgstr "%s KiB obtenidos…"
 
 #: ../gnome_lirc_properties/ui/RemoteControlProperties.py:406
 msgid "No updates available. Your remote control configuration "
-msgstr "No hay actualizaciones disponibles. Su control remoto de configuración "
+msgstr ""
+"No hay actualizaciones disponibles. Su control remoto de configuración "
 
 #: ../gnome_lirc_properties/ui/RemoteControlProperties.py:412
 msgid "Download of updated remote control configurations failed."
-msgstr ""
+msgstr "La descarga de la configuración actualizada del control remoto ha fallado."
 
 #: ../gnome_lirc_properties/ui/RemoteControlProperties.py:425
 msgid "Updating Remote Configuration Files"
@@ -1030,7 +1040,8 @@ msgstr "No se pudo desbloquear."
 msgid ""
 "The system will not allow you to access these features. Please contact your "
 "system administrator for assistance."
-msgstr "El sistema no le permitirá el acceso a estas características.Póngase en "
+msgstr ""
+"El sistema no le permitirá el acceso a estas características. Póngase en "
 "contacto con el administrador de su sistema para obtener ayuda."
 
 #: ../gnome_lirc_properties/ui/RemoteControlProperties.py:895
@@ -1049,4 +1060,3 @@ msgstr "No se puede mostrar la ayuda"
 #: ../gnome_lirc_properties/ui/RemoteControlProperties.py:1092
 msgid "<b>Warning:</b> Cannot find such receiver."
 msgstr "<b>Advertencia:</b> No se puede encontrar tal receptor."
-

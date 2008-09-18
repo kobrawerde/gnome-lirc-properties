@@ -14,4 +14,4 @@ DOC_FIGURES = \
 	figures/custom-remote-basics.png \
 	figures/custom-remote-keys.png
 
-DOC_LINGUAS = sv
+DOC_LINGUAS = es sv

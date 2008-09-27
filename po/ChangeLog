@@ -1,3 +1,8 @@
+2008-09-27  Robert-André Mauchin  <zebob.m@pengzone.org>
+
+	* fr.po: Added French translation by Bruno Brouard and Robert-André Mauchin.
+	* LINGUAS: Added fr.
+
 2008-09-18  Jorge Gonzalez <jorgegonz@svn.gnome.org>
 
 	* es.po: Updated Spanish translation

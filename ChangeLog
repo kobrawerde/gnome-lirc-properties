@@ -1,5 +1,11 @@
 2008-10-16  Bastien Nocera  <hadess@hadess.net>
 
+	* data/receivers.conf:
+	* gnome_lirc_properties/hardware.py: Add support for the Apple
+	Mac Mini IR Receivers (Closes: #556599)
+
+2008-10-16  Bastien Nocera  <hadess@hadess.net>
+
 	* configure.ac:
 	* data/Makefile.am:
 	* data/linux-input-layer-lircd.conf:

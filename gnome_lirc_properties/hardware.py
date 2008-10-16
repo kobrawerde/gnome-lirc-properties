@@ -147,6 +147,8 @@ class HalDevice(object):
             return self.find_device_by_class('lirc')
         if lirc_driver in ('devinput', 'dev/input'):
             return self.find_input_device()
+        if lirc_driver is not None:
+            return self.find_device_by_class('usb')
 
         return None
 

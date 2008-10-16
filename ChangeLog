@@ -1,5 +1,10 @@
 2008-10-16  Bastien Nocera  <hadess@hadess.net>
 
+	* data/gnome-lirc-properties.glade: Fix GTK+ warning on
+	startup (Closes: #556552)
+
+2008-10-16  Bastien Nocera  <hadess@hadess.net>
+
 	* data/receivers.conf:
 	* gnome_lirc_properties/hardware.py: Add support for the Apple
 	Mac Mini IR Receivers (Closes: #556599)

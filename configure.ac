@@ -6,6 +6,7 @@ AM_INIT_AUTOMAKE([1.9 tar-ustar])
 
 dnl check for programs ===
 
+AM_PROG_CC_C_O
 AM_PATH_PYTHON(2.4)
 IT_PROG_INTLTOOL([0.35.0])
 
@@ -21,6 +22,9 @@ AM_GLIB_GNU_GETTEXT
 dnl initialize GNOME help ===
 
 GNOME_DOC_INIT()
+
+dnl check for glib-2.0 for the lirc-generate-linux-input helper
+PKG_CHECK_MODULES(GLIB, glib-2.0)
 
 dnl check for PolicyKit ===
 

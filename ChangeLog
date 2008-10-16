@@ -1,3 +1,13 @@
+2008-10-16  Bastien Nocera  <hadess@hadess.net>
+
+	* configure.ac:
+	* data/Makefile.am:
+	* data/linux-input-layer-lircd.conf:
+	* data/lirc-generate-linux-input.c (load_include), (set_warnings),
+	(main): Add program to generate an updated
+	linux-input-layer-lircd.conf from the installed linux headers,
+	so that we avoid bitrot and missing keycodes (Helps: #555802)
+
 2008-07-25  Daniel Nylander <po@danielnylander.se>
 
 	* help/sv/sv.po: Added Swedish translation.

@@ -21,7 +21,15 @@ desktopdir = $(datadir)/applications
 desktop_in_files = gnome-lirc-properties.desktop.in
 desktop_DATA = gnome-lirc-properties.desktop
 
+noinst_PROGRAMS = lirc-generate-linux-input
+lirc_generate_linux_input_SOURCES = lirc-generate-linux-input.c
+lirc_generate_linux_input_CFLAGS = $(GLIB_CFLAGS)
+lirc_generate_linux_input_LDADD = $(GLIB_LIBS)
+
 resourcesdir = $(pkgdatadir)
+
+regenerate-linux-input-layer-conf: lirc-generate-linux-input
+	$(builddir)/lirc-generate-linux-input > $(builddir)/linux-input-layer-lircd.conf
 
 resources_DATA = \
 	gnome-lirc-properties.glade \

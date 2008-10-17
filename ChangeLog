@@ -1,5 +1,9 @@
 2008-10-17  Bastien Nocera  <hadess@hadess.net>
 
+	* data/receivers.conf: Add more receivers (Closes: #556643)
+
+2008-10-17  Bastien Nocera  <hadess@hadess.net>
+
 	* gnome_lirc_properties/hardware.py: The Logitech Mini-Receivers, when
 	in HID mode, only show a portion of the keys on this interface (with a
 	separate keyboard and mouse still visible).  We shouldn't try to

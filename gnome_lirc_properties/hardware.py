@@ -187,6 +187,12 @@ class HalDevice(object):
                 keys = [int(value, 16) for value in keys.split()]
                 keys = decode_bitmap(keys)
 
+		# The Logitech Mini-Receivers, when in HID mode, only show
+		# a portion of the keys on this interface (with a separate keyboard
+		# and mouse still visible). We shouldn't try to configure that device
+		if str(self['info.product']).startswith('Logitech ') and len >= 70:
+		    return True
+
                 # check that at least 85 key-codes are supported:
                 if len(keys) >= 85:
                     return True

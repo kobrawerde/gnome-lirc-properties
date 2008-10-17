@@ -1,5 +1,12 @@
 2008-10-17  Bastien Nocera  <hadess@hadess.net>
 
+	* gnome_lirc_properties/hardware.py: Detect input devices
+	with the input.keys capabilities as well, Ignore "Video Bus"
+	devices, fixes detection of the PS3 BD remote control, and other
+	input device remote controls (Closes: #555802)
+
+2008-10-17  Bastien Nocera  <hadess@hadess.net>
+
 	* gnome_lirc_properties/hardware.py: Fix Logitech check,
 	it would have been ignoring any Logitech devices
 

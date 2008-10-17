@@ -179,13 +179,17 @@ class HalDevice(object):
         '''
 
         # check if HAL considers this device a keyboard:
-        if self.has_capability('input.keyboard'):
+        if self.has_capability('input.keyboard') or self.has_capability('input.keys'):
             # read and parse key-code map from sysfs:
             keys = self.read_sysfs_file('..', 'capabilities', 'key')
 
             if keys is not None:
                 keys = [int(value, 16) for value in keys.split()]
                 keys = decode_bitmap(keys)
+
+                # Ignore ACPI Video Bus devices (as defined in drivers/acpi/video.c)
+		if str(self['info.product']) == 'Video Bus':
+		    return True
 
 		# The Logitech Mini-Receivers, when in HID mode, only show
 		# a portion of the keys on this interface (with a separate keyboard
@@ -196,6 +200,9 @@ class HalDevice(object):
                 # check that at least 85 key-codes are supported:
                 if len(keys) >= 85:
                     return True
+	else:
+	     # It's not a keyboard, but we don't want it anyway
+	     return True
 
         return False
 
@@ -255,6 +262,8 @@ class HardwareManager(gobject.GObject):
         self.__hal.connect_to_signal('DeviceAdded', self._on_device_added)
         self.__hal.connect_to_signal('DeviceRemoved', self._on_device_removed)
 
+	for udi in self.__hal.FindDeviceByCapability('input.keys'):
+            self._on_device_added(udi)
         for udi in self.__hal.FindDeviceByCapability('input.keyboard'):
             self._on_device_added(udi)
 
@@ -288,7 +297,7 @@ class HardwareManager(gobject.GObject):
 
         device = self.lookup_device(udi)
 
-        if (device.has_capability('input.keyboard') and
+        if (device.has_capability('input') and
             not device.is_real_keyboard()):
 
             product_name = str(device['info.product'])
@@ -304,13 +313,13 @@ class HardwareManager(gobject.GObject):
             receiver = lirc.Receiver(_('Linux Input Device'),
                                      product_name, **properties)
 
-            self.__devinput_receivers[udi] = receiver
+            self.__devinput_receivers[str(udi)] = receiver
             self.emit('receiver-added', receiver)
 
     def _on_device_removed(self, udi, sender=None):
         '''Handle removal of hot-plugable devices.'''
 
-        receiver = self.__devinput_receivers.pop(udi, None)
+        receiver = self.__devinput_receivers.pop(str(udi), None)
 
         if receiver is not None:
             self.emit('receiver-removed', receiver)
@@ -474,7 +483,7 @@ class HardwareManager(gobject.GObject):
                 continue
 
             # report findings:
-            receiver = self.devinput_receivers[device.udi]
+            receiver = self.devinput_receivers[str(device.udi)]
             self._receiver_found(receiver, device.udi, device_node)
 
     def find_instance(self, receiver):
@@ -505,9 +514,9 @@ class HardwareManager(gobject.GObject):
         claiming being thread-safe.
         '''
 
-        # retreive list of USB devices from HAL
+        # retrieve list of USB devices from HAL
         usb_devices = self.__hal.FindDeviceStringMatch('info.subsystem', 'usb_device')
-        input_devices = self.__hal.FindDeviceByCapability('input.keyboard')
+        input_devices = self.__hal.FindDeviceByCapability('input')
 
         self.__search_canceled = False
         self.__device_count = float(len(usb_devices) + len(input_devices))

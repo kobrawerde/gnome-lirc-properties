@@ -1,5 +1,10 @@
 2008-10-17  Bastien Nocera  <hadess@hadess.net>
 
+	* gnome_lirc_properties/hardware.py: Fix Logitech check,
+	it would have been ignoring any Logitech devices
+
+2008-10-17  Bastien Nocera  <hadess@hadess.net>
+
 	* data/receivers.conf: Add more receivers (Closes: #556643)
 
 2008-10-17  Bastien Nocera  <hadess@hadess.net>

@@ -8,10 +8,10 @@
              with "mouse" capabilities is actually useful -->
 	<match key="info.product" string="Keyspan  RF Remote for Front Row">
 	  <match key="info.capabilities" contains="input.mouse">
-            <merge key="lirc.input.is_remote" type="bool">true</merge>
+            <merge key="lirc.input.is_remote" type="bool">false</merge>
           </match>
           <match key="info.capabilities" contains="input.keypad">
-	    <merge key="lirc.input.is_remote" type="bool">false</merge>
+	    <merge key="lirc.input.is_remote" type="bool">true</merge>
           </match>
         </match>
 
@@ -22,6 +22,11 @@
 
 	<!-- Ignore ACPI Video Bus devices (as defined in drivers/acpi/video.c) -->
 	<match key="info.product" string="Video Bus">
+          <merge key="lirc.input.is_remote" type="bool">false</merge>
+        </match>
+
+	<!-- Ignore Dell's USB Keyboard Hub, it only has 17 keys -->
+        <match key="info.product" contains="Dell USB Keyboard Hub">
           <merge key="lirc.input.is_remote" type="bool">false</merge>
         </match>
 

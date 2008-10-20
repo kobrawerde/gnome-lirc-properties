@@ -1,5 +1,10 @@
 2008-10-20  Bastien Nocera  <hadess@hadess.net>
 
+	* data/20-x11-remotes.fdi: Add Dell USB keyboard hub
+	to the list, there's only 17 keys on it (Closes: #557086)
+
+2008-10-20  Bastien Nocera  <hadess@hadess.net>
+
 	* data/20-x11-remotes.fdi:
 	* data/Makefile.am:
 	* gnome_lirc_properties/hardware.py: Move rejection of

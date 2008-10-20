@@ -178,6 +178,10 @@ class HalDevice(object):
         NUMLOCK?
         '''
 
+        is_remote = self.get('lirc.input.is_remote')
+        if is_remote == True or is_remote == False:
+            return not is_remote
+
         # check if HAL considers this device a keyboard:
         if self.has_capability('input.keyboard') or self.has_capability('input.keys'):
             # read and parse key-code map from sysfs:
@@ -186,16 +190,6 @@ class HalDevice(object):
             if keys is not None:
                 keys = [int(value, 16) for value in keys.split()]
                 keys = decode_bitmap(keys)
-
-                # Ignore ACPI Video Bus devices (as defined in drivers/acpi/video.c)
-		if str(self['info.product']) == 'Video Bus':
-		    return True
-
-		# The Logitech Mini-Receivers, when in HID mode, only show
-		# a portion of the keys on this interface (with a separate keyboard
-		# and mouse still visible). We shouldn't try to configure that device
-		if str(self['info.product']).startswith('Logitech ') and len(keys) >= 70:
-		    return True
 
                 # check that at least 85 key-codes are supported:
                 if len(keys) >= 85:

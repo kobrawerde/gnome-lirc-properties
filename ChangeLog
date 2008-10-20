@@ -1,3 +1,11 @@
+2008-10-20  Bastien Nocera  <hadess@hadess.net>
+
+	* data/20-x11-remotes.fdi:
+	* data/Makefile.am:
+	* gnome_lirc_properties/hardware.py: Move rejection of
+	Logitech Mini-Receivers and Video Bus devices to a HAL
+	fdi files
+
 2008-10-17  Bastien Nocera  <hadess@hadess.net>
 
 	* gnome_lirc_properties/hardware.py: Detect input devices

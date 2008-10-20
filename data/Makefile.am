@@ -21,6 +21,10 @@ desktopdir = $(datadir)/applications
 desktop_in_files = gnome-lirc-properties.desktop.in
 desktop_DATA = gnome-lirc-properties.desktop
 
+# Blacklist and whitelist of input devices
+fdidir = $(datadir)/hal/fdi/policy/10osvendor
+fdi_DATA = 20-x11-remotes.fdi
+
 noinst_PROGRAMS = lirc-generate-linux-input
 lirc_generate_linux_input_SOURCES = lirc-generate-linux-input.c
 lirc_generate_linux_input_CFLAGS = $(GLIB_CFLAGS)

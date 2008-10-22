@@ -8,9 +8,6 @@ EXTRA_DIST = \
 	bin/todo-list \
 	data/overrides.conf \
 	gnome-doc-utils.make \
-	intltool-extract.in \
-	intltool-merge.in \
-	intltool-update.in \
 	man/gnome-lirc-properties.1 \
 	patches/0001-Use-new-instead-of-conf-as-filename-suffix.patch \
 	patches/0002-Add-resume-switch-to-irrecord.patch \
@@ -23,7 +20,5 @@ DISTCLEANFILES = \
 	intltool-update
 
 DISTCHECK_CONFIGURE_FLAGS = \
-	--disable-scrollkeeper \
-	--with-lirc-confdir=/etc/lirc \
-	--with-remotes-database=/usr/share/lirc/remotes
+	--disable-scrollkeeper
 

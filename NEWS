@@ -1,3 +1,20 @@
+0.3.0:
+
+* Add a program to generate updated "Linux Input Layer" remote
+  configuration, and update the configuration we ship
+  Bug #555802
+* Add support for the Apple Mac Mini IR Receivers, Windows Media Center
+  -compatible receivers, as well as the CommandIR Multi-IR Transceiver,
+  the SoundGraph iMon Knob, and PS3 BD Remote
+  Bugs #556599, #555802, #556643
+* Fix GTK+ warning on startup with newer GTK's
+  Bug #556552
+* Make sure we don't try to set up Logitech Mini-Receivers, or Dell USB
+  keyboard hubs as remotes
+  Bugs #541104 and #557086
+* Fix possible errors due to PolicyKit usage
+  Bug #556745
+
 0.2.8:
 
 * Require lirc 0.8.4.

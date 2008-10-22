@@ -14,4 +14,6 @@ DOC_FIGURES = \
 	figures/custom-remote-basics.png \
 	figures/custom-remote-keys.png
 
+EXTRA_DIST = es/legal.xml sv/legal.xml
+
 DOC_LINGUAS = es sv

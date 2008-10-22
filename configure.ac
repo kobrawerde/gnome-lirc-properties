@@ -1,4 +1,4 @@
-AC_INIT([gnome-lirc-properties], [0.2.8],
+AC_INIT([gnome-lirc-properties], [0.3.0],
         [https://code.fluendo.com/remotecontrol/trac/])
 
 # tar-ustar asks it to use a sensible tar format that can handle long filenames
@@ -85,15 +85,23 @@ expand_vars() {
   test "$value" != "$1" && expand_vars "$value" || echo "$value"
 }
 
+if test -f /etc/fedora-release ; then
+	lirc_confdir="/etc"
+	remotes_database="/usr/share/lirc-remotes"
+else
+	lirc_confdir="$sysconfdir/lirc"
+	remotes_database="$datadir/lirc/remotes"
+fi
+
 AC_ARG_WITH([lirc_confdir],
             AS_HELP_STRING([--with-lirc-confdir],
                            [Configuration folder of LIRC, e.g. $sysconfdir/lirc]),
-            [], [with_lirc_confdir=`expand_vars "$sysconfdir/lirc"`])
+            [], [with_lirc_confdir=`expand_vars "$lirc_confdir"`])
 
 AC_ARG_WITH([remotes_database],
             AS_HELP_STRING([--with-remotes-database],
                            [Path of the system's LIRC remote database, e.g. $datadir/lirc/remotes]),
-            [], [with_remotes_database=`expand_vars "$datadir/lirc/remotes"`])
+            [], [with_remotes_database=`expand_vars "$remotes_database"`])
 
 AC_SUBST([with_lirc_confdir])
 AC_SUBST([with_remotes_database])
@@ -110,7 +118,9 @@ if test "x$enable_confdir_check" = xyes
       AC_MSG_RESULT([$with_lirc_confdir])
     else
       AC_MSG_RESULT([no])
-      AC_MSG_ERROR([Cannot find lircd.conf in $with_lirc_confdir.])
+      if test ! -f /etc/fedora-release ; then
+        AC_MSG_ERROR([Cannot find lircd.conf in $with_lirc_confdir.])
+      fi
     fi
   else
     AC_MSG_RESULT([$with_lirc_confdir])

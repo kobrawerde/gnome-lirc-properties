@@ -45,7 +45,8 @@ EXTRA_DIST = \
 	$(desktop_in_files) \
 	$(policykitpolicy_in_files) \
 	$(resources_DATA) \
-	$(service_in_files)
+	$(service_in_files) \
+	$(fdi_DATA)
 
 DISTCLEANFILES = \
 	$(desktop_DATA) \

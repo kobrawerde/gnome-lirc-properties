@@ -1,3 +1,10 @@
+2008-10-22  Bastien Nocera  <hadess@hadess.net>
+
+	* gnome_lirc_properties/policykit.py: Use
+	"authorizes == yes" to make sure we don't tell the program
+	we're authorised when the answer is auth_self_keep_always
+	or similar (Closes: #556745)
+
 2008-10-20  Bastien Nocera  <hadess@hadess.net>
 
 	* data/20-x11-remotes.fdi: Add Dell USB keyboard hub

@@ -43,7 +43,7 @@ class PolicyKitAuthentication(object):
         authorized = self.policy_kit.IsProcessAuthorized(action_id, pid, False)
         logging.debug('%s: authorized=%r', action_id, authorized)
 
-        return ('no' != authorized)
+        return ('yes' == authorized)
 
     def obtain_authorization(self, widget, action_id=config.POLICY_KIT_ACTION):
         '''

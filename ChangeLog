@@ -1,3 +1,8 @@
+2008-10-27  Bastien Nocera  <hadess@hadess.net>
+
+	* gnome_lirc_properties/hardware.py: Fix the backend detecting
+	devices without any keys (power buttons)
+
 0.3.0:
 
 2008-10-22  Bastien Nocera  <hadess@hadess.net>

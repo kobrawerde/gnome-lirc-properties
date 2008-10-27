@@ -194,6 +194,8 @@ class HalDevice(object):
                 # check that at least 85 key-codes are supported:
                 if len(keys) >= 85:
                     return True
+                if len(keys) == 0:
+                   return True
 	else:
 	     # It's not a keyboard, but we don't want it anyway
 	     return True

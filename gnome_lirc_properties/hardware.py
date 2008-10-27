@@ -488,10 +488,13 @@ class HardwareManager(gobject.GObject):
         for udi in self.__hal.FindDeviceStringMatch('info.subsystem', 'usb_device'):
             device = self.lookup_device(udi)
 
-            if (device['usb_device.vendor_id'] == receiver.vendor_id and
-                device['usb_device.product_id'] == receiver.product_id):
-                return device.find_device_node(receiver.kernel_module,
-                                               receiver.lirc_driver)
+	    try:
+                if (device['usb_device.vendor_id'] == receiver.vendor_id and
+                    device['usb_device.product_id'] == receiver.product_id):
+                    return device.find_device_node(receiver.kernel_module,
+						   receiver.lirc_driver)
+	    except KeyError, key:
+	        continue
 
         return None
 

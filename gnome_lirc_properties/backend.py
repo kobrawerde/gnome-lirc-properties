@@ -763,9 +763,14 @@ class BackendService(PolicyKitService):
     def ManageLircDaemon(self, action, sender=None):
         '''Starts the LIRC daemon.'''
 
+        permitted_actions = [ 'enable', 'disable', 'stop', 'start', 'restart' ]
+
         self._check_permission(sender)
 
         print 'Managing lircd: %s...' % action
+
+	if action not in permitted_actions:
+	    raise AccessDeniedException
 
         if 'enable' == action:
             self._write_hardware_configuration(start_lircd=True)

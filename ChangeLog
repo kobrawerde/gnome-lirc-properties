@@ -1,5 +1,11 @@
 2008-10-27  Bastien Nocera  <hadess@hadess.net>
 
+	* gnome_lirc_properties/backend.py: Check which actions are
+	passed to the backend, so we don't launch "stop ; rm -rf /"
+	by accident (Closes: #558128)
+
+2008-10-27  Bastien Nocera  <hadess@hadess.net>
+
 	* gnome_lirc_properties/Makefile.am:
 	* gnome_lirc_properties/backend.py:
 	* gnome_lirc_properties/lirc.py:

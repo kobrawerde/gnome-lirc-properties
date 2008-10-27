@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: help.HEAD\n"
-"POT-Creation-Date: 2008-09-27 12:40+0000\n"
-"PO-Revision-Date: 2008-10-04 21:36-0400\n"
+"POT-Creation-Date: 2008-10-11 11:07+0000\n"
+"PO-Revision-Date: 2008-10-20 20:47-0300\n"
 "Last-Translator: Marlon Cisternas Milla <marlitoo@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -144,6 +144,9 @@ msgid ""
 "configure your LIRC powered infrared remote. <application>GNOME Infrared "
 "Remote Control Properties</application> provides the following features:"
 msgstr ""
+"Use las <application>Propiedades del control remoto por infrarrojos de GNOME</application> "
+"para configurar su control remoto por infrarrojos. las <application>Propiedades del control " 
+"remoto por infrarrojos de GNOME</application> proporcionan las siguientes características:"
 
 #: C/gnome-lirc-properties.xml:109(para)
 msgid "Auto-detection of infrared receivers."
@@ -179,7 +182,7 @@ msgstr "Informar de otros asuntos."
 
 #: C/gnome-lirc-properties.xml:122(para)
 msgid "Translating the program and its manual to your native language."
-msgstr ""
+msgstr "Traducir el programa y su manual a su lengua materna."
 
 #: C/gnome-lirc-properties.xml:137(title)
 msgid "Getting Started"
@@ -187,13 +190,17 @@ msgstr "Primeros pasos"
 
 #: C/gnome-lirc-properties.xml:140(title)
 msgid "Starting <application>GNOME Infrared Remote Control Properties</application>"
-msgstr "Iniciar <application>Propiedades del control remoto por infrarrojos de GNOME</application>"
+msgstr ""
+"Iniciar <application>Propiedades del control remoto por infrarrojos de "
+"GNOME</application>"
 
 #: C/gnome-lirc-properties.xml:141(para)
 msgid ""
 "You can start <application>GNOME Infrared Remote Control Properties</"
 "application> in the following ways:"
-msgstr "Puede iniciar <application>Propiedades del control remoto por infrarrojos de GNOME</application> de las siguientes maneras: "
+msgstr ""
+"Puede iniciar <application>Propiedades del control remoto por infrarrojos de "
+"GNOME</application> de las siguientes maneras: "
 
 #: C/gnome-lirc-properties.xml:145(term)
 msgid "<guimenu>System</guimenu> menu"
@@ -236,6 +243,8 @@ msgid ""
 "When you start <application>GNOME Infrared Remote Control Properties</"
 "application>, the following window is displayed."
 msgstr ""
+"Al iniciar las <application>Propiedades del control remoto por infrarrojos de GNOME</"
+"application> se muestra la siguiente ventana."
 
 #: C/gnome-lirc-properties.xml:172(title)
 msgid ""
@@ -249,13 +258,17 @@ msgstr ""
 msgid ""
 "Shows <placeholder-1/> main window. Contains receiver selection, remote "
 "selection and test area."
-msgstr "Muestra la ventana principal de <placeholder-1/>. Contiene la selección del receptor, la selección del control remoto y el área de prueba."
+msgstr ""
+"Muestra la ventana principal de <placeholder-1/>. Contiene la selección del "
+"receptor, la selección del control remoto y el área de prueba."
 
 #: C/gnome-lirc-properties.xml:181(para)
 msgid ""
 "The <application>GNOME Infrared Remote Control Properties</application> "
 "window contains the following elements:"
 msgstr ""
+"La ventana de las <application>Propiedades del control remoto por "
+"infrarrojos de GNOME</application> contiene los siguientes elementos:"
 
 #: C/gnome-lirc-properties.xml:185(term)
 msgid "Receiver Selection."
@@ -335,7 +348,7 @@ msgstr "Configurar un control remoto nuevo"
 
 #: C/gnome-lirc-properties.xml:271(title)
 msgid "Learn your Remote Control's Key Codes"
-msgstr ""
+msgstr "Aprenda los códigos claves de su control remoto"
 
 #: C/gnome-lirc-properties.xml:276(title)
 msgid "Upload Remote Configuration Files"
@@ -463,6 +476,8 @@ msgid ""
 "Add another key to the configuration. Learning mode starts directly after "
 "pressing this button."
 msgstr ""
+"Añada otra clave a la configuración. El modo de aprendizaje se inicia "
+"directamente después de pulsar este botón."
 
 #: C/gnome-lirc-properties.xml:394(guilabel)
 msgid "Remote"
@@ -477,8 +492,11 @@ msgid "Deletes all key definitions."
 msgstr "Borra todas las definiciones de claves."
 
 #: C/gnome-lirc-properties.xml:424(title)
-msgid "About <application>GNOME Infrared Remote Control Properties</application>"
-msgstr "Acerca de <application>Propiedades del control remoto por infrarrojos de GNOME</application>"
+msgid ""
+"About <application>GNOME Infrared Remote Control Properties</application>"
+msgstr ""
+"Acerca de <application>Propiedades del control remoto por infrarrojos de "
+"GNOME</application>"
 
 #: C/gnome-lirc-properties.xml:426(para)
 msgid ""

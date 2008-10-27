@@ -1,5 +1,17 @@
 2008-10-27  Bastien Nocera  <hadess@hadess.net>
 
+	* gnome_lirc_properties/Makefile.am:
+	* gnome_lirc_properties/backend.py:
+	* gnome_lirc_properties/lirc.py:
+	* gnome_lirc_properties/shellquote.py: Add shellquote helper
+	from http://liw.iki.fi/liw/python-licosmamo/, quote and unquote
+	configuration options from the hardware configuration file, so
+	that 1) input devices with brackets in their names work, 2)
+	arbitrary commands can't be added to the default lirc configuration
+	file (Closes: #558127)
+
+2008-10-27  Bastien Nocera  <hadess@hadess.net>
+
 	* gnome_lirc_properties/hardware.py: Fix USB hiddev device (without
 	a product or vendor ID) causing backtraces
 

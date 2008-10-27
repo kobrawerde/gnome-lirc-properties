@@ -1011,6 +1011,7 @@ class HardwareConfParser(object):
             key, value = tokens
 
             value = value.strip('"') # Remove quotes
+            value = ''.join(value.split('\\')) # Remove escaping
             self.__values[key] = value
 
     def __getitem__(self, key):

@@ -9,5 +9,6 @@ module_PYTHON = \
 	hardware.py \
 	lirc.py \
 	model.py \
-	policykit.py
+	policykit.py \
+	shellquote.py
 

@@ -22,6 +22,7 @@ import errno, os, os.path, re, pty, signal, tempfile
 
 from gettext               import gettext as _
 from gnome_lirc_properties import config, lirc
+from gnome_lirc_properties import shellquote as ShellQuote
 from StringIO              import StringIO
 
 # Modern flavors of dbus bindings have that symbol in dbus.lowlevel,
@@ -264,7 +265,7 @@ class IrRecordDriver(ExternalToolDriver):
         self._filename = filename
 
         if device:
-            self._cmdargs.append('--device=%s' % device)
+            self._cmdargs.append('--device=%s' % ShellQuote.shellquote(device))
         if filename:
             self._cmdargs.append(filename)
 
@@ -579,7 +580,7 @@ class BackendService(PolicyKitService):
 
             if value is not None:
                 logging.info('- writing %s"%s"', match.group(0), value)
-                print >> output, ('%s"%s"' % (match.group(0), value))
+                print >> output, ('%s"%s"' % (match.group(0), ShellQuote.shellquote(value)))
                 continue
 
             # Identify directives starting with RECEIVER_ and replacing their values with ours.
@@ -589,7 +590,7 @@ class BackendService(PolicyKitService):
 
             if value is not None:
                 logging.info('- writing %s"%s"', match.group(0), value)
-                print >> output, ('%s"%s"' % (match.group(0), value))
+                print >> output, ('%s"%s"' % (match.group(0), ShellQuote.shellquote(value)))
                 continue
 
             # Deal with the START_LIRCD line:
@@ -604,7 +605,7 @@ class BackendService(PolicyKitService):
                 value = (start_lircd is None) and 'true' or start_lircd
                 start_lircd = None
 
-                print >> output, (match.group(0) + value)
+                print >> output, (match.group(0) + ShellQuote.shellquote(value))
                 continue
 
             output.write(line)
@@ -615,12 +616,12 @@ class BackendService(PolicyKitService):
         if remote_values:
             print >> output, '\n# Remote settings required by gnome-lirc-properties'
         for key, value in remote_values.items():
-            print >> output, ('REMOTE_%s="%s"' % (key, value))
+            print >> output, ('REMOTE_%s="%s"' % (key, ShellQuote.shellquote(value)))
 
         if receiver_values:
             print >> output, '\n# Receiver settings required by gnome-lirc-properties'
         for key, value in receiver_values.items():
-            print >> output, ('RECEIVER_%s="%s"' % (key, value))
+            print >> output, ('RECEIVER_%s="%s"' % (key, ShellQuote.shellquote(value)))
 
         if start_lircd is not None:
             print >> output, '\n# Daemon settings required by gnome-lirc-properties'

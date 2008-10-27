@@ -1,3 +1,10 @@
+0.3.1:
+* Fix potential security issues in the backend by being more stringent
+  on the input we accept
+  Bugs #558128 and #558127
+* Fix the backend detecting keyboard-type devices without any keys
+* Fix detection of hiddev devices that don't have a product or vendor ID
+
 0.3.0:
 
 * Add a program to generate updated "Linux Input Layer" remote

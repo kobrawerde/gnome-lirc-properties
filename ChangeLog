@@ -1,3 +1,10 @@
+0.3.1:
+
+2008-10-27  Bastien Nocera  <hadess@hadess.net>
+
+	* NEWS: upd
+	* configure.ac: 0.3.1
+
 2008-10-27  Bastien Nocera  <hadess@hadess.net>
 
 	* gnome_lirc_properties/backend.py: Check which actions are

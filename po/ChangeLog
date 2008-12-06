@@ -1,3 +1,8 @@
+2008-12-06  Leonardo Ferreira Fontenelle  <leonardof@gnome.org>
+
+	* pt_BR.po: Updated Brazilian Portuguese translation, contributed by
+	César Veiga.
+
 2008-11-21  Mario Blättermann <mariobl@svn.gnome.org>
 
 	* de.po: Added German translation.
@@ -10,7 +15,8 @@
 
 2008-09-27  Robert-André Mauchin  <zebob.m@pengzone.org>
 
-	* fr.po: Added French translation by Bruno Brouard and Robert-André Mauchin.
+	* fr.po: Added French translation by Bruno Brouard and Robert-André
+	Mauchin.
 	* LINGUAS: Added fr.
 
 2008-09-18  Jorge Gonzalez <jorgegonz@svn.gnome.org>
@@ -33,7 +39,7 @@
 
 	* pl.po: Updated Polish translation
 
-2008-08-2  Djihed Afifi <djihed@gmail.com> 
+2008-08-02  Djihed Afifi <djihed@gmail.com> 
 
 	* ar.po: Updated Arabic Translation by Djihed Afifi.
 

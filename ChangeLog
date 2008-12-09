@@ -1,3 +1,8 @@
+2008-12-09  Bastien Nocera  <hadess@hadess.net>
+
+	* data/org.gnome.LircProperties.Mechanism.conf:
+	Fix for changes in recent D-Bus versions (Closes: #563853)
+
 0.3.1:
 
 2008-10-27  Bastien Nocera  <hadess@hadess.net>

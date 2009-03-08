@@ -1,3 +1,9 @@
+2009-03-08  Murray Cumming  <murrayc@murrayc.com>
+
+	* help/es/legal.xml, help/sv/legal.xml: Removed generated files.
+	If these are really meant to be in svn for some reason then please 
+	explain it to me.
+
 2008-12-09  Bastien Nocera  <hadess@hadess.net>
 
 	* data/org.gnome.LircProperties.Mechanism.conf:

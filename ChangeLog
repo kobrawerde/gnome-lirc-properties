@@ -1,3 +1,8 @@
+2009-04-19  Mario Blättermann  <mariobl@gnome.org>
+
+	* help/de/*: Added German translation.
+	* help/Makefile.am: Added de to DOC_LINGUAS.
+
 2009-03-08  Murray Cumming  <murrayc@murrayc.com>
 
 	* help/es/legal.xml, help/sv/legal.xml: Removed generated files.

@@ -1,11 +1,11 @@
 # translation of help.HEAD.po to Español
-# Marlon Cisternas Milla <marlitoo@gmail.com>, 2008.
 # Jorge González <jorgegonz@svn.gnome.org>, 2008.
+# Marlon Cisternas Milla <marlitoo@gmail.com>, 2008, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: help.HEAD\n"
-"POT-Creation-Date: 2008-11-07 13:08+0100\n"
-"PO-Revision-Date: 2008-11-12 00:59-0300\n"
+"POT-Creation-Date: 2009-04-17 14:34+0000\n"
+"PO-Revision-Date: 2009-06-10 11:22+0200\n"
 "Last-Translator: Marlon Cisternas Milla <marlitoo@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -132,9 +132,9 @@ msgid ""
 msgstr ""
 "Para informar un error o hacer una sugerencia en relación a la aplicación "
 "<application>Propiedades del control remoto por infrarrojos de GNOME</"
-"application> o este manual, siga las indicaciones en la <ulink url="
-"\"ghelp:user-guide?feedback-bugs\" type=\"help\">sección comentarios de la "
-"guía del usuario de GNOME</ulink>."
+"application> o este manual, siga las indicaciones en la <ulink url=\"ghelp:"
+"user-guide?feedback-bugs\" type=\"help\">sección comentarios de la guía del "
+"usuario de GNOME</ulink>."
 
 #: C/gnome-lirc-properties.xml:90(primary)
 #: C/gnome-lirc-properties.xml:0(application)
@@ -189,6 +189,8 @@ msgstr ""
 msgid ""
 "Reporting receivers supported by LIRC but ignored by this control panel."
 msgstr ""
+"Informando de receptores que LIRC soporta pero que este panel de control "
+"ignora."
 
 #: C/gnome-lirc-properties.xml:121(para)
 msgid "Reporting other issues."
@@ -241,8 +243,8 @@ msgid ""
 "keycap>:"
 msgstr ""
 "Para iniciar las <application>Propiedades del control remoto por infrarrojos "
-"de GNOME</application> desde la línea de comandos, escriba el siguiente comando "
-"y luego pulse <keycap>Intro</keycap>:"
+"de GNOME</application> desde la línea de comandos, escriba el siguiente "
+"comando y luego pulse <keycap>Intro</keycap>:"
 
 #: C/gnome-lirc-properties.xml:161(command)
 msgid "gnome-lirc-properties"
@@ -297,6 +299,8 @@ msgid ""
 "The drop-down lists in this area allow you to select the brand and model of "
 "your infrared receiver."
 msgstr ""
+"La lista desplegable en esta área le permitirá seleccionar la marca y modelo "
+"de su receptor de infrarrojos."
 
 #: C/gnome-lirc-properties.xml:192(para)
 msgid ""
@@ -304,8 +308,8 @@ msgid ""
 "that case the <guilabel>Device</guilabel> entry is sensitive."
 msgstr ""
 "Para algunos dispositivos tendrá que seleccionar qué dispositivo físico "
-"usar. En este caso, el <guilabel>Dispositivo</guilabel> de entrada "
-"es sensible."
+"usar. En este caso, el <guilabel>Dispositivo</guilabel> de entrada es "
+"sensible."
 
 #: C/gnome-lirc-properties.xml:200(term)
 msgid "Remote Selection."
@@ -317,6 +321,9 @@ msgid ""
 "infrared remote control. In many cases it is sufficient to just use remote "
 "control supplied with your receiver."
 msgstr ""
+"Los «widgets» en este área le permiten seleccionar la marca y modelo de su "
+"control remoto a infrarrojos. La mayoría de las veces es suficiente con usar "
+"el control remoto proporcionado por su receptor."
 
 #: C/gnome-lirc-properties.xml:211(term)
 msgid "Test Area."
@@ -341,8 +348,8 @@ msgid ""
 "application> application to perform the following tasks: <placeholder-1/>"
 msgstr ""
 "Puede utilizar la aplicación <application>Propiedades del control remoto por "
-"infrarrojos de GNOME</application> para realizar las siguientes "
-"tareas: <placeholder-1/>"
+"infrarrojos de GNOME</application> para realizar las siguientes tareas: "
+"<placeholder-1/>"
 
 #: C/gnome-lirc-properties.xml:245(title)
 msgid "Detect Infrared Receivers"
@@ -399,6 +406,11 @@ msgid ""
 "Configuration</guibutton> button. The <guilabel>Custom Configuration</"
 "guilabel> dialog contains the following tabbed sections:"
 msgstr ""
+"Para personalizar la configuración de su control remoto, active "
+"<guilabel>Usar un control remoto diferente</guilabel> y pulse el botón "
+"<guibutton>Configuración personalizada</guibutton>. El diálogo "
+"<guilabel>Configuración personalizada</guilabel> contiene las siguientes "
+"secciones:"
 
 #: C/gnome-lirc-properties.xml:311(title)
 #: C/gnome-lirc-properties.xml:319(guilabel)
@@ -465,6 +477,11 @@ msgid ""
 "<guibutton>Detect</guibutton> button to start guided detection of those "
 "properties."
 msgstr ""
+"Esta sección muestra las propiedades de configuración básicas de su "
+"controlador remoto de infrarrojos. Su controlador remoto no se podrá usar a "
+"no ser que estos parámetros se reconozcan. Pulse el botón "
+"<guibutton>Detectar</guibutton> para iniciar la detección guiada de esas "
+"propiedades."
 
 #: C/gnome-lirc-properties.xml:355(title)
 msgid "<guilabel>Basic Configuration</guilabel> section"
@@ -477,8 +494,8 @@ msgid ""
 "of those properties."
 msgstr ""
 "Muestra la sección <placeholder-1/> del diálogo <placeholder-2/>. Contiene "
-"una lista con las propiedades del control remoto y un botón para iniciar "
-"la detección de esas propiedades."
+"una lista con las propiedades del control remoto y un botón para iniciar la "
+"detección de esas propiedades."
 
 #: C/gnome-lirc-properties.xml:366(title)
 #: C/gnome-lirc-properties.xml:379(guilabel)
@@ -491,6 +508,10 @@ msgid ""
 "click a key-code row to start the learning mode. Use names from the default "
 "namespace whenever possible, for maximum interoperability."
 msgstr ""
+"Esta sección permite la asignación de códigos de claves a nombres conocidos. "
+"Pulse dos veces sobre un código de claves para iniciar el modo de "
+"aprendizaje. Para una máxima interoperabilidad use nombres del espacio de "
+"nombres predeterminado siempre que sea posible."
 
 #: C/gnome-lirc-properties.xml:375(title)
 msgid "<guilabel>Key Codes</guilabel> section"
@@ -501,6 +522,9 @@ msgid ""
 "Shows the <placeholder-1/> section of the <placeholder-2/> dialog. Contains "
 "a list with assigned keys codes and buttons for manipulating this list."
 msgstr ""
+"Muestra la sección <placeholder-1/> del diálogo <placeholder-2/>. Contiene "
+"una lista con códigos de claves y botones asignados para manipular esta "
+"lista."
 
 #: C/gnome-lirc-properties.xml:386(guilabel)
 #: C/gnome-lirc-properties.xml:399(guilabel)
@@ -543,6 +567,12 @@ msgid ""
 "please visit the <ulink url=\"http://live.gnome.org/gnome-lirc-properties\" "
 "type=\"http\">project page</ulink>."
 msgstr ""
+"Mathias Hasselmann (<email>mathias@openismus.com</email>) y Murray Cumming "
+"(<email>murrayc@murrayc.com</email> escribieron las <application>Propiedades "
+"del control remoto por infrarrojos de GNOME</application>. Para obtener más "
+"información acerca de las <application>Propiedades del control remoto por "
+"infrarrojos de GNOME</application>, visite la <ulink url=\"http://live.gnome."
+"org/gnome-lirc-properties\" type=\"http\">página del proyecto</ulink>."
 
 #: C/gnome-lirc-properties.xml:433(para)
 msgid ""
@@ -550,6 +580,10 @@ msgid ""
 "manual, follow the directions in the <ulink url=\"ghelp:user-guide?feedback-"
 "bugs\" type=\"help\">Feedback section of the GNOME User Guide</ulink>."
 msgstr ""
+"Para informar de un fallo, o hacer alguna sugerencia concerniente a esta "
+"aplicación o este manual, siga las indicaciones en la <ulink url=\"ghelp:"
+"user-guide?feedback-bugs\" type=\"help\">sección de comentarios de la Guía "
+"de usuario de GNOME</ulink>."
 
 #: C/gnome-lirc-properties.xml:439(para)
 msgid ""
@@ -560,6 +594,12 @@ msgid ""
 "documentation; another can be found in the file COPYING included with the "
 "source code of this program."
 msgstr ""
+"Este programa se distribuye bajo los términos de la Licencia Pública General "
+"GNU tal como la publica la Free Software Foundation; en cualquiera de las "
+"versiones 2 de la Licencia o (a su elección) cualquier versión posterior. "
+"Puede encontrar una copia de esta licencia en este <ulink url=\"ghelp:gpl\" "
+"type=\"help\">enlace</ulink>, o en el archivo COPYING incluido con el código "
+"fuente de este programa."
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2.
 #: C/gnome-lirc-properties.xml:0(None)

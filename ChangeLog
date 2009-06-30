@@ -1,5 +1,11 @@
 2009-06-30  Bastien Nocera  <hadess@hadess.net>
 
+	* gnome_lirc_properties/backend.py: Don't be overly
+	enthusiastic when shell-quoting into the lirc configuration
+	file, empty strings (not none) would quoted as "''"
+
+2009-06-30  Bastien Nocera  <hadess@hadess.net>
+
 	* data/receivers.conf: Remove Snapstream definition, the
 	remote driver has been merged into the kernel since 2006
 	(Closes: #557429)

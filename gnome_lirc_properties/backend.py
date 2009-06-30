@@ -580,7 +580,10 @@ class BackendService(PolicyKitService):
 
             if value is not None:
                 logging.info('- writing %s"%s"', match.group(0), value)
-                print >> output, ('%s"%s"' % (match.group(0), ShellQuote.shellquote(value)))
+		if value == "":
+                    print >> output, ('%s"%s"' % (match.group(0), value))
+                else:
+                    print >> output, ('%s"%s"' % (match.group(0), ShellQuote.shellquote(value)))
                 continue
 
             # Identify directives starting with RECEIVER_ and replacing their values with ours.
@@ -590,7 +593,10 @@ class BackendService(PolicyKitService):
 
             if value is not None:
                 logging.info('- writing %s"%s"', match.group(0), value)
-                print >> output, ('%s"%s"' % (match.group(0), ShellQuote.shellquote(value)))
+		if value == "":
+                    print >> output, ('%s"%s"' % (match.group(0), value))
+	        else:
+                    print >> output, ('%s"%s"' % (match.group(0), ShellQuote.shellquote(value)))
                 continue
 
             # Deal with the START_LIRCD line:

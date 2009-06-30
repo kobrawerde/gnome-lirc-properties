@@ -1,3 +1,8 @@
+2009-06-30  Bastien Nocera  <hadess@hadess.net>
+
+	* data/org.gnome.LircProperties.Mechanism.conf:
+	Really fix the D-Bus configuration for newer D-Buses
+
 2009-04-19  Mario Blättermann  <mariobl@gnome.org>
 
 	* help/de/*: Added German translation.

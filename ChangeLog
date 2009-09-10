@@ -1,5 +1,12 @@
 2009-09-10  Bastien Nocera  <hadess@hadess.net>
 
+	* data/gnome-lirc-properties.desktop.in.in:
+	Show the preferences in the user's preferences,
+	not in the administration sub-menu
+	(Closes: #540897)
+
+2009-09-10  Bastien Nocera  <hadess@hadess.net>
+
 	* data/gnome-lirc-properties.glade:
 	* gnome_lirc_properties/lirc.py:
 	* gnome_lirc_properties/ui/RemoteControlProperties.py:

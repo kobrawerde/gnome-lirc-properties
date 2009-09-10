@@ -22,3 +22,13 @@ DISTCLEANFILES = \
 DISTCHECK_CONFIGURE_FLAGS = \
 	--disable-scrollkeeper
 
+# Build ChangeLog from GIT history
+ChangeLog:
+	@if test -f $(top_srcdir)/.git/HEAD; then \
+		git log --stat --after="Thu Sep 10 18:00:37 2009" > $@; \
+	fi
+
+dist: ChangeLog
+
+.PHONY: ChangeLog
+

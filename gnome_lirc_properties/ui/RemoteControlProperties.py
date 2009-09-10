@@ -151,7 +151,6 @@ class RemoteControlProperties(object):
             'radiobutton_supplied_remote',
             'radiobutton_other_remote',
             'alignment_remote_selection',
-            'button_download',
 
             # preview widgets:
             'label_preview_status',
@@ -362,8 +361,7 @@ class RemoteControlProperties(object):
         use_supplied = self.use_supplied_remote
 
         for child in remote_selection_widgets:
-            if child is not self.__button_download:
-                child.set_sensitive(not use_supplied)
+            child.set_sensitive(not use_supplied)
 
         # Choose supplied remote when requested:
         if use_supplied and self.supplied_remote:

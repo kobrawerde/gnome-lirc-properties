@@ -1,3 +1,13 @@
+2009-09-10  Bastien Nocera  <hadess@hadess.net>
+
+	* data/gnome-lirc-properties.glade:
+	* gnome_lirc_properties/lirc.py:
+	* gnome_lirc_properties/ui/RemoteControlProperties.py:
+	Disable the download button, the remote definitions from
+	Fluendo are out-dated, and still use weird keynames
+	instead of the standard Linux input-layer names
+	(Closes: #556585)
+
 2009-06-30  Bastien Nocera  <hadess@hadess.net>
 
 	* gnome_lirc_properties/backend.py: Don't be overly

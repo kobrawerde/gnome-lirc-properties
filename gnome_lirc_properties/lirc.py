@@ -288,6 +288,8 @@ class RemotesDatabase(object):
         Reads remote configurations from tarball.
         '''
 
+        return False
+
         if not os.path.isfile(path):
             return False
 

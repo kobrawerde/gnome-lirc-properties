@@ -1,5 +1,11 @@
 2009-09-10  Bastien Nocera  <hadess@hadess.net>
 
+	* configure.ac:
+	* data/Makefile.am: Use automake 1.11's silent
+	rules if available
+
+2009-09-10  Bastien Nocera  <hadess@hadess.net>
+
 	* data/gnome-lirc-properties.desktop.in.in:
 	Show the preferences in the user's preferences,
 	not in the administration sub-menu

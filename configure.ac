@@ -4,6 +4,9 @@ AC_INIT([gnome-lirc-properties], [0.3.1],
 # tar-ustar asks it to use a sensible tar format that can handle long filenames
 AM_INIT_AUTOMAKE([1.9 tar-ustar])
 
+# Enable silent build when available (Automake 1.11)
+m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
+
 dnl check for programs ===
 
 AM_PROG_CC_C_O

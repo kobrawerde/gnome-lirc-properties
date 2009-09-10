@@ -20,7 +20,7 @@ Download and update services.
 '''
 
 import gobject, httplib, locale, logging
-import md5, os, re, rfc822, sha, time, urllib2
+import hashlib, os, re, rfc822, time, urllib2
 
 from gettext   import gettext as _
 from StringIO  import StringIO

@@ -10,7 +10,7 @@ m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
 dnl check for programs ===
 
 AM_PROG_CC_C_O
-AM_PATH_PYTHON(2.4)
+AM_PATH_PYTHON(2.5)
 IT_PROG_INTLTOOL([0.35.0])
 
 dnl localization support ===

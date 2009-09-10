@@ -32,10 +32,19 @@ class ParseError(Exception):
     '''
     Execption describing a parse error.
     '''
+    @apply
 
-    def __init__(self, filename, lineno, message = _('Malformed configuration file')):
-        message = '%s:%d: %s' % (filename, lineno, message)
-        super(ParseError, self).__init__(message)
+    def message():
+        def get(self):
+            return self._message
+
+        def set(self, value):
+            self._message = value
+
+        return property(get, set)
+
+    def __init__(self, filename, lineno, msg = _('Malformed configuration file')):
+        self.message = '%s:%d: %s' % (filename, lineno, msg)
 
 class Receiver(object):
     '''

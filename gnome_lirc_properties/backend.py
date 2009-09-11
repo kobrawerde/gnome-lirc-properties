@@ -63,17 +63,20 @@ class PolicyKitService(dbus.service.Object):
 
         try:
             if sender:
-                kit = dbus.SystemBus().get_object('org.freedesktop.PolicyKit', '/')
-                kit = dbus.Interface(kit, 'org.freedesktop.PolicyKit')
+                kit = dbus.SystemBus().get_object('org.freedesktop.PolicyKit1', '/org/freedesktop/PolicyKit1/Authority')
+                kit = dbus.Interface(kit, 'org.freedesktop.PolicyKit1.Authority')
 
-                # Note that we don't use IsProcessAuthorized because we have
-                # no ways to get the PID of the front-end, so we're left
-                # with checking that its bus name is authorised instead
-		# See http://bugzilla.gnome.org/show_bug.cgi?id=540912
-                granted = kit.IsSystemBusNameAuthorized(action, sender, False)
+                # Note that we don't use CheckAuthorization with bus name
+                # details because we have no ways to get the PID of the
+                # front-end, so we're left with checking that its bus name
+                # is authorised instead
+                # See http://bugzilla.gnome.org/show_bug.cgi?id=540912
+                (granted, _, details) = kit.CheckAuthorization(
+                                ('system-bus-name', {'name': sender}),
+                                action, {}, dbus.UInt32(1), '', timeout=600)
                 logging.info('authorization of system bus name \'%s\': %r', sender, granted)
 
-                if 'yes' != granted:
+                if not granted:
                     raise AccessDeniedException('Session not authorized by PolicyKit')
 
         except AccessDeniedException:
@@ -484,7 +487,7 @@ class BackendService(PolicyKitService):
 
     INTERFACE_NAME = 'org.gnome.LircProperties.Mechanism'
     SERVICE_NAME   = 'org.gnome.LircProperties.Mechanism'
-    IDLE_TIMEOUT   =  30
+    IDLE_TIMEOUT   =  300
 
     # These are extra fields set by our GUI:
 

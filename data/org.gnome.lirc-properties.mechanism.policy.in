@@ -15,7 +15,7 @@
     <message>Changing the LIRC configuration requires privileges.</message>
     <defaults>
       <allow_inactive>no</allow_inactive>
-      <allow_active>auth_self_keep_always</allow_active>
+      <allow_active>auth_self_keep</allow_active>
     </defaults>
   </action>
 

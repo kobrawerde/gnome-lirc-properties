@@ -5,9 +5,9 @@ SUBDIRS = icons
 dbusconfdir = $(sysconfdir)/dbus-1/system.d
 dbusconf_DATA = org.gnome.LircProperties.Mechanism.conf
 
-policykitpolicydir = $(datadir)/PolicyKit/policy
-policykitpolicy_in_files = gnome-lirc-properties-mechanism.policy.in
-policykitpolicy_DATA = gnome-lirc-properties-mechanism.policy
+policykitpolicydir = $(datadir)/polkit-1/actions
+policykitpolicy_in_files = org.gnome.lirc-properties.mechanism.policy.in
+policykitpolicy_DATA = org.gnome.lirc-properties.mechanism.policy
 
 # The .service file is generated from a .service.in file
 # so that the install location can be inserted.

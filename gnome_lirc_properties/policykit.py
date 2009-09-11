@@ -39,42 +39,36 @@ class PolicyKitAuthentication(object):
             return True
 
         # Check whether the process is authorized:
-        pid = dbus.UInt32(os.getpid())
-        authorized = self.policy_kit.IsProcessAuthorized(action_id, pid, False)
-        logging.debug('%s: authorized=%r', action_id, authorized)
+        pid = os.getpid()
+        (is_auth, _, details) = self.policy_kit.CheckAuthorization(
+			('unix-process', {'pid': dbus.UInt32(pid, variant_level=1)}),
+			action_id, {}, dbus.UInt32(0), '', timeout=600)
+        logging.debug('%s: authorized=%r', action_id, is_auth)
 
-        return ('yes' == authorized)
+        return bool(is_auth)
 
     def obtain_authorization(self, widget, action_id=config.POLICY_KIT_ACTION):
         '''
-        Try to obtain authoriztation for the specified action.
+        Try to obtain authorization for the specified action.
         '''
 
         if not config.ENABLE_POLICY_KIT:
             return True
 
-        xid = (widget and widget.get_toplevel().window.xid or 0)
-        xid, pid = dbus.UInt32(xid), dbus.UInt32(os.getpid())
+        pid = os.getpid()
+        (granted, _, details) = self.policy_kit.CheckAuthorization(
+			('unix-process', {'pid': dbus.UInt32(pid, variant_level=1)}),
+			action_id, {}, dbus.UInt32(1), '', timeout=600)
 
-        granted = self.auth_agent.ObtainAuthorization(action_id, xid, pid)
         logging.debug('%s: granted=%r', action_id, granted)
 
         return bool(granted)
 
     def __get_policy_kit(self):
-        '''Retreive the D-Bus interface of PolicyKit.'''
+        '''Retrieve the D-Bus interface of PolicyKit.'''
 
         # retreiving the interface raises DBusException on error:
-        service = dbus.SystemBus().get_object('org.freedesktop.PolicyKit', '/')
-        return dbus.Interface(service, 'org.freedesktop.PolicyKit')
+        service = dbus.SystemBus().get_object('org.freedesktop.PolicyKit1', '/org/freedesktop/PolicyKit1/Authority')
+        return dbus.Interface(service, 'org.freedesktop.PolicyKit1.Authority')
 
-    def __get_auth_agent(self):
-        '''Retreive the D-Bus interface of the PolicyKit authentication agent.'''
-
-        # retreiving the interface raises DBusException on error:
-        return dbus.SessionBus().get_object(
-            'org.freedesktop.PolicyKit.AuthenticationAgent', '/',
-            'org.gnome.PolicyKit.AuthorizationManager.SingleInstance')
-
-    auth_agent = property(__get_auth_agent)
     policy_kit = property(__get_policy_kit)

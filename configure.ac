@@ -36,8 +36,7 @@ AC_ARG_ENABLE([policy-kit],
 
 if test "$enable_policy_kit" != no
 then
-  PKG_CHECK_MODULES([POLICY_KIT], [polkit >= 0.7
-                                   polkit-gnome >= 0.7])
+  PKG_CHECK_MODULES([POLICY_KIT], [polkit-backend-1])
   ENABLE_POLICY_KIT=True
   enable_policy_kit=yes
 else
@@ -184,7 +183,7 @@ dnl generate files ===
 AC_CONFIG_FILES([Makefile
                  data/Makefile
                  data/gnome-lirc-properties.desktop.in
-                 data/gnome-lirc-properties-mechanism.policy
+                 data/org.gnome.lirc-properties.mechanism.policy
                  data/org.gnome.LircProperties.Mechanism.service
                  data/icons/Makefile
                  data/icons/16x16/Makefile

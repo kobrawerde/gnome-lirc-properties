@@ -17,7 +17,7 @@ then
 fi
 
 if [ -f /etc/fedora-release ] ; then
-	. gnome-autogen.sh --disable-conf-check --with-lirc-confdir=/etc/ --with-remotes-database=/usr/share/lirc-remotes/ "$@"
+	. gnome-autogen.sh --disable-conf-check --with-lirc-confdir=/etc/lirc/ --with-remotes-database=/usr/share/lirc-remotes/ "$@"
 else
 	. gnome-autogen.sh "$@"
 fi

@@ -89,7 +89,7 @@ expand_vars() {
 }
 
 if test -f /etc/fedora-release ; then
-	lirc_confdir="/etc"
+	lirc_confdir="/etc/lirc"
 	remotes_database="/usr/share/lirc-remotes"
 	lircd_socket="/var/run/lirc/lircd"
 else

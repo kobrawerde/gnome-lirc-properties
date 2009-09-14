@@ -846,7 +846,7 @@ class KeyListener(gobject.GObject):
             tuple()),
     }
 
-    def __init__(self, socket_name='/dev/lircd'):
+    def __init__(self, socket_name=config.LIRCD_SOCKET):
         # pylint: disable-msg=E1002
         super(KeyListener, self).__init__()
 

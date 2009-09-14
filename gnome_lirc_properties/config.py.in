@@ -11,6 +11,7 @@ POLICY_KIT_ACTION     = 'org.gnome.lirc-properties.mechanism.configure'
 PACKAGE_DIR           = path.join('@prefix@', 'share', '@PACKAGE@')
 
 LIRC_CONFDIR          = '@with_lirc_confdir@'
+LIRCD_SOCKET          = '@with_lircd_socket@'
 
 LIRC_HARDWARE_CONF    = path.join(LIRC_CONFDIR, 'hardware.conf')
 LIRC_REMOTE_CONF      = path.join(LIRC_CONFDIR, 'lircd.conf.gnome')

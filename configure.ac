@@ -91,9 +91,11 @@ expand_vars() {
 if test -f /etc/fedora-release ; then
 	lirc_confdir="/etc"
 	remotes_database="/usr/share/lirc-remotes"
+	lircd_socket="/var/run/lirc/lircd"
 else
 	lirc_confdir="$sysconfdir/lirc"
 	remotes_database="$datadir/lirc/remotes"
+	lircd_socket="/dev/lircd"
 fi
 
 AC_ARG_WITH([lirc_confdir],
@@ -106,8 +108,14 @@ AC_ARG_WITH([remotes_database],
                            [Path of the system's LIRC remote database, e.g. $datadir/lirc/remotes]),
             [], [with_remotes_database=`expand_vars "$remotes_database"`])
 
+AC_ARG_WITH([lircd_socket],
+            AS_HELP_STRING([--with-lircd-socket],
+                           [Path of the system's LIRCD socket, e.g. /dev/lircd]),
+            [], [with_lircd_socket=`expand_vars "$lircd_socket"`])
+
 AC_SUBST([with_lirc_confdir])
 AC_SUBST([with_remotes_database])
+AC_SUBST([with_lircd_socket])
 
 AC_MSG_CHECKING([configured LIRC configuration folder])
 
@@ -138,6 +146,9 @@ else
   AC_MSG_RESULT([no])
   AC_MSG_ERROR([Configured remotes database does not exist: $with_remotes_database])
 fi
+
+AC_MSG_CHECKING([configured LIRCD socket])
+AC_MSG_RESULT([$with_lircd_socket])
 
 dnl support custom upload and download locations ===
 

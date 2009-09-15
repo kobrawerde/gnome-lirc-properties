@@ -1,4 +1,4 @@
-AC_INIT([gnome-lirc-properties], [0.3.1],
+AC_INIT([gnome-lirc-properties], [0.4.0],
         [https://code.fluendo.com/remotecontrol/trac/])
 
 # tar-ustar asks it to use a sensible tar format that can handle long filenames

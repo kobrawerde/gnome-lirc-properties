@@ -20,7 +20,7 @@ DISTCLEANFILES = \
 	intltool-update
 
 DISTCHECK_CONFIGURE_FLAGS = \
-	--disable-scrollkeeper
+	--disable-scrollkeeper --disable-policy-kit
 
 # Build ChangeLog from GIT history
 ChangeLog:

@@ -1,3 +1,13 @@
+0.4.0:
+* Fix for recent D-Bus versions
+* Remove unused Snapstream remote definition
+* Fix overly enthusiastic shell quoting in config files
+* Disable Download button
+* Show the preferences in the user's preferences
+* Fix warnings with newer Python versions
+* Make lircd socket location configurable
+* Move default lircd.conf location for Fedora
+
 0.3.1:
 * Fix potential security issues in the backend by being more stringent
   on the input we accept

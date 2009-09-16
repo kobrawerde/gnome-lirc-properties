@@ -238,6 +238,11 @@ def scan_kernel_driver(filename):
 
             # print findings:
             section = '%s: %s' % (vendor_name, product_name)
+            
+            # ensure section name is valid (could be more clever...)
+            section = section.replace("[", "(")
+            section = section.replace("]", ")")
+                     
             receiver_sections.append(section)
 
             print '# from %s, line %d' % (srcname, line + 1)
@@ -340,7 +345,7 @@ if '__main__' == __name__:
     re_company_suffix = re.compile(re_company_suffix)
 
     # read device id databases:
-    usb_ids = DeviceDatabase(gzip.open('/usr/share/misc/usb.ids'))
+    usb_ids = DeviceDatabase(open('/usr/share/misc/usb.ids'))
     pci_ids = DeviceDatabase(open('/usr/share/misc/pci.ids'))
 
     # read overrides databases:

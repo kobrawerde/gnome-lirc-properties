@@ -21,8 +21,20 @@
 #   Mathias Hasselmann <mathias@openismus.com>
 #
 # Usage:
-#   build-receiver-list [SRCDIR]
+#   lirc-receiver-list [SRCDIR]
 #
+# This script can be used to generate a receivers.conf script such as found
+# in the data/ directory. It is used to present the remotes available in the
+# lirc sources in the gnome-lirc-properties UI.
+# The script scans the lirc source files to find characteristic array 
+# declarations of the USB-Receivers. PCI Receivers (there is only one) have to
+# be added separately in data/overrides.conf. This script will use the data
+# supplied by the overrides.conf file when generating the new receivers.conf
+# This script should be used from time to time to update the receivers.conf file
+# in git when new lirc versions are available
+# This script should be executed in the top-level source directory of 
+# gnome-lirc-properties
+
 import gzip, logging, os, pwd, re, sys
 
 from ConfigParser import SafeConfigParser

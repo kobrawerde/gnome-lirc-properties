@@ -401,16 +401,14 @@ class CustomConfiguration(object):
         keys_model = self.__treeview_keys.get_model()
 
         if 0 == keys_model.count_keys(lirc.KeyCodeCategory.DEFAULT):
-            if configuration_problem(_('This configuration has no keys for the default ' +
-                                       'namespace. Most applications won\'t be able to ' +
-                                       'use this configuration.')):
-                return
+            if configuration_problem(
+                _('This configuration has no keys for the default namespace. Most applications won\'t be able to use this configuration.')):
+                    return
 
         elif 0 != keys_model.count_keys(lirc.KeyCodeCategory.CUSTOM):
-            if configuration_problem(_('Some keys in this configuration have names ' +
-                                       'which do not belong to any standardized namespace.' +
-                                       'Most applications won\'t be able to use those keys.')):
-                return
+            if configuration_problem(
+                _('Some keys in this configuration have names which do not belong to any standardized namespace. Most applications won\'t be able to use those keys.')):
+                    return
 
         self.__dialog.set_sensitive(False)
 

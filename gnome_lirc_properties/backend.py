@@ -370,11 +370,7 @@ class DetectParametersDriver(IrRecordDriver):
 
             self.RequestAction(
                 _('Press random buttons on your remote control.'),
-                _('When you press the Start button, it is very important '
-                  'that you press many different buttons and hold them down ' +
-                  'for approximately one second. Each button should move the ' +
-                  'progress bar by at least one step, but in no case by more ' +
-                  'than ten steps.'))
+                _('When you press the Start button, it is very important that you press many different buttons and hold them down for approximately one second. Each button should move the progress bar by at least one step, but in no case by more than ten steps.'))
 
             return
 
@@ -385,9 +381,7 @@ class DetectParametersDriver(IrRecordDriver):
         if line.startswith(self._token_wait_toggle_mask):
             self.RequestAction(
                 _('Press a button repeatedly as fast as possible.'),
-                _('Make sure you keep pressing the <b>same</b> button and that you ' +
-                  '<b>do not hold</b> the button down.\nWait a little between button ' +
-                  'presses if you cannot see any progress.'))
+                _('Make sure you keep pressing the <b>same</b> button and that you <b>do not hold</b> the button down.\nWait a little between button presses if you cannot see any progress.'))
 
             return
 

@@ -242,10 +242,8 @@ class RemoteControlProperties(object):
         return (
             gtk.RESPONSE_ACCEPT == show_message(self.__dialog,
             _('Invalid IR Configuration'),
-            _('Your configuration files seems to be incorrect. ' +
-              'Should this program try to restore your settings, ' +
-              'for a %s %s remote?') % (
-            remote.vendor, remote.product), buttons=responses))
+            _('Your configuration files seems to be incorrect. Should this program try to restore your settings, for a %s %s remote?') % 
+            (remote.vendor, remote.product), buttons=responses))
 
     def __restore_hardware_settings(self):
         '''Restore hardware settings from configuration files.'''
@@ -324,9 +322,8 @@ class RemoteControlProperties(object):
 
         else:
             self.__label_preview_result.hide()
-            self.__label_preview_status.set_markup(_('<b>Warning:</b> Remote control daemon ' +
-                                                     'not running. Cannot test buttons.\n' + 
-                                                     'This could be due to a configuration error. Try changing the configuration.'))
+            self.__label_preview_status.set_markup(
+                _('<b>Warning:</b> Remote control daemon not running. Cannot test buttons.\nThis could be due to a configuration error. Try changing the configuration.'))
 
     # pylint: disable-msg=W0613,R0913
     def __on_lirc_key_pressed(self, listener, remote, repeat, name, code):
@@ -401,8 +398,7 @@ class RemoteControlProperties(object):
 
             elif httplib.NOT_MODIFIED == getattr(content, 'code', None):
                 show_message(self.__dialog, progress_window.title,
-                             details=_('No updates available. Your remote control configuration ' +
-                                       'files are already up-to-date.'),
+                             details=_('No updates available. Your remote control configuration files are already up-to-date.'),
                              message_type=gtk.MESSAGE_INFO)
 
             else:
@@ -665,10 +661,7 @@ class RemoteControlProperties(object):
             if (gtk.RESPONSE_REJECT ==
                 show_message(self.__dialog,
                              _('No IR Receivers Found'),
-                             _('Could not find any IR receiver. Is your device attached?\n\n' +
-                             'Note that some devices, such as homebrew serial port ' +
-                             'receivers must be selected manually since there is no ' +
-                             'way to detect them automatically.'),
+                             _('Could not find any IR receiver. Is your device attached?\n\nNote that some devices, such as homebrew serial port receivers must be selected manually since there is no way to detect them automatically.'),
                              buttons=responses)):
 
                 self._on_button_auto_detect_clicked()
@@ -890,8 +883,8 @@ class RemoteControlProperties(object):
 
         except OSError, ex:
             if errno.ENOENT == ex.errno:
-                error_message = _('Cannot display help since the GNOME Help ' +
-                                  'Browser ("yelp") cannot be found.')
+                error_message = 
+                    _('Cannot display help since the GNOME Help Browser ("yelp") cannot be found.')
 
             else:
                 error_message = _('Cannot display help for unexpected reason: %s') % ex.strerror

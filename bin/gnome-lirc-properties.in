@@ -1,6 +1,6 @@
 #!@PYTHON@
 
-import gettext, locale, os.path, sys
+import gettext, locale, os.path, sys, gtk.glade
 
 locale.setlocale(locale.LC_ALL, '')
 
@@ -18,7 +18,11 @@ if os.path.isfile(probe):
 
 else:
     localedir = os.path.join(datadir, 'locale')
+    gtk.glade.bindtextdomain('@GETTEXT_PACKAGE@', localedir)
+    gtk.glade.textdomain ('@GETTEXT_PACKAGE@');
     gettext.bindtextdomain('@GETTEXT_PACKAGE@', localedir)
+    gettext.bind_textdomain_codeset ('@GETTEXT_PACKAGE@', 'UTF-8');
+    gettext.textdomain ('@GETTEXT_PACKAGE@');
 
     datadir = os.path.join(datadir, '@PACKAGE@')
 

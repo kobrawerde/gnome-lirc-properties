@@ -16,4 +16,4 @@ DOC_FIGURES = \
 
 EXTRA_DIST = es/legal.xml sv/legal.xml
 
-DOC_LINGUAS = de es sv
+DOC_LINGUAS = cs de es sv

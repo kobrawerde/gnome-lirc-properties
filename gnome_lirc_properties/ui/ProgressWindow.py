@@ -28,11 +28,11 @@ class ProgressWindow(object):
     A window for showing progress of lengthly operations.
     '''
 
-    def __init__(self, glade_xml):
-        self.__window       = glade_xml.get_widget('progress_window')
-        self.__label_title  = glade_xml.get_widget('label_progress_title')
-        self.__label_detail = glade_xml.get_widget('label_progress_detail')
-        self.__progressbar  = glade_xml.get_widget('progressbar')
+    def __init__(self, builder):
+        self.__window       = builder.get_object('progress_window')
+        self.__label_title  = builder.get_object('label_progress_title')
+        self.__label_detail = builder.get_object('label_progress_detail')
+        self.__progressbar  = builder.get_object('progressbar')
 
     def show(self, parent, title, detail = None):
         '''

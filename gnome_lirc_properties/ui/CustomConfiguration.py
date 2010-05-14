@@ -35,7 +35,7 @@ class CustomConfiguration(object):
                      lirc.KeyCodes.get_default_commands()]),
         value_type=gobject.TYPE_STRING)
 
-    def __init__(self, glade_xml):
+    def __init__(self, builder):
         self.__remote = None
 
         # irrecord drivers:
@@ -47,33 +47,33 @@ class CustomConfiguration(object):
         self.__learning_row = None
 
         # setup widgets
-        self.__setup_ui(glade_xml)
+        self.__setup_ui(builder)
 
     # pylint: disable-msg=W0201
-    def __setup_ui(self, glade_xml):
+    def __setup_ui(self, builder):
         '''Initialize widgets.'''
 
-        self.__ui = glade_xml
-        self.__ui.signal_autoconnect(self)
+        self.__ui = builder
+        self.__ui.connect_signals(self)
 
         # lookup major widgets:
-        self.__dialog   = self.__ui.get_widget('custom_configuration')
-        self.__notebook = self.__ui.get_widget('notebook')
+        self.__dialog   = self.__ui.get_object('custom_configuration')
+        self.__notebook = self.__ui.get_object('notebook')
 
         # lookup buttons:
-        self.__button_ok            = self.__ui.get_widget('button_ok')
-        self.__button_upload        = self.__ui.get_widget('button_upload')
-        self.__button_detect_basics = self.__ui.get_widget('button_detect_basics')
-        self.__button_keys_learn    = self.__ui.get_widget('button_keys_learn')
-        self.__button_keys_remove   = self.__ui.get_widget('button_keys_remove')
-        self.__button_keys_clear    = self.__ui.get_widget('button_keys_clear')
-        self.__button_keys_add      = self.__ui.get_widget('button_keys_add')
+        self.__button_ok            = self.__ui.get_object('button_ok')
+        self.__button_upload        = self.__ui.get_object('button_upload')
+        self.__button_detect_basics = self.__ui.get_object('button_detect_basics')
+        self.__button_keys_learn    = self.__ui.get_object('button_keys_learn')
+        self.__button_keys_remove   = self.__ui.get_object('button_keys_remove')
+        self.__button_keys_clear    = self.__ui.get_object('button_keys_clear')
+        self.__button_keys_add      = self.__ui.get_object('button_keys_add')
 
         # setup model page:
-        self.__entry_vendor      = self.__ui.get_widget('entry_vendor')
-        self.__entry_product     = self.__ui.get_widget('entry_product')
-        self.__entry_contributor = self.__ui.get_widget('entry_contributor')
-        self.__usage_hint        = self.__ui.get_widget('usage_hint')
+        self.__entry_vendor      = self.__ui.get_object('entry_vendor')
+        self.__entry_product     = self.__ui.get_object('entry_product')
+        self.__entry_contributor = self.__ui.get_object('entry_contributor')
+        self.__usage_hint        = self.__ui.get_object('usage_hint')
 
         size_group = gtk.SizeGroup(gtk.SIZE_GROUP_HORIZONTAL)
         size_group.add_widget(self.__entry_vendor)
@@ -95,9 +95,9 @@ class CustomConfiguration(object):
     def __setup_basics(self):
         '''Initialize widgets of the "Basics" page.'''
 
-        self.__page_basics               = self.__ui.get_widget('page_basics')
-        self.__treeview_basics           = self.__ui.get_widget('treeview_basics')
-        self.__progressbar_detect_basics = self.__ui.get_widget('progressbar_detect_basics')
+        self.__page_basics               = self.__ui.get_object('page_basics')
+        self.__treeview_basics           = self.__ui.get_object('treeview_basics')
+        self.__progressbar_detect_basics = self.__ui.get_object('progressbar_detect_basics')
 
         treeview_columns = (
             gtk.TreeViewColumn(_('Property'), gtk.CellRendererText(), text=0),
@@ -114,11 +114,11 @@ class CustomConfiguration(object):
     def __setup_keys(self):
         '''Initialize widgets of the "Keys" page.'''
 
-        self.__page_keys       = self.__ui.get_widget('page_keys')
-        self.__treeview_keys   = self.__ui.get_widget('treeview_keys')
-        self.__hbuttonbox_keys = self.__ui.get_widget('hbuttonbox_keys')
-        self.__label_keys_hint = self.__ui.get_widget('label_keys_hint')
-        self.__image_keys_hint = self.__ui.get_widget('image_keys_hint')
+        self.__page_keys       = self.__ui.get_object('page_keys')
+        self.__treeview_keys   = self.__ui.get_object('treeview_keys')
+        self.__hbuttonbox_keys = self.__ui.get_object('hbuttonbox_keys')
+        self.__label_keys_hint = self.__ui.get_object('label_keys_hint')
+        self.__image_keys_hint = self.__ui.get_object('image_keys_hint')
 
         self.__keys_learning_hint = _(
             '<b>Learning new key code.</b>\n'

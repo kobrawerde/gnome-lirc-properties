@@ -42,7 +42,7 @@ def run(args, datadir):
     from gettext               import gettext as _
     from gnome_lirc_properties import ui
 
-    import gobject, gtk, gtk.gdk, gtk.glade, os.path
+    import gobject, gtk, gtk.gdk, os.path
 
     # Setup defaut properties:
     gobject.threads_init()
@@ -53,5 +53,7 @@ def run(args, datadir):
     gtk.gdk.threads_init()
 
     # Load the user interface:
-    ui_filename = os.path.join(datadir, 'gnome-lirc-properties.glade')
-    return ui.RemoteControlProperties(gtk.glade.XML(ui_filename)).run()
+    ui_filename = os.path.join(datadir, 'gnome-lirc-properties.ui')
+    builder = gtk.Builder();
+    builder.add_from_file(ui_filename)
+    return ui.RemoteControlProperties(builder, datadir).run()

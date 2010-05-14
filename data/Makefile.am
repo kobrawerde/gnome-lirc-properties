@@ -36,7 +36,7 @@ regenerate-linux-input-layer-conf: lirc-generate-linux-input
 	$(AM_V_GEN) $(builddir)/lirc-generate-linux-input > $(builddir)/linux-input-layer-lircd.conf
 
 resources_DATA = \
-	gnome-lirc-properties.glade \
+	gnome-lirc-properties.ui \
 	linux-input-layer-lircd.conf \
 	receivers.conf
 

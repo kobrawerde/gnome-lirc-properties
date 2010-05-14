@@ -64,17 +64,17 @@ class ReceiverChooserDialog(object):
     Dialog for choosing from auto-detected IR receivers.
     '''
 
-    def __init__(self, glade_xml):
+    def __init__(self, builder):
         super(ReceiverChooserDialog, self).__init__()
 
         # initialize attributes
-        self.__dialog        = glade_xml.get_widget('receiver_chooser_dialog')
-        self.__button_accept = glade_xml.get_widget('receiver_chooser_accept')
-        self.__receiver_view = glade_xml.get_widget('receiver_view')
+        self.__dialog        = builder.get_object('receiver_chooser_dialog')
+        self.__button_accept = builder.get_object('receiver_chooser_accept')
+        self.__receiver_view = builder.get_object('receiver_view')
         self.__receivers     = ReceiverChooserModel()
 
         # auto-connect signal handlers
-        glade_xml.signal_autoconnect(self)
+        builder.connect_signals(self)
 
         # setup the tree view
         renderer = gtk.CellRendererText()

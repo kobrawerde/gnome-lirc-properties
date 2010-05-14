@@ -19,7 +19,7 @@
 The main window of the application.
 '''
 
-import dbus, errno, gobject, gtk, gtk.gdk, gtk.glade, pango
+import dbus, errno, gobject, gtk, gtk.gdk, pango
 import httplib, locale, logging, os, subprocess
 
 from gettext               import gettext as _
@@ -33,7 +33,7 @@ from gnome_lirc_properties.ui.ReceiverChooserDialog import ReceiverChooserDialog
 class RemoteControlProperties(object):
     '''The main window.'''
 
-    def __init__(self, glade_xml):
+    def __init__(self, builder, datadir):
         # Prevent UI changes from being written back to configuration files:
         #
         # Configuration files only are written when this field is zero.
@@ -43,8 +43,9 @@ class RemoteControlProperties(object):
         self.__configuration_level = -1
 
         # Initialize models and views.
-        self.__ui = glade_xml
-        self.__ui.signal_autoconnect(self)
+        self.__ui = builder
+        self.__datadir = datadir
+        self.__ui.connect_signals(self)
 
         self.__custom_configuration = None
         self.__receiver_chooser = None
@@ -74,7 +75,7 @@ class RemoteControlProperties(object):
 
         # pylint: disable-msg=W0201,E1101
 
-        receivers_db = hardware.HardwareDatabase(self.__ui.relative_file('receivers.conf'))
+        receivers_db = hardware.HardwareDatabase(os.path.join(self.__datadir, 'receivers.conf'))
         self.__remotes_db = lirc.RemotesDatabase()
 
         self.__hardware_manager = hardware.HardwareManager(receivers_db)
@@ -97,7 +98,7 @@ class RemoteControlProperties(object):
         selected_remote = self.selected_remote
 
         self.__remotes_db.clear()
-        self.__remotes_db.load(self.__ui.relative_file('linux-input-layer-lircd.conf'))
+        self.__remotes_db.load(os.path.join(self.__datadir, 'linux-input-layer-lircd.conf'))
         self.__remotes_db.load_folder()
         self.__remotes_db.load_tarball()
 
@@ -121,7 +122,7 @@ class RemoteControlProperties(object):
         self.__key_listener.connect('key-pressed', self.__on_lirc_key_pressed)
 
     def __lookup_widgets(self):
-        '''Initialize widget attributes from Glade file.'''
+        '''Initialize widget attributes from GtkBuilder file.'''
 
         # This method is more robust than looking up and assigning widgets
         # manually, but it also completly screws up pychecker and pylint. For
@@ -159,11 +160,11 @@ class RemoteControlProperties(object):
 
         for widget_id in widget_list:
             attr = '_%s__%s' % (self.__class__.__name__, widget_id)
-            widget = self.__ui.get_widget(widget_id)
+            widget = self.__ui.get_object(widget_id)
             assert widget is not None, widget_id
             setattr(self, attr, widget)
 
-        self.__dialog = self.__ui.get_widget('lirc_properties_dialog')
+        self.__dialog = self.__ui.get_object('lirc_properties_dialog')
         self.__entry_device = self.__combo_device.get_child()
         self.__table_receiver_selection.set_row_spacing(2, 0)
 
@@ -208,7 +209,10 @@ class RemoteControlProperties(object):
         for widget in (
             self.__combo_receiver_vendor_list, self.__combo_receiver_product_list,
             self.__combo_remote_vendor_list, self.__combo_remote_product_list):
-            widget.get_cells()[0].set_property('ellipsize', pango.ELLIPSIZE_END)
+            renderer = gtk.CellRendererText()
+            renderer.set_property('ellipsize', pango.ELLIPSIZE_END)
+            widget.pack_start(renderer)
+            widget.add_attribute(renderer, "text", 0)
 
     def __setup_authorization(self):
         '''Initialize authorization facilities.'''
@@ -864,10 +868,10 @@ class RemoteControlProperties(object):
 
     def _set_widgets_locked(self, locked):
         '''Gray (or ungray) widgets which require PolicyKit authorization.'''
-        self.__ui.get_widget('vbox').set_sensitive(not locked)
+        self.__ui.get_object('vbox').set_sensitive(not locked)
 
         # Gray out the Unlock button if we are now already unlocked:
-        button = self.__ui.get_widget('unlockbutton')
+        button = self.__ui.get_object('unlockbutton')
         button.set_sensitive(locked)
 
     # pylint: disable-msg=R0201

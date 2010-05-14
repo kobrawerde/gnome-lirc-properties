@@ -1,5 +1,5 @@
 data/gnome-lirc-properties.desktop.in.in
-data/gnome-lirc-properties.glade
+[type: gettext/glade]data/gnome-lirc-properties.ui
 gnome_lirc_properties/__init__.py
 gnome_lirc_properties/backend.py
 gnome_lirc_properties/hardware.py

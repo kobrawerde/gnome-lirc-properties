@@ -91,10 +91,12 @@ if test -f /etc/fedora-release ; then
 	lirc_confdir="/etc/lirc"
 	remotes_database="/usr/share/lirc-remotes"
 	lircd_socket="/var/run/lirc/lircd"
+	lirc_hardware_conf="/etc/sysconfig/lirc"
 else
 	lirc_confdir="$sysconfdir/lirc"
 	remotes_database="$datadir/lirc/remotes"
 	lircd_socket="/dev/lircd"
+	lirc_hardware_conf="$lirc_confdir/hardware.conf"
 fi
 
 AC_ARG_WITH([lirc_confdir],
@@ -112,9 +114,15 @@ AC_ARG_WITH([lircd_socket],
                            [Path of the system's LIRCD socket, e.g. /dev/lircd]),
             [], [with_lircd_socket=`expand_vars "$lircd_socket"`])
 
+AC_ARG_WITH([lirc_conf],
+            AS_HELP_STRING([--with-lirc-conf],
+			   [Path of the system's lirc configuration file, e.g. /etc/lirc/hardware.conf]),
+            [], [with_lirc_hardware_conf=`expand_vars "$lirc_hardware_conf"`])
+
 AC_SUBST([with_lirc_confdir])
 AC_SUBST([with_remotes_database])
 AC_SUBST([with_lircd_socket])
+AC_SUBST([with_lirc_hardware_conf])
 
 AC_MSG_CHECKING([configured LIRC configuration folder])
 
@@ -207,6 +215,9 @@ AC_MSG_NOTICE([=================================================================
 AC_MSG_NOTICE([  PolicyKit support: $enable_policy_kit])
 AC_MSG_NOTICE([  Remotes database: $with_remotes_database])
 AC_MSG_NOTICE([  IR record tool: $LIRC_IRRECORD])
+AC_MSG_NOTICE([  LIRC configuration directory: $with_lirc_confdir])
+AC_MSG_NOTICE([  LIRC configuration file: $with_lirc_hardware_conf])
+AC_MSG_NOTICE([  LIRCd socket: $with_lircd_socket])
 AC_MSG_NOTICE([  Download URI: $with_download_uri])
 AC_MSG_NOTICE([  Upload URI: $with_upload_uri])
 AC_MSG_NOTICE([=====================================================================])

@@ -13,7 +13,7 @@ PACKAGE_DIR           = path.join('@prefix@', 'share', '@PACKAGE@')
 LIRC_CONFDIR          = '@with_lirc_confdir@'
 LIRCD_SOCKET          = '@with_lircd_socket@'
 
-LIRC_HARDWARE_CONF    = path.join(LIRC_CONFDIR, 'hardware.conf')
+LIRC_HARDWARE_CONF    = '@with_lirc_hardware_conf@'
 LIRC_REMOTE_CONF      = path.join(LIRC_CONFDIR, 'lircd.conf.gnome')
 LIRC_DAEMON_CONF      = path.join(LIRC_CONFDIR, 'lircd.conf')
 

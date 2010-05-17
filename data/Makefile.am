@@ -37,6 +37,8 @@ regenerate-linux-input-layer-conf: lirc-generate-linux-input
 
 resources_DATA = \
 	gnome-lirc-properties.ui \
+	gnome-lirc-properties-custom-config.ui \
+	gnome-lirc-properties-receiver.ui \
 	linux-input-layer-lircd.conf \
 	receivers.conf
 

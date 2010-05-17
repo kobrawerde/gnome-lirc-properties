@@ -793,7 +793,13 @@ class RemoteControlProperties(object):
         self._on_search_progress(None, 0, _('Searching for remote controls...'))
 
         if not self.__receiver_chooser:
-            self.__receiver_chooser = ReceiverChooserDialog(self.__ui)
+            receiver_filename = os.path.join(self.__datadir, 'gnome-lirc-properties-receiver.ui')
+            receiver_builder = gtk.Builder()
+            receiver_builder.add_from_file(receiver_filename)
+            dialog = receiver_builder.get_object('receiver_chooser_dialog')
+            dialog.set_transient_for(self.__dialog)
+            dialog.connect('response', self._on_receiver_chooser_dialog_response)
+            self.__receiver_chooser = ReceiverChooserDialog(receiver_builder)
 
         self.__receiver_chooser.reset()
 
@@ -809,7 +815,10 @@ class RemoteControlProperties(object):
         '''Handle clicks on the auto-detection's "Custom Configuration" button.'''
 
         if not self.__custom_configuration:
-            self.__custom_configuration = CustomConfiguration(self.__ui)
+            custom_filename = os.path.join(self.__datadir, 'gnome-lirc-properties-custom-config.ui')
+            custom_builder = gtk.Builder()
+            custom_builder.add_from_file(custom_filename)
+            self.__custom_configuration = CustomConfiguration(custom_builder)
 
         self.__custom_configuration.run(self.selected_receiver,
                                         self.selected_device,

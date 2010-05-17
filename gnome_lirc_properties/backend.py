@@ -487,12 +487,15 @@ class BackendService(PolicyKitService):
 
     __re_receiver_directive = re.compile(r'^\s*RECEIVER_(VENDOR|MODEL)=')
 
-    # These are used by the Debian/Ubuntu packages, as of 2008-02-12.
-    # The "REMOTE_" prefix is made optional, since it only was introduced
-    # with lirc 0.8.3~pre1-0ubuntu4 of Hardy Heron.
-
-    __re_remote_directive = re.compile(r'^\s*(?:REMOTE_)?(DRIVER|DEVICE|MODULES|' +
-                                       r'LIRCD_ARGS|LIRCD_CONF|VENDOR|MODEL)=')
+    if config.STARTUP_STYLE is 'fedora':
+        __re_remote_directive = re.compile(r'^\s*(LIRC_DRIVER|LIRC_DEVICE|MODULES|' +
+                                           r'LIRCD_OPTIONS|LIRCD_CONF|VENDOR|MODEL)=')
+    else:
+        # These are used by the Debian/Ubuntu packages, as of 2008-02-12.
+        # The "REMOTE_" prefix is made optional, since it only was introduced
+        # with lirc 0.8.3~pre1-0ubuntu4 of Hardy Heron.
+        __re_remote_directive = re.compile(r'^\s*(?:REMOTE_)?(DRIVER|DEVICE|MODULES|' +
+                                           r'LIRCD_ARGS|LIRCD_CONF|VENDOR|MODEL)=')
     __re_start_lircd      = re.compile(r'^\s*START_LIRCD=')
 
     def __init__(self, connection=None, path='/'):
@@ -596,22 +599,33 @@ class BackendService(PolicyKitService):
                     print >> output, ('%s"%s"' % (match.group(0), ShellQuote.shellquote(value)))
                 continue
 
-            # Deal with the START_LIRCD line:
-
-            match = self.__re_start_lircd.match(line)
-
-            if match:
-                # pychecker says "Using a conditional statement with a constant value (true)",
-                # which is ridicilous, considering Python 2.4 doesn't have conditional statements
-                # yet (PEP 308, aka. 'true_value if condition else false_value') and the expression
-                # below ('condition and true_value or false_value') is the recommended aquivalent.
+            if config.STARTUP_STYLE is 'fedora':
+                output.write(line)
                 value = (start_lircd is None) and 'true' or start_lircd
                 start_lircd = None
+                if 'true' == value:
+                    args = '/sbin/chkconfig', 'lirc', 'on'
+                else:
+                    args = '/sbin/chkconfig', 'lirc', 'off'
+                os.spawnv(os.P_WAIT, args[0], args)
+            else:
+                # Deal with the START_LIRCD line:
 
-                print >> output, (match.group(0) + ShellQuote.shellquote(value))
-                continue
+                match = self.__re_start_lircd.match(line)
 
-            output.write(line)
+                if match:
+                    # pychecker says "Using a conditional statement with a constant value (true)",
+                    # which is ridicilous, considering Python 2.4 doesn't have conditional statements
+                    # yet (PEP 308, aka. 'true_value if condition else false_value') and the expression
+                    # below ('condition and true_value or false_value') is the recommended equivalent.
+                    value = (start_lircd is None) and 'true' or start_lircd
+                    start_lircd = None
+
+                    print >> output, (match.group(0) + ShellQuote.shellquote(value))
+                    continue
+
+            if config.STARTUP_STYLE is not 'fedora':
+                output.write(line)
 
         # Write out any values that were not already in the file,
         # and therefore just replaced:
@@ -619,14 +633,17 @@ class BackendService(PolicyKitService):
         if remote_values:
             print >> output, '\n# Remote settings required by gnome-lirc-properties'
         for key, value in remote_values.items():
-            print >> output, ('REMOTE_%s="%s"' % (key, ShellQuote.shellquote(value)))
+            if config.STARTUP_STYLE is not 'fedora':
+                print >> output, ('REMOTE_%s="%s"' % (key, ShellQuote.shellquote(value)))
+            else:
+                print >> output, ('%s="%s"' % (key, ShellQuote.shellquote(value)))
 
         if receiver_values:
             print >> output, '\n# Receiver settings required by gnome-lirc-properties'
         for key, value in receiver_values.items():
             print >> output, ('RECEIVER_%s="%s"' % (key, ShellQuote.shellquote(value)))
 
-        if start_lircd is not None:
+        if start_lircd is not None and config.STARTUP_STYLE is not 'fedora':
             print >> output, '\n# Daemon settings required by gnome-lirc-properties'
             print >> output, ('START_LIRCD=%s' % start_lircd)
 
@@ -649,13 +666,22 @@ class BackendService(PolicyKitService):
 
         self._check_permission(sender)
 
-        remote_values = {
-            'DRIVER': driver,
-            'DEVICE': device,
-            'MODULES': modules,
-            'LIRCD_ARGS': '',
-            'LIRCD_CONF': '',
-        }
+        if config.STARTUP_STYLE is 'fedora':
+            remote_values = {
+                'LIRC_DRIVER': driver,
+                'LIRC_DEVICE': device,
+                'MODULES': modules,
+                'LIRCD_OPTIONS': '',
+                'LIRCD_CONF': '',
+            }
+        else:
+            remote_values = {
+                'DRIVER': driver,
+                'DEVICE': device,
+                'MODULES': modules,
+                'LIRCD_ARGS': '',
+                'LIRCD_CONF': '',
+            }
 
         receiver_values = {
             'VENDOR': vendor,
@@ -776,10 +802,18 @@ class BackendService(PolicyKitService):
 	    raise AccessDeniedException
 
         if 'enable' == action:
-            self._write_hardware_configuration(start_lircd=True)
+            if config.STARTUP_STYLE is 'fedora':
+                args = '/sbin/chkconfig', 'lirc', 'on'
+                os.spawnv(os.P_WAIT, args[0], args)
+            else:
+                self._write_hardware_configuration(start_lircd=True)
 
         elif 'disable' == action:
-            self._write_hardware_configuration(start_lircd=False)
+            if config.STARTUP_STYLE is 'fedora':
+                args = '/sbin/chkconfig', 'lirc', 'off'
+                os.spawnv(os.P_WAIT, args[0], args)
+            else:
+                self._write_hardware_configuration(start_lircd=False)
 
         else:
             args = '/etc/init.d/lirc', action

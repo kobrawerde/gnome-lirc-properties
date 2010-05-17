@@ -301,11 +301,20 @@ class RemoteControlProperties(object):
         # reason the device node's name is stored in REMOTE_DEVICE, instead
         # of RECEIVER_DEVICE.
         #
-        self.selected_receiver = (
-            settings.get('RECEIVER_VENDOR'),
-            settings.get('RECEIVER_MODEL'),
-            settings.get('REMOTE_DEVICE'),
-        )
+        # The setting is called LIRC_DEVICE is Fedora.
+        #
+        if config.STARTUP_STYLE is 'fedora':
+            self.selected_receiver = (
+                settings.get('RECEIVER_VENDOR'),
+                settings.get('RECEIVER_MODEL'),
+                settings.get('LIRC_DEVICE'),
+            )
+        else:
+            self.selected_receiver = (
+                settings.get('RECEIVER_VENDOR'),
+                settings.get('RECEIVER_MODEL'),
+                settings.get('REMOTE_DEVICE'),
+            )
 
         # Try to select configured remote vendor:
         self.selected_remote = (
@@ -887,8 +896,7 @@ class RemoteControlProperties(object):
 
         except OSError, ex:
             if errno.ENOENT == ex.errno:
-                error_message = 
-                    _('Cannot display help since the GNOME Help Browser ("yelp") cannot be found.')
+                error_message = _('Cannot display help since the GNOME Help Browser ("yelp") cannot be found.')
 
             else:
                 error_message = _('Cannot display help for unexpected reason: %s') % ex.strerror

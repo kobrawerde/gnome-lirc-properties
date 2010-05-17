@@ -1,8 +1,8 @@
 AC_INIT([gnome-lirc-properties], [0.4.0],
-        [https://code.fluendo.com/remotecontrol/trac/])
+        [http://git.gnome.org/browse/gnome-lirc-properties/])
 
 # tar-ustar asks it to use a sensible tar format that can handle long filenames
-AM_INIT_AUTOMAKE([1.9 tar-ustar])
+AM_INIT_AUTOMAKE([1.9 tar-ustar dist-bzip2 no-dist-gzip])
 
 # Enable silent build when available (Automake 1.11)
 m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])

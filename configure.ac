@@ -92,11 +92,13 @@ if test -f /etc/fedora-release ; then
 	remotes_database="/usr/share/lirc-remotes"
 	lircd_socket="/var/run/lirc/lircd"
 	lirc_hardware_conf="/etc/sysconfig/lirc"
+	startup_style="fedora"
 else
 	lirc_confdir="$sysconfdir/lirc"
 	remotes_database="$datadir/lirc/remotes"
 	lircd_socket="/dev/lircd"
 	lirc_hardware_conf="$lirc_confdir/hardware.conf"
+	startup_style="debian"
 fi
 
 AC_ARG_WITH([lirc_confdir],
@@ -119,10 +121,20 @@ AC_ARG_WITH([lirc_conf],
 			   [Path of the system's lirc configuration file, e.g. /etc/lirc/hardware.conf]),
             [], [with_lirc_hardware_conf=`expand_vars "$lirc_hardware_conf"`])
 
+AC_ARG_WITH([startup_style],
+            AS_HELP_STRING([--with-startup-style],
+			   [Whether to use Fedora or Debian style startup (either debian, or fedora)]),
+            [], [with_startup_style=`expand_vars "$startup_style"`])
+
+if test x$with_startup_style != xfedora -a x$startup_style != xdebian ; then
+	AC_MSG_ERROR([Startup style must be one of debian or fedora])
+fi
+
 AC_SUBST([with_lirc_confdir])
 AC_SUBST([with_remotes_database])
 AC_SUBST([with_lircd_socket])
 AC_SUBST([with_lirc_hardware_conf])
+AC_SUBST([with_startup_style])
 
 AC_MSG_CHECKING([configured LIRC configuration folder])
 
@@ -218,6 +230,7 @@ AC_MSG_NOTICE([  IR record tool: $LIRC_IRRECORD])
 AC_MSG_NOTICE([  LIRC configuration directory: $with_lirc_confdir])
 AC_MSG_NOTICE([  LIRC configuration file: $with_lirc_hardware_conf])
 AC_MSG_NOTICE([  LIRCd socket: $with_lircd_socket])
+AC_MSG_NOTICE([  Startup style: $with_startup_style])
 AC_MSG_NOTICE([  Download URI: $with_download_uri])
 AC_MSG_NOTICE([  Upload URI: $with_upload_uri])
 AC_MSG_NOTICE([=====================================================================])

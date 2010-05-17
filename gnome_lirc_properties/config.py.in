@@ -26,5 +26,7 @@ LIRC_INPUT_DRIVER     = '@devinput_driver@'
 URI_UPLOADS           = '@with_upload_uri@'
 URI_UPDATES           = '@with_download_uri@'
 
+STARTUP_STYLE         = '@with_startup_style@'
+
 # remove temporary objects from namespace
 del path

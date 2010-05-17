@@ -393,6 +393,7 @@ class HardwareManager(gobject.GObject):
         '''Find IR receivers connected via USB bus.'''
 
         for udi in usb_devices:
+            logging.info('checking device %s', udi)
             # provide cancelation point:
             if self.__search_canceled:
                 break
@@ -411,6 +412,7 @@ class HardwareManager(gobject.GObject):
 
             # skip USB devices that do not get sufficient power:
             if vendor_id is None or product_id is None:
+                logging.info('No vendor ID or product ID')
                 continue
 
             # report search progress:
@@ -420,6 +422,7 @@ class HardwareManager(gobject.GObject):
             # Skip devices without vendor id. Linux for instance
             # doesn't assign a vendor id to USB host controllers.
             if not vendor_id:
+                logging.info('No vendor ID')
                 continue
 
             # The Streamzap really has a product ID of 0000,
@@ -435,12 +438,14 @@ class HardwareManager(gobject.GObject):
 
             # skip unknown hardware:
             if not receiver:
+                logging.info('Could not find matching receiver')
                 continue
 
             # skip devices, where the associated kernel module
             # doesn't match the expected kernel module:
             if (receiver.kernel_module and
                 not device.check_kernel_module(receiver.kernel_module)):
+                logging.info('Kernel module is not %s', receiver.kernel_module)
                 continue
 
             # find the LIRC device node, and signal search result:

@@ -7,7 +7,6 @@
     <property name="border_width">5</property>
     <property name="window_position">center-on-parent</property>
     <property name="type_hint">dialog</property>
-    <property name="transient_for">lirc_properties_dialog</property>
     <property name="has_separator">False</property>
     <signal name="close" handler="_on_close" swapped="no"/>
     <signal name="response" handler="_on_response" swapped="no"/>

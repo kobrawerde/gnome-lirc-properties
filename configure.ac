@@ -66,8 +66,8 @@ else
 	  HAVE_LIRCD="no"
   elif [[ "$LIRCD_MAJOR" -eq "0" ]] && \
 	  [[ "$LIRCD_MINOR" -eq "8" ]] && \
-	  [[ "$LIRCD_MICRO" -lt "4" ]]; then
-	  AC_MSG_WARN([lircd >= 0.8.4 is required, you have $LIRCD_VERSION])
+	  [[ "$LIRCD_MICRO" -lt "6" ]]; then
+	  AC_MSG_WARN([lircd >= 0.8.6 is required, you have $LIRCD_VERSION])
 	  HAVE_LIRCD="no"
   fi
 fi

@@ -54,6 +54,6 @@ def run(args, datadir):
 
     # Load the user interface:
     ui_filename = os.path.join(datadir, 'gnome-lirc-properties.ui')
-    builder = gtk.Builder();
+    builder = gtk.Builder()
     builder.add_from_file(ui_filename)
     return ui.RemoteControlProperties(builder, datadir).run()

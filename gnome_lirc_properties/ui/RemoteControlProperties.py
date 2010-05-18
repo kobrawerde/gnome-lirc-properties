@@ -1075,6 +1075,14 @@ class RemoteControlProperties(object):
         '''Retrieve the currently selected device.'''
         return self.__entry_device.get_text().strip()
 
+    def __requires_device_node(self, driver):
+        '''Check whether the LIRC driver used requires a device node'''
+        # You can check this by hand by opening the daemons/hw_*.c drivers
+        # in lirc, and checking for ".device" being used from the
+        # struct hardware
+        no_device_node = ('atilibusb', 'awlibusb', 'caraca', 'commandir', 'dfclibusb')
+        return driver not in no_device_node
+
     def __set_selected_device(self, device_node):
         '''Change the currently selected device.'''
 
@@ -1100,9 +1108,9 @@ class RemoteControlProperties(object):
 
             tree_iter = tree_model.iter_next(tree_iter)
 
-        # device node not found in combo box, fallback to modify its entry:
+        # device node required but not found in combo box, fallback to modify its entry:
         markup = (
-            receiver and not device_node and
+            receiver and not device_node and self.__requires_device_node(receiver.lirc_driver) and
             _('<b>Warning:</b> Cannot find such receiver.') or '')
 
         self.__entry_device.set_text(device_node or '')

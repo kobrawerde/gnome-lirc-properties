@@ -579,8 +579,6 @@ class KeyCodeCategory(object):
     '''
 
     DEFAULT = _('Default Namespace')
-    CUSTOM = _('Custom Key Code')
-    ELISA = _('Elisa Compatible')
 
 def create_commands_table():
     '''
@@ -668,6 +666,7 @@ def create_commands_table():
             ('KEY_MP3',            'mp3_key',            _('MP3')),
             ('KEY_MUTE',           'mute_key',           _('Mute')),
             ('KEY_NEXT',           'next_key',           _('Next')),
+            ('KEY_NEXTSONG',       'next_key',           _('Next')),
             ('KEY_OK',             'ok_key',             _('OK')),
             ('KEY_OPEN',           'open_key',           _('Open')),
             ('KEY_OPTION',         'option_key',         _('Options')),
@@ -681,6 +680,7 @@ def create_commands_table():
             ('KEY_PLUS',           'plus_key',           _('Plus')),
             ('KEY_POWER',          'power_key',          _('Power')),
             ('KEY_PREVIOUS',       'previous_key',       _('Previous')),
+            ('KEY_PREVIOUSSONG',   'previous_key',       _('Previous')),
             ('KEY_R',              'r_key',              _('R')),
             ('KEY_RADIO',          'radio_key',          _('Radio')),
             ('KEY_RECORD',         'record_key',         _('Record')),
@@ -713,50 +713,6 @@ def create_commands_table():
             ('KEY_ZOOM',           'zoom_key',           _('Zoom')),
         )),
 
-        # Key names used by Elisa (as of 2007-02-12):
-        (KeyCodeCategory.ELISA, (
-            ('GO_UP',              'move_up_key',              _('Move Up')),
-            ('GO_DOWN',            'move_down_key',            _('Move Down')),
-            ('GO_LEFT',            'move_left_key',            _('Move Left')),
-            ('GO_RIGHT',           'move_right_key',           _('Move Right')),
-            ('MENU',               'toggle_menu_key',          _('Menu')),
-            ('OK',                 'activate_key',             _('OK')),
-            ('EXIT',               'close_key',                _('Close')),
-            ('PLAY',               'toggle_play_pause_key',    _('Play')),
-            ('PAUSE',              'pause_key',                _('Pause')),
-            ('STOP',               'stop_key',                 _('Stop')),
-            ('REC',                'record_key',               _('Record')),
-            ('INC_PLAYBACK_SPEED', 'increment_playback_speed', _('Increase Speed')),
-            ('DEC_PLAYBACK_SPEED', 'decrement_playback_speed', _('Decrease Speed')),
-            ('SEEK_FORWARD',       'seek_forward_key',         _('Seek Forward')),
-            ('SEEK_BACKWARD',      'seek_backward_key',        _('Seek Backward')),
-            ('NEXT',               'next_key',                 _('Next')),
-            ('PREVIOUS',           'previous_key',             _('Previous')),
-            ('TOGGLE_FULLSCREEN',  'toggle_fullscreen_key',    _('Full Screen')),
-            ('MUTE',               'toggle_mute_key',          _('Mute')),
-            ('VOL_UP',             'increment_volume_key',     _('Increase Volume')),
-            ('VOL_DOWN',           'decrement_volume_key',     _('Decrease Volume')),
-        )),
-
-        # Key names used by some other random lircd.conf files.
-        # TODO: These probably shouldn't be here, at least when standard key
-        # names have been agreed. Our own lircd.conf files should use only the
-        # standard names, and we should probably warn about (or ignore as
-        # broken) non-standard key names, because applications are unlikely
-        # to work with those broken lircd.conf files.
-        (KeyCodeCategory.CUSTOM, (
-            ('CH_UP',              'ch_up_key',              _('Channel Up')),
-            ('CH_DOWN',            'ch_down_key',            _('Channel Down')),
-            ('<<',                 'rewind_key',             _('Rewind')),
-            ('|<<',                'back_key',               _('Back')),
-            ('>>',                 'fast_forward_key',       _('Fast Forward')),
-            ('>>|',                'forward_key',            _('Forward')),
-            ('RECORD',             'record_key',             _('Record')),
-            ('LEFT',               'left_key',               _('Left')),
-            ('RIGHT',              'right_key',              _('Right')),
-            ('UP',                 'up_key',                 _('Up')),
-            ('DOWN',               'down_key',               _('Down')),
-        )),
     ]
 
     class Command(object):

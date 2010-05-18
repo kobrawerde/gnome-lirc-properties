@@ -599,16 +599,7 @@ class BackendService(PolicyKitService):
                     print >> output, ('%s"%s"' % (match.group(0), ShellQuote.shellquote(value)))
                 continue
 
-            if config.STARTUP_STYLE is 'fedora':
-                output.write(line)
-                value = (start_lircd is None) and 'true' or start_lircd
-                start_lircd = None
-                if 'true' == value:
-                    args = '/sbin/chkconfig', 'lirc', 'on'
-                else:
-                    args = '/sbin/chkconfig', 'lirc', 'off'
-                os.spawnv(os.P_WAIT, args[0], args)
-            else:
+            if config.STARTUP_STYLE is not 'fedora':
                 # Deal with the START_LIRCD line:
 
                 match = self.__re_start_lircd.match(line)
@@ -624,8 +615,7 @@ class BackendService(PolicyKitService):
                     print >> output, (match.group(0) + ShellQuote.shellquote(value))
                     continue
 
-            if config.STARTUP_STYLE is not 'fedora':
-                output.write(line)
+            output.write(line)
 
         # Write out any values that were not already in the file,
         # and therefore just replaced:
@@ -646,6 +636,15 @@ class BackendService(PolicyKitService):
         if start_lircd is not None and config.STARTUP_STYLE is not 'fedora':
             print >> output, '\n# Daemon settings required by gnome-lirc-properties'
             print >> output, ('START_LIRCD=%s' % start_lircd)
+
+        if config.STARTUP_STYLE is 'fedora':
+            value = (start_lircd is None) and 'true' or start_lircd
+            start_lircd = None
+            if 'true' == value:
+                args = '/sbin/chkconfig', 'lirc', 'on'
+            else:
+                args = '/sbin/chkconfig', 'lirc', 'off'
+            os.spawnv(os.P_WAIT, args[0], args)
 
         # Replace old file with new contents:
 
@@ -760,6 +759,7 @@ class BackendService(PolicyKitService):
 
         if match is None:
             # no statement found, create entirely new file:
+            print 'Dropping whole configuration file'
 
             if not contents:
                 contents  = '# This configuration has been automatically generated\n'
@@ -776,6 +776,7 @@ class BackendService(PolicyKitService):
             contents += include_statement
 
         elif match.group(1):
+            print 'Found directive, updating it'
             head = contents[:match.start()]
             tail = contents[match.end():]
             contents = (head + include_statement + tail)

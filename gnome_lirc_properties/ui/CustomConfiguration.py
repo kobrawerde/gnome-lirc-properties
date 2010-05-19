@@ -330,6 +330,7 @@ class CustomConfiguration(object):
                 self.__learning_driver.Release()
 
             except dbus.DBusException, ex:
+                logging.error('Error running learning driver Release')
                 logging.error(ex)
 
             try:
@@ -337,6 +338,7 @@ class CustomConfiguration(object):
                 backend.get_service().ManageLircDaemon('start')
 
             except dbus.DBusException, ex:
+                logging.error('Error restarting LIRC')
                 logging.error(ex)
 
             self.__learning_driver = None
@@ -377,7 +379,9 @@ class CustomConfiguration(object):
         def report_failure(message):
             '''Handle failures reported by the service backend.'''
 
+            self.__detection_driver = None
             self.__progressbar_detect_basics.hide()
+            self.__button_detect_basics.set_sensitive(True)
             show_message(self.__dialog, _('Remote Configuration Failed'), message)
 
             if service:
@@ -387,7 +391,9 @@ class CustomConfiguration(object):
         def report_success(result, sender=None):
             '''Handle success reported by the service backend.'''
 
+            self.__detection_driver = None
             self.__progressbar_detect_basics.hide()
+            self.__button_detect_basics.set_sensitive(True)
 
             hwdb = lirc.RemotesDatabase()
             hwdb.read(StringIO(result))
@@ -451,6 +457,7 @@ class CustomConfiguration(object):
             self.__detection_driver = driver
             self.__detection_driver.Execute()
 
+            self.__button_detect_basics.set_sensitive(False)
             self.__progressbar_detect_basics.show()
 
         except dbus.DBusException, ex:
@@ -463,10 +470,13 @@ class CustomConfiguration(object):
         try:
             if self.__detection_driver:
                 self.__detection_driver.Release()
-                self.__detection_driver = None
 
         except dbus.DBusException, ex:
+            logging.error('Error running detection driver Release')
             logging.warning(ex)
+
+        self.__detection_driver = None
+
 
     def _on_dialog_changed(self, widget = None):
         '''Handle major changes to the dialog.'''
@@ -627,6 +637,13 @@ class CustomConfiguration(object):
 
     def _on_response(self, dialog, response):
         '''Handle the dialog's "response" signal.'''
+
+        self.__stop_detection()
+        self.__stop_learning()
+
+        # Reset the progress back for detection
+        self.__progressbar_detect_basics.hide()
+        self.__button_detect_basics.set_sensitive(True)
 
         if gtk.RESPONSE_OK == response:
             try:

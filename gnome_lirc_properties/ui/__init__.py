@@ -25,6 +25,5 @@ from gnome_lirc_properties.ui.common                  import *
 
 # publish dialog classes
 from gnome_lirc_properties.ui.CustomConfiguration     import CustomConfiguration
-from gnome_lirc_properties.ui.ProgressWindow          import ProgressWindow
 from gnome_lirc_properties.ui.ReceiverChooserDialog   import ReceiverChooserDialog
 from gnome_lirc_properties.ui.RemoteControlProperties import RemoteControlProperties

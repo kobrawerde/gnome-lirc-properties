@@ -169,20 +169,6 @@ fi
 AC_MSG_CHECKING([configured LIRCD socket])
 AC_MSG_RESULT([$with_lircd_socket])
 
-dnl support custom upload and download locations ===
-
-AC_ARG_WITH([download_uri],
-            AS_HELP_STRING([--with-download-uri],
-                           [The URI for downloading user-submitted lircd.conf files.]),
-            [], [with_download_uri="http://lirc.fluendo.com/lircdb/remotes.tar.gz"])
-AC_ARG_WITH([upload_uri],
-            AS_HELP_STRING([--with-upload-uri],
-                           [The URI to use for user-submitted lircd.conf files.]),
-            [], [with_upload_uri="http://lirc.fluendo.com/lircdb/upload/"])
-
-AC_SUBST([with_download_uri])
-AC_SUBST([with_upload_uri])
-
 dnl find irrecord ===
 
 AC_PATH_PROG([LIRC_IRRECORD], [irrecord])
@@ -212,7 +198,6 @@ AC_CONFIG_FILES([Makefile
                  data/icons/scalable/Makefile
                  gnome_lirc_properties/Makefile
                  gnome_lirc_properties/config.py
-                 gnome_lirc_properties/net/Makefile
                  gnome_lirc_properties/ui/Makefile
                  help/Makefile
                  po/Makefile.in])
@@ -231,7 +216,5 @@ AC_MSG_NOTICE([  LIRC configuration directory: $with_lirc_confdir])
 AC_MSG_NOTICE([  LIRC configuration file: $with_lirc_hardware_conf])
 AC_MSG_NOTICE([  LIRCd socket: $with_lircd_socket])
 AC_MSG_NOTICE([  Startup style: $with_startup_style])
-AC_MSG_NOTICE([  Download URI: $with_download_uri])
-AC_MSG_NOTICE([  Upload URI: $with_upload_uri])
 AC_MSG_NOTICE([=====================================================================])
 

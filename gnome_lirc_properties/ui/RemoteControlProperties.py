@@ -23,11 +23,10 @@ import dbus, errno, gobject, gtk, gtk.gdk, pango
 import httplib, locale, logging, os, subprocess
 
 from gettext               import gettext as _
-from gnome_lirc_properties import backend, config, lirc, model, hardware, policykit, net
+from gnome_lirc_properties import backend, config, lirc, model, hardware, policykit
 
 from gnome_lirc_properties.ui.common                import show_message, thread_callback
 from gnome_lirc_properties.ui.CustomConfiguration   import CustomConfiguration
-from gnome_lirc_properties.ui.ProgressWindow        import ProgressWindow
 from gnome_lirc_properties.ui.ReceiverChooserDialog import ReceiverChooserDialog
 
 class RemoteControlProperties(object):
@@ -100,7 +99,6 @@ class RemoteControlProperties(object):
         self.__remotes_db.clear()
         self.__remotes_db.load(os.path.join(self.__datadir, 'linux-input-layer-lircd.conf'))
         self.__remotes_db.load_folder()
-        self.__remotes_db.load_tarball()
 
         self.__remote_vendors.clear()
         self.__remote_vendors.load(self.__remotes_db)
@@ -376,77 +374,6 @@ class RemoteControlProperties(object):
         # Choose supplied remote when requested:
         if use_supplied and self.supplied_remote:
             self.selected_remote = self.supplied_remote
-
-    def _on_button_download_clicked(self, button=None):
-        '''Handle clicks on the auto-detection button.'''
-
-        @thread_callback
-        def on_download_progress(progress, total, action):
-            '''Handle progress reports from download service.'''
-
-            args = (
-                locale.format(percent='%.1f', grouping=True, value=progress/1024.0),
-                locale.format(percent='%.1f', grouping=True, value=total/1024.0))
-            message = (
-                total > 0 and _('%s of %s KiB retrieved...') % args
-                           or _('%s KiB retrieved...') % args[0])
-
-            progress_window.detail = action
-            progress_window.update(progress, total, message)
-
-        @thread_callback
-        def on_download_success(content, headers):
-            '''Handle finished downloads.'''
-
-            self.__dialog.set_sensitive(True)
-            progress_window.hide()
-
-            if 'application/x-gzip' == headers.get('content-type'):
-                try:
-                    backend.get_service().InstallRemoteDatabase(content.name)
-                    self.__update_remotes_db()
-
-                except dbus.DBusException, ex:
-                    show_message(self.__dialog, progress_window.title, ex.message)
-
-            elif httplib.NOT_MODIFIED == getattr(content, 'code', None):
-                show_message(self.__dialog, progress_window.title,
-                             details=_('No updates available. Your remote control configuration files are already up-to-date.'),
-                             message_type=gtk.MESSAGE_INFO)
-
-            else:
-                show_message(self.__dialog, progress_window.title,
-                             _('Download of updated remote control configurations failed.'))
-
-        @thread_callback
-        def on_download_failure(message):
-            '''Handle failure reports from download service.'''
-
-            self.__dialog.set_sensitive(True)
-            progress_window.hide()
-
-            show_message(self.__dialog, progress_window.title, message)
-
-        self.__dialog.set_sensitive(False)
-        progress_window = ProgressWindow(self.__ui)
-        progress_window.show(self.__dialog, _('Updating Remote Configuration Files'))
-
-        gtk.gdk.threads_leave()
-
-        try:
-            timestamp = (
-                os.path.isfile(config.LIRC_REMOTES_TARBALL) and
-                os.path.getmtime(config.LIRC_REMOTES_TARBALL) or
-                None)
-
-            net.retrieve_tarball(tarball_uri=config.URI_UPDATES,
-                                 progress_callback=on_download_progress,
-                                 success_callback=on_download_success,
-                                 failure_callback=on_download_failure,
-                                 reference_time=timestamp)
-
-        finally:
-            gtk.gdk.threads_enter()
 
     # pylint: disable-msg=C0103
     def _on_radiobutton_other_remote_size_allocate(self, widget, alloc):

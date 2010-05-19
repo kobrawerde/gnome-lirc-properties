@@ -22,7 +22,7 @@ The dialog for customizing remote control settings.
 import dbus, logging, gobject, gtk
 
 from gettext                         import gettext as _
-from gnome_lirc_properties           import backend, config, lirc, model, net
+from gnome_lirc_properties           import backend, config, lirc, model
 from gnome_lirc_properties.ui.common import show_message, thread_callback
 from StringIO                        import StringIO
 from time                            import time
@@ -62,7 +62,6 @@ class CustomConfiguration(object):
 
         # lookup buttons:
         self.__button_ok            = self.__ui.get_object('button_ok')
-        self.__button_upload        = self.__ui.get_object('button_upload')
         self.__button_detect_basics = self.__ui.get_object('button_detect_basics')
         self.__button_keys_learn    = self.__ui.get_object('button_keys_learn')
         self.__button_keys_remove   = self.__ui.get_object('button_keys_remove')
@@ -82,9 +81,6 @@ class CustomConfiguration(object):
         # setup remaining notebook pages:
         self.__setup_basics()
         self.__setup_keys()
-
-        # apply "secondary" child property: for some reason libglade ignores it
-        self.__dialog.action_area.set_child_secondary(self.__button_upload, True)
 
         # apply stock icon to learn button
         image = gtk.image_new_from_stock(gtk.STOCK_MEDIA_RECORD,
@@ -363,62 +359,6 @@ class CustomConfiguration(object):
         '''Handle activation of row in the "keys" tree view.'''
         self.__start_learning(path)
 
-    def _on_button_upload_clicked(self, button):
-        '''Handle the "Upload" button's "clicked" signal.'''
-
-        def configuration_problem(message):
-            '''
-            Informs the user about configuration file problems,
-            and ask the user for acceptance or rejection.
-            '''
-
-            response_buttons = (
-                (gtk.RESPONSE_ACCEPT, _('_Upload Configuration')),
-                (gtk.RESPONSE_REJECT, gtk.STOCK_CANCEL),
-            )
-
-            message = '%s %s' % (message, _('Do you really want to upload this configuration?'))
-
-            return (gtk.RESPONSE_ACCEPT != show_message(
-                    self.__dialog, _('Configuration Problems'),
-                    message, buttons=response_buttons))
-
-        def on_upload_finished(message):
-            '''Informs the user about successful uploads.'''
-
-            # The message is usually some "thanks" text from the server side:
-            # TODO: Is this wise? It will not be translated?
-            show_message(self.__dialog, _('Upload Succeeded'),
-                         message, message_type=gtk.MESSAGE_INFO)
-            self.__dialog.set_sensitive(True)
-
-        def on_upload_failure(message):
-            '''Informs the user about upload failures.'''
-
-            show_message(self.__dialog, _('Upload Failed'), message)
-            self.__dialog.set_sensitive(True)
-
-        keys_model = self.__treeview_keys.get_model()
-
-        if 0 == keys_model.count_keys(lirc.KeyCodeCategory.DEFAULT):
-            if configuration_problem(
-                _('This configuration has no keys for the default namespace. Most applications won\'t be able to use this configuration.')):
-                    return
-
-        elif 0 != keys_model.count_keys(lirc.KeyCodeCategory.CUSTOM):
-            if configuration_problem(
-                _('Some keys in this configuration have names which do not belong to any standardized namespace. Most applications won\'t be able to use those keys.')):
-                    return
-
-        self.__dialog.set_sensitive(False)
-
-        net.post_file(target_uri=config.URI_UPLOADS,
-                      filename=lirc.find_remote_config(),
-                      content=self.__remote.configuration,
-                      context=_('customized configuration file'),
-                      finished_callback=on_upload_finished,
-                      failure_callback=on_upload_failure)
-
     def __retreive_remote_name(self):
         '''Build the symbolic name of the currently edited remote.'''
 
@@ -550,7 +490,6 @@ class CustomConfiguration(object):
 
         # Update state of model-page widgets:
         self.__usage_hint.set_property('visible', not model_complete)
-        self.__button_upload.set_sensitive(keys_complete)
 
         # Update state of basics-page widgets:
         self.__treeview_basics.set_sensitive(have_receiver)

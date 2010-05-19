@@ -19,7 +19,7 @@
 LIRC specific classes.
 '''
 
-import errno, gobject, logging, os, re, tarfile
+import errno, gobject, logging, os, re
 
 from datetime              import datetime
 from gettext               import gettext as _
@@ -289,35 +289,6 @@ class RemotesDatabase(object):
                     self.read(reader=open(os.path.join(path, name)),
                               filename=os.path.join(relative_path, name),
                               database=root)
-
-        return True
-
-    def load_tarball(self, path=config.LIRC_REMOTES_TARBALL):
-        '''
-        Reads remote configurations from tarball.
-        '''
-
-        return False
-
-        if not os.path.isfile(path):
-            return False
-
-        if not tarfile.is_tarfile(path):
-            logging.warning('Bad remote control archive: %s', path)
-            return False
-
-        logging.info('Reading remote database from %s...', path)
-        tarball = tarfile.open(path)
-
-        for entry in tarball:
-            if not entry.isfile():
-                continue
-            if os.path.basename(entry.name) == 'README':
-                continue
-
-            self.read(reader=tarball.extractfile(entry.name),
-                      filename=entry.name, database=path,
-                      replace=True)
 
         return True
 

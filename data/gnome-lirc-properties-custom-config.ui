@@ -479,24 +479,6 @@ Try to use key names from the default namespace only for best interoperability.<
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="button_upload">
-                <property name="label" translatable="yes">_Upload</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                <property name="use_underline">True</property>
-                <signal name="clicked" handler="_on_button_upload_clicked" swapped="no"/>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="pack_type">end</property>
-                <property name="position">1</property>
-                <property name="secondary">True</property>
-              </packing>
-            </child>
-            <child>
               <object class="GtkButton" id="button_cancel">
                 <property name="label">gtk-cancel</property>
                 <property name="visible">True</property>
@@ -523,7 +505,6 @@ Try to use key names from the default namespace only for best interoperability.<
     </child>
     <action-widgets>
       <action-widget response="-5">button_ok</action-widget>
-      <action-widget response="1">button_upload</action-widget>
       <action-widget response="-6">button_cancel</action-widget>
     </action-widgets>
   </object>

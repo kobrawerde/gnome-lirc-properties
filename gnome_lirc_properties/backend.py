@@ -844,28 +844,6 @@ class BackendService(PolicyKitService):
                                   configuration,
                                   keys)
 
-    @dbus.service.method(dbus_interface=INTERFACE_NAME,
-                         in_signature='s', out_signature='',
-                         sender_keyword='sender')
-    def InstallRemoteDatabase(self, filename, sender=None):
-        '''Update the customized receiver database.'''
-
-        # Copy the tarball with updates into our data folder
-        # to allow atomic replacement of the old tarball:
-        tarball = os.path.join(config.PACKAGE_DIR, 'remotes-update.tar.gz')
-
-        if not os.path.isdir(config.PACKAGE_DIR):
-            os.makedirs(config.PACKAGE_DIR)
-
-        shutil.copyfile(filename, tarball)
-
-        # Now practice the atomic replacement:
-        os.rename(tarball, config.LIRC_REMOTES_TARBALL)
-
-        # Finally adjust timestamps of the archive:
-        timestamps = os.path.getatime(filename), os.path.getmtime(filename)
-        os.utime(config.LIRC_REMOTES_TARBALL, timestamps)
-
 def get_service_bus():
     '''Retrieves a reference to the D-BUS system bus.'''
 

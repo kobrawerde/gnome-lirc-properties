@@ -18,13 +18,9 @@ LIRC_REMOTE_CONF      = path.join(LIRC_CONFDIR, 'lircd.conf.gnome')
 LIRC_DAEMON_CONF      = path.join(LIRC_CONFDIR, 'lircd.conf')
 
 LIRC_REMOTES_DATABASE = '@with_remotes_database@'
-LIRC_REMOTES_TARBALL  = path.join(PACKAGE_DIR, 'remotes.tar.gz')
 LIRC_IRRECORD         = '@LIRC_IRRECORD@'
 
 LIRC_INPUT_DRIVER     = '@devinput_driver@'
-
-URI_UPLOADS           = '@with_upload_uri@'
-URI_UPDATES           = '@with_download_uri@'
 
 STARTUP_STYLE         = '@with_startup_style@'
 

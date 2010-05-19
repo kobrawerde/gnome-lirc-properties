@@ -1,4 +1,4 @@
-SUBDIRS = net ui
+SUBDIRS = ui
 
 moduledir = $(pythondir)/gnome_lirc_properties
 

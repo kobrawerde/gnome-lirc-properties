@@ -10,9 +10,7 @@ EXTRA_DIST = \
 	gnome-doc-utils.make \
 	man/gnome-lirc-properties.1 \
 	patches/0001-Use-new-instead-of-conf-as-filename-suffix.patch \
-	patches/0002-Add-resume-switch-to-irrecord.patch \
-	web/README \
-	web/service.wsgi
+	patches/0002-Add-resume-switch-to-irrecord.patch
 
 DISTCLEANFILES = \
 	intltool-extract \

@@ -4,7 +4,6 @@ module_PYTHON = \
 	__init__.py \
 	common.py \
 	CustomConfiguration.py \
-	ProgressWindow.py \
 	ReceiverChooserDialog.py \
 	RemoteControlProperties.py
 

@@ -823,7 +823,7 @@ class RemoteControlProperties(object):
             custom_filename = os.path.join(self.__datadir, 'gnome-lirc-properties-custom-config.ui')
             custom_builder = gtk.Builder()
             custom_builder.add_from_file(custom_filename)
-            dialog = receiver_builder.get_object('custom_configuration')
+            dialog = custom_builder.get_object('custom_configuration')
             dialog.set_transient_for(self.__dialog)
             self.__custom_configuration = CustomConfiguration(custom_builder)
 

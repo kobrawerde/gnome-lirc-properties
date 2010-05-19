@@ -612,6 +612,11 @@ class RemoteControlProperties(object):
             # highlight supplied IR remote:
             if self.supplied_remote:
                 self.selected_remote = self.supplied_remote
+                self.__radiobutton_supplied_remote.set_sensitive(True)
+                self.__radiobutton_supplied_remote.set_active(True)
+            else:
+                self.__radiobutton_other_remote.set_active(True)
+                self.__radiobutton_supplied_remote.set_sensitive(False)
 
         finally:
             #  thaw configuration updates:

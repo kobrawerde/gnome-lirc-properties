@@ -189,7 +189,11 @@ class ExternalToolDriver(PolicyKitService):
         try:
             if -1 != os.waitpid(self.__pid, os.P_NOWAIT):
                 print 'Terminating child process %d...' % self.__pid
-                os.kill(self.__pid, signal.SIGTERM)
+                # Kill irrecord and its children and wait for left-overs
+                # FIXME use self.__pid not -self.__pid when irrecord is fixed
+                # https://bugzilla.redhat.com/show_bug.cgi?id=593704
+                os.kill(-self.__pid, signal.SIGTERM)
+                os.waitpid(self.__pid, os.P_WAIT)
 
         except OSError, ex:
             if ex.errno != errno.ESRCH:

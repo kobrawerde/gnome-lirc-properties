@@ -90,6 +90,11 @@ class DeviceDatabase(dict):
 def scan_userspace_driver(filename):
     srcname = filename[len(srcdir):].strip(os.sep)
     driver_code = open(filename).read()
+    driver_name = None
+
+    # Not a hardware driver
+    if not srcname.startswith('daemons/hw_'):
+        return;
 
     for match in re_hardware.finditer(driver_code):
         line_number = driver_code[:match.start(1)].count('\n')
@@ -105,8 +110,43 @@ def scan_userspace_driver(filename):
         if not driver_name:
             continue
 
-        #print '# TODO: %s from %s, line %d' % (driver_name, srcname, line_number)
-        # TODO: extract information for user-space drivers
+    if not driver_name:
+        return
+
+    for match in re_usb_ids.finditer(driver_code):
+        line_number = driver_code[:match.start(1)].count('\n')
+
+	table = match.string[match.start(1):match.end(1)]
+
+        # Work-around weird setup for hw_awlibusb.c
+	if driver_name == 'awlibusb':
+            print '# from %s, line %d' % (srcname, line_number)
+	    print '[%s]' % 'Awox: RF/Infrared Transceiver'
+            print 'lirc-driver = %s' % driver_name
+            print 'vendor-id = %s' % '0x069b'
+            print 'product-id = %s' % '0x1111'
+            print
+
+        for line in re_usb_id_line.finditer(table):
+            vendor_id, product_id, comment = line.groups()
+
+            product_id, vendor_id, section, remotes = get_section_name(vendor_id, product_id, comment, srcname, line_number)
+	    if section is None:
+	        continue
+
+	    if section in receiver_sections:
+	        section = '%s (0x%04x)' % (section, product_id)
+
+            print '# from %s, line %d' % (srcname, line_number)
+            print '[%s]' % section
+            print 'lirc-driver = %s' % driver_name
+            print 'vendor-id = 0x%04x' % vendor_id
+            print 'product-id = 0x%04x' % product_id
+            if remotes is not None:
+                print 'compatible-remotes = %s' % remotes
+            print
+
+            receiver_sections.append(section)
 
 def expand_symbols(symbols, text):
     def replace_symbol(match):
@@ -148,35 +188,93 @@ def derive_name(lookup, match, **overrides):
 
     return None
 
+def identify_usb_vendor(vendor_id, symbols):
+    vendor_match = (
+        vendor_id not in bad_vendor_tokens and
+        re_usb_vendor.match(vendor_id) or
+        None)
+
+    if symbols:
+        vendor_id = int(expand_symbols(symbols, vendor_id), 0)
+    else:
+        vendor_id = int(vendor_id, 0)
+
+    vendor_lookup = usb_ids.get(vendor_id)
+    vendor_name = derive_name(vendor_lookup, vendor_match, vendor=usb_overrides)
+
+    return vendor_id, vendor_name
+
+def identify_usb_product(vendor_id, product_id, device_block, symbols):
+    product_match = re_usb_product.match(product_id)
+    if symbols:
+        product_id = int(expand_symbols(symbols, product_id), 0)
+    else:
+        product_id = int(product_id, 0)
+
+    product_table = usb_ids.get(vendor_id)
+    product_lookup = product_table.get(product_id) if product_table else None
+    product_name = derive_name(product_lookup, product_match, product=usb_overrides)
+
+    if product_name is None and device_block:
+        product_name = override_name(usb_overrides, device_block, 'product')
+
+    return product_id, product_name
+
+def get_section_name(vendor_id, product_id, comment, srcname, line, device_block = None, symbols = None):
+    vendor_id, vendor_name = identify_usb_vendor(vendor_id, symbols)
+    product_id, product_name = identify_usb_product(vendor_id, product_id, device_block, symbols)
+
+    # skip hardware that doesn't have unique USB ids:
+    if 0xffff == vendor_id or 0xffff == product_id:
+        return None, None, None, None
+
+    # skip duplicated hardware
+    if '%d:%d' % (vendor_id, product_id) in ids:
+        return None, None, None, None
+
+    ids.append('%d:%d' % (vendor_id, product_id))
+
+    # override vendor and product ids:
+    vendor_name = usb_overrides.get(
+        '%04x-%04x-vendor' % (vendor_id, product_id),
+        vendor_name)
+    product_name = usb_overrides.get(
+        '%04x-%04x-product' % (vendor_id, product_id),
+        product_name)
+    remotes = usb_overrides.get(
+        '%04x-%04x-remotes' % (vendor_id, product_id),
+        None)
+
+    # blame unknown vendor and product ids:
+    if not vendor_name:
+        logging.warning('%s:%d: Unknown Vendor (usb:%04x:%04x)',
+                        srcname, line + 1, vendor_id, product_id)
+        vendor_name = 'Unknown Vendor (usb-%04X)' % vendor_id
+
+    if not product_name:
+        logging.warning('%s:%d: Unknown Product usb:%04x:%04x',
+                        srcname, line + 1, vendor_id, product_id)
+        product_name = 'Unknown Product (usb-%04X-%04X)' % (vendor_id, product_id)
+        if comment:
+            logging.warning('Using \'%s\' from comment instead', comment)
+            product_name = comment;
+
+    # drop company type suffixes:
+    vendor_name = re_company_suffix.sub('', vendor_name)
+
+    # print findings:
+    section = '%s: %s' % (vendor_name, product_name)
+
+    # ensure section name is valid (could be more clever...)
+    section = section.replace('[', '(')
+    section = section.replace(']', ')')
+
+    return product_id, vendor_id, section, remotes
+
+
 def scan_kernel_driver(filename):
     srcname = filename[len(srcdir):].strip(os.sep)
     driver_code = open(filename).read()
-
-    def identify_usb_vendor(vendor_id):
-        vendor_match = (
-            vendor_id not in bad_vendor_tokens and
-            re_usb_vendor.match(vendor_id) or
-            None)
-
-        vendor_id = int(expand_symbols(symbols, vendor_id), 0)
-
-        vendor_lookup = usb_ids.get(vendor_id)
-        vendor_name = derive_name(vendor_lookup, vendor_match, vendor=usb_overrides)
-
-        return vendor_id, vendor_name
-
-    def identify_usb_product(vendor_id, product_id):
-        product_match = re_usb_product.match(product_id)
-        product_id = int(expand_symbols(symbols, product_id), 0)
-
-        product_table = usb_ids.get(vendor_id)
-        product_lookup = product_table.get(product_id) if product_table else None
-        product_name = derive_name(product_lookup, product_match, product=usb_overrides)
-
-        if product_name is None and device_block:
-            product_name = override_name(usb_overrides, device_block, 'product')
-
-        return product_id, product_name
 
     # naively parse preprocessor symbols:
     symbols = dict()
@@ -195,10 +293,14 @@ def scan_kernel_driver(filename):
     else:
         driver_name = driver_name.strip('"')
 
+    # Ignore lirc_atiusb driver, we're using the
+    # user-space driver for it now
+    if driver_name == 'lirc_atiusb':
+        return
+
     # iterate source code lines:
     device_block = None
     usb_comment = None
-    ids = []
     for line, text in enumerate(driver_code.splitlines()):
         match = re_usb_device_block_begin.search(text)
 
@@ -211,65 +313,25 @@ def scan_kernel_driver(filename):
         if match:
             device_block = None
             continue
-        
+
         match = re_usb_device.search(text)
 
         if match:
             vendor_id, product_id = match.groups()
 
-            vendor_id, vendor_name = identify_usb_vendor(vendor_id)
-            product_id, product_name = identify_usb_product(vendor_id, product_id)
+            product_id, vendor_id, section, remotes = get_section_name(vendor_id, product_id, usb_comment, srcname, line, device_block, symbols)
+	    if section is None:
+	        continue
 
-            # skip hardware that doesn't have unique USB ids:
-            if 0xffff == vendor_id or 0xffff == product_id:
-                continue
-            
-            # skip duplicated hardware
-            if '%d:%d' % (vendor_id, product_id) in ids:
-                continue
-            
-            ids.append('%d:%d' % (vendor_id, product_id))
+	    if section in receiver_sections:
+	        section = '%s (0x%04x)' % (section, product_id)
 
-            # override vendor and product ids:
-            vendor_name = usb_overrides.get(
-                '%04x-%04x-vendor' % (vendor_id, product_id),
-                vendor_name)
-            product_name = usb_overrides.get(
-                '%04x-%04x-product' % (vendor_id, product_id),
-                product_name)
-            remotes = usb_overrides.get(
-                '%04x-%04x-remotes' % (vendor_id, product_id),
-                None)
-
-            # blame unknown vendor and product ids:
-            if not vendor_name:
-                logging.warning('%s:%d: Unknown Vendor (usb:%04x:%04x)',
-                                srcname, line + 1, vendor_id, product_id)
-                vendor_name = 'Unknown Vendor (usb-%04X)' % vendor_id
-                
-
-            if not product_name:
-                logging.warning('%s:%d: Unknown Product usb:%04x:%04x',
-                                srcname, line + 1, vendor_id, product_id)
-                product_name = 'Unknown Product (usb-%04X-%04X)' % (vendor_id, product_id)
-                if usb_comment:
-                    logging.warning('Using \'%s\' from comment instead', usb_comment)
-                    product_name = usb_comment;
-
-            # drop company type suffixes:
-            vendor_name = re_company_suffix.sub('', vendor_name)
-
-            # print findings:
-            section = '%s: %s' % (vendor_name, product_name)
-            
-            # ensure section name is valid (could be more clever...)
-            section = section.replace('[', '(')
-            section = section.replace(']', ')')
-                     
-            receiver_sections.append(section)
-            
             print '# from %s, line %d' % (srcname, line + 1)
             print '[%s]' % section
+
+            if remotes is None:
+	        if driver_name == 'lirc_mceusb':
+	            remotes = 'mceusb'
 
             if remotes is not None:
                 print 'compatible-remotes = %s' % remotes
@@ -278,7 +340,9 @@ def scan_kernel_driver(filename):
             print 'product-id = 0x%04x' % product_id
             print 'vendor-id = 0x%04x' % vendor_id
             print
-            
+
+            receiver_sections.append(section)
+
         # Save the comment, we could use it later to guess unkown product names
         match = re_usb_comments.search(text)
         
@@ -304,6 +368,9 @@ def print_remaining_sections():
         if ':' in s and s not in receiver_sections]
 
     for section in remaining_sections:
+        if section in receiver_sections:
+            section = '%s (%s)' % (section, overrides.items(section)['product-id'])
+
         print '# from overrides.conf'
         print '[%s]' % section
 
@@ -311,6 +378,8 @@ def print_remaining_sections():
             print '%s = %s' % (key, value)
 
         print
+
+        receiver_sections.append(section)
 
 def scan_sources(path, scanner):
     '''Scans a source code director using the supplied scanner.'''
@@ -348,6 +417,12 @@ if '__main__' == __name__:
     re_hardware = r'struct\s+hardware\s+hw_\w+\s*=\s*{(.*?)};'
     re_hardware = re.compile(re_hardware, re.DOTALL)
 
+    re_usb_ids = r'static\s+usb_device_id\s+usb_remote_id_table[\[\]]+\s*=\s*{(.*?)};'
+    re_usb_ids = re.compile(re_usb_ids, re.DOTALL)
+
+    re_usb_id_line = r'\t{ (.*?), (.*?) }, \/\* (.*?) \*\/'
+    re_usb_id_line = re.compile(re_usb_id_line, re.DOTALL)
+
     re_comments = r'/\*\s*(.*?)\s*\*/'
     re_comments = re.compile(re_comments, re.DOTALL)
 
@@ -382,8 +457,8 @@ if '__main__' == __name__:
     re_company_suffix = re.compile(re_company_suffix)
 
     # read device id databases:
-    usb_ids = DeviceDatabase(open('/usr/share/misc/usb.ids'))
-    pci_ids = DeviceDatabase(open('/usr/share/misc/pci.ids'))
+    usb_ids = DeviceDatabase(open('/usr/share/hwdata/usb.ids'))
+    pci_ids = DeviceDatabase(open('/usr/share/hwdata/pci.ids'))
 
     # read overrides databases:
     overrides = SafeConfigParser()
@@ -392,6 +467,7 @@ if '__main__' == __name__:
 
     bad_vendor_tokens = filter(None, usb_overrides.get('bad-vendor-tokens', '').split())
     receiver_sections = list()
+    ids = []
 
     # scan source code for receiver information,
     # and dump this information immediatly:

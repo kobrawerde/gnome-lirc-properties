@@ -1,4 +1,4 @@
-AC_INIT([gnome-lirc-properties], [0.4.0],
+AC_INIT([gnome-lirc-properties], [0.5.0],
         [http://git.gnome.org/browse/gnome-lirc-properties/])
 
 # tar-ustar asks it to use a sensible tar format that can handle long filenames

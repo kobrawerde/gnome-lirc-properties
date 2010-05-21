@@ -1,3 +1,10 @@
+0.5.0:
+* Go from 11 detected receivers to near 100
+* Port to PolicyKit 1.0 and GtkBuilder
+* Merge Fedora support
+* Add script to detect all supported USB receivers
+  from lirc sources (user-space and kernel-space drivers)
+
 0.4.0:
 * Fix for recent D-Bus versions
 * Remove unused Snapstream remote definition

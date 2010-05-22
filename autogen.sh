@@ -9,7 +9,7 @@ REQUIRED_AUTOMAKE_VERSION=1.10
 
 if ! (test -f "$srcdir/configure.ac" &&
       test -f "$srcdir/bin/gnome-lirc-properties.in" &&
-      test -f "$srcdir/data/gnome-lirc-properties.glade" &&
+      test -f "$srcdir/data/gnome-lirc-properties.ui" &&
       test -f "$srcdir/data/gnome-lirc-properties.desktop.in.in")
 then
  echo "$srcdir doesn't look like source directory for $PKG_NAME" >&2

@@ -32,6 +32,7 @@ lirc_generate_linux_input_LDADD = $(GLIB_LIBS)
 
 resourcesdir = $(pkgdatadir)
 
+check: regenerate-linux-input-layer-conf
 regenerate-linux-input-layer-conf: lirc-generate-linux-input
 	$(AM_V_GEN) $(builddir)/lirc-generate-linux-input > $(builddir)/linux-input-layer-lircd.conf
 

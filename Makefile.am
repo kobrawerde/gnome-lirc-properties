@@ -1,16 +1,10 @@
-SUBDIRS = data gnome_lirc_properties help po
-bin_SCRIPTS = bin/gnome-lirc-properties
+SUBDIRS = bin data gnome_lirc_properties help po
 man1_MANS = man/gnome-lirc-properties.1
 
 EXTRA_DIST = \
         autogen.sh \
-	bin/lirc-receiver-list \
-	bin/todo-list \
-	data/overrides.conf \
 	gnome-doc-utils.make \
-	man/gnome-lirc-properties.1 \
-	patches/0001-Use-new-instead-of-conf-as-filename-suffix.patch \
-	patches/0002-Add-resume-switch-to-irrecord.patch
+	man/gnome-lirc-properties.1
 
 DISTCLEANFILES = \
 	intltool-extract \

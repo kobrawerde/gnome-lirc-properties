@@ -32,9 +32,8 @@ lirc_generate_linux_input_LDADD = $(GLIB_LIBS)
 
 resourcesdir = $(pkgdatadir)
 
-check: regenerate-linux-input-layer-conf
-regenerate-linux-input-layer-conf: lirc-generate-linux-input
-	$(AM_V_GEN) $(builddir)/lirc-generate-linux-input > $(builddir)/linux-input-layer-lircd.conf
+linux-input-layer-lircd.conf: lirc-generate-linux-input /usr/include/linux/input.h
+	$(AM_V_GEN) $(builddir)/lirc-generate-linux-input > $@
 
 resources_DATA = \
 	gnome-lirc-properties.ui \
@@ -44,6 +43,7 @@ resources_DATA = \
 	receivers.conf
 
 EXTRA_DIST = \
+	overrides.conf \
 	$(dbusconf_DATA) \
 	$(desktop_in_files) \
 	$(policykitpolicy_in_files) \
@@ -52,6 +52,7 @@ EXTRA_DIST = \
 	$(fdi_DATA)
 
 DISTCLEANFILES = \
+	linux-input-layer-lircd.conf \
 	$(desktop_DATA) \
 	$(policykitpolicy_DATA) \
 	$(service_DATA)

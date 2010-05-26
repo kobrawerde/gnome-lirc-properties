@@ -187,6 +187,7 @@ AC_SUBST([devinput_driver])
 dnl generate files ===
 
 AC_CONFIG_FILES([Makefile
+                 bin/Makefile
                  data/Makefile
                  data/gnome-lirc-properties.desktop.in
                  data/org.gnome.lirc-properties.mechanism.policy

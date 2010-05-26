@@ -807,8 +807,8 @@ class KeyListener(gobject.GObject):
             logging.info('reading from lirc socket %d...', fd)
 
             try:
-              # TODO: What is this 128? No magic numbers in code, please.
-              packet = self.__socket and self.__socket.recv(128)
+              BUFFER_SIZE = 128
+              packet = self.__socket and self.__socket.recv(BUFFER_SIZE)
             except SocketError, ex:
               logging.error('__on_io_event(): socket.recv() threw exception reading from lirc socket: %s', ex.message)
               packet = ''

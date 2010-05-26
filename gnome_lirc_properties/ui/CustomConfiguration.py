@@ -361,7 +361,7 @@ class CustomConfiguration(object):
         '''Handle activation of row in the "keys" tree view.'''
         self.__start_learning(path)
 
-    def __retreive_remote_name(self):
+    def __retrieve_remote_name(self):
         '''Build the symbolic name of the currently edited remote.'''
 
         name = self.__remote and self.__remote.name
@@ -399,7 +399,7 @@ class CustomConfiguration(object):
             hwdb.read(StringIO(result))
 
             remote = hwdb[0]
-            remote.properties['name'] = [self.__retreive_remote_name()]
+            remote.properties['name'] = [self.__retrieve_remote_name()]
 
             self.__remote.properties = remote.properties
             self.__update_basics_model(self.__remote.properties)

@@ -14,6 +14,9 @@ lirc-fixup-upstream: lirc-fixup-keys nns_full.txt
 	./lirc-fixup-keys nns_full.txt lirc/remotes/
 	cd lirc && git diff > ../lirc-fixup-keys.patch
 
+lirc-check-keys: lirc-fixup-keys nns_full.txt
+	lirc-fixup-keys -d lirc/remotes/
+
 EXTRA_DIST =					\
 	lirc-receiver-list			\
 	todo-list				\

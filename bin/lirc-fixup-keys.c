@@ -1,8 +1,25 @@
-
-// gcc -Wall -o lirc-fixup-keys lirc-fixup-keys.c `pkg-config --libs --cflags glib-2.0`
+/*
+ * Copyright (C) 2008, 2010 Bastien Nocera <hadess@hadess.net>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA.
+ *
+ */
 
 #include <glib.h>
 #include <string.h>
+#include <stdlib.h>
 
 #define BEGIN_CODES_STR "begin codes"
 
@@ -70,13 +87,22 @@ eval_cb (const GMatchInfo *match_info,
 	 gpointer user_data)
 {
 	char *match, *new, *s;
+	const char *filename = (const char *) user_data;
 
 	/* We don't want to lose the formatting */
 	s = g_match_info_fetch (match_info, 1);
 	g_string_append (result, s);
 
+	//FIXME try to line up with the other lines if there's leading spaces
 	match = g_match_info_fetch (match_info, 2);
-	new = g_hash_table_lookup (hash, match);
+	if (hash == NULL) {
+		if (g_str_has_prefix (match, "KEY_") == FALSE &&
+		    g_str_has_prefix (match, "BTN_") == FALSE)
+			g_message ("Wrong key '%s' in %s", match, filename);
+		new = NULL;
+	} else {
+		new = g_hash_table_lookup (hash, match);
+	}
 	g_string_append (result, new ? new : match);
 	g_free (match);
 
@@ -142,7 +168,7 @@ subs_file (const char *filename)
 		if (i != 0)
 			g_string_append_c (result, '\n');
 
-		new = g_regex_replace_eval (e, lines[i], -1, 0, 0, eval_cb, NULL, &err);
+		new = g_regex_replace_eval (e, lines[i], -1, 0, 0, eval_cb, (gpointer) filename, &err);
 		if (new == NULL) {
 			g_message ("FAIL! %s", err->message);
 			g_error_free (err);
@@ -161,10 +187,12 @@ subs_file (const char *filename)
 #if 0
 	g_print ("%s", result->str);
 #else
-	if (g_file_set_contents (filename, result->str, -1, NULL) == FALSE) {
-		g_message ("FAIL! Could not save %s", filename);
-		g_string_free (result, TRUE);
-		return FALSE;
+	if (hash != NULL) {
+		if (g_file_set_contents (filename, result->str, -1, NULL) == FALSE) {
+			g_message ("FAIL! Could not save %s", filename);
+			g_string_free (result, TRUE);
+			return FALSE;
+		}
 	}
 #endif
 	g_string_free (result, TRUE);
@@ -270,11 +298,24 @@ set_warnings (void)
 	g_log_set_always_fatal (fatal_mask);
 }
 
+static void
+usage (char **argv)
+{
+	g_warning ("Usage: %s <nns.txt path> <directory to remote files>", argv[0]);
+	g_warning ("Usage: %s -d <directory to remote files>", argv[0]);
+	exit (1);
+}
+
 int main (int argc, char **argv)
 {
-	if (argc != 3) {
-		g_warning ("Usage: %s <nns.txt path> <directory to remote files>", argv[0]);
-		return 1;
+	if (argc == 3) {
+		if (g_str_equal (argv[1], "-d")) {
+			set_warnings ();
+			parse_remotes (argv[2]);
+			return 0;
+		}
+	} else {
+		usage (argv);
 	}
 
 	set_warnings ();

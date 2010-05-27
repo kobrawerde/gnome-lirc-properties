@@ -41,7 +41,7 @@ class PolicyKitAuthentication(object):
         # Check whether the process is authorized:
         pid = os.getpid()
         (is_auth, _, details) = self.policy_kit.CheckAuthorization(
-			('unix-process', {'pid': dbus.UInt32(pid, variant_level=1)}),
+			('unix-process', {'pid': dbus.UInt32(pid, variant_level=1), 'start-time':dbus.UInt64(0,variant_level=1)}),
 			action_id, {}, dbus.UInt32(0), '', timeout=600)
         logging.debug('%s: authorized=%r', action_id, is_auth)
 
@@ -57,7 +57,7 @@ class PolicyKitAuthentication(object):
 
         pid = os.getpid()
         (granted, _, details) = self.policy_kit.CheckAuthorization(
-			('unix-process', {'pid': dbus.UInt32(pid, variant_level=1)}),
+			('unix-process', {'pid': dbus.UInt32(pid, variant_level=1), 'start-time':dbus.UInt64(0,variant_level=1)}),
 			action_id, {}, dbus.UInt32(1), '', timeout=600)
 
         logging.debug('%s: granted=%r', action_id, granted)

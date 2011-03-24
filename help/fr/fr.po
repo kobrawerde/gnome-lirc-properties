@@ -165,7 +165,7 @@ msgstr "choix et personnalisation des configurations d'une télécommande ;"
 
 #: C/gnome-lirc-properties.xml:111(para)
 msgid "Learning of remote control key-codes."
-msgstr "apprentissage des codets d'une télécommande ;"
+msgstr "apprentissage des codes de touches d'une télécommande ;"
 
 #: C/gnome-lirc-properties.xml:112(para)
 msgid "Sharing of customized remote configurations."
@@ -379,7 +379,7 @@ msgstr "Configuration d'une nouvelle télécommande"
 
 #: C/gnome-lirc-properties.xml:271(title)
 msgid "Learn your Remote Control's Key Codes"
-msgstr "Apprentissage des codets de votre télécommande"
+msgstr "Apprentissage des codes de touches de votre télécommande"
 
 #: C/gnome-lirc-properties.xml:276(title)
 msgid "Upload Remote Configuration Files"
@@ -493,7 +493,7 @@ msgstr ""
 #: C/gnome-lirc-properties.xml:366(title)
 #: C/gnome-lirc-properties.xml:379(guilabel)
 msgid "Key Codes"
-msgstr "Codets"
+msgstr "Codes de touches"
 
 #: C/gnome-lirc-properties.xml:367(para)
 msgid ""
@@ -501,14 +501,14 @@ msgid ""
 "click a key-code row to start the learning mode. Use names from the default "
 "namespace whenever possible, for maximum interoperability."
 msgstr ""
-"Cette section autorise l'assignation de codets à des noms bien connus. "
-"Double-cliquez sur une ligne de codets pour lancer le mode apprentissage. "
+"Cette section autorise l'assignation de codes de touches à des noms bien connus. "
+"Double-cliquez sur une ligne de code pour lancer le mode apprentissage. "
 "Utilisez autant que possible les noms par défaut de l'espace de noms pour "
 "une interopérabilité maximum."
 
 #: C/gnome-lirc-properties.xml:375(title)
 msgid "<guilabel>Key Codes</guilabel> section"
-msgstr "Section <guilabel>Codets</guilabel>"
+msgstr "Section <guilabel>Codes des touches</guilabel>"
 
 #: C/gnome-lirc-properties.xml:379(phrase)
 msgid ""
@@ -516,7 +516,7 @@ msgid ""
 "a list with assigned keys codes and buttons for manipulating this list."
 msgstr ""
 "Affiche la section <placeholder-1/> de la boîte de dialogue <placeholder-2/"
-">. Contient la liste des codets assignés et les boutons pour la gérer."
+">. Contient la liste des codes de touches assignés et les boutons pour la gérer."
 
 #: C/gnome-lirc-properties.xml:386(guilabel)
 #: C/gnome-lirc-properties.xml:399(guilabel)
@@ -528,7 +528,7 @@ msgid ""
 "Add another key to the configuration. Learning mode starts directly after "
 "pressing this button."
 msgstr ""
-"Ajoute un nouveau codet à la configuration. Le mode apprentissage commence "
+"Ajoute un nouveau code de touche à la configuration. Le mode apprentissage commence "
 "aussitôt après pression sur ce bouton."
 
 #: C/gnome-lirc-properties.xml:394(guilabel)
@@ -537,11 +537,11 @@ msgstr "Télécommande"
 
 #: C/gnome-lirc-properties.xml:395(para)
 msgid "Deletes the currently selected key."
-msgstr "Supprime le codet sélectionné."
+msgstr "Supprime le code de touche sélectionné."
 
 #: C/gnome-lirc-properties.xml:400(para)
 msgid "Deletes all key definitions."
-msgstr "Supprime toutes les définitions des codets."
+msgstr "Supprime toutes les définitions des codes de touches."
 
 #: C/gnome-lirc-properties.xml:424(title)
 msgid ""

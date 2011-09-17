@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "lirc-properties&keywords=I18N+L10N&component=general\n"
 "POT-Creation-Date: 2011-04-13 07:32+0000\n"
-"PO-Revision-Date: 2011-03-03 19:16+0800\n"
+"PO-Revision-Date: 2011-09-17 15:57+0000\n"
 "Last-Translator: Yinghua Wang <wantinghard@gmail.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -212,7 +212,6 @@ msgid "Press random buttons on your remote control."
 msgstr "随意按下您遥控器上的一个键。"
 
 #: ../gnome_lirc_properties/backend.py:377
-#, fuzzy
 msgid ""
 "When you press the Start button, it is very important that you press many "
 "different buttons and hold them down for approximately one second. Each "

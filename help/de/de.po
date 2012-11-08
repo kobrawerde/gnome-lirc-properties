@@ -4,9 +4,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2009-04-17 14:34+0000\n"
-"PO-Revision-Date: 2009-04-19 15:26+0100\n"
-"Last-Translator: Mario Blättermann <mariobl@gnome.org>\n"
+"POT-Creation-Date: 2011-10-10 18:00+0000\n"
+"PO-Revision-Date: 2012-05-13 21:49+0100\n"
+"Last-Translator: Daniel Winzen <d@winzen4.de>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,13 +17,15 @@ msgstr ""
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: C/gnome-lirc-properties.xml:175(None)
-msgid "@@image: 'figures/main-window.png'; md5=d38ccfbf5e75126c34bbd0a39e6b5eb9"
+msgid ""
+"@@image: 'figures/main-window.png'; md5=d38ccfbf5e75126c34bbd0a39e6b5eb9"
 msgstr ""
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: C/gnome-lirc-properties.xml:252(None)
-msgid "@@image: 'figures/auto-detect.png'; md5=3f57d1012efac6bc1487343ec2dff3fd"
+msgid ""
+"@@image: 'figures/auto-detect.png'; md5=3f57d1012efac6bc1487343ec2dff3fd"
 msgstr ""
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
@@ -57,8 +59,8 @@ msgstr "<application>GNOME Infrarot-Fernbedienung</application>-Handbuch"
 
 #: C/gnome-lirc-properties.xml:22(para)
 msgid ""
-"<application>GNOME Infrared Remote Control Properties</application> is a tool "
-"for configuring your remote control."
+"<application>GNOME Infrared Remote Control Properties</application> is a "
+"tool for configuring your remote control."
 msgstr ""
 "<application>GNOME-Einstellungen für Infrarot-Fernbedienungen</application> "
 "ist ein Werkzeug zum Konfigurieren Ihrer Fernbedienung."
@@ -146,8 +148,8 @@ msgid ""
 msgstr ""
 "Verwenden Sie <application>GNOME-Einstellungen für Infrarot-Fernbedienungen</"
 "application> zur Konfiguration Ihrer durch LIRC unterstützten Infrarot-"
-"Fernbedienung. <application>GNOME-Einstellungen für Infrarot-Fernbedienungen</"
-"application> verfügt über die folgenden Funktionsmerkmale:"
+"Fernbedienung. <application>GNOME-Einstellungen für Infrarot-"
+"Fernbedienungen</application> verfügt über die folgenden Funktionsmerkmale:"
 
 #: C/gnome-lirc-properties.xml:109(para)
 msgid "Auto-detection of infrared receivers."
@@ -175,7 +177,8 @@ msgstr ""
 "Veröffentlichen Ihrer neu erstellten und korrigierten Konfigurationsdateien."
 
 #: C/gnome-lirc-properties.xml:120(para)
-msgid "Reporting receivers supported by LIRC but ignored by this control panel."
+msgid ""
+"Reporting receivers supported by LIRC but ignored by this control panel."
 msgstr ""
 "Melden von Empfängern, die von LIRC unterstützt, aber von dieser Anwendung "
 "ignoriert werden."
@@ -213,10 +216,10 @@ msgstr "Menü <guimenu>System</guimenu>"
 
 #: C/gnome-lirc-properties.xml:147(para)
 msgid ""
-"Choose <menuchoice><guisubmenu>Administration</"
-"guisubmenu><guimenuitem>Infrared Remote Control</guimenuitem></menuchoice>."
+"Choose <menuchoice><guisubmenu>Preferences</guisubmenu><guimenuitem>Infrared "
+"Remote Control</guimenuitem></menuchoice>."
 msgstr ""
-"Wählen Sie <menuchoice><guisubmenu>Systemverwaltung</"
+"Wählen Sie <menuchoice><guisubmenu>Einstellungen</"
 "guisubmenu><guimenuitem>Infrarot-Fernbedienung</guimenuitem></menuchoice>."
 
 #: C/gnome-lirc-properties.xml:155(term)
@@ -230,8 +233,8 @@ msgid ""
 "keycap>:"
 msgstr ""
 "Um <application>GNOME-Einstellungen für Infrarot-Fernbedienungen</"
-"application> in einer Befehlszeile zu starten, geben Sie folgenden Befehl ein "
-"und drücken Sie die <keycap>Eingabetaste</keycap>:"
+"application> in einer Befehlszeile zu starten, geben Sie folgenden Befehl "
+"ein und drücken Sie die <keycap>Eingabetaste</keycap>:"
 
 #: C/gnome-lirc-properties.xml:161(command)
 msgid "gnome-lirc-properties"
@@ -242,16 +245,16 @@ msgid ""
 "When You Start <application>GNOME Infrared Remote Control Properties</"
 "application>"
 msgstr ""
-"Beim Start von <application>GNOME-Einstellungen für Infrarot-Fernbedienungen</"
-"application>"
+"Beim Start von <application>GNOME-Einstellungen für Infrarot-"
+"Fernbedienungen</application>"
 
 #: C/gnome-lirc-properties.xml:169(para)
 msgid ""
 "When you start <application>GNOME Infrared Remote Control Properties</"
 "application>, the following window is displayed."
 msgstr ""
-"Beim Start von <application>GNOME-Einstellungen für Infrarot-Fernbedienungen</"
-"application> wird folgendes Fenster angezeigt:"
+"Beim Start von <application>GNOME-Einstellungen für Infrarot-"
+"Fernbedienungen</application> wird folgendes Fenster angezeigt:"
 
 #: C/gnome-lirc-properties.xml:172(title)
 msgid ""
@@ -286,16 +289,17 @@ msgid ""
 "The drop-down lists in this area allow you to select the brand and model of "
 "your infrared receiver."
 msgstr ""
-"Die Auswahlliste in diesem Bereich ermöglicht Ihnen die Auswahl der Marke und "
-"des Modells Ihres Infrarotempfängers."
+"Die Auswahlliste in diesem Bereich ermöglicht Ihnen die Auswahl der Marke "
+"und des Modells Ihres Infrarotempfängers."
 
 #: C/gnome-lirc-properties.xml:192(para)
 msgid ""
-"For a few devices you'll have to select which physical device to use. In that "
-"case the <guilabel>Device</guilabel> entry is sensitive."
+"For a few devices you'll have to select which physical device to use. In "
+"that case the <guilabel>Device</guilabel> entry is sensitive."
 msgstr ""
-"Gelegentlich ist es notwendig, das zu verwendende Hardware-Gerät auszuwählen. "
-"In diesem Fall ist das Eingabefeld <guilabel>Gerät</guilabel> aktiviert."
+"Gelegentlich ist es notwendig, das zu verwendende Hardware-Gerät "
+"auszuwählen. In diesem Fall ist das Eingabefeld <guilabel>Gerät</guilabel> "
+"aktiviert."
 
 #: C/gnome-lirc-properties.xml:200(term)
 msgid "Remote Selection."
@@ -308,8 +312,9 @@ msgid ""
 "control supplied with your receiver."
 msgstr ""
 "Die Bedienelemente in diesem Bereich ermöglichen Ihnen die Auswahl der Marke "
-"und des Modells Ihrer Infrarot-Fernbedienung. In vielen Fällen genügt es, die "
-"mit Ihrem Fernbedienungsempfänger mitgelieferte Fernbedienung zu verwenden."
+"und des Modells Ihrer Infrarot-Fernbedienung. In vielen Fällen genügt es, "
+"die mit Ihrem Fernbedienungsempfänger mitgelieferte Fernbedienung zu "
+"verwenden."
 
 #: C/gnome-lirc-properties.xml:211(term)
 msgid "Test Area."
@@ -352,13 +357,13 @@ msgstr "Dialog zur Auswahl zwischen erkannten Empfängern"
 
 #: C/gnome-lirc-properties.xml:253(phrase)
 msgid ""
-"Shows the dialog for choosing between multiple detected receivers. Contains a "
-"list with all detected receivers, and buttons for confirming or rejecting the "
-"selection."
+"Shows the dialog for choosing between multiple detected receivers. Contains "
+"a list with all detected receivers, and buttons for confirming or rejecting "
+"the selection."
 msgstr ""
 "Zeigt den Dialog zur Auswahl zwischen erkannten Empfängern. Enthält eine "
-"Liste aller erkannten Empfänger sowie Knöpfe zum Bestätigen oder Zurücknehmen "
-"einer Auswahl."
+"Liste aller erkannten Empfänger sowie Knöpfe zum Bestätigen oder "
+"Zurücknehmen einer Auswahl."
 
 #: C/gnome-lirc-properties.xml:261(title)
 msgid "Customize Remote Configuration Files"
@@ -460,15 +465,15 @@ msgstr "Grundlegende Konfiguration"
 
 #: C/gnome-lirc-properties.xml:347(para)
 msgid ""
-"This section shows the basic configuration properties of your IR remote. Your "
-"remote cannot be used unless these parameters are recognized. Press the "
+"This section shows the basic configuration properties of your IR remote. "
+"Your remote cannot be used unless these parameters are recognized. Press the "
 "<guibutton>Detect</guibutton> button to start guided detection of those "
 "properties."
 msgstr ""
 "Dieser Abschnitt zeigt die grundlegenden Eigenschaften Ihrer Infrarot-"
 "Fernbedienung. Diese kann nicht benutzt werden, wenn diese Parameter nicht "
-"erkannt werden. Klicken Sie auf den Knopf <guibutton>Erkennen</guibutton>, um "
-"mit der geführten Erkennung dieser Eigenschaften zu beginnen."
+"erkannt werden. Klicken Sie auf den Knopf <guibutton>Erkennen</guibutton>, "
+"um mit der geführten Erkennung dieser Eigenschaften zu beginnen."
 
 #: C/gnome-lirc-properties.xml:355(title)
 msgid "<guilabel>Basic Configuration</guilabel> section"
@@ -476,9 +481,9 @@ msgstr "Abschnitt <guilabel>Grundlegende Konfiguration</guilabel>"
 
 #: C/gnome-lirc-properties.xml:359(phrase)
 msgid ""
-"Shows the <placeholder-1/> section of the <placeholder-2/> dialog. Contains a "
-"list with detected remote properties and a button for starting detection of "
-"those properties."
+"Shows the <placeholder-1/> section of the <placeholder-2/> dialog. Contains "
+"a list with detected remote properties and a button for starting detection "
+"of those properties."
 msgstr ""
 "Zeigt den Abschnitt <placeholder-1/> des Dialogs <placeholder-2/>. Enthält "
 "eine Liste erkannter Eigenschaften der Fernbedienung und einen Knopf zum "
@@ -491,8 +496,8 @@ msgstr "Tastencodes"
 
 #: C/gnome-lirc-properties.xml:367(para)
 msgid ""
-"This section allows assignment of key-codes to well-known names. Double-click "
-"a key-code row to start the learning mode. Use names from the default "
+"This section allows assignment of key-codes to well-known names. Double-"
+"click a key-code row to start the learning mode. Use names from the default "
 "namespace whenever possible, for maximum interoperability."
 msgstr ""
 "Dieser Abschnitt ermöglicht die Zuordnung von Tastencodes zu allgemein "
@@ -506,8 +511,8 @@ msgstr "Abschnitt <guilabel>Tastencodes</guilabel>"
 
 #: C/gnome-lirc-properties.xml:379(phrase)
 msgid ""
-"Shows the <placeholder-1/> section of the <placeholder-2/> dialog. Contains a "
-"list with assigned keys codes and buttons for manipulating this list."
+"Shows the <placeholder-1/> section of the <placeholder-2/> dialog. Contains "
+"a list with assigned keys codes and buttons for manipulating this list."
 msgstr ""
 "Zeigt den Abschnitt <placeholder-1/> des Dialogs <placeholder-2/>. Enthält "
 "eine Liste mit zugeordneten Tastencodes und Knöpfe zum Bearbeiten dieser "
@@ -523,8 +528,8 @@ msgid ""
 "Add another key to the configuration. Learning mode starts directly after "
 "pressing this button."
 msgstr ""
-"Fügt eine weitere Taste zur Konfiguration hinzu. Der Lernmodus startet direkt "
-"nach dem Anklicken dieser Taste."
+"Fügt eine weitere Taste zur Konfiguration hinzu. Der Lernmodus startet "
+"direkt nach dem Anklicken dieser Taste."
 
 #: C/gnome-lirc-properties.xml:394(guilabel)
 msgid "Remote"
@@ -559,7 +564,8 @@ msgstr ""
 "Murray Cumming (<email>murrayc@murrayc.com</email> geschrieben. Weitere "
 "Informationen über <application>GNOME-Einstellungen für Infrarot-"
 "Fernbedienungen</application> finden Sie auf der <ulink url=\"http://live."
-"gnome.org/gnome-lirc-properties\" type=\"http\">Webseite des Projekts</ulink>."
+"gnome.org/gnome-lirc-properties\" type=\"http\">Webseite des Projekts</"
+"ulink>."
 
 #: C/gnome-lirc-properties.xml:433(para)
 msgid ""
@@ -574,10 +580,10 @@ msgstr ""
 
 #: C/gnome-lirc-properties.xml:439(para)
 msgid ""
-"This program is distributed under the terms of the GNU General Public license "
-"as published by the Free Software Foundation; either version 2 of the "
-"License, or (at your option) any later version. A <ulink url=\"ghelp:gpl\" "
-"type=\"help\">copy of this license</ulink> is included with this "
+"This program is distributed under the terms of the GNU General Public "
+"license as published by the Free Software Foundation; either version 2 of "
+"the License, or (at your option) any later version. A <ulink url=\"ghelp:gpl"
+"\" type=\"help\">copy of this license</ulink> is included with this "
 "documentation; another can be found in the file COPYING included with the "
 "source code of this program."
 msgstr ""
@@ -586,10 +592,10 @@ msgstr ""
 "halten, so wie sie von der Free Software Foundation festgelegt wurden; "
 "entweder in Version 2 der Lizenz oder (nach Ihrem Ermessen) in jeder "
 "folgenden Lizenz. Eine <ulink url=\"ghelp:gpl\" type=\"help\">Kopie dieser "
-"Lizenz</ulink> ist in dieser Dokumentation enthalten, eine weitere finden Sie "
-"in der Datei COPYING im Quellcode dieses Programms."
+"Lizenz</ulink> ist in dieser Dokumentation enthalten, eine weitere finden "
+"Sie in der Datei COPYING im Quellcode dieses Programms."
 
-#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2.
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
 #: C/gnome-lirc-properties.xml:0(None)
 msgid "translator-credits"
 msgstr "Mario Blättermann <mariobl@gnome.org>, 2009"

@@ -1,0 +1,910 @@
+# Serbian translation for gnome-lirc-properties.
+# Copyright (C) 2013 gnome-lirc-properties's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-lirc-properties package.
+# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-lirc-properties master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"lirc-properties&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2012-11-08 16:56+0000\n"
+"PO-Revision-Date: 2013-01-04 21:40+0200\n"
+"Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
+"Language-Team: Serbian <gnom@prevod.org>\n"
+"Language: sr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : "
+"n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Project-Style: gnome\n"
+
+#: ../data/gnome-lirc-properties.desktop.in.in.h:1
+msgid "Infrared Remote Control"
+msgstr "Инфрацрвени даљински управљач"
+
+#: ../data/gnome-lirc-properties.desktop.in.in.h:2
+msgid "Configure your remote control"
+msgstr "Подесите ваш даљински управљач"
+
+#: ../data/gnome-lirc-properties.ui.h:1
+msgid "Remote Control Properties"
+msgstr "Својства даљинског управљача"
+
+#: ../data/gnome-lirc-properties.ui.h:2
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:411
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:461
+msgid "_Device:"
+msgstr "_Уређај:"
+
+#: ../data/gnome-lirc-properties.ui.h:3
+#: ../data/gnome-lirc-properties-custom-config.ui.h:12
+msgid "_Manufacturer:"
+msgstr "_Произвођач:"
+
+#: ../data/gnome-lirc-properties.ui.h:4
+msgid "M_odel:"
+msgstr "_Модел:"
+
+#: ../data/gnome-lirc-properties.ui.h:5
+msgid "_Auto-detect"
+msgstr "_Сам пронађи"
+
+#: ../data/gnome-lirc-properties.ui.h:6
+msgid "Searching for IR receivers"
+msgstr "Тражим ИЦ пријемнике"
+
+#: ../data/gnome-lirc-properties.ui.h:7
+msgid "<b>IR Receiver</b>"
+msgstr "<b>ИЦ пријемник</b>"
+
+#: ../data/gnome-lirc-properties.ui.h:8
+msgid "Use _supplied remote control"
+msgstr "Користи _достављени даљински управљач"
+
+#: ../data/gnome-lirc-properties.ui.h:9
+msgid ""
+"Use the remote control that was supplied with the infra-red receiver, if any."
+msgstr ""
+"Користите даљински управљач који је достављен уз инфрацрвени пријемник, ако "
+"га има."
+
+#: ../data/gnome-lirc-properties.ui.h:10
+msgid "Use di_fferent remote control"
+msgstr "Користи _други даљински управљач"
+
+#: ../data/gnome-lirc-properties.ui.h:11
+msgid ""
+"Use a remote control that was not supplied with the infra-red receiver, such "
+"as a generic replacement remote control not specifically designed for use "
+"with a computer."
+msgstr ""
+"Користите даљински управљач који није достављен уз инфрацрвени пријемник, "
+"као што је опште заменски даљински управљач који није посебно направљен за "
+"коришћење уз рачунар."
+
+#: ../data/gnome-lirc-properties.ui.h:12
+msgid "Cus_tom Configuration"
+msgstr "Произвољно _подешавање"
+
+#: ../data/gnome-lirc-properties.ui.h:13
+msgid "Ma_nufacturer:"
+msgstr "_Произвођач:"
+
+#: ../data/gnome-lirc-properties.ui.h:14
+msgid "Mod_el:"
+msgstr "_Модел:"
+
+#: ../data/gnome-lirc-properties.ui.h:15
+msgid "<b>IR Remote Control</b>"
+msgstr "<b>ИЦ даљински управљач</b>"
+
+#: ../data/gnome-lirc-properties.ui.h:16
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:332
+msgid "Press remote control buttons to test:"
+msgstr "Притисни дугмад даљинског управљача да испробаш:"
+
+#: ../data/gnome-lirc-properties.ui.h:17
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:331
+msgid "<none>"
+msgstr "<ништа>"
+
+#: ../data/gnome-lirc-properties.ui.h:18
+msgid "<b>Configuration Test</b>"
+msgstr "<b>Проба подешавања</b>"
+
+#: ../data/gnome-lirc-properties-custom-config.ui.h:1
+msgid "Please enter the manufacturer and model name."
+msgstr "Молим унесите назив произвођача и модела."
+
+#: ../data/gnome-lirc-properties-custom-config.ui.h:2
+msgid ""
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+
+#: ../data/gnome-lirc-properties-custom-config.ui.h:10
+msgid "Co_ntributor:"
+msgstr "_Доприносилац:"
+
+#: ../data/gnome-lirc-properties-custom-config.ui.h:11
+msgid "M_odel"
+msgstr "_Модел"
+
+#: ../data/gnome-lirc-properties-custom-config.ui.h:13
+msgid "_Remote Model"
+msgstr "_Модел удаљеног"
+
+#: ../data/gnome-lirc-properties-custom-config.ui.h:14
+msgid ""
+"Key codes cannot be received\n"
+"until these basic parameters are identified."
+msgstr ""
+"Шифре тастера не могу бити примљене\n"
+"све док се не препознају ови основни параметри."
+
+#: ../data/gnome-lirc-properties-custom-config.ui.h:16
+msgid "_Detect"
+msgstr "_Откриј"
+
+#: ../data/gnome-lirc-properties-custom-config.ui.h:17
+msgid "_Basic Configuration"
+msgstr "_Основно подешавање"
+
+#: ../data/gnome-lirc-properties-custom-config.ui.h:18
+msgid ""
+"Choose a button to redefine and press \"Learn\", or add another button.\n"
+"Try to use key names from the default namespace only for best "
+"interoperability."
+msgstr ""
+"Изаберите дугме да поново одредите и притисните „Научи“, или додајте друго "
+"дугме.\n"
+"Покушајте да користите називе тастера из основног простора назива само зарад "
+"боље међуоперативности."
+
+#: ../data/gnome-lirc-properties-custom-config.ui.h:20
+msgid "_Learn"
+msgstr "_Научи"
+
+#: ../data/gnome-lirc-properties-custom-config.ui.h:21
+msgid "_Key Codes"
+msgstr "_Шифра тастера"
+
+#: ../data/gnome-lirc-properties-receiver.ui.h:1
+msgid ""
+"<big><b>Multiple Receivers Detected.</b></big>\n"
+"Please choose the IR receiver that you wish to use."
+msgstr ""
+"<big><b>Откривено је више пријемника.</b></big>\n"
+"Молим изаберите ИЦ пријемник који желите да користите."
+
+#: ../gnome_lirc_properties/__init__.py:49
+msgid "Infrared Remote Control Properties"
+msgstr "Својства инфрацрвеног даљинског управљача"
+
+#: ../gnome_lirc_properties/backend.py:242
+msgid "Could not initialize hardware."
+msgstr "Не могу да покренем уређај."
+
+#: ../gnome_lirc_properties/backend.py:243
+msgid "No key presses recognized. Gap not found."
+msgstr "Није препознат притисак тастера. Јаз није пронађен."
+
+#: ../gnome_lirc_properties/backend.py:244
+msgid "No key presses recognized. Aborting."
+msgstr "Није препознат притисак тастера. Прекидам."
+
+#. self.locations is in the dbus base class. This check prevents a shutdown when the dbus service should be kept alive.
+#. irrecord stopped when we were expecting more interaction:
+#: ../gnome_lirc_properties/backend.py:317
+msgid "Custom remote control configuration aborted unexpectedly."
+msgstr "Произвољно подешавање даљинског управљача је неочекивано прекинуто."
+
+#: ../gnome_lirc_properties/backend.py:368
+msgid "Hold down any remote control button."
+msgstr "Држите притиснутим било које дугме на даљинском управљачу."
+
+#: ../gnome_lirc_properties/backend.py:376
+msgid "Press random buttons on your remote control."
+msgstr "Притисните насумично дугмад на вашем даљинском управљачу."
+
+#: ../gnome_lirc_properties/backend.py:377
+msgid ""
+"When you press the Start button, it is very important that you press many "
+"different buttons and hold them down for approximately one second. Each "
+"button should move the progress bar by at least one step, but in no case by "
+"more than ten steps."
+msgstr ""
+"Када притисните дугме „Почни“, веома је важно да притиснете много различитих "
+"дугмића и да их држите притиснутим приближно једну секунду. Свако дугме "
+"треба да помери траку напредовања за барем један корак, али ни у ком случају "
+"не више од десет."
+
+#: ../gnome_lirc_properties/backend.py:387
+msgid "Press a button repeatedly as fast as possible."
+msgstr "Притискајте дугме што брже можете."
+
+#: ../gnome_lirc_properties/backend.py:388
+msgid ""
+"Make sure you keep pressing the <b>same</b> button and that you <b>do not "
+"hold</b> the button down.\n"
+"Wait a little between button presses if you cannot see any progress."
+msgstr ""
+"Будите сигурни да притискате <b>исто</b> дугме и да га <b>не држите</b> "
+"притиснутим.\n"
+"Сачекајте мало између притисака на дугме ако не видите никакав напредак."
+
+#: ../gnome_lirc_properties/backend.py:461
+msgid "Cannot find recorded key codes"
+msgstr "Не могу да пронађем снимљене шифре тастера"
+
+#: ../gnome_lirc_properties/hardware.py:309
+#: ../gnome_lirc_properties/model.py:223
+msgid "Linux Input Device"
+msgstr "Линуксов улазни уређај"
+
+#: ../gnome_lirc_properties/lirc.py:46
+msgid "Malformed configuration file"
+msgstr "Лоша датотека подешавања"
+
+#: ../gnome_lirc_properties/lirc.py:552
+msgid "Default Namespace"
+msgstr "Основни простор назива"
+
+#: ../gnome_lirc_properties/lirc.py:566 ../gnome_lirc_properties/lirc.py:567
+#: ../gnome_lirc_properties/lirc.py:568
+msgid "Move Up"
+msgstr "Помери горе"
+
+#: ../gnome_lirc_properties/lirc.py:569
+msgid "0"
+msgstr "0"
+
+#: ../gnome_lirc_properties/lirc.py:570
+msgid "1"
+msgstr "1"
+
+#: ../gnome_lirc_properties/lirc.py:571
+msgid "2"
+msgstr "2"
+
+#: ../gnome_lirc_properties/lirc.py:572
+msgid "3"
+msgstr "3"
+
+#: ../gnome_lirc_properties/lirc.py:573
+msgid "4"
+msgstr "4"
+
+#: ../gnome_lirc_properties/lirc.py:574
+msgid "5"
+msgstr "5"
+
+#: ../gnome_lirc_properties/lirc.py:575
+msgid "6"
+msgstr "6"
+
+#: ../gnome_lirc_properties/lirc.py:576
+msgid "7"
+msgstr "7"
+
+#: ../gnome_lirc_properties/lirc.py:577
+msgid "8"
+msgstr "8"
+
+#: ../gnome_lirc_properties/lirc.py:578
+msgid "9"
+msgstr "9"
+
+#: ../gnome_lirc_properties/lirc.py:579
+msgid "A"
+msgstr "А"
+
+#: ../gnome_lirc_properties/lirc.py:580
+msgid "Again"
+msgstr "Опет"
+
+#: ../gnome_lirc_properties/lirc.py:581
+msgid "Angle"
+msgstr "Угао"
+
+#: ../gnome_lirc_properties/lirc.py:582
+msgid "Audio"
+msgstr "Звук"
+
+#: ../gnome_lirc_properties/lirc.py:583
+msgid "Auxiliary"
+msgstr "Помоћни"
+
+#: ../gnome_lirc_properties/lirc.py:584
+msgid "B"
+msgstr "Б"
+
+#: ../gnome_lirc_properties/lirc.py:585
+msgid "Back"
+msgstr "Назад"
+
+#: ../gnome_lirc_properties/lirc.py:586
+msgid "Backspace"
+msgstr "Повратница"
+
+#: ../gnome_lirc_properties/lirc.py:587
+msgid "Blue"
+msgstr "Плаво"
+
+#: ../gnome_lirc_properties/lirc.py:588
+msgid "Bookmarks"
+msgstr "Обележивачи"
+
+#: ../gnome_lirc_properties/lirc.py:589
+msgid "C"
+msgstr "Ц"
+
+#: ../gnome_lirc_properties/lirc.py:590
+msgid "Camera"
+msgstr "Фото-апарат"
+
+#: ../gnome_lirc_properties/lirc.py:591
+msgid "Cancel"
+msgstr "Откажи"
+
+#: ../gnome_lirc_properties/lirc.py:592
+msgid "CD"
+msgstr "ЦД"
+
+#: ../gnome_lirc_properties/lirc.py:593
+msgid "Channel Down"
+msgstr "Канал доле"
+
+#: ../gnome_lirc_properties/lirc.py:594
+msgid "Channel Up"
+msgstr "Канал горе"
+
+#: ../gnome_lirc_properties/lirc.py:595
+msgid "Clear"
+msgstr "Очисти"
+
+#: ../gnome_lirc_properties/lirc.py:596
+msgid "Close"
+msgstr "Затвори"
+
+#: ../gnome_lirc_properties/lirc.py:597
+msgid "Configuration"
+msgstr "Подешавање"
+
+#: ../gnome_lirc_properties/lirc.py:598
+msgid "D"
+msgstr "Д"
+
+#: ../gnome_lirc_properties/lirc.py:599
+msgid "Delete"
+msgstr "Обриши"
+
+#: ../gnome_lirc_properties/lirc.py:600
+msgid "Directory"
+msgstr "Директоријум"
+
+#: ../gnome_lirc_properties/lirc.py:601
+msgid "Dot"
+msgstr "Тачка"
+
+#: ../gnome_lirc_properties/lirc.py:602
+msgid "Down"
+msgstr "Доле"
+
+#: ../gnome_lirc_properties/lirc.py:603
+msgid "DVD"
+msgstr "ДВД"
+
+#: ../gnome_lirc_properties/lirc.py:604
+msgid "E"
+msgstr "Е"
+
+#: ../gnome_lirc_properties/lirc.py:605
+msgid "Eject CD"
+msgstr "Избаци ЦД"
+
+#: ../gnome_lirc_properties/lirc.py:606
+msgid "End"
+msgstr "Крај"
+
+#: ../gnome_lirc_properties/lirc.py:607
+msgid "Enter"
+msgstr "Унеси"
+
+#: ../gnome_lirc_properties/lirc.py:608
+msgid "EPG"
+msgstr "ЕПГ"
+
+#: ../gnome_lirc_properties/lirc.py:609
+msgid "Escape"
+msgstr "Излаз"
+
+#: ../gnome_lirc_properties/lirc.py:610
+msgid "Exit"
+msgstr "Изађи"
+
+#: ../gnome_lirc_properties/lirc.py:611
+msgid "F"
+msgstr "Ф"
+
+#: ../gnome_lirc_properties/lirc.py:612
+msgid "F1"
+msgstr "Ф1"
+
+#: ../gnome_lirc_properties/lirc.py:613
+msgid "F2"
+msgstr "Ф2"
+
+#: ../gnome_lirc_properties/lirc.py:614
+msgid "F3"
+msgstr "Ф3"
+
+#: ../gnome_lirc_properties/lirc.py:615
+msgid "F4"
+msgstr "Ф4"
+
+#: ../gnome_lirc_properties/lirc.py:616
+msgid "Fast Forward"
+msgstr "Брзо унапред"
+
+#: ../gnome_lirc_properties/lirc.py:617
+msgid "Forward"
+msgstr "Унапред"
+
+#: ../gnome_lirc_properties/lirc.py:618
+msgid "G"
+msgstr "Г"
+
+#: ../gnome_lirc_properties/lirc.py:619
+msgid "Green"
+msgstr "Зелено"
+
+#: ../gnome_lirc_properties/lirc.py:620
+msgid "H"
+msgstr "Х"
+
+#: ../gnome_lirc_properties/lirc.py:621
+msgid "Help"
+msgstr "Помоћ"
+
+#: ../gnome_lirc_properties/lirc.py:622
+msgid "Home"
+msgstr "Почетна"
+
+#: ../gnome_lirc_properties/lirc.py:623
+msgid "Information"
+msgstr "Обавештење"
+
+#: ../gnome_lirc_properties/lirc.py:624
+msgid "Asterisk"
+msgstr "Звездица"
+
+#: ../gnome_lirc_properties/lirc.py:625
+msgid "Minus"
+msgstr "Минус"
+
+#: ../gnome_lirc_properties/lirc.py:626 ../gnome_lirc_properties/lirc.py:651
+msgid "Plus"
+msgstr "Плус"
+
+#: ../gnome_lirc_properties/lirc.py:627
+msgid "L"
+msgstr "Л"
+
+#: ../gnome_lirc_properties/lirc.py:628
+msgid "Language"
+msgstr "Језик"
+
+#: ../gnome_lirc_properties/lirc.py:629
+msgid "Left"
+msgstr "Лево"
+
+#: ../gnome_lirc_properties/lirc.py:630
+msgid "List"
+msgstr "Списак"
+
+#: ../gnome_lirc_properties/lirc.py:631
+msgid "M"
+msgstr "М"
+
+#: ../gnome_lirc_properties/lirc.py:632
+msgid "Mail"
+msgstr "Пошта"
+
+#: ../gnome_lirc_properties/lirc.py:633
+msgid "Maximum"
+msgstr "Највише"
+
+#: ../gnome_lirc_properties/lirc.py:634
+msgid "Media"
+msgstr "Медиј"
+
+#: ../gnome_lirc_properties/lirc.py:635
+msgid "Menu"
+msgstr "Изборник"
+
+#: ../gnome_lirc_properties/lirc.py:636
+msgid "Mode"
+msgstr "Режим"
+
+#: ../gnome_lirc_properties/lirc.py:637
+msgid "MP3"
+msgstr "МП3"
+
+#: ../gnome_lirc_properties/lirc.py:638
+msgid "Mute"
+msgstr "Утишај"
+
+#: ../gnome_lirc_properties/lirc.py:639 ../gnome_lirc_properties/lirc.py:640
+msgid "Next"
+msgstr "Следеће"
+
+#: ../gnome_lirc_properties/lirc.py:641
+msgid "OK"
+msgstr "У реду"
+
+#: ../gnome_lirc_properties/lirc.py:642
+msgid "Open"
+msgstr "Отвори"
+
+#: ../gnome_lirc_properties/lirc.py:643
+msgid "Options"
+msgstr "Могућности"
+
+#: ../gnome_lirc_properties/lirc.py:644
+msgid "Page Down"
+msgstr "Страница доле"
+
+#: ../gnome_lirc_properties/lirc.py:645
+msgid "Page Up"
+msgstr "Страница горе"
+
+#: ../gnome_lirc_properties/lirc.py:646 ../gnome_lirc_properties/lirc.py:650
+msgid "Pause"
+msgstr "Застани"
+
+#: ../gnome_lirc_properties/lirc.py:647
+msgid "PC"
+msgstr "ПЦ"
+
+#: ../gnome_lirc_properties/lirc.py:648
+msgid "Phone"
+msgstr "Телефон"
+
+#: ../gnome_lirc_properties/lirc.py:649
+msgid "Play"
+msgstr "Пусти"
+
+#: ../gnome_lirc_properties/lirc.py:652
+msgid "Power"
+msgstr "Напајање"
+
+#: ../gnome_lirc_properties/lirc.py:653 ../gnome_lirc_properties/lirc.py:654
+msgid "Previous"
+msgstr "Претходно"
+
+#: ../gnome_lirc_properties/lirc.py:655
+msgid "R"
+msgstr "Р"
+
+#: ../gnome_lirc_properties/lirc.py:656
+msgid "Radio"
+msgstr "Радио"
+
+#: ../gnome_lirc_properties/lirc.py:657
+msgid "Record"
+msgstr "Снимај"
+
+#: ../gnome_lirc_properties/lirc.py:658
+msgid "Red"
+msgstr "Црвено"
+
+#: ../gnome_lirc_properties/lirc.py:659
+msgid "Rewind"
+msgstr "Уназад"
+
+#: ../gnome_lirc_properties/lirc.py:660
+msgid "Right"
+msgstr "Десно"
+
+#: ../gnome_lirc_properties/lirc.py:661
+msgid "S"
+msgstr "С"
+
+#: ../gnome_lirc_properties/lirc.py:662
+msgid "Select"
+msgstr "Изабери"
+
+#: ../gnome_lirc_properties/lirc.py:663
+msgid "Setup"
+msgstr "Подешавање"
+
+#: ../gnome_lirc_properties/lirc.py:664
+msgid "Slash"
+msgstr "Коса црта"
+
+#: ../gnome_lirc_properties/lirc.py:665
+msgid "Sleep"
+msgstr "Спавај"
+
+#: ../gnome_lirc_properties/lirc.py:666
+msgid "Slow"
+msgstr "Споро"
+
+#: ../gnome_lirc_properties/lirc.py:667
+msgid "Space"
+msgstr "Размак"
+
+#: ../gnome_lirc_properties/lirc.py:668
+msgid "Stop"
+msgstr "Заустави"
+
+#: ../gnome_lirc_properties/lirc.py:669
+msgid "Subtitle"
+msgstr "Превод"
+
+#: ../gnome_lirc_properties/lirc.py:670
+msgid "T"
+msgstr "Т"
+
+#: ../gnome_lirc_properties/lirc.py:671
+msgid "Tab"
+msgstr "Језичак"
+
+#: ../gnome_lirc_properties/lirc.py:672
+msgid "Text"
+msgstr "Текст"
+
+#: ../gnome_lirc_properties/lirc.py:673
+msgid "Time"
+msgstr "Време"
+
+#: ../gnome_lirc_properties/lirc.py:674
+msgid "Title"
+msgstr "Наслов"
+
+#: ../gnome_lirc_properties/lirc.py:675
+msgid "TV"
+msgstr "ТВ"
+
+#: ../gnome_lirc_properties/lirc.py:676
+msgid "Undo"
+msgstr "Опозови"
+
+#: ../gnome_lirc_properties/lirc.py:677
+msgid "Up"
+msgstr "Горе"
+
+#: ../gnome_lirc_properties/lirc.py:678
+msgid "VCR"
+msgstr "ВЦР"
+
+#: ../gnome_lirc_properties/lirc.py:679
+msgid "Video"
+msgstr "Видео"
+
+#: ../gnome_lirc_properties/lirc.py:680
+msgid "Volume Down"
+msgstr "Утишај звук"
+
+#: ../gnome_lirc_properties/lirc.py:681
+msgid "Volume Up"
+msgstr "Појачај звук"
+
+#: ../gnome_lirc_properties/lirc.py:682
+msgid "WWW"
+msgstr "Веб"
+
+#: ../gnome_lirc_properties/lirc.py:683
+msgid "Yellow"
+msgstr "Жута"
+
+#: ../gnome_lirc_properties/lirc.py:684
+msgid "Zoom"
+msgstr "Увеличај"
+
+#: ../gnome_lirc_properties/lirc.py:758
+msgid "Custom Key Code"
+msgstr "Произвољна шифра тастера"
+
+#: ../gnome_lirc_properties/model.py:206
+msgid "None"
+msgstr "Ништа"
+
+#: ../gnome_lirc_properties/model.py:282
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:986
+msgid "Unknown"
+msgstr "Непознато"
+
+#: ../gnome_lirc_properties/model.py:321
+msgid "Assigned"
+msgstr "Додељено"
+
+#: ../gnome_lirc_properties/model.py:323
+msgid "Unassigned"
+msgstr "Недодељено"
+
+#: ../gnome_lirc_properties/ui/CustomConfiguration.py:99
+msgid "Property"
+msgstr "Својство"
+
+#: ../gnome_lirc_properties/ui/CustomConfiguration.py:100
+msgid "Value"
+msgstr "Вредност"
+
+#: ../gnome_lirc_properties/ui/CustomConfiguration.py:120
+msgid ""
+"<b>Learning new key code.</b>\n"
+"Press the button on your remote control which should emit this key-code."
+msgstr ""
+"<b>Учим нову шифру тастера.</b>\n"
+"Притисните дугме на даљинском управљачу које треба да емитује ову шифру "
+"тастера."
+
+#: ../gnome_lirc_properties/ui/CustomConfiguration.py:166
+msgid "Name"
+msgstr "Назив"
+
+#: ../gnome_lirc_properties/ui/CustomConfiguration.py:169
+msgid "Category"
+msgstr "Категорија"
+
+#: ../gnome_lirc_properties/ui/CustomConfiguration.py:172
+msgid "State"
+msgstr "Стaњe"
+
+#: ../gnome_lirc_properties/ui/CustomConfiguration.py:248
+msgid "Learning"
+msgstr "Учење"
+
+#: ../gnome_lirc_properties/ui/CustomConfiguration.py:295
+msgid "Learning of Key Code Failed"
+msgstr "Учење шифре тастера није успело"
+
+#: ../gnome_lirc_properties/ui/CustomConfiguration.py:385
+msgid "Remote Configuration Failed"
+msgstr "Подешавање даљинског није успело"
+
+#: ../gnome_lirc_properties/ui/CustomConfiguration.py:426
+msgid "_Start"
+msgstr "_Покрени"
+
+#: ../gnome_lirc_properties/ui/CustomConfiguration.py:663
+msgid "Cannot Save Custom Configuration"
+msgstr "Не могу да сачувам произвољно подешавање"
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:233
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:246
+msgid "Invalid IR Configuration"
+msgstr "Неисправно ИЦ подешавање"
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:234
+msgid "Your configuration files seems to be incorrect."
+msgstr "Изгледа да су датотеке ваших подешавања неисправне."
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:240
+msgid "_Keep Configuration"
+msgstr "_Задржи подешавање"
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:241
+msgid "_Restore Configuration"
+msgstr "_Поврати подешавање"
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:247
+#, python-format
+msgid ""
+"Your configuration files seems to be incorrect. Should this program try to "
+"restore your settings, for a %s %s remote?"
+msgstr ""
+"Изгледа да су датотеке ваших подешавања неисправне. Да ли овај програм треба "
+"да покуша да поврати ваша подешавања, за %s %s даљински?"
+
+#. We must create a dialog (the main dialog has not yet been realized)
+#. because PolicyKit needs a window ID:
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:273
+msgid "Restoring Configuration"
+msgstr "Поврати подешавање"
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:292
+msgid "Cannot restore IR configuration"
+msgstr "Не могу да повратим ИЦ подешавање"
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:293
+#, python-format
+msgid "Backend failed: %s"
+msgstr "Позадинац није успео: %s"
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:337
+msgid ""
+"<b>Warning:</b> Remote control daemon not running. Cannot test buttons.\n"
+"This could be due to a configuration error. Try changing the configuration."
+msgstr ""
+"<b>Упозорење:</b> Позадинац даљинског управљача није покренут. Не могу да "
+"испробам дугмад.\n"
+"Разлог овоме може бити грешка у подешавањима. Покушајте да измените "
+"подешавања."
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:603
+msgid "_Search Again"
+msgstr "_Тражи поново"
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:608
+msgid "No IR Receivers Found"
+msgstr "Нисам пронашао ИЦ пријемнике"
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:609
+msgid ""
+"Could not find any IR receiver. Is your device attached?\n"
+"\n"
+"Note that some devices, such as homebrew serial port receivers must be "
+"selected manually since there is no way to detect them automatically."
+msgstr ""
+"Не могу да пронађем ни један ИЦ пријемник. Да ли је ваш уређај прикачен?\n"
+"\n"
+"Знајте да неки уређаји, као пријемници „homebrew“ серијског прикључника "
+"морају бити ручно изабрани јер нема начина за њиховим самосталним "
+"откривањем."
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:694
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:702
+msgid "Cannot Update Configuration"
+msgstr "Не могу да освежим подешавања"
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:695
+msgid "The System has refused access to this feature."
+msgstr "Систем је одбацио приступ овој функцији."
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:703
+#, python-format
+msgid "Configuration backend reported %s."
+msgstr "Позадинац подешавања извештава „%s“."
+
+#. bring user interface to initial state:
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:725
+msgid "Searching for remote controls..."
+msgstr "Тражим даљинске управљаче..."
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:814
+msgid "Could Not Unlock."
+msgstr "Не могу да откључам."
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:815
+msgid ""
+"The system will not allow you to access these features. Please contact your "
+"system administrator for assistance."
+msgstr ""
+"Систем вам неће дозволити приступ овим функцијама. Обратите се "
+"администратору система за помоћ."
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:842
+msgid ""
+"Cannot display help since the GNOME Help Browser (\"yelp\") cannot be found."
+msgstr ""
+"Не могу да прикажем помоћ јер не могу да пронађем Гномовог прегледника "
+"помоћи („yelp“)."
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:845
+#, python-format
+msgid "Cannot display help for unexpected reason: %s"
+msgstr "Не могу да прикажем помоћ из неочекиваног разлога: %s"
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:847
+msgid "Cannot Display Help"
+msgstr "Не могу да прикажем помоћ"
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:1046
+msgid "<b>Warning:</b> Cannot find such receiver."
+msgstr "<b>Упозорење:</b> Не могу да пронађем такав пријемник."

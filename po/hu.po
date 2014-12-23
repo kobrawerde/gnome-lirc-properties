@@ -1,0 +1,912 @@
+# Hungarian translation for gnome-lirc-properties.
+# Copyright (C) 2014 gnome-lirc-properties's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-lirc-properties package.
+#
+# Balázs Úr <urbalazs@gmail.com>, 2014.
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-lirc-properties master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"lirc-properties&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2014-12-22 07:52+0000\n"
+"PO-Revision-Date: 2014-12-23 15:49+0100\n"
+"Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
+"Language-Team: Hungarian <gnome-hu-list@gnome.org>\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 1.2\n"
+
+#: ../data/gnome-lirc-properties.desktop.in.in.h:1
+msgid "Infrared Remote Control"
+msgstr "Infravörös távirányító"
+
+#: ../data/gnome-lirc-properties.desktop.in.in.h:2
+msgid "Configure your remote control"
+msgstr "A távirányító beállítása"
+
+#: ../data/gnome-lirc-properties.ui.h:1
+msgid "Remote Control Properties"
+msgstr "Távirányító tulajdonságai"
+
+#: ../data/gnome-lirc-properties.ui.h:2
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:411
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:461
+msgid "_Device:"
+msgstr "_Eszköz:"
+
+#: ../data/gnome-lirc-properties.ui.h:3
+#: ../data/gnome-lirc-properties-custom-config.ui.h:12
+msgid "_Manufacturer:"
+msgstr "_Gyártó:"
+
+#: ../data/gnome-lirc-properties.ui.h:4
+msgid "M_odel:"
+msgstr "_Modell:"
+
+#: ../data/gnome-lirc-properties.ui.h:5
+msgid "_Auto-detect"
+msgstr "_Automatikus felderítés"
+
+#: ../data/gnome-lirc-properties.ui.h:6
+msgid "Searching for IR receivers"
+msgstr "Infravörös vevők keresése"
+
+#: ../data/gnome-lirc-properties.ui.h:7
+msgid "<b>IR Receiver</b>"
+msgstr "<b>Infravörös vevő</b>"
+
+#: ../data/gnome-lirc-properties.ui.h:8
+msgid "Use _supplied remote control"
+msgstr "A _mellékelt távirányító használata"
+
+#: ../data/gnome-lirc-properties.ui.h:9
+msgid ""
+"Use the remote control that was supplied with the infra-red receiver, if any."
+msgstr ""
+"Használja azt a távirányítót, amelyet az infravörös vevőhöz mellékeltek, ha "
+"van ilyen."
+
+#: ../data/gnome-lirc-properties.ui.h:10
+msgid "Use di_fferent remote control"
+msgstr "Má_sik távirányító használata"
+
+#: ../data/gnome-lirc-properties.ui.h:11
+msgid ""
+"Use a remote control that was not supplied with the infra-red receiver, such "
+"as a generic replacement remote control not specifically designed for use "
+"with a computer."
+msgstr ""
+"Használjon olyan távirányítót, amelyet nem az infravörös vevőhöz mellékeltek, "
+"mint például az olyan általános helyettesítő távirányító, amelyet nem "
+"kifejezetten számítógéppel való használathoz terveztek."
+
+#: ../data/gnome-lirc-properties.ui.h:12
+msgid "Cus_tom Configuration"
+msgstr "_Egyéni beállítás"
+
+#: ../data/gnome-lirc-properties.ui.h:13
+msgid "Ma_nufacturer:"
+msgstr "_Gyártó:"
+
+#: ../data/gnome-lirc-properties.ui.h:14
+msgid "Mod_el:"
+msgstr "_Modell:"
+
+#: ../data/gnome-lirc-properties.ui.h:15
+msgid "<b>IR Remote Control</b>"
+msgstr "<b>Infravörös távirányító</b>"
+
+#: ../data/gnome-lirc-properties.ui.h:16
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:332
+msgid "Press remote control buttons to test:"
+msgstr "Nyomja meg a távirányító gombjait a teszteléshez:"
+
+#: ../data/gnome-lirc-properties.ui.h:17
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:331
+msgid "<none>"
+msgstr "<nincs>"
+
+#: ../data/gnome-lirc-properties.ui.h:18
+msgid "<b>Configuration Test</b>"
+msgstr "<b>Beállítás teszt</b>"
+
+#: ../data/gnome-lirc-properties-custom-config.ui.h:1
+msgid "Please enter the manufacturer and model name."
+msgstr "Adja meg a gyártó és a modell nevét."
+
+#: ../data/gnome-lirc-properties-custom-config.ui.h:2
+msgid ""
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+
+#: ../data/gnome-lirc-properties-custom-config.ui.h:10
+msgid "Co_ntributor:"
+msgstr "_Közreműködő:"
+
+#: ../data/gnome-lirc-properties-custom-config.ui.h:11
+msgid "M_odel"
+msgstr "_Modell"
+
+#: ../data/gnome-lirc-properties-custom-config.ui.h:13
+msgid "_Remote Model"
+msgstr "_Távoli modell"
+
+#: ../data/gnome-lirc-properties-custom-config.ui.h:14
+msgid ""
+"Key codes cannot be received\n"
+"until these basic parameters are identified."
+msgstr ""
+"A billentyűkódok nem fogadhatók,\n"
+"amíg ezen alapvető paraméterek azonosítva vannak."
+
+#: ../data/gnome-lirc-properties-custom-config.ui.h:16
+msgid "_Detect"
+msgstr "_Felismerés"
+
+#: ../data/gnome-lirc-properties-custom-config.ui.h:17
+msgid "_Basic Configuration"
+msgstr "_Alap beállítás"
+
+#: ../data/gnome-lirc-properties-custom-config.ui.h:18
+msgid ""
+"Choose a button to redefine and press \"Learn\", or add another button.\n"
+"Try to use key names from the default namespace only for best "
+"interoperability."
+msgstr ""
+"Válasszon egy gombot az újradefiniáláshoz, és nyomja meg a „Tanulás” gombot, "
+"vagy adjon hozzá egy másik gombot.\n"
+"Próbálja meg az alapértelmezett névtérben lévő billentyűneveket használni a "
+"legjobb együttműködés elérése érdekében."
+
+#: ../data/gnome-lirc-properties-custom-config.ui.h:20
+msgid "_Learn"
+msgstr "_Tanulás"
+
+#: ../data/gnome-lirc-properties-custom-config.ui.h:21
+msgid "_Key Codes"
+msgstr "_Billentyűkódok"
+
+#: ../data/gnome-lirc-properties-receiver.ui.h:1
+msgid ""
+"<big><b>Multiple Receivers Detected.</b></big>\n"
+"Please choose the IR receiver that you wish to use."
+msgstr ""
+"<big><b>Több vevő észlelhető.</b></big>\n"
+"Válassza ki azt az infravörös vevőt, amelyet használni szeretne."
+
+#: ../gnome_lirc_properties/__init__.py:49
+msgid "Infrared Remote Control Properties"
+msgstr "Infravörös távirányító tulajdonságai"
+
+#: ../gnome_lirc_properties/backend.py:242
+msgid "Could not initialize hardware."
+msgstr "Nem sikerült előkészíteni a hardvert."
+
+#: ../gnome_lirc_properties/backend.py:243
+msgid "No key presses recognized. Gap not found."
+msgstr "Nem ismerhető fel billentyűlenyomás. Hézag nem található."
+
+#: ../gnome_lirc_properties/backend.py:244
+msgid "No key presses recognized. Aborting."
+msgstr "Nem ismerhető fel billentyűlenyomás. Megszakítás."
+
+#. self.locations is in the dbus base class. This check prevents a shutdown when the dbus service should be kept alive.
+#. irrecord stopped when we were expecting more interaction:
+#: ../gnome_lirc_properties/backend.py:317
+msgid "Custom remote control configuration aborted unexpectedly."
+msgstr "Az egyéni távirányító beállítás váratlanul megszakadt."
+
+#: ../gnome_lirc_properties/backend.py:368
+msgid "Hold down any remote control button."
+msgstr "Tartsa nyomva valamelyik távirányító gombot."
+
+#: ../gnome_lirc_properties/backend.py:376
+msgid "Press random buttons on your remote control."
+msgstr "Nyomjon meg véletlenszerűen gombokat a távirányítón."
+
+#: ../gnome_lirc_properties/backend.py:377
+msgid ""
+"When you press the Start button, it is very important that you press many "
+"different buttons and hold them down for approximately one second. Each "
+"button should move the progress bar by at least one step, but in no case by "
+"more than ten steps."
+msgstr ""
+"Amikor megnyomja az Indítás gombot, akkor nagyon fontos, hogy több különböző "
+"gombot nyomjon meg és körülbelül egy másodpercig nyomva is tartsa azokat. "
+"Minden gombnak legalább egy lépéssel kell növelnie a folyamatjelzőt, de semmi "
+"esetre sem lehet tíz lépésnél több."
+
+#: ../gnome_lirc_properties/backend.py:387
+msgid "Press a button repeatedly as fast as possible."
+msgstr ""
+"Nyomjon meg egy gombot ismételten olyan gyorsan, amennyire az lehetséges."
+
+#: ../gnome_lirc_properties/backend.py:388
+msgid ""
+"Make sure you keep pressing the <b>same</b> button and that you <b>do not "
+"hold</b> the button down.\n"
+"Wait a little between button presses if you cannot see any progress."
+msgstr ""
+"Győződjön meg arról, hogy <b>ugyanazt</b> a gombot nyomogatja és <b>ne "
+"tartsa</b> lenyomva a gombot.\n"
+"Várjon egy kicsit a gombnyomások között, ha nem lát semmilyen folyamatot."
+
+#: ../gnome_lirc_properties/backend.py:461
+msgid "Cannot find recorded key codes"
+msgstr "Nem találhatók rögzített billentyűkódok"
+
+#: ../gnome_lirc_properties/hardware.py:309
+#: ../gnome_lirc_properties/model.py:223
+msgid "Linux Input Device"
+msgstr "Linux bemeneti eszköz"
+
+#: ../gnome_lirc_properties/lirc.py:46
+msgid "Malformed configuration file"
+msgstr "Helytelenül formázott beállítófájl"
+
+#: ../gnome_lirc_properties/lirc.py:552
+msgid "Default Namespace"
+msgstr "Alapértelmezett névtér"
+
+#: ../gnome_lirc_properties/lirc.py:566 ../gnome_lirc_properties/lirc.py:567
+#: ../gnome_lirc_properties/lirc.py:568
+msgid "Move Up"
+msgstr "Mozgatás fel"
+
+#: ../gnome_lirc_properties/lirc.py:569
+msgid "0"
+msgstr "0"
+
+#: ../gnome_lirc_properties/lirc.py:570
+msgid "1"
+msgstr "1"
+
+#: ../gnome_lirc_properties/lirc.py:571
+msgid "2"
+msgstr "2"
+
+#: ../gnome_lirc_properties/lirc.py:572
+msgid "3"
+msgstr "3"
+
+#: ../gnome_lirc_properties/lirc.py:573
+msgid "4"
+msgstr "4"
+
+#: ../gnome_lirc_properties/lirc.py:574
+msgid "5"
+msgstr "5"
+
+#: ../gnome_lirc_properties/lirc.py:575
+msgid "6"
+msgstr "6"
+
+#: ../gnome_lirc_properties/lirc.py:576
+msgid "7"
+msgstr "7"
+
+#: ../gnome_lirc_properties/lirc.py:577
+msgid "8"
+msgstr "8"
+
+#: ../gnome_lirc_properties/lirc.py:578
+msgid "9"
+msgstr "9"
+
+#: ../gnome_lirc_properties/lirc.py:579
+msgid "A"
+msgstr "A"
+
+#: ../gnome_lirc_properties/lirc.py:580
+msgid "Again"
+msgstr "Újra"
+
+#: ../gnome_lirc_properties/lirc.py:581
+msgid "Angle"
+msgstr "Szög"
+
+#: ../gnome_lirc_properties/lirc.py:582
+msgid "Audio"
+msgstr "Hang"
+
+#: ../gnome_lirc_properties/lirc.py:583
+msgid "Auxiliary"
+msgstr "Kiegészítő"
+
+#: ../gnome_lirc_properties/lirc.py:584
+msgid "B"
+msgstr "B"
+
+#: ../gnome_lirc_properties/lirc.py:585
+msgid "Back"
+msgstr "Vissza"
+
+#: ../gnome_lirc_properties/lirc.py:586
+msgid "Backspace"
+msgstr "Backspace"
+
+#: ../gnome_lirc_properties/lirc.py:587
+msgid "Blue"
+msgstr "Kék"
+
+#: ../gnome_lirc_properties/lirc.py:588
+msgid "Bookmarks"
+msgstr "Könyvjelzők"
+
+#: ../gnome_lirc_properties/lirc.py:589
+msgid "C"
+msgstr "C"
+
+#: ../gnome_lirc_properties/lirc.py:590
+msgid "Camera"
+msgstr "Fényképezőgép"
+
+#: ../gnome_lirc_properties/lirc.py:591
+msgid "Cancel"
+msgstr "Mégse"
+
+#: ../gnome_lirc_properties/lirc.py:592
+msgid "CD"
+msgstr "CD"
+
+#: ../gnome_lirc_properties/lirc.py:593
+msgid "Channel Down"
+msgstr "Csatorna le"
+
+#: ../gnome_lirc_properties/lirc.py:594
+msgid "Channel Up"
+msgstr "Csatorna fel"
+
+#: ../gnome_lirc_properties/lirc.py:595
+msgid "Clear"
+msgstr "Törlés"
+
+#: ../gnome_lirc_properties/lirc.py:596
+msgid "Close"
+msgstr "Bezárás"
+
+#: ../gnome_lirc_properties/lirc.py:597
+msgid "Configuration"
+msgstr "Beállítás"
+
+#: ../gnome_lirc_properties/lirc.py:598
+msgid "D"
+msgstr "D"
+
+#: ../gnome_lirc_properties/lirc.py:599
+msgid "Delete"
+msgstr "Törlés"
+
+#: ../gnome_lirc_properties/lirc.py:600
+msgid "Directory"
+msgstr "Könyvtár"
+
+#: ../gnome_lirc_properties/lirc.py:601
+msgid "Dot"
+msgstr "Pont"
+
+#: ../gnome_lirc_properties/lirc.py:602
+msgid "Down"
+msgstr "Le"
+
+#: ../gnome_lirc_properties/lirc.py:603
+msgid "DVD"
+msgstr "DVD"
+
+#: ../gnome_lirc_properties/lirc.py:604
+msgid "E"
+msgstr "E"
+
+#: ../gnome_lirc_properties/lirc.py:605
+msgid "Eject CD"
+msgstr "CD kiadása"
+
+#: ../gnome_lirc_properties/lirc.py:606
+msgid "End"
+msgstr "End"
+
+#: ../gnome_lirc_properties/lirc.py:607
+msgid "Enter"
+msgstr "Enter"
+
+#: ../gnome_lirc_properties/lirc.py:608
+msgid "EPG"
+msgstr "EPG"
+
+#: ../gnome_lirc_properties/lirc.py:609
+msgid "Escape"
+msgstr "Escape"
+
+#: ../gnome_lirc_properties/lirc.py:610
+msgid "Exit"
+msgstr "Kilépés"
+
+#: ../gnome_lirc_properties/lirc.py:611
+msgid "F"
+msgstr "F"
+
+#: ../gnome_lirc_properties/lirc.py:612
+msgid "F1"
+msgstr "F1"
+
+#: ../gnome_lirc_properties/lirc.py:613
+msgid "F2"
+msgstr "F2"
+
+#: ../gnome_lirc_properties/lirc.py:614
+msgid "F3"
+msgstr "F3"
+
+#: ../gnome_lirc_properties/lirc.py:615
+msgid "F4"
+msgstr "F4"
+
+#: ../gnome_lirc_properties/lirc.py:616
+msgid "Fast Forward"
+msgstr "Gyorsan előre"
+
+#: ../gnome_lirc_properties/lirc.py:617
+msgid "Forward"
+msgstr "Előre"
+
+#: ../gnome_lirc_properties/lirc.py:618
+msgid "G"
+msgstr "G"
+
+#: ../gnome_lirc_properties/lirc.py:619
+msgid "Green"
+msgstr "Zöld"
+
+#: ../gnome_lirc_properties/lirc.py:620
+msgid "H"
+msgstr "H"
+
+#: ../gnome_lirc_properties/lirc.py:621
+msgid "Help"
+msgstr "Súgó"
+
+#: ../gnome_lirc_properties/lirc.py:622
+msgid "Home"
+msgstr "Home"
+
+#: ../gnome_lirc_properties/lirc.py:623
+msgid "Information"
+msgstr "Információk"
+
+#: ../gnome_lirc_properties/lirc.py:624
+msgid "Asterisk"
+msgstr "Csillag"
+
+#: ../gnome_lirc_properties/lirc.py:625
+msgid "Minus"
+msgstr "Mínusz"
+
+#: ../gnome_lirc_properties/lirc.py:626 ../gnome_lirc_properties/lirc.py:651
+msgid "Plus"
+msgstr "Plusz"
+
+#: ../gnome_lirc_properties/lirc.py:627
+msgid "L"
+msgstr "L"
+
+#: ../gnome_lirc_properties/lirc.py:628
+msgid "Language"
+msgstr "Nyelv"
+
+#: ../gnome_lirc_properties/lirc.py:629
+msgid "Left"
+msgstr "Bal"
+
+#: ../gnome_lirc_properties/lirc.py:630
+msgid "List"
+msgstr "Lista"
+
+#: ../gnome_lirc_properties/lirc.py:631
+msgid "M"
+msgstr "M"
+
+#: ../gnome_lirc_properties/lirc.py:632
+msgid "Mail"
+msgstr "Levél"
+
+#: ../gnome_lirc_properties/lirc.py:633
+msgid "Maximum"
+msgstr "Maximum"
+
+#: ../gnome_lirc_properties/lirc.py:634
+msgid "Media"
+msgstr "Adathordozó"
+
+#: ../gnome_lirc_properties/lirc.py:635
+msgid "Menu"
+msgstr "Menü"
+
+#: ../gnome_lirc_properties/lirc.py:636
+msgid "Mode"
+msgstr "Mód"
+
+#: ../gnome_lirc_properties/lirc.py:637
+msgid "MP3"
+msgstr "MP3"
+
+#: ../gnome_lirc_properties/lirc.py:638
+msgid "Mute"
+msgstr "Némítás"
+
+#: ../gnome_lirc_properties/lirc.py:639 ../gnome_lirc_properties/lirc.py:640
+msgid "Next"
+msgstr "Következő"
+
+#: ../gnome_lirc_properties/lirc.py:641
+msgid "OK"
+msgstr "OK"
+
+#: ../gnome_lirc_properties/lirc.py:642
+msgid "Open"
+msgstr "Megnyitás"
+
+#: ../gnome_lirc_properties/lirc.py:643
+msgid "Options"
+msgstr "Beállítások"
+
+#: ../gnome_lirc_properties/lirc.py:644
+msgid "Page Down"
+msgstr "Page Down"
+
+#: ../gnome_lirc_properties/lirc.py:645
+msgid "Page Up"
+msgstr "Page Up"
+
+#: ../gnome_lirc_properties/lirc.py:646 ../gnome_lirc_properties/lirc.py:650
+msgid "Pause"
+msgstr "Szünet"
+
+#: ../gnome_lirc_properties/lirc.py:647
+msgid "PC"
+msgstr "PC"
+
+#: ../gnome_lirc_properties/lirc.py:648
+msgid "Phone"
+msgstr "Telefon"
+
+#: ../gnome_lirc_properties/lirc.py:649
+msgid "Play"
+msgstr "Lejátszás"
+
+#: ../gnome_lirc_properties/lirc.py:652
+msgid "Power"
+msgstr "Energia"
+
+#: ../gnome_lirc_properties/lirc.py:653 ../gnome_lirc_properties/lirc.py:654
+msgid "Previous"
+msgstr "Előző"
+
+#: ../gnome_lirc_properties/lirc.py:655
+msgid "R"
+msgstr "R"
+
+#: ../gnome_lirc_properties/lirc.py:656
+msgid "Radio"
+msgstr "Rádió"
+
+#: ../gnome_lirc_properties/lirc.py:657
+msgid "Record"
+msgstr "Felvétel"
+
+#: ../gnome_lirc_properties/lirc.py:658
+msgid "Red"
+msgstr "Vörös"
+
+#: ../gnome_lirc_properties/lirc.py:659
+msgid "Rewind"
+msgstr "Visszatekerés"
+
+#: ../gnome_lirc_properties/lirc.py:660
+msgid "Right"
+msgstr "Jobb"
+
+#: ../gnome_lirc_properties/lirc.py:661
+msgid "S"
+msgstr "S"
+
+#: ../gnome_lirc_properties/lirc.py:662
+msgid "Select"
+msgstr "Kijelölés"
+
+#: ../gnome_lirc_properties/lirc.py:663
+msgid "Setup"
+msgstr "Beállítás"
+
+#: ../gnome_lirc_properties/lirc.py:664
+msgid "Slash"
+msgstr "Osztásjel"
+
+#: ../gnome_lirc_properties/lirc.py:665
+msgid "Sleep"
+msgstr "Alvás"
+
+#: ../gnome_lirc_properties/lirc.py:666
+msgid "Slow"
+msgstr "Lassú"
+
+#: ../gnome_lirc_properties/lirc.py:667
+msgid "Space"
+msgstr "Szóköz"
+
+#: ../gnome_lirc_properties/lirc.py:668
+msgid "Stop"
+msgstr "Leállítás"
+
+#: ../gnome_lirc_properties/lirc.py:669
+msgid "Subtitle"
+msgstr "Felirat"
+
+#: ../gnome_lirc_properties/lirc.py:670
+msgid "T"
+msgstr "T"
+
+#: ../gnome_lirc_properties/lirc.py:671
+msgid "Tab"
+msgstr "Tab"
+
+#: ../gnome_lirc_properties/lirc.py:672
+msgid "Text"
+msgstr "Szöveg"
+
+#: ../gnome_lirc_properties/lirc.py:673
+msgid "Time"
+msgstr "Idő"
+
+#: ../gnome_lirc_properties/lirc.py:674
+msgid "Title"
+msgstr "Cím"
+
+#: ../gnome_lirc_properties/lirc.py:675
+msgid "TV"
+msgstr "TV"
+
+#: ../gnome_lirc_properties/lirc.py:676
+msgid "Undo"
+msgstr "Visszavonás"
+
+#: ../gnome_lirc_properties/lirc.py:677
+msgid "Up"
+msgstr "Fel"
+
+#: ../gnome_lirc_properties/lirc.py:678
+msgid "VCR"
+msgstr "VCR"
+
+#: ../gnome_lirc_properties/lirc.py:679
+msgid "Video"
+msgstr "Videó"
+
+#: ../gnome_lirc_properties/lirc.py:680
+msgid "Volume Down"
+msgstr "Hangerő le"
+
+#: ../gnome_lirc_properties/lirc.py:681
+msgid "Volume Up"
+msgstr "Hangerő fel"
+
+#: ../gnome_lirc_properties/lirc.py:682
+msgid "WWW"
+msgstr "WWW"
+
+#: ../gnome_lirc_properties/lirc.py:683
+msgid "Yellow"
+msgstr "Sárga"
+
+#: ../gnome_lirc_properties/lirc.py:684
+msgid "Zoom"
+msgstr "Nagyítás"
+
+#: ../gnome_lirc_properties/lirc.py:758
+msgid "Custom Key Code"
+msgstr "Egyéni billentyűkód"
+
+#: ../gnome_lirc_properties/model.py:206
+msgid "None"
+msgstr "Nincs"
+
+#: ../gnome_lirc_properties/model.py:282
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:986
+msgid "Unknown"
+msgstr "Ismeretlen"
+
+#: ../gnome_lirc_properties/model.py:321
+msgid "Assigned"
+msgstr "Hozzárendelve"
+
+#: ../gnome_lirc_properties/model.py:323
+msgid "Unassigned"
+msgstr "Nincs hozzárendelve"
+
+#: ../gnome_lirc_properties/ui/CustomConfiguration.py:99
+msgid "Property"
+msgstr "Tulajdonság"
+
+#: ../gnome_lirc_properties/ui/CustomConfiguration.py:100
+msgid "Value"
+msgstr "Érték"
+
+#: ../gnome_lirc_properties/ui/CustomConfiguration.py:120
+msgid ""
+"<b>Learning new key code.</b>\n"
+"Press the button on your remote control which should emit this key-code."
+msgstr ""
+"<b>Új billentyűkód tanulása.</b>\n"
+"Nyomja meg a távirányítón azt a gombot, amelynek ezt a billentyűkódot kellene "
+"kibocsátania."
+
+#: ../gnome_lirc_properties/ui/CustomConfiguration.py:166
+msgid "Name"
+msgstr "Név"
+
+#: ../gnome_lirc_properties/ui/CustomConfiguration.py:169
+msgid "Category"
+msgstr "Kategória"
+
+#: ../gnome_lirc_properties/ui/CustomConfiguration.py:172
+msgid "State"
+msgstr "Állapot"
+
+#: ../gnome_lirc_properties/ui/CustomConfiguration.py:248
+msgid "Learning"
+msgstr "Tanulás"
+
+#: ../gnome_lirc_properties/ui/CustomConfiguration.py:295
+msgid "Learning of Key Code Failed"
+msgstr "A billentyűkód megtanulása nem sikerült"
+
+#: ../gnome_lirc_properties/ui/CustomConfiguration.py:385
+msgid "Remote Configuration Failed"
+msgstr "A távoli beállítás nem sikerült"
+
+#: ../gnome_lirc_properties/ui/CustomConfiguration.py:426
+msgid "_Start"
+msgstr "_Indítás"
+
+#: ../gnome_lirc_properties/ui/CustomConfiguration.py:663
+msgid "Cannot Save Custom Configuration"
+msgstr "Nem menthető az egyéni beállítás"
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:233
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:246
+msgid "Invalid IR Configuration"
+msgstr "Érvénytelen infravörös beállítás"
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:234
+msgid "Your configuration files seems to be incorrect."
+msgstr "A beállítófájljai hibásnak tűnnek."
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:240
+msgid "_Keep Configuration"
+msgstr "Beállítások _megtartása"
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:241
+msgid "_Restore Configuration"
+msgstr "Beállítások _visszaállítása"
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:247
+#, python-format
+msgid ""
+"Your configuration files seems to be incorrect. Should this program try to "
+"restore your settings, for a %s %s remote?"
+msgstr ""
+"A beállítófájljai hibásnak tűnnek. Próbálja meg ez a program visszaállítani a "
+"beállításokat a következő távirányítóhoz: %s %s?"
+
+#. We must create a dialog (the main dialog has not yet been realized)
+#. because PolicyKit needs a window ID:
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:273
+msgid "Restoring Configuration"
+msgstr "Beállítás visszaállítása"
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:292
+msgid "Cannot restore IR configuration"
+msgstr "Nem lehet visszaállítani az infravörös beállítást"
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:293
+#, python-format
+msgid "Backend failed: %s"
+msgstr "A háttérprogram meghiúsult: %s"
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:337
+msgid ""
+"<b>Warning:</b> Remote control daemon not running. Cannot test buttons.\n"
+"This could be due to a configuration error. Try changing the configuration."
+msgstr ""
+"<b>Figyelem:</b> A távirányító démon nem fut. Nem lehet tesztelni a gombokat."
+"\n"
+"Ez egy beállítási hiba miatt történhetett. Próbáljon meg változtatni a "
+"beállításon."
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:603
+msgid "_Search Again"
+msgstr "_Keresés újra"
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:608
+msgid "No IR Receivers Found"
+msgstr "Nem találhatók infravörös vevők"
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:609
+msgid ""
+"Could not find any IR receiver. Is your device attached?\n"
+"\n"
+"Note that some devices, such as homebrew serial port receivers must be "
+"selected manually since there is no way to detect them automatically."
+msgstr ""
+"Nem található semmilyen infravörös vevő. Csatlakoztatva van az eszköz?\n"
+"\n"
+"Ne feledje, hogy néhány eszközt - mint például a homebrew soros port vevőket "
+"- kézzel kell kiválasztani, mivel nincs mód azok automatikus felismerésére."
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:694
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:702
+msgid "Cannot Update Configuration"
+msgstr "Nem lehet frissíteni a beállítást"
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:695
+msgid "The System has refused access to this feature."
+msgstr "A rendszer visszautasította a hozzáférést ehhez a szolgáltatáshoz."
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:703
+#, python-format
+msgid "Configuration backend reported %s."
+msgstr "A beállító háttérprogram a következőt jelentette: %s."
+
+#. bring user interface to initial state:
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:725
+msgid "Searching for remote controls..."
+msgstr "Távirányítók keresése…"
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:814
+msgid "Could Not Unlock."
+msgstr "Nem sikerült feloldani."
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:815
+msgid ""
+"The system will not allow you to access these features. Please contact your "
+"system administrator for assistance."
+msgstr ""
+"A rendszer nem fogja lehetővé tenni a hozzáférést ezekhez a szolgáltatásokhoz."
+" Lépjen kapcsolatba a rendszergazdával a segítségért."
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:842
+msgid ""
+"Cannot display help since the GNOME Help Browser (\"yelp\") cannot be found."
+msgstr ""
+"Nem lehet megjeleníteni a súgót, mivel a GNOME Súgóböngésző („yelp”) nem "
+"található."
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:845
+#, python-format
+msgid "Cannot display help for unexpected reason: %s"
+msgstr "Nem lehet megjeleníteni a súgót egy váratlan ok miatt: %s"
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:847
+msgid "Cannot Display Help"
+msgstr "Nem lehet megjeleníteni a súgót"
+
+#: ../gnome_lirc_properties/ui/RemoteControlProperties.py:1046
+msgid "<b>Warning:</b> Cannot find such receiver."
+msgstr "<b>Figyelem:</b> Nem található ilyen vevő."
+
+
